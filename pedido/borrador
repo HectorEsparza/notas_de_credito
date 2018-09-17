@@ -1,0 +1,90 @@
+if(usuario=="olcruz"){
+  if(elem.status=="ACTIVA"){
+    if(elem.notasae==""){
+      $('<tr>'+
+           '<td class="nulo"><input type="text" class="folio'+contador+'" value='+elem.foliointerno+' size="4" readonly /></td>'+
+           '<td class="nulo">'+elem.recepcion+'</td>'+
+           '<td class="nulo">'+elem.nocliente+'</td>'+
+           '<td class="nulo">'+elem.cliente+'</td>'+
+           '<td class="nulo">'+elem.notasae+'</td>'+
+           '<td class="nulo">$'+formatNumber.new(elem.total)+'</td>'+
+           '<td class="nulo">'+fechaStandar(elem.fecha)+'</td>'+
+           '<td class="nulo">'+elem.status+'</td>'+
+           '<td><button class="ver" onclick='+click+'>Ver</button></td>'+
+           '</tr>').appendTo($("#table"));
+    }
+    else{
+      $('<tr>'+
+           '<td class="principal"><input type="text" class="folio'+contador+'" value='+elem.foliointerno+' size="4" readonly /></td>'+
+           '<td class="principal">'+elem.recepcion+'</td>'+
+           '<td class="principal">'+elem.nocliente+'</td>'+
+           '<td class="principal">'+elem.cliente+'</td>'+
+           '<td class="principal">'+elem.notasae+'</td>'+
+           '<td class="principal">$'+formatNumber.new(elem.total)+'</td>'+
+           '<td class="principal">'+fechaStandar(elem.fecha)+'</td>'+
+           '<td class="principal">'+elem.status+'</td>'+
+           '<td><button class="ver" onclick='+click+'>Ver</button></td>'+
+           '</tr>').appendTo($("#table"));
+    }
+
+  }
+  else{
+    $('<tr>'+
+         '<td class="cancelada"><input type="text" class="folio'+contador+'" value='+elem.foliointerno+' size="4" readonly /></td>'+
+         '<td class="cancelada">'+elem.recepcion+'</td>'+
+         '<td class="cancelada">'+elem.nocliente+'</td>'+
+         '<td class="cancelada">'+elem.cliente+'</td>'+
+         '<td class="cancelada">'+elem.notasae+'</td>'+
+         '<td class="cancelada">$'+formatNumber.new(elem.total)+'</td>'+
+         '<td class="cancelada">'+fechaStandar(elem.fecha)+'</td>'+
+         '<td class="cancelada">'+elem.status+'</td>'+
+         '<td></td>'+
+         '</tr>').appendTo($("#table"));
+  }
+
+}
+else{
+  if(elem.status=="ACTIVA"){
+    if(elem.notasae==""){
+      $('<tr>'+
+           '<td class="nulo"><input type="text" class="folio'+contador+'" value='+elem.foliointerno+' size="4" readonly /></td>'+
+           '<td class="nulo">'+elem.recepcion+'</td>'+
+           '<td class="nulo">'+elem.nocliente+'</td>'+
+           '<td class="nulo">'+elem.cliente+'</td>'+
+           '<td class="nulo">'+elem.notasae+'</td>'+
+           '<td class="nulo">$'+formatNumber.new(elem.total)+'</td>'+
+           '<td class="nulo">'+fechaStandar(elem.fecha)+'</td>'+
+           '<td class="nulo">'+elem.status+'</td>'+
+           '<td><button class="ver" onclick='+click+'>Ver</button></td>'+
+           '</tr>').appendTo($("#table"));
+    }
+    else{
+      $('<tr>'+
+           '<td class="principal"><input type="text" class="folio'+contador+'" value='+elem.foliointerno+' size="4" readonly /></td>'+
+           '<td class="principal">'+elem.recepcion+'</td>'+
+           '<td class="principal">'+elem.nocliente+'</td>'+
+           '<td class="principal">'+elem.cliente+'</td>'+
+           '<td class="principal">'+elem.notasae+'</td>'+
+           '<td class="principal">$'+formatNumber.new(elem.total)+'</td>'+
+           '<td class="principal">'+fechaStandar(elem.fecha)+'</td>'+
+           '<td class="principal">'+elem.status+'</td>'+
+           '<td><button class="ver" onclick='+click+'>Ver</button></td>'+
+           '</tr>').appendTo($("#table"));
+    }
+
+  }
+  else{
+    $('<tr>'+
+         '<td class="cancelada"><input type="text" class="folio'+contador+'" value='+elem.foliointerno+' size="4" readonly /></td>'+
+         '<td class="cancelada">'+elem.recepcion+'</td>'+
+         '<td class="cancelada">'+elem.nocliente+'</td>'+
+         '<td class="cancelada">'+elem.cliente+'</td>'+
+         '<td class="cancelada">'+elem.notasae+'</td>'+
+         '<td class="cancelada">$'+formatNumber.new(elem.total)+'</td>'+
+         '<td class="cancelada">'+fechaStandar(elem.fecha)+'</td>'+
+         '<td class="cancelada">'+elem.status+'</td>'+
+         '<td></td>'+
+         '</tr>').appendTo($("#table"));
+  }
+
+}

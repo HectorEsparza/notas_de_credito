@@ -1,0 +1,117 @@
+<input type="hidden" id="valorPDF" value="<?= $pdf?>" />
+<input type="hidden" id="status" value="<?= $status?>" />
+<?php if($usuario=="olcruz") :?>
+  <header>
+    <button class="btn btn-primary" onclick="print();">Imprimir</button>
+    <button class="btn btn-primary" id="carta">Nueva Carta</button>
+    <button class="btn btn-primary" id="visualizar">Visualizar Cartas</button>
+    <button class="btn btn-primary" id="pdf"><a href="cartas_pdf/<?= $pdf?>" target="_blank">PDF</a></button>
+    <button class="btn btn-primary" id="cancela">Cancela Carta</button>
+    <button class="btn btn-primary" id="cierra">Cierra Sesión</button>
+  </header>
+
+<? else :?>
+<header>
+  <button class="btn btn-primary" onclick="print();">Imprimir</button>
+  <button class="btn btn-primary" id="carta">Nueva Carta</button>
+  <button class="btn btn-primary" id="visualizar">Visualizar Cartas</button>
+  <button class="btn btn-primary" id="pdf"><a href="cartas_pdf/<?= $pdf?>" target="_blank">PDF</a></button>
+  <button class="btn btn-primary" id="cierra">Cierra Sesión</button>
+</header>
+<?endif ?>
+
+<section>
+    <br /><br />
+    <table border="1" align='center' width="100%">
+      <tr>
+        <td colspan="5" rowspan="4" align='center'>
+          <b>ABASTECEDORA DE PRODUCTOS AUTOMOTRICES
+          Cda. Pozo Brasil no. 30 Col. Reynosa, México DF.
+          Tels: 0155-53943222, 53831895, 53838046, 53195803
+          www.hulesapa.com.mx / ventas@hulesapa.mx</b>
+        </td>
+      </tr>
+      <tr>
+          <td colspan="3" align='center' style="height: 60px"><img src='imagenes/apa.jpg' height=50px></td>
+      </tr>
+      <tr>
+        <td colspan="3" align='center'><b>CARTA FACTURA</b></td>
+      </tr>
+      <tr>
+        <td colspan="2" align='center'><b>FOLIO</b></td>
+        <td align='center'><?= $folio?></td>
+      </tr>
+      <tr>
+        <td align='center'><?= $cliente?></td>
+        <td align='center'><b>CLIENTE</b>:</td>
+        <td colspan="4" align='center'><?= $nombre?></td>
+        <td align='center'><b>FECHA:</b></td>
+        <td align='center'><?= fechaStandar($fecha)?></td>
+      </tr>
+      <tr>
+        <td colspan="6" rowspan="3" align='center'>
+          <b>Calle: </b><?= $calle?>
+          <b>Col: </b><?= $colonia?>
+          <b>CP: </b><?= $cp ?>
+          <b>RFC: </b><?= $rfc ?>
+          <b>Teléfono: </b><?= $telefono ?>
+        </td>
+        <td colspan="2" align='center'><b>DOCUMENTADOR</b></td>
+      </tr>
+      <tr>
+        <td colspan="2" rowspan="2" align='center'><?= usuario($usuario) ?></td>
+      </tr>
+      <tr>
+      </tr>
+      <tr>
+        <td align='center'><b>CANTIDAD</b></td>
+        <td align='center'><b>CLAVE</b></td>
+        <td align='center'colspan=3><b>DESCRIPCIÓN</b></td>
+        <td align='center'><b>%DESC</b></td>
+        <td align='center'><b>P/U</b></td>
+        <td align='center'><b>PRECIO TOTAL</b></td>
+      </tr>
+      <? for($i=1;$i<=25;$i++) :?>
+        <? if($i<=$cont) :?>
+          <tr>
+            <td align='center'><?= $cantidad[$i] ?></td>
+            <td align='center'><?= $clave[$i] ?></td>
+            <td align='center' colspan="3"><?= $descripcion[$i] ?></td>
+            <td align='center'><?= $descuentodeCliente . "%" ?></td>
+            <td align='center'><?= "$" . number_format($costo[$i], 2, ".", ",") ?></td>
+            <td align='center'><?= "$" . number_format($importe[$i], 2, ".", ",") ?></td>
+          </tr>
+        <? else :?>
+          <tr>
+            <td align='center'>&nbsp;</td>
+            <td align='center'>&nbsp;</td>
+            <td align='center' colspan="3">&nbsp;</td>
+            <td align='center'>&nbsp;</td>
+            <td align='center'>&nbsp;</td>
+            <td align='center'>&nbsp;</td>
+          </tr>
+        <? endif ?>
+      <? endfor ?>
+      <tr>
+        <td align='center' colspan="6" rowspan="5"><b><?= $letra ?></b></td>
+        <td align='center'><b>SUBTOTAL</b></td>
+        <td align='center'><?= "$" . number_format($subtotal1, 2, ".", ",") ?></td>
+      </tr>
+      <tr>
+        <td align='center'><b>DESCUENTO</b></td>
+        <td align='center'><?= "$" . number_format($descuentodeCarta, 2, ".", ",") ?></td>
+      </tr>
+      <tr>
+        <td align='center'><b>SUBTOTAL</b></td>
+        <td align='center'><?= "$" . number_format($subtotal2, 2, ".", ",") ?></td>
+      </tr>
+      <tr>
+        <td align='center'><b>IVA</b></td>
+        <td align='center'><?= "$" . number_format($ivaCarta, 2, ".", ",") ?></td>
+      </tr>
+      <tr>
+        <td align='center'><b>TOTAL</b></td>
+        <td align='center'><?= "$" . number_format($total, 2, ".", ",") ?></td>
+      </tr>
+    </table>
+</section>
