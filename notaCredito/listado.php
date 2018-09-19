@@ -3,8 +3,8 @@
 $limit = isset($_POST["limit"]) && intval($_POST["limit"]) > 0 ? intval($_POST["limit"])	: 20;
 $offset = isset($_POST["offset"]) && intval($_POST["offset"])>=0	? intval($_POST["offset"])	: 0;
 // realiza la conexion
-//$con = new mysqli("50.62.209.84","hesparza","b29194303","aplicacion");
-$con = new mysqli("localhost","root","","aplicacion");
+$con = new mysqli("50.62.209.84","hesparza","b29194303","aplicacion");
+//$con = new mysqli("localhost","root","","aplicacion");
 $con->set_charset("utf8");
 //$base = new PDO('mysql:host=localhost; dbname=aplicacion', 'root', '');
 //$base = new PDO("mysql:host=50.62.209.117;dbname=aplicacion","hesparza","b29194303");
