@@ -1,1 +1,2 @@
 Aqui vamos agragando apuntes sobre el proyecto
+Vamos a empezar a depurar el código
