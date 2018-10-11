@@ -9,13 +9,16 @@ $(document).ready(function(){
       penales = $("#penales"),
       fotos = $("#fotos"),
       estudios = $("#estudios"),
+      infonavit = $("#infonavit"),
+      pdf = $("#pdf"),
       solicitudOculto = $(".solicitudOculto"),
       actaOculto = $(".actaOculto"),
       domicilioOculto = $(".domicilioOculto"),
       rfcOculto = $(".rfcOculto"),
       estudiosOculto = $(".estudiosOculto"),
       seguroOculto = $(".seguroOculto"),
-      curpOculto = $(".curpOculto");
+      curpOculto = $(".curpOculto"),
+      infonavitOculto = $(".infonavitOculto");
 
       solicitudOculto.hide();
       actaOculto.hide();
@@ -24,7 +27,21 @@ $(document).ready(function(){
       estudiosOculto.hide();
       seguroOculto.hide();
       curpOculto.hide();
+      infonavitOculto.hide();
 
+      pdf.change(function(){
+        console.log("estamos dentro!!!");
+        var archivo = pdf.val();
+        arreglo = archivo.split("\\");
+        arreglo = arreglo[arreglo.length-1];
+        //alert("Introduciste el archivo "+arreglo+" y el tamaño es de "+arreglo.length);
+        arreglo = arreglo.split(".");
+        arreglo = arreglo[1];
+        if(arreglo!="pdf"){
+          alert("Solamente se permiten archivos PDF");
+          pdf.val("");
+        }
+      });
       solicitud.change(function(){
           if(solicitud.val()=="SI"){
             solicitudOculto.show();
@@ -113,6 +130,16 @@ $(document).ready(function(){
           else{
             estudiosOculto.hide();
           }
+      });
+
+      infonavit.change(function(){
+        if(infonavit.val()=="SI"){
+          infonavitOculto.show();
+        }
+        else{
+          infonavitOculto.hide();
+        }
+
       });
   // alert("Estamos Dentro!!!");
 });
