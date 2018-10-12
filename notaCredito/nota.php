@@ -36,6 +36,7 @@
   <script type="text/javascript" src="ajax/js/cancelaPenalizacion.js"></script><!--Cancela la penalización que ya se haya aplicado-->
   <script type="text/javascript" src="ajax/js/penalizacion2.js"></script><!--Pasa por una verificación para los usuarios que no tienen permisos-->
   <script type="text/javascript" src="ajax/js/folioRecepcion.js"></script><!--Verifica si el folio de recepcion no esta repetido-->
+  <script type="text/javascript" src="ajax/js/subtotalesListas.js"></script><!--Verifica si el folio de recepcion no esta repetido-->
 
 </head>
 <body>
@@ -85,8 +86,8 @@
           </form>
           <!-- <form action='visualizacion.php'> -->
           <button style="float: right;" class="btn btn-primary" id="visualizar">Visualizar Notas</button>
-          <button style="float: right; display: none;" class="btn btn-primary" id="cancelaPenalizacion" onclick="cancelaPenalizacion(document.getElementById('totalNota').value, document.getElementById('penalizacionNota').value);">Cancela Penalización</button>
-          <button style="float: right; display: none;" class="btn btn-primary" id="penalizacion" onclick="limpiar(); penalizacion(document.getElementById('user').value);">Penalización</button>
+          <button style="float: right; display: none;" class="btn btn-primary" id="cancelaPenalizacion">Cancela Penalización</button>
+          <button style="float: right; display: none;" class="btn btn-primary"  id="penalizacion" >Penalización</button>
           <!-- </form> -->
           <form name="formulario" id="form" action="captura.php" method="post">
           <input type="hidden" value=10 id="contadorSubtotal" />
@@ -104,7 +105,7 @@
                 <tr>
                   <th style="width:25px">TIPO</th>
                   <td align='center' style="width:50px">
-                    <select id='tipo' name='tipo' onchange="folio(this.value)" required>
+                    <select id='tipo' name='tipo' required>
                       <option value=''></option>
                       <option value='1. Devolución Parcial'>1.Devolución Parcial</option>
                       <option value='2. Factura Completa'>2.Factura Completa</option>
@@ -118,14 +119,11 @@
                   <th style="width:25px">FOLIO</th>
                   <td align='center' id='folio' style="width:20px"></td>
                   <th style="width:100px">FOLIO REC.</th>
-                  <!-- <td align='center' style="width:50px"><input style="width:50px" type='number' min=0 id="folioRecepcion" name= "folioRecepcion" onblur="recepcion(document.getElementById('folioRecepcion').value)" required readonly /></td> -->
                   <td align='center' style="width:50px"><input style="width:50px" type='number' min=0 id="folioRecepcion" name= "folioRecepcion" required readonly /></td>
                   <th style="width:75px">NO. FACT</th>
                   <td style="width:70px" align='center'><input type='text' id="factura" name='factura' style="width:70px" required readonly/></td>
                   <th style="width:25px">CLIENTE</th>
-                  <td style="width:30px" align='center'><input type='number' min=1 max=4000 class='cliente' id="clienteValor" name='cliente' required
-                    oninput="cli(document.querySelector('.cliente').value);
-                           desc(document.querySelector('.cliente').value)" readonly/>
+                  <td style="width:30px" align='center'><input type='number' min=1 max=4000 class='cliente' id="clienteValor" name='cliente' required readonly/>
                   </td>
                   <th style="width:50px">DESCUENTO</th>
                   <td align='center' id='descuento' style="width:100px;"></td>
@@ -134,7 +132,7 @@
                   <th colspan=12 id="cliente">NOMBRE: </th>
                 </tr>
                 <tr>
-                    <th colspan=12 id="cliente" align='center'>PRODUCTOS </th>
+                    <th colspan=12 align='center'>PRODUCTOS </th>
                 </tr>
                 <tr>
                   <th colspan=2 align='center'>CANTIDAD</th>
@@ -179,7 +177,7 @@
                     <td align='center' colspan=2>
                       <input type='number'id="cantidad<?= $i?>" name="cantidad<?= $i?>" class="cantidad<?= $i?>" min=1
                       oninput="importe(<?= $i?>, document.querySelector('.cantidad<?= $i?>').value, document.querySelector('.clave<?= $i?>').value);
-                              subtotal(<?= $i?>, document.querySelector('.cantidad<?= $i?>').value, document.querySelector('.clave<?= $i?>').value, document.querySelector('.cliente').value)" readonly />
+                              subtotal(<?= $i?>, document.querySelector('.cantidad<?= $i?>').value, document.querySelector('.clave<?= $i?>').value, document.getElementById('descuento').innerText)" readonly />
                     </td>
                     <td align='center' colspan=2>
                       <input type='text'  id="clave<?= $i?>" name="clave<?= $i?>" class="clave<?= $i?>"
@@ -210,7 +208,7 @@
                     <td align='center' colspan=2>
                       <input type='number'id="cantidad<?= $i?>" name="cantidad<?= $i?>" class="cantidad<?= $i?>" min=1
                       oninput="importe(<?= $i?>, document.querySelector('.cantidad<?= $i?>').value, document.querySelector('.clave<?= $i?>').value);
-                              subtotal(<?= $i?>, document.querySelector('.cantidad<?= $i?>').value, document.querySelector('.clave<?= $i?>').value, document.querySelector('.cliente').value)" readonly />
+                              subtotal(<?= $i?>, document.querySelector('.cantidad<?= $i?>').value, document.querySelector('.clave<?= $i?>').value, document.getElementById('descuento').innerText)" readonly />
                     </td>
                     <td align='center' colspan=2>
                       <input type='text'  id="clave<?= $i?>" name="clave<?= $i?>" class="clave<?= $i?>"
@@ -308,6 +306,10 @@
 
   <script src="ajax/eventos/costo_event.js"></script>
   <script>
+
+    // var tipoDevolucion = document.getElementById('tipo');
+    // // var valorDevolucion = document.getElementById('tipo').value;
+    // tipoDevolucion.addEventListener('change', folio(document.getElementById('tipo').value));
 
     var lis = [];
     for (var i = 1; i <=25; i++)
@@ -495,10 +497,50 @@
         //     alert(prueba);
         //
         // });
-
-        function saludo(){
-          alert("Oraleee Muchachon!!!");
-        }
+        // $(document).ready(function(){
+        //
+        //   var cancelaPenalizacion = $("#cancelaPenalizacion");
+        //   cancelaPenalizacion.click(enviar);
+        //
+        //   function enviar(){
+        //     // var total = $("#totalNota").val();
+        //     // var penalizacion = $("#penalizacionNota").val();
+        //     // console.log(total);
+        //     var parametros =
+        //     {
+        //       total: $("#totalNota").val(),
+        //       penalizacion: $("#penalizacionNota").val()
+        //     }
+        //     $.ajax({
+        //         async: true, //Activar la transferencia asincronica
+        //         type: "POST", //El tipo de transaccion para los datos
+        //         dataType: "html", //Especificaremos que datos vamos a enviar
+        //         contentType: "application/x-www-form-urlencoded", //Especificaremos el tipo de contenido
+        //         url: "cancelaPenalizacion.php", //Sera el archivo que va a procesar la petición AJAX
+        //         data: parametros, //Datos que le vamos a enviar
+        //         // data: "total="+total+"&penalizacion="+penalizacion,
+        //         beforeSend: inicioEnvio, //Es la función que se ejecuta antes de empezar la transacción
+        //         success: llegada, //Función que se ejecuta en caso de tener exito
+        //         timeout: 4000,
+        //         error: problemas //Función que se ejecuta si se tiene problemas al superar el timeout
+        //     });
+        //     return false;
+        //   }
+        //   function inicioEnvio(){
+        //       var cargando = $("#totalNota");
+        //       cargando.val("Cargando...");
+        //   }
+        //
+        //   function llegada(datos){
+        //       $("#totalNota").val(datos);
+        //       $("#cancelaPenalizacion").hide();
+        //       $("#pen").text("");
+        //   }
+        //
+        //   function problemas(){
+        //       $("#totalNota").val("Problemas en el servidor");
+        //   }
+        // });
 
   </script>
 
