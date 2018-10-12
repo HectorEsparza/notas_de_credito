@@ -12,6 +12,7 @@
     <script type="text/javascript" src="ajax/eventos/muestraFormulario.js"></script>
     <script type="text/javascript" src="ajax/eventos/botonCapturar.js"></script>
     <script type="text/javascript" src="ajax/eventos/puestos.js"></script>
+    <script type="text/javascript" src="ajax/eventos/salarioDiario.js"></script>
   </head>
 
   <body>
@@ -170,6 +171,9 @@
               </select>
             </td>
           </tr>
+          <tr>
+            <td colspan="2" align='center'><input type='submit' value='Guardar' class="btn btn-primary"/></td>
+          </tr>
       </table>
     </div>
     <div id="solicitud" style="float: right; margin-right: 450px; ">
@@ -177,7 +181,7 @@
       <table border="1" >
           <tr class="solicitudOculto">
             <td align='center'>Fecha de Alta</td>
-            <td align='center'><input type="text" id="fechaAlta" name="fechaAlta" placeholder="dd/mm/yyyy" /></td>
+            <td align='center'><input type="text" id="fechaAlta" name="fechaAlta" placeholder="dd/mm/yyyy" readonly/></td>
           </tr>
           <tr class="solicitudOculto">
             <td align='center'>Departamento</td>
@@ -191,7 +195,7 @@
           </tr>
           <tr class="solicitudOculto">
             <td align='center'>Salario Diario</td>
-            <td align='center'><input type="number" step="any" id="salarioDiario" name='salarioDiario'/></td>
+            <td align='center'><input type="number" step="any" id="salarioDiario" name='salarioDiario' readonly/></td>
           </tr>
           <tr class="actaOculto">
             <td align='center'>Nombre Completo</td>

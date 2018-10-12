@@ -1,5 +1,5 @@
 <?php
-
+  require_once("../funciones.php");
   //DOCUMENTOS
   $solicitud = $_POST['solicitud'];
   $acta = $_POST['acta'];
@@ -34,6 +34,28 @@
   $archivo = $_FILES['archivo']['name'];
   $ruta = $_FILES['archivo']['tmp_name'];
   $destino = "infonavit\\" . $archivo;
+
+  echo $rfc . " " . $estudios;
+  $base = conexion_local();
+  $consulta = "INSERT INTO DOCUMENTOS(SOLICITUD, ACTA, IFE, DOMICILIO, SEGURO, CURP, RFC, ANTECEDENTES, FOTOS, ESTUDIO, INFONAVIT)
+                      VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+  $resultado = $base->prepare($consulta);
+  $resultado->execute(array($solicitud, $acta, $ife, $domicilio, $seguro, $curp, $rfc, $penales, $fotos, $estudios, $infonavit));
+  $resultado->closeCursor();
+
+  $consulta = "INSERT INTO SOLICITUD(FECHA_ALTA, DEPARTAMENTO, PUESTO, SALARIO, NOMBRE, NACIMIENTO, SEGURO, RFC, CURP, CALLE,
+                           COLONIA, CP, POBLACION, CORREO, PERSONA, TELEFONO, PDF, STATUS)
+                      VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+
+
+  $resultado = $base->prepare($consulta);
+  $resultado->execute(array($fechaAlta, $vistaDepartamento, $vistaPuesto, $salarioDiario, $nombre, $fechaNacimiento,
+                            $seguridadSocial, $rfcCaptura, $curpCaptura, $domicilioCaptura, $colonia, $cp,
+                            $poblacion, $correo, $personaEmergencia, $telefonoEmergencia, $archivo, "Capturando"));
+  $resultado->closeCursor();
+
+  header("location:visualizacion.php");
 
 
 ?>
