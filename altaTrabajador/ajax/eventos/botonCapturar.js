@@ -19,7 +19,7 @@ $(document).ready(function(){
    $("#boton").hide();
    var fecha = new Date();
    fecha = fecha.getDate()+"/"+(fecha.getMonth()+1)+"/"+fecha.getFullYear();
-   alert("La fecha es: "+fecha);
+   // alert("La fecha es: "+fecha);
    fechaAlta.val(fecha);
 
    // fechaAlta.change(function(){

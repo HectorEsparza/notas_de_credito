@@ -89,11 +89,24 @@ function get_data_callback(){
           auxiliar = auxiliar+" "+departamento[i];
         }
       }
+
       if(elem.status=="Capturando"){
-        if(auxiliar==elem.departamento){
+        if(auxiliar=="RECURSOS HUMANOS"){
           $('<tr class="capturando">'+
                '<td id="folio'+contador+'">'+elem.id+'</td>'+
                '<td>'+elem.fechaAlta+'</td>'+
+               '<td>'+elem.departamento+'</td>'+
+               '<td>'+elem.puesto+'</td>'+
+               '<td>'+elem.nombre+'</td>'+
+               '<td>'+elem.status+'</td>'+
+               '<td><input type="button" value="Ver" class="ver" id="botonPrueba'+contador+'" onclick='+click+'></td>'+
+               '</tr>').appendTo($("#table"));
+        }
+        else if(auxiliar==elem.departamento){
+          $('<tr class="capturando">'+
+               '<td id="folio'+contador+'">'+elem.id+'</td>'+
+               '<td>'+elem.fechaAlta+'</td>'+
+               '<td>'+elem.departamento+'</td>'+
                '<td>'+elem.puesto+'</td>'+
                '<td>'+elem.nombre+'</td>'+
                '<td>'+elem.status+'</td>'+
@@ -103,25 +116,51 @@ function get_data_callback(){
       }
 
       else if(elem.status="Revision"){
-        if(auxiliar==elem.departamento){
+        if(auxiliar=="RECURSOS HUMANOS"){
           $('<tr class="revision">'+
-               '<td id="identificador'+contador+'">'+elem.id+'</td>'+
+               '<td id="folio'+contador+'">'+elem.id+'</td>'+
                '<td>'+elem.fechaAlta+'</td>'+
+               '<td>'+elem.departamento+'</td>'+
                '<td>'+elem.puesto+'</td>'+
                '<td>'+elem.nombre+'</td>'+
                '<td>'+elem.status+'</td>'+
+               '<td><input type="button" value="Ver" class="ver" id="botonPrueba'+contador+'" onclick='+click+'></td>'+
+               '</tr>').appendTo($("#table"));
+        }
+        else if(auxiliar==elem.departamento){
+          $('<tr class="revision">'+
+               '<td id="folio'+contador+'">'+elem.id+'</td>'+
+               '<td>'+elem.fechaAlta+'</td>'+
+               '<td>'+elem.departamento+'</td>'+
+               '<td>'+elem.puesto+'</td>'+
+               '<td>'+elem.nombre+'</td>'+
+               '<td>'+elem.status+'</td>'+
+               '<td></td>'+
                '</tr>').appendTo($("#table"));
         }
       }
 
       else{
-        if(auxiliar==elem.departamento){
+        if(auxiliar=="RECURSOS HUMANOS"){
           $('<tr class="contratado">'+
-               '<td id="identificador'+contador+'">'+elem.id+'</td>'+
+               '<td id="folio'+contador+'">'+elem.id+'</td>'+
                '<td>'+elem.fechaAlta+'</td>'+
+               '<td>'+elem.departamento+'</td>'+
                '<td>'+elem.puesto+'</td>'+
                '<td>'+elem.nombre+'</td>'+
                '<td>'+elem.status+'</td>'+
+               '<td></td>'+
+               '</tr>').appendTo($("#table"));
+        }
+        else if(auxiliar==elem.departamento){
+          $('<tr class="contratado">'+
+               '<td id="folio'+contador+'">'+elem.id+'</td>'+
+               '<td>'+elem.fechaAlta+'</td>'+
+               '<td>'+elem.departamento+'</td>'+
+               '<td>'+elem.puesto+'</td>'+
+               '<td>'+elem.nombre+'</td>'+
+               '<td>'+elem.status+'</td>'+
+               '<td><input type="button" value="Ver" class="ver" id="botonPrueba'+contador+'" onclick='+click+'></td>'+
                '</tr>').appendTo($("#table"));
         }
       }

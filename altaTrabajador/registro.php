@@ -59,11 +59,24 @@
       }
 
     ?>
+    <header class="row">
+  		<div class="container col-md-8">
+  			<h1 align='center'>
+  				Nuevo Trabajador
+  			</h1>
+  			<input type='button' id="home" class="btn btn-primary" style='background:url("imagenes/home3.jpg"); float: left; width: 50px; height: 50px;' />
+  			<div align="center"><img src="imagenes/apa.jpg" /></div>
+  		</div>
+  		<div class="container col-md-4">
+  			<form action='../cierre.php'>
+  				<input style="float: right;" class="btn btn-primary" type='submit' value='Cierra Sesión' />
+  			</form>
+        <input type="button" style="float: right;" class="btn btn-primary" onclick="visualizacion()" value="Cargar Registro" />
+
+  		</div>
+  	</header>
     <input type="hidden" id='user' value=<?= $user?> />
     <input type="hidden" id='departamento' value=<?= $departamento?> />
-    <form action='../cierre.php'>
-      <input style="float: right;" class="btn btn-primary" type='submit' value='Cierra Sesión' />
-    </form>
     <form action="capturaRegistro.php" method="post" enctype="multipart/form-data">
     <div id="documentos" style="float: left; margin-left: 150px">
       <h1 align='center'>DOCUMENTOS</h1>
@@ -205,6 +218,10 @@
             <td align='center'>Fecha de Nacimiento</td>
             <td align='center'><input type="text" id="fechaNacimiento" name='fechaNacimiento' placeholder="dd/mm/yyyy" /></td>
           </tr>
+          <tr class="actaOculto">
+            <td align='center'>Teléfono</td>
+            <td align='center'><input type="text" id="telefono" name='telefono' /></td>
+          </tr>
           <tr class="seguroOculto">
             <td align='center'>No. Seguridad Social</td>
             <td align='center'><input type="text" id="seguridadSocial" name='seguridadSocial'/></td>
@@ -255,5 +272,60 @@
       </table>
     </div>
   </form>
+  <script type="text/javascript">
+
+  			$(document).ready(function(){
+
+  									// $('#tag').autocomplete({
+  									// 		source: function(request, response){
+  									// 				$.ajax({
+  									// 						url:"colores.php",
+  									// 						dataType:"json",
+  									// 						data:{q:request.term},
+  									// 						success: function(data){
+  									// 								response(data);
+  									// 						}
+  									// 				});
+  									// 		},
+  									// 		minLength:3,
+  									// 		select: function(event, ui){
+  									// 				//alert("Selecciono: "+ui.item.label);
+  									// 		}
+  									// });
+  									$("#home").click(function(){
+
+  										setTimeout("location.href='../home.php'", 500);
+  									});
+                    // $(function(){
+                    //   $.datepicker.setDefaults($.datepicker.regional["es"]);
+                    //   $("#fecha").datepicker({
+                    //     firstDay: 1
+                    //   });
+                    // });
+
+                    $('#fecha').datepicker({
+                      //dateFormat:'yy-mm-dd'
+                      //dateFormat: 'dd-mm-yy'
+                      dateFormat: 'dd/mm/yy',
+                      changeMonth: true,
+                      changeYear: true,
+                      yearRange: '1940:2000'
+                    });
+
+  			});
+
+
+        function registro(){
+            setTimeout("location.href='registro.php'",500);
+        }
+  			function visualizacion(){
+            setTimeout("location.href='visualizacion.php'",500);
+        }
+  			function saludo(folio){
+  					setTimeout("location.href='actualizaRegistro.php?folio="+folio+"'");
+  			}
+
+
+  </script>
   </body>
 </html>

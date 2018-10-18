@@ -48,7 +48,7 @@
 			<form action='../cierre.php'>
 				<input style="float: right;" class="btn btn-primary" type='submit' value='Cierra Sesión' />
 			</form>
-			<input type="button" style="float: right;" class="btn btn-primary" onclick="nota()" value='Nueva Nota' />
+			<input type="button" style="float: right;" class="btn btn-primary" onclick="registro()" value='Nuevo Registro' />
 
 		</div>
 	</header>
@@ -77,6 +77,7 @@
 			<tr>
         <th>ID</th>
 				<th>Fecha</th>
+				<th>Departamento</th>
 				<th>Puesto</th>
 				<th>Nombre</th>
 				<th>Status</th>
@@ -160,8 +161,8 @@
 			});
 
 
-      function nota(){
-          setTimeout("location.href='nota.php'",500);
+      function registro(){
+          setTimeout("location.href='registro.php'",500);
       }
 			function visualizar(){
           setTimeout("location.href='visualizacion.php'",500);
