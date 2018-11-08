@@ -89,6 +89,18 @@ $(document).ready(function(){
               '<option value="Supervisor en Capacitacion">Supervisor en Capacitacion</option>').appendTo(vistaPuesto);
         }
 
+        else if (auxiliar=="PRODUCCION MANGUERA"){
+            console.log("Agregando el select "+auxiliar.length);
+            $('<option value=""></option>'+
+              '<option value="Ayudante General">Ayudante General</option>').appendTo(vistaPuesto);
+        }
+
+        else if(auxiliar=="CREDITO Y COBRANZA"){
+            console.log("Agregando el select "+auxiliar.length);
+            $('<option value=""></option>'+
+              '<option value="Ayudante General">Ayudante General</option>').appendTo(vistaPuesto);
+        }
+
 
 
 
