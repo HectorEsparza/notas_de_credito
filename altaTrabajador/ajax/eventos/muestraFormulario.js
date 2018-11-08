@@ -18,7 +18,10 @@ $(document).ready(function(){
       estudiosOculto = $(".estudiosOculto"),
       seguroOculto = $(".seguroOculto"),
       curpOculto = $(".curpOculto"),
-      infonavitOculto = $(".infonavitOculto");
+      infonavitOculto = $(".infonavitOculto"),
+      telefono = $("#telefono"),
+      telefonoEmergencia = $("#telefonoEmergencia"),
+      fechaNacimiento = $("#fechaNacimiento");
 
       solicitudOculto.hide();
       actaOculto.hide();
@@ -138,6 +141,35 @@ $(document).ready(function(){
         }
         else{
           infonavitOculto.hide();
+        }
+
+      });
+      telefono.change(function(){
+
+        if(telefono.val()==telefonoEmergencia.val()){
+          alert("Introduzca un número diferente al de Emergencia");
+          telefono.val("");
+        }
+      });
+
+      telefonoEmergencia.change(function(){
+
+        if(telefonoEmergencia.val()==telefono.val()){
+          alert("Introduzca un número diferente al Personal");
+          telefonoEmergencia.val("");
+        }
+      });
+
+      fechaNacimiento.change(function(){
+        console.log("Estamos dentro");
+        var fecha = fechaNacimiento.val();
+        fecha = fecha.split("/");
+        if(fecha.length==3&&(fecha[0]>0&&fecha[0]<32)&&(fecha[1]>0&&fecha[1]<13)&&(fecha[2]>1949)){
+          console.log("OK, fecha valida");
+        }
+        else{
+          alert("Captura una fecha valida, por favor");
+          fechaNacimiento.val("");
         }
 
       });

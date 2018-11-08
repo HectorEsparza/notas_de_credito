@@ -18,15 +18,15 @@ $(document).ready(function(){
         vistaDepartamento.val(auxiliar);
         console.log(auxiliar);
 
-        if(auxiliar=="RECURSOS HUMANOS"){
+        if(auxiliar=="RECURSOS HUMANOS"||auxiliar=="CONTABILIDAD"){
             $('<option value=""></option>'+
             '<option value="Vigilante">Vigilante</option>'+
             '<option value="Supervisor">Supervisor</option>'+
             '<option value="Prensista">Prensista</option>'+
             '<option value="Chofer">Chofer</option>'+
-            '<option value="Supervisor Capacitacion">Supervisor Capacitacion</option>'+
+            '<option value="Supervisor en Capacitacion">Supervisor en Capacitacion</option>'+
             '<option value="Auxiliar Reparto">Auxiliar Reparto</option>'+
-            '<option value="Ejecutivo Atencion Cliente">Ejecutivo Atencion Cliente</option>'+
+            '<option value="Ejecutivo Atencion a Clientes">Ejecutivo Atencion a Clientes</option>'+
             '<option value="Auxiliar de Limpieza">Auxiliar de Limpieza</option>'+
             '<option value="Vigilante">Vigilante</option>'+
             '<option value="Supervisor">Supervisor</option>'+
@@ -43,19 +43,21 @@ $(document).ready(function(){
             '<option value="Operador de Torno">Operador de Torno</option>'+
             '<option value="Soldador">Soldador</option>'+
             '<option value="Machueleador">Machueleador</option>'+
-            '<option value="Ayudante General">Ayudante General</option>').appendTo(vistaPuesto);
+            '<option value="Ayudante General">Ayudante General</option>'+
+            '<option value="Pintor">Pintor</option>'+
+            '<option value="Almacenista">Almacenista</option>'+
+            '<option value="Supervisor">Supervisor</option>'+
+            '<option value="Supervisor en Capacitacion">Supervisor en Capacitacion</option>').appendTo(vistaPuesto);
         }
         else if(auxiliar=="VENTAS"){
             console.log("Agregando el select "+auxiliar.length);
             $('<option value=""></option>'+
               '<option value="Vigilante">Vigilante</option>'+
               '<option value="Supervisor">Supervisor</option>'+
-              // '<option value="Supervisor Reparto">Supervisor Reparto</option>'+
-              // '<option value="Supervisor Atencion Cliente">Supervisor Atencion Cliente</option>'+
               '<option value="Chofer">Chofer</option>'+
-              '<option value="Supervisor Capacitacion">Supervisor Capacitacion</option>'+
+              '<option value="Supervisor en Capacitacion">Supervisor en Capacitacion</option>'+
               '<option value="Auxiliar Reparto">Auxiliar Reparto</option>'+
-              '<option value="Ejecutivo Atencion Cliente">Ejecutivo Atencion Cliente</option>').appendTo(vistaPuesto);
+              '<option value="Ejecutivo Atencion a Clientes">Ejecutivo Atencion a Clientes</option>').appendTo(vistaPuesto);
         }
         else if(auxiliar=="PRODUCCION SOPORTE"){
             console.log("Agregando el select "+auxiliar.length);
@@ -78,6 +80,15 @@ $(document).ready(function(){
               '<option value="Machueleador">Machueleador</option>'+
               '<option value="Ayudante General">Ayudante General</option>').appendTo(vistaPuesto);
         }
+        else if(auxiliar=="ALMACEN"){
+            console.log("Agregando el select "+auxiliar.length);
+            $('<option value=""></option>'+
+              '<option value="Pintor">Pintor</option>'+
+              '<option value="Almacenista">Almacenista</option>'+
+              '<option value="Supervisor">Supervisor</option>'+
+              '<option value="Supervisor en Capacitacion">Supervisor en Capacitacion</option>').appendTo(vistaPuesto);
+        }
+
 
 
 

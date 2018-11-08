@@ -5,14 +5,8 @@
     <title>Nuevo Registro</title>
     <link rel="shortcut icon" href="imagenes/favicon.ico" type="image/x-icon" />
   	<link href="css/bootstrap.min.css" rel="stylesheet">
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
   	<link rel="stylesheet" type="text/css" href="css/estiloSAE.css" />
-    <script type="text/javascript" src="ajax/js/jquery-ui.js"></script>
-    <script type="text/javascript" src="ajax/eventos/muestraFormulario.js"></script>
-    <script type="text/javascript" src="ajax/eventos/botonCapturar.js"></script>
-    <script type="text/javascript" src="ajax/eventos/puestos.js"></script>
-    <script type="text/javascript" src="ajax/eventos/salarioDiario.js"></script>
   </head>
 
   <body>
@@ -62,7 +56,7 @@
     <header class="row">
   		<div class="container col-md-8">
   			<h1 align='center'>
-  				Nuevo Trabajador
+  				8.0 Solicitud de Ingreso
   			</h1>
   			<input type='button' id="home" class="btn btn-primary" style='background:url("imagenes/home3.jpg"); float: left; width: 50px; height: 50px;' />
   			<div align="center"><img src="imagenes/apa.jpg" /></div>
@@ -148,7 +142,7 @@
               </select>
             </td>
           </tr>
-          <tr>
+          <!-- <tr>
             <td>Antecedentes No Penales</td>
             <td align='center'>
               <select id="penales" name="penales">
@@ -174,7 +168,7 @@
                 <option value="SI">SI</option>
               </select>
             </td>
-          </tr>
+          </tr> -->
           <tr>
             <td>Crédito Infonavit</td>
             <td align='center'>
@@ -194,7 +188,7 @@
       <table border="1" >
           <tr class="solicitudOculto">
             <td align='center'>Fecha de Alta</td>
-            <td align='center'><input type="text" id="fechaAlta" name="fechaAlta" placeholder="dd/mm/yyyy" readonly/></td>
+            <td align='center'><input type="text" id="fechaAlta" name="fechaAlta" /></td>
           </tr>
           <tr class="solicitudOculto">
             <td align='center'>Departamento</td>
@@ -210,17 +204,44 @@
             <td align='center'>Salario Diario</td>
             <td align='center'><input type="number" step="any" id="salarioDiario" name='salarioDiario' readonly/></td>
           </tr>
+          <tr class="solicitudOculto">
+            <td align='center'>Salario Semanal</td>
+            <td align='center'><input type="number" step="any" id="salarioSemanal" name='salarioSemanal' readonly/></td>
+          </tr>
           <tr class="actaOculto">
             <td align='center'>Nombre Completo</td>
             <td align='center'><input type="text" id="nombre" name="nombre"/></td>
           </tr>
           <tr class="actaOculto">
             <td align='center'>Fecha de Nacimiento</td>
-            <td align='center'><input type="text" id="fechaNacimiento" name='fechaNacimiento' placeholder="dd/mm/yyyy" /></td>
+            <td align='center'><input type="text" id="fechaNacimiento" name='fechaNacimiento' /></td>
+          </tr>
+          <tr class="actaOculto">
+            <td align='center'>Estado Civil</td>
+            <td align='center'>
+              <select id="edoCivil" name="edoCivil">
+                <option value=""></option>
+                <option value="Soltero">Soltero</option>
+                <option value="Casado">Casado</option>
+                <option value="Unión Libre">Unión Libre</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="actaOculto">
+            <td align='center'>Sexo</td>
+            <td align='center'>
+              <select id="sexo" name="sexo">
+                <option value=""></option>
+                <option value="Hombre">Hombre</option>
+                <option value="Mujer">Mujer</option>
+              </select>
+            </td>
           </tr>
           <tr class="actaOculto">
             <td align='center'>Teléfono</td>
-            <td align='center'><input type="text" id="telefono" name='telefono' /></td>
+            <td align='center'><input type="text" id="telefono" name='telefono' />
+
+            </td>
           </tr>
           <tr class="seguroOculto">
             <td align='center'>No. Seguridad Social</td>
@@ -250,15 +271,15 @@
             <td align='center'>Población</td>
             <td align='center'><input type="text" id="poblacion" name='poblacion'/></td>
           </tr>
-          <tr class="estudiosOculto">
+          <tr class="actaOculto">
             <td align='center'>Correo Electrónico</td>
-            <td align='center'><input type="text" id="correo" name='correo'/></td>
+            <td align='center'><input type="text" id="correo" name='correo' placeholder="Opcional" /></td>
           </tr>
-          <tr class="estudiosOculto">
+          <tr class="actaOculto">
             <td align='center'>Emergencia Comunicarse con:</td>
             <td align='center'><input type="text" id="personaEmergencia" name='personaEmergencia'/></td>
           </tr>
-          <tr class="estudiosOculto">
+          <tr class="actaOculto">
             <td align='center'>Teléfono Emergencia</td>
             <td align='center'><input type="text" id="telefonoEmergencia" name='telefonoEmergencia'/></td>
           </tr>
@@ -266,12 +287,18 @@
             <td align='center'><label for="pdf">PDF</label></td>
             <td align='center' id="prueba"><input  id="pdf" type="file" name="archivo"/></td>
           </tr>
-          <tr class="botonCapturar">
+          <!-- <tr class="botonCapturar">
             <td colspan="2"><input type="button" class="btn btn-primary" value="Finalizar" id="boton"/></td>
-          </tr>
+          </tr> -->
       </table>
     </div>
   </form>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="ajax/js/jquery-ui.js"></script>
+  <script type="text/javascript" src="ajax/eventos/muestraFormulario.js"></script>
+  <script type="text/javascript" src="ajax/eventos/puestos.js"></script>
+  <script type="text/javascript" src="ajax/eventos/salarioDiario.js"></script>
   <script type="text/javascript">
 
   			$(document).ready(function(){
@@ -302,14 +329,29 @@
                     //     firstDay: 1
                     //   });
                     // });
-
-                    $('#fecha').datepicker({
+                    //var fullmonth_array = $.datepicker.regional['en'].monthNames;
+                    var fullmonth_array = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+                                            "Juio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+                    var abrevia_dias = ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"];
+                    $('#fechaAlta').datepicker({
                       //dateFormat:'yy-mm-dd'
                       //dateFormat: 'dd-mm-yy'
                       dateFormat: 'dd/mm/yy',
                       changeMonth: true,
                       changeYear: true,
-                      yearRange: '1940:2000'
+                      yearRange: '2018:2025',
+                      monthNamesShort: fullmonth_array,
+                      dayNamesMin: abrevia_dias,
+                      selectOtherMonths: true
+                    });
+
+                    $('#fechaNacimiento').datepicker({
+                      //dateFormat:'yy-mm-dd'
+                      //dateFormat: 'dd-mm-yy'
+                      dateFormat: 'dd/mm/yy',
+                      changeMonth: true,
+                      changeYear: true,
+                      yearRange: '1950:2050'
                     });
 
   			});

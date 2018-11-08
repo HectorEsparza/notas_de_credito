@@ -19,23 +19,47 @@ $data = array();
 
 //El limite empieza con 10 y el Offset con 0
 
-$query = $con->prepare("SELECT  ID, FECHA_ALTA, DEPARTAMENTO, PUESTO, NOMBRE, STATUS FROM SOLICITUD ORDER BY ID DESC LIMIT ? OFFSET ?");
+$query = $con->prepare("SELECT  ID, EMPLEADO, NOMBRE, CURP, RFC, SEGURO, SALARIO, SEMANAL,
+																DEPARTAMENTO, PUESTO, FECHA_ALTA, BANCOMER, SIVALE, CALLE, COLONIA, CP, POBLACION, NACIMIENTO,
+																TELEFONO, EMERGENCIA, PERSONA, CORREO, EDO_CIVIL, SEXO,
+															  STATUS FROM SOLICITUD ORDER BY ID DESC LIMIT ? OFFSET ?");
 $query->bind_param("ii",$limit,$offset);
 $query->execute();
 
 // vincular variables a la sentencia preparada
 //$query->bind_result($id_usuario, $nombres,$apellidos);
-$query->bind_result($id, $fechaAlta, $departamento, $puesto, $nombre, $status);
+$query->bind_result($id, $empleado, $nombre, $curp, $rfc, $seguro, $salarioDiario, $salarioSemanal, $departamento,
+										$puesto,  $fechaAlta, $bancomer, $sivale, $calle, $colonia, $cp, $poblacion, $fechaNacimiento,
+										$telefono, $telefonoEmergencia, $personaEmergencia, $correo, $edoCivil, $sexo, $status);
 
 // obtener valores
 while ($query->fetch()) {
 	$data_json = array();
 
 	$data_json["id"] = $id;
-	$data_json["fechaAlta"] = $fechaAlta;
+	$data_json["empleado"] = $empleado;
+	$data_json["nombre"] = $nombre;
+	$data_json["curp"] = $curp;
+	$data_json["rfc"] = $rfc;
+	$data_json["seguro"] = $seguro;
+	$data_json["salarioDiario"] = $salarioDiario;
+	$data_json["salarioSemanal"] = $salarioSemanal;
 	$data_json["departamento"] = $departamento;
 	$data_json["puesto"] = $puesto;
-	$data_json["nombre"] = $nombre;
+	$data_json["fechaAlta"] = $fechaAlta;
+	$data_json["bancomer"] = $bancomer;
+	$data_json["sivale"] = $sivale;
+	$data_json["calle"] = $calle;
+	$data_json["colonia"] = $colonia;
+	$data_json["cp"] = $cp;
+	$data_json["poblacion"] = $poblacion;
+	$data_json["fechaNacimiento"] = $fechaNacimiento;
+	$data_json["telefono"] = $telefono;
+	$data_json["telefonoEmergencia"] = $telefonoEmergencia;
+	$data_json["personaEmergencia"] = $personaEmergencia;
+	$data_json["correo"] = $correo;
+	$data_json["edoCivil"] = $edoCivil;
+	$data_json["sexo"] = $sexo;
 	$data_json["status"] = $status;
 	$data[]=$data_json;
 }

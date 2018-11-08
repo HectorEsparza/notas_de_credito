@@ -8,9 +8,12 @@
   <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
 	<link rel="stylesheet" type="text/css" href="css/estiloAltas.css" />
   <script type="text/javascript" src="ajax/js/jquery-ui.js"></script>
+	<script type="text/javascript" src="ajax/eventos/formularioRecursos.js"></script>
+	<script type="text/javascript" src="ajax/eventos/filtroGerentes.js"></script>
+	<script type="text/javascript" src="ajax/eventos/filtroUsuarios.js"></script>
 	<!-- <script type="text/javascript" src="ajax/js/filtroVentas.js"></script> -->
 	<!-- <script type="text/javascript" src="ajax/js/limpia.js"></script> -->
-	<!-- <script type="text/javascript" src="ajax/js/limpiaFiltro.js"></script> -->
+	<script type="text/javascript" src="ajax/eventos/limpiaFiltro.js"></script>
 </head>
 <body>
 	<?php session_start();
@@ -48,7 +51,7 @@
 			<form action='../cierre.php'>
 				<input style="float: right;" class="btn btn-primary" type='submit' value='Cierra Sesión' />
 			</form>
-			<input type="button" style="float: right;" class="btn btn-primary" onclick="registro()" value='Nuevo Registro' />
+			<input type="button" style="float: right;" class="btn btn-primary" onclick="registro()" id="new" value='Nuevo Registro' />
 
 		</div>
 	</header>
@@ -58,30 +61,26 @@
 						 <br />
 
 						 <input type="hidden" id="gerente" value="<?= $usuario?>" />
-						 <input type="text" id="fecha" class="fecha" placeholder="Fecha Alta"/>
-						 <input type="text" id="puesto" class="puesto" placeholder="Puesto"/>
-						 <input type="text" id="Nombre" class="Nombre" placeholder="Nombre"/>
+						 <input type="text" id="empleado" class="empleado" placeholder="Número Empleado"/>
+						 <input type="text" id="nombre" class="nombre" placeholder="Nombre"/>
 						 <!-- <input type="text" id="Status" class="folio" placeholder="Folio Interno"/> -->
 						 <br /><br />
-						 <button type="submit" class="btn btn-primary" onclick="filtro(document.querySelector('.nocliente').value, document.querySelector('.tag').value, document.querySelector('.fecha').value, document.querySelector('.folio').value, document.querySelector('.recepcion').value);">Buscar</button>
+						 <button type="submit" class="btn btn-primary" id="gerentes" >Buscar</button>
+						 <button type="submit" class="btn btn-primary" id="usuarios">Buscar Usuarios</button>
+						 <!-- <button type="submit" class="btn btn-primary" id="gerentes" onclick="filtro(document.querySelector('.nocliente').value, document.querySelector('.tag').value, document.querySelector('.fecha').value, document.querySelector('.folio').value, document.querySelector('.recepcion').value);">Buscar</button>
+						 <button type="submit" class="btn btn-primary" id="usuarios" onclick="filtro(document.querySelector('.nocliente').value, document.querySelector('.tag').value, document.querySelector('.fecha').value, document.querySelector('.folio').value, document.querySelector('.recepcion').value);">Buscar Usuarios</button> -->
 						 <button type="submit" class="btn btn-primary" id="limpiaFiltro">Limpiar Campos</button>
 						 	<input type="button" class="btn btn-primary" onclick="visualizar()" value='Tabla Completa' />
 
 				<input type=hidden id="folio" value="<?= $folio?>"/>
 		</div>
 		<br /><br /><br />
-	<div class="container" id="principal">
+	<div class="container" id="principal" style="float: left">
 	<!--<table class="table table-striped table-hover">-->
-	<table  border=1 align='center'>
+	<table  border=1 >
 		<thead>
-			<tr>
-        <th>ID</th>
-				<th>Fecha</th>
-				<th>Departamento</th>
-				<th>Puesto</th>
-				<th>Nombre</th>
-				<th>Status</th>
-        <th>Info</th>
+			<tr id='nombreColumnas'>
+
 			</tr>
 		</thead>
 		<tbody id="table">
@@ -157,6 +156,43 @@
                     changeYear: true,
                     yearRange: '1940:2000'
                   });
+									if($("#departamento").val()=="RECURSOS_HUMANOS"||$("#departamento").val()=="CONTABILIDAD"){
+										$('<th>ID</th>'+
+										'<th>NO Empleado</th>'+
+										'<th>Nombre</th>'+
+										'<th>Curp</th>'+
+										'<th>RFC</th>'+
+										'<th>NO IMSS</th>'+
+										'<th>Salario Diario</th>'+
+										'<th>Salario Semanal</th>'+
+										'<th>Departamento</th>'+
+										'<th>Puesto</th>'+
+										'<th>Fecha Alta</th>'+
+										'<th>Bancomer</th>'+
+										'<th>Si Vale</th>'+
+										'<th>Calle y Número</th>'+
+										'<th>Colonia</th>'+
+										'<th>CP</th>'+
+										'<th>Población</th>'+
+										'<th>Fecha Nacimiento</th>'+
+										'<th>Teléfono Personal</th>'+
+										'<th>Teléfono Emergencia</th>'+
+										'<th>Persona Emergencia</th>'+
+										'<th>Correo</th>'+
+										'<th>Estado Civil</th>'+
+										'<th>Sexo</th>'+
+										'<th>Status</th>'+
+										'<th>Info</th>').appendTo($("#nombreColumnas"));
+									}
+									else{
+										$('<th>ID</th>'+
+										'<th>Fecha Alta</th>'+
+										'<th>Departamento</th>'+
+										'<th>Puesto</th>'+
+										'<th>Nombre</th>'+
+										'<th>Status</th>'+
+										'<th>Info</th>').appendTo($("#nombreColumnas"));
+									}
 
 			});
 

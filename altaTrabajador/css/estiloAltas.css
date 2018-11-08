@@ -9,6 +9,18 @@
   background-color: #00FF00;
 }
 
+.aceptado{
+  background-color: #00FFFF;
+}
+
+.rechazado{
+  background-color: #FF0000;
+}
+
+.faltanDocumentos{
+  background-color: #C0C0C0;
+}
+
 .ver
 {
   border-radius: 10px 10px 10px 10px;

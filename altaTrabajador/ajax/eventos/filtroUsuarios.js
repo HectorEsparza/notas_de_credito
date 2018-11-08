@@ -1,8 +1,8 @@
 $(document).ready(function(){
 
 
-    var puesto = $("#vistaPuesto");
-    puesto.change(enviar);
+    var boton = $("#usuarios");
+    boton.click(enviar);
 
     function enviar(){
       // var total = $("#totalNota").val();
@@ -10,8 +10,8 @@ $(document).ready(function(){
       // console.log(total);
       var parametros =
       {
-        puesto: $("#vistaPuesto").val(),
-        departamento: $("#vistaDepartamento").val()
+        empleado: $("#empleado").val(),
+        nombre: $("#nombre").val()
 
       }
       $.ajax({
@@ -19,7 +19,7 @@ $(document).ready(function(){
           type: "GET", //El tipo de transaccion para los datos
           dataType: "html", //Especificaremos que datos vamos a enviar
           contentType: "application/x-www-form-urlencoded", //Especificaremos el tipo de contenido
-          url: "ajax/salarioDiario.php", //Sera el archivo que va a procesar la petición AJAX
+          url: "ajax/filtroUsuarios.php", //Sera el archivo que va a procesar la petición AJAX
           data: parametros, //Datos que le vamos a enviar
           // data: "total="+total+"&penalizacion="+penalizacion,
           beforeSend: inicioEnvio, //Es la función que se ejecuta antes de empezar la transacción
@@ -30,17 +30,16 @@ $(document).ready(function(){
       return false;
     }
     function inicioEnvio(){
-        var cargando = $("#salarioDiario");
-        cargando.val(0.00);
+        var cargando = $("#table");
+        cargando.html("Cargando...");
     }
 
     function llegada(datos){
-        $("#salarioDiario").val(datos);
-        $("#salarioSemanal").val(Math.round((datos*7)*100)/100);
+        $("#table").html(datos);
     }
 
     function problemas(){
-        $("#salarioDiario").val(0.00);
+        $("#table").html("Problemas en el servidor...");
     }
 
 
