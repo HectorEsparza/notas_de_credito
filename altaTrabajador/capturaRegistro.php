@@ -38,6 +38,7 @@
   $archivo = $_FILES['archivo']['name'];
   $ruta = $_FILES['archivo']['tmp_name'];
   $destino = "infonavit\\" . $archivo;
+  $status = $_POST['status'];
   move_uploaded_file($ruta, $destino);
 
 
@@ -57,7 +58,7 @@
   $resultado = $base->prepare($consulta);
   $resultado->execute(array($fechaAlta, $vistaDepartamento, $vistaPuesto, $salarioDiario, $nombre, $fechaNacimiento,
                             $telefono, $seguridadSocial, $rfcCaptura, $curpCaptura, $domicilioCaptura, $colonia, $cp,
-                            $poblacion, $correo, $personaEmergencia, $telefonoEmergencia, $archivo, "Capturando", $salarioSemanl,
+                            $poblacion, $correo, $personaEmergencia, $telefonoEmergencia, $archivo, $status, $salarioSemanl,
                             $edoCivil, $sexo));
   $resultado->closeCursor();
 

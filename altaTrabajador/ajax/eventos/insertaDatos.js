@@ -60,15 +60,15 @@ $(document).ready(function(){
     }
     if(solicitud[8]!=""){
       $("#seguridadSocial").val(solicitud[8]);
-      $("#seguridadSocial").attr("readonly", true);
+      // $("#seguridadSocial").attr("readonly", true);
     }
     if(solicitud[9]!=""){
       $("#rfcCaptura").val(solicitud[9]);
-      $("#rfcCaptura").attr("readonly", true);
+      // $("#rfcCaptura").attr("readonly", true);
     }
     if(solicitud[10]!=""){
       $("#curpCaptura").val(solicitud[10]);
-      $("#curpCaptura").attr("readonly", true);
+      // $("#curpCaptura").attr("readonly", true);
     }
     if(solicitud[11]!=""){
       $("#domicilioCaptura").val(solicitud[11]);

@@ -49,9 +49,9 @@
 
         <? while($registro = $resultado->fetch(PDO::FETCH_NUM)) :?>
             <?= $registro[24] ?>
-            <? if($registro[24]=="Capturando"): ?>
-              <!-- <tr><td>Capturando</td></tr> -->
-              <tr class="capturando">
+            <? if($registro[24]=="Faltan Datos"): ?>
+              <!-- <tr><td>Faltan Datos</td></tr> -->
+              <tr class="faltanDatos">
                 <td id="folio<?= $contador?>"><?= $registro[0]?></td>
                 <td><?= $registro[1] ?></td>
                 <td><?= $registro[2] ?></td>

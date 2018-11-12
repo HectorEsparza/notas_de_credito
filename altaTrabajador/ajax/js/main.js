@@ -95,10 +95,10 @@ function get_data_callback(){
       // alert(elem.bancomer);
       //alert(elem.empleado);
       switch (elem.status) {
-          case "Capturando":
-            console.log("Capturando El status es: "+elem.status);
+          case "Faltan Datos":
+            console.log("Faltan Datos El status es: "+elem.status);
             if(auxiliar=="RECURSOS HUMANOS"||auxiliar=="CONTABILIDAD"){
-              $('<tr class="capturando">'+
+              $('<tr class="faltanDatos">'+
                 '<td id="folio'+contador+'">'+elem.id+'</td>'+
                 '<td>'+elem.empleado+'</td>'+
                 '<td>'+elem.nombre+'</td>'+
@@ -128,7 +128,7 @@ function get_data_callback(){
               '</tr>').appendTo($("#table"));
             }
             else if(auxiliar==elem.departamento){
-              $('<tr class="capturando">'+
+              $('<tr class="faltanDatos">'+
                    '<td id="folio'+contador+'">'+elem.id+'</td>'+
                    '<td>'+elem.fechaAlta+'</td>'+
                    '<td>'+elem.departamento+'</td>'+

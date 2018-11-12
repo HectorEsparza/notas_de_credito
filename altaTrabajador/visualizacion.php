@@ -162,7 +162,7 @@
 										'<th>Nombre</th>'+
 										'<th>Curp</th>'+
 										'<th>RFC</th>'+
-										'<th>NO IMSS</th>'+
+										'<th>NSS</th>'+
 										'<th>Salario Diario</th>'+
 										'<th>Salario Semanal</th>'+
 										'<th>Departamento</th>'+

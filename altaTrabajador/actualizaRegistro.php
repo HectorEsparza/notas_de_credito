@@ -13,6 +13,7 @@
     <script type="text/javascript" src="ajax/eventos/insertaDatos.js"></script>
     <script type="text/javascript" src="ajax/eventos/verificaDatos.js"></script>
     <script type="text/javascript" src="ajax/eventos/formularioRecursos.js"></script>
+    <script type="text/javascript" src="ajax/eventos/textoMayuscula.js"></script>
     <!-- <script type="text/javascript" src="ajax/eventos/activaSelectores.js"></script> -->
 
 
@@ -96,7 +97,7 @@
       $resultado = $base->prepare($consulta);
       $resultado->execute(array($departamentoConsulta));
       $registro = $resultado->fetch(PDO::FETCH_NUM);
-      echo $departamentoConsulta;
+      // echo $departamentoConsulta;
       if($departamentoConsulta=="VENTAS"){
         $firma = "OLIVIA_CRUZ";
       }
@@ -147,7 +148,7 @@
             <th>DOCUMENTOS</th>
             <th>STATUS ENTREGA</th>
           </tr>
-          <tr>
+          <tr class="colorSolicitud">
             <td>Solicitud Empleo</td>
             <td align='center'>
               <select id="solicitud" name="solicitud">
@@ -156,7 +157,7 @@
               </select>
             </td>
           </tr>
-          <tr>
+          <tr class="colorActa">
             <td>Acta Nacimiento</td>
             <td align='center'>
               <select id="acta" name="acta">
@@ -165,7 +166,7 @@
               </select>
             </td>
           </tr>
-          <tr>
+          <tr class="colorActa">
             <td>IFE</td>
             <td align='center'>
               <select id="ife" name="ife">
@@ -174,7 +175,7 @@
               </select>
             </td>
           </tr>
-          <tr>
+          <tr class="colorComprobante">
             <td>Comprobante Domicilio</td>
             <td align='center'>
               <select id="domicilio" name="domicilio">
@@ -183,7 +184,7 @@
               </select>
             </td>
           </tr>
-          <tr>
+          <tr class="colorSeguro">
             <td>Seguro Social</td>
             <td align='center'>
               <select id="seguro" name="seguro">
@@ -192,7 +193,7 @@
               </select>
             </td>
           </tr>
-          <tr>
+          <tr class="colorCurp">
             <td>CURP</td>
             <td align='center'>
               <select id="curp" name="curp">
@@ -201,7 +202,7 @@
               </select>
             </td>
           </tr>
-          <tr>
+          <tr class="colorRfc">
             <td>Cédula de Identificación Físcal</td>
             <td align='center'>
               <select id="rfc" name="rfc">
@@ -210,7 +211,34 @@
               </select>
             </td>
           </tr>
+          <!-- <tr>
+            <td>Antecedentes No Penales</td>
+            <td align='center'>
+              <select id="penales" name="penales">
+                <option value="PENDIENTE">PENDIENTE</option>
+                <option value="SI">SI</option>
+              </select>
+            </td>
+          </tr>
           <tr>
+            <td>Fotografías(4)</td>
+            <td align='center'>
+              <select id="fotos" name="fotos">
+                <option value="PENDIENTE">PENDIENTE</option>
+                <option value="SI">SI</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>Comprobante Estudio</td>
+            <td align='center'>
+              <select id="estudios" name="estudios">
+                <option value="PENDIENTE">PENDIENTE</option>
+                <option value="SI">SI</option>
+              </select>
+            </td>
+          </tr> -->
+          <tr class="colorInfonavit">
             <td>Crédito Infonavit</td>
             <td align='center'>
               <select id="infonavit" name="infonavit">
@@ -242,108 +270,105 @@
     <div id="solicitud" style="float: left; margin-left: 100px; ">
       <h1>SOLICITUD INGRESO</h1>
       <table border="1" >
-          <tr class="solicitudOculto">
-            <td align='center'>Fecha de Alta</td>
-            <td align='center'><input type="text" id="fechaAlta" name="fechaAlta" placeholder="dd/mm/yyyy" /></td>
-          </tr>
-          <tr class="solicitudOculto">
-            <td align='center'>Departamento</td>
-            <td align='center'><input type="text" id="vistaDepartamento" name="vistaDepartamento" readonly /></td>
-          </tr>
-          <tr class="solicitudOculto">
-            <td align='center'>Puesto</td>
-            <td align='center'>
-              <select id="vistaPuesto" name="vistaPuesto">
-              </select>
-            </td>
-          </tr>
-          <tr class="solicitudOculto">
-            <td align='center'>Salario Diario</td>
-            <td align='center'><input type="number" step="any" id="salarioDiario" name='salarioDiario' readonly/></td>
-          </tr>
-          <tr class="solicitudOculto">
-            <td align='center'>Salario Semanal</td>
-            <td align='center'><input type="number" step="any" id="salarioSemanal" name='salarioSemanal' readonly/></td>
-          </tr>
-          <tr class="actaOculto">
-            <td align='center'>Nombre Completo</td>
-            <td align='center'><input type="text" id="nombre" name="nombre"/></td>
-          </tr>
-          <tr class="actaOculto">
-            <td align='center'>Fecha de Nacimiento</td>
-            <td align='center'><input type="text" id="fechaNacimiento" name='fechaNacimiento' placeholder="dd/mm/yyyy" /></td>
-          </tr>
-          <tr class="actaOculto">
-            <td align='center'>Estado Civil</td>
-            <td align='center'>
-              <select id="edoCivil" name="edoCivil">
-                <option value=""></option>
-                <option value="Soltero">Soltero</option>
-                <option value="Casado">Casado</option>
-                <option value="Unión Libre">Unión Libre</option>
-              </select>
-            </td>
-          </tr>
-          <tr class="actaOculto">
-            <td align='center'>Sexo</td>
-            <td align='center'>
-              <select id="sexo" name="sexo">
-                <option value=""></option>
-                <option value="Hombre">Hombre</option>
-                <option value="Mujer">Mujer</option>
-              </select>
-            </td>
-          </tr>
-          <tr class="actaOculto">
-            <td align='center'>Teléfono</td>
-            <td align='center'><input type="text" id="telefono" name='telefono' /></td>
-          </tr>
-          <tr class="seguroOculto">
-            <td align='center'>No. Seguridad Social</td>
-            <td align='center'><input type="text" id="seguridadSocial" name='seguridadSocial'/></td>
-          </tr>
-          <tr class="rfcOculto">
-
-
-            <td align='center'>RFC</td>
-            <td align='center'><input type="text" id="rfcCaptura" name='rfcCaptura'/></td>
-          </tr>
-          <tr class="curpOculto">
-            <td align='center'>CURP</td>
-            <td align='center'><input type="text" id="curpCaptura" name='curpCaptura'/></td>
-          </tr>
-          <tr class="domicilioOculto">
-            <td align='center'>Calle y Número EXT. INT.</td>
-            <td align='center'><input type="text" id="domicilioCaptura" name='domicilioCaptura'/></td>
-          </tr>
-          <tr class="domicilioOculto">
-            <td align='center'>Colonia</td>
-            <td align='center'><input type="text" id="colonia" name='colonia'/></td>
-          </tr>
-          <tr  class="domicilioOculto">
-            <td align='center'>C.P</td>
-            <td align='center'><input type="text" id="cp" name='cp'/></td>
-          </tr>
-          <tr  class="domicilioOculto">
-            <td align='center'>Población</td>
-            <td align='center'><input type="text" id="poblacion" name='poblacion'/></td>
-          </tr>
-          <tr class="actaOculto">
-            <td align='center'>Correo Electrónico</td>
-            <td align='center'><input type="text" id="correo" name='correo'/></td>
-          </tr>
-          <tr class="actaOculto">
-            <td align='center'>Emergencia Comunicarse con:</td>
-            <td align='center'><input type="text" id="personaEmergencia" name='personaEmergencia'/></td>
-          </tr>
-          <tr class="actaOculto">
-            <td align='center'>Teléfono Emergencia</td>
-            <td align='center'><input type="text" id="telefonoEmergencia" name='telefonoEmergencia'/></td>
-          </tr>
-          <tr class="infonavitOculto">
-            <td align='center'><label for="pdf">PDF</label></td>
-            <td align='center' id="prueba"><input  id="pdf" type="file" name="archivo"></td>
-          </tr>
+        <tr class="solicitudOculto">
+          <td align='center'>Fecha de Alta *</td>
+          <td align='center'><input type="text" id="fechaAlta" name="fechaAlta" placeholder="Primer día de Trabajo"/></td>
+        </tr>
+        <tr class="solicitudOculto">
+          <td align='center'>Departamento *</td>
+          <td align='center'><input type="text" id="vistaDepartamento" name="vistaDepartamento" readonly /></td>
+        </tr>
+        <tr class="solicitudOculto">
+          <td align='center'>Puesto *</td>
+          <td align='center'>
+            <select id="vistaPuesto" name="vistaPuesto">
+            </select></td>
+        </tr>
+        <tr class="solicitudOculto">
+          <td align='center'>Salario Diario *</td>
+          <td align='center'><input type="number" step="any" id="salarioDiario" name='salarioDiario' readonly/></td>
+        </tr>
+        <tr class="solicitudOculto">
+          <td align='center'>Salario Semanal *</td>
+          <td align='center'><input type="number" step="any" id="salarioSemanal" name='salarioSemanal' readonly/></td>
+        </tr>
+        <tr class="solicitudOculto">
+          <td align='center'>Teléfono *</td>
+          <td align='center'><input type="text" id="telefono" name='telefono' /></td>
+        </tr>
+        <tr class="solicitudOculto">
+          <td align='center'>Correo Electrónico</td>
+          <td align='center'><input type="text" id="correo" name='correo' placeholder="Opcional" /></td>
+        </tr>
+        <tr class="solicitudOculto">
+          <td align='center'>Emergencia Comunicarse con: *</td>
+          <td align='center'><input type="text" id="personaEmergencia" name='personaEmergencia' placeholder='Nombre'/></td>
+        </tr>
+        <tr class="solicitudOculto">
+          <td align='center'>Teléfono Emergencia *</td>
+          <td align='center'><input type="text" id="telefonoEmergencia" name='telefonoEmergencia'/></td>
+        </tr>
+        <tr class="actaOculto">
+          <td align='center'>Nombre Completo *</td>
+          <td align='center'><input type="text" id="nombre" name="nombre"/></td>
+        </tr>
+        <tr class="actaOculto">
+          <td align='center'>Fecha de Nacimiento *</td>
+          <td align='center'><input type="text" id="fechaNacimiento" name='fechaNacimiento' /></td>
+        </tr>
+        <tr class="actaOculto">
+          <td align='center'>Estado Civil *</td>
+          <td align='center'>
+            <select id="edoCivil" name="edoCivil">
+              <option value=""></option>
+              <option value="Soltero">Soltero</option>
+              <option value="Casado">Casado</option>
+              <option value="Unión Libre">Unión Libre</option>
+            </select>
+          </td>
+        </tr>
+        <tr class="actaOculto">
+          <td align='center'>Sexo *</td>
+          <td align='center'>
+            <select id="sexo" name="sexo">
+              <option value=""></option>
+              <option value="Hombre">Hombre</option>
+              <option value="Mujer">Mujer</option>
+            </select>
+          </td>
+        </tr>
+        <tr class="domicilioOculto">
+          <td align='center'>Calle y Número EXT. INT. *</td>
+          <td align='center'><input type="text" id="domicilioCaptura" name='domicilioCaptura'/></td>
+        </tr>
+        <tr class="domicilioOculto">
+          <td align='center'>Colonia *</td>
+          <td align='center'><input type="text" id="colonia" name='colonia'/></td>
+        </tr>
+        <tr  class="domicilioOculto">
+          <td align='center'>C.P *</td>
+          <td align='center'><input type="text" id="cp" name='cp'/></td>
+        </tr>
+        <tr  class="domicilioOculto">
+          <td align='center'>Población *</td>
+          <td align='center'><input type="text" id="poblacion" name='poblacion'/></td>
+        </tr>
+        <tr class="seguroOculto">
+          <td align='center'>No. Seguridad Social *</td>
+          <td align='center'><input type="text" id="seguridadSocial" name='seguridadSocial'/></td>
+        </tr>
+        <tr class="curpOculto">
+          <td align='center'>CURP *</td>
+          <td align='center'><input type="text" id="curpCaptura" name='curpCaptura'/></td>
+        </tr>
+        <tr class="rfcOculto">
+          <td align='center'>RFC *</td>
+          <td align='center'><input type="text" id="rfcCaptura" name='rfcCaptura'/></td>
+        </tr>
+        <tr class="infonavitOculto">
+          <td align='center'><label for="pdf">PDF</label></td>
+          <td align='center' id="prueba"><input  id="pdf" type="file" name="archivo"/></td>
+        </tr>
           <input type="hidden" id="status" name='status' value="" />
       </table>
     </div>
@@ -353,15 +378,15 @@
       <form action="formRecursos.php" method="post" enctype="multipart/form-data">
         <table border="1" >
           <tr>
-            <td>No. Empleado</td>
+            <td>No. Empleado *</td>
             <td><input type="text" id="noEmpleado" name="noEmpleado"/></td>
           </tr>
           <tr>
-            <td>Contrato</td>
+            <td>Contrato *</td>
             <td id="contratoFila"><input type="file" id="contrato" name="contrato"/></td>
           </tr>
           <tr>
-            <td>IMSS</td>
+            <td>IMSS *</td>
             <td id="imssFila"><input type="file" id="imss" name="imss"/></td>
           </tr>
           <tr>
@@ -436,32 +461,11 @@
 
   			$(document).ready(function(){
 
-  									// $('#tag').autocomplete({
-  									// 		source: function(request, response){
-  									// 				$.ajax({
-  									// 						url:"colores.php",
-  									// 						dataType:"json",
-  									// 						data:{q:request.term},
-  									// 						success: function(data){
-  									// 								response(data);
-  									// 						}
-  									// 				});
-  									// 		},
-  									// 		minLength:3,
-  									// 		select: function(event, ui){
-  									// 				//alert("Selecciono: "+ui.item.label);
-  									// 		}
-  									// });
+
   									$("#home").click(function(){
 
   										setTimeout("location.href='../home.php'", 500);
   									});
-                    // $(function(){
-                    //   $.datepicker.setDefaults($.datepicker.regional["es"]);
-                    //   $("#fecha").datepicker({
-                    //     firstDay: 1
-                    //   });
-                    // });
 
                     $('#fecha').datepicker({
                       //dateFormat:'yy-mm-dd'
@@ -483,30 +487,35 @@
                           penales = $("#penales"),
                           fotos = $("#fotos"),
                           estudios = $("#estudios"),
-                          infonavit = $("#infonavit"),
-                          puesto = $("#vistaPuesto");
+                          infonavit = $("#infonavit");
                       var fechaAlta = $("#fechaAlta"),
                           departamento = $("#vistaDepartamento"),
+                          puesto = $("#vistaPuesto"),
                           salarioDiario = $("#salarioDiario"),
                           nombre = $("#nombre"),
                           fechaNacimiento = $("#fechaNacimiento"),
-                          seguridadSocial = $("#seguridadSocial"),
-                          rfcCaptura = $("#rfcCaptura"),
-                          curpCaptura = $("#curpCaptura"),
+                          edoCivil = $("#edoCivil"),
+                          sexo = $("#sexo"),
+                          telefono = $("#telefono"),
+                          personaEmergencia = $("#personaEmergencia"),
+                          telefonoEmergencia = $("#telefonoEmergencia"),
                           domicilioCaptura = $("#domicilioCaptura"),
                           colonia = $("#colonia"),
                           cp = $("#cp"),
                           poblacion = $("#poblacion"),
-                          correo = $("#correo"),
-                          personaEmergencia = $("#personaEmergencia"),
-                          telefonoEmergencia = $("#telefonoEmergencia"),
-                          sexo = $("#sexo");
+                          seguridadSocial = $("#seguridadSocial"),
+                          curpCaptura = $("#curpCaptura"),
+                          rfcCaptura = $("#rfcCaptura");
 
-                          if(puesto.val()!=""&&fechaAlta.val()!=""&&departamento.val()!=""&&salarioDiario.val()!=""&&nombre.val()&&
-                            fechaNacimiento.val()!=""&&seguridadSocial.val()!=""&&rfcCaptura.val()!=""&&domicilioCaptura.val()!=""&&
-                            colonia.val()!=""&&cp.val()!=""&&poblacion.val()!=""&&correo.val()!=""&&
-                            personaEmergencia.val()!=""&&telefonoEmergencia.val()!=""){
+
+                          if(fechaAlta.val()!=""&&departamento.val()!=""&&puesto.val()!=""&&salarioDiario.val()!=""&&nombre.val()&&
+                            fechaNacimiento.val()!=""&&edoCivil.val()!=""&&sexo.val()!=""&&telefono.val()!=""&&personaEmergencia.val()!=""&&
+                            telefonoEmergencia.val()!=""&&domicilioCaptura.val()!=""&&colonia.val()!=""&&cp.val()!=""&&poblacion.val()!=""&&
+                            seguridadSocial.val()!=""&&curpCaptura.val()!=""&&rfcCaptura.val()!=""){
                               $("#status").val("Revision");
+                          }
+                          else{
+                            $("#status").val("Faltan Datos")
                           }
                           solicitud.attr("disabled", false);
                           acta.attr("disabled", false);
@@ -521,8 +530,10 @@
                           infonavit.attr("disabled", false);
                           puesto.attr("disabled", false);
                           sexo.attr("disabled", false);
+                          edoCivil.attr("disabled", false);
 
                     });
+
                     var fullmonth_array = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
                                             "Juio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
                     var abrevia_dias = ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"];

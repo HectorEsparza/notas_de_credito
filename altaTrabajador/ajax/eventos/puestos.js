@@ -19,13 +19,13 @@ $(document).ready(function(){
         console.log(auxiliar);
 
         if(auxiliar=="RECURSOS HUMANOS"||auxiliar=="CONTABILIDAD"){
-            $('<option value=""></option>'+
+            $('<option value="">Seleccionar de la Lista</option>'+
             '<option value="Vigilante">Vigilante</option>'+
             '<option value="Supervisor">Supervisor</option>'+
             '<option value="Prensista">Prensista</option>'+
             '<option value="Chofer">Chofer</option>'+
             '<option value="Supervisor en Capacitacion">Supervisor en Capacitacion</option>'+
-            '<option value="Auxiliar Reparto">Auxiliar Reparto</option>'+
+            '<option value="Auxiliar de Reparto">Auxiliar de Reparto</option>'+
             '<option value="Ejecutivo Atencion a Clientes">Ejecutivo Atencion a Clientes</option>'+
             '<option value="Auxiliar de Limpieza">Auxiliar de Limpieza</option>'+
             '<option value="Vigilante">Vigilante</option>'+
@@ -37,7 +37,7 @@ $(document).ready(function(){
             '<option value="Recortador">Recortador</option>'+
             '<option value="Cardeador">Cardeador</option>'+
             '<option value="Armador de Soporte">Armador de Soporte</option>'+
-            '<option value="Mecanico">Mecanico</option>'+
+            '<option value="Mecanico Aparatista">Mecanico</option>'+
             '<option value="Operador de Cizalla">Operador de Cizalla</option>'+
             '<option value="Operador de Troqueladora">Operador de Troqueladora</option>'+
             '<option value="Operador de Torno">Operador de Torno</option>'+
@@ -51,17 +51,17 @@ $(document).ready(function(){
         }
         else if(auxiliar=="VENTAS"){
             console.log("Agregando el select "+auxiliar.length);
-            $('<option value=""></option>'+
+            $('<option value="">Seleccionar de la Lista</option>'+
               '<option value="Vigilante">Vigilante</option>'+
               '<option value="Supervisor">Supervisor</option>'+
               '<option value="Chofer">Chofer</option>'+
               '<option value="Supervisor en Capacitacion">Supervisor en Capacitacion</option>'+
-              '<option value="Auxiliar Reparto">Auxiliar Reparto</option>'+
+              '<option value="Auxiliar de Reparto">Auxiliar de Reparto</option>'+
               '<option value="Ejecutivo Atencion a Clientes">Ejecutivo Atencion a Clientes</option>').appendTo(vistaPuesto);
         }
         else if(auxiliar=="PRODUCCION SOPORTE"){
             console.log("Agregando el select "+auxiliar.length);
-            $('<option value=""></option>'+
+            $('<option value="">Seleccionar de la Lista</option>'+
               '<option value="Auxiliar de Limpieza">Auxiliar de Limpieza</option>'+
               '<option value="Vigilante">Vigilante</option>'+
               '<option value="Supervisor">Supervisor</option>'+
@@ -72,7 +72,7 @@ $(document).ready(function(){
               '<option value="Recortador">Recortador</option>'+
               '<option value="Cardeador">Cardeador</option>'+
               '<option value="Armador de Soporte">Armador de Soporte</option>'+
-              '<option value="Mecanico">Mecanico</option>'+
+              '<option value="Mecanico Aparatista">Mecanico</option>'+
               '<option value="Operador de Cizalla">Operador de Cizalla</option>'+
               '<option value="Operador de Troqueladora">Operador de Troqueladora</option>'+
               '<option value="Operador de Torno">Operador de Torno</option>'+
@@ -82,7 +82,7 @@ $(document).ready(function(){
         }
         else if(auxiliar=="ALMACEN"){
             console.log("Agregando el select "+auxiliar.length);
-            $('<option value=""></option>'+
+            $('<option value="">Seleccionar de la Lista</option>'+
               '<option value="Pintor">Pintor</option>'+
               '<option value="Almacenista">Almacenista</option>'+
               '<option value="Supervisor">Supervisor</option>'+
@@ -91,13 +91,13 @@ $(document).ready(function(){
 
         else if (auxiliar=="PRODUCCION MANGUERA"){
             console.log("Agregando el select "+auxiliar.length);
-            $('<option value=""></option>'+
+            $('<option value="">Seleccionar de la Lista</option>'+
               '<option value="Ayudante General">Ayudante General</option>').appendTo(vistaPuesto);
         }
 
         else if(auxiliar=="CREDITO Y COBRANZA"){
             console.log("Agregando el select "+auxiliar.length);
-            $('<option value=""></option>'+
+            $('<option value="">Seleccionar de la Lista</option>'+
               '<option value="Ayudante General">Ayudante General</option>').appendTo(vistaPuesto);
         }
 
