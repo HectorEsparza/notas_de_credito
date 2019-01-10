@@ -1,0 +1,58 @@
+.faltanDatos{
+  background-color: #FF8C00;
+}
+.revision{
+  background-color: #FFD700;
+}
+
+.contratado{
+  background-color: #00FF00;
+}
+
+.aceptado{
+  background-color: #00FFFF;
+}
+
+.rechazado{
+  background-color: #FF0000;
+}
+
+.faltanDocumentos{
+  background-color: #C0C0C0;
+}
+
+.ver
+{
+  border-radius: 10px 10px 10px 10px;
+  color: #6664FC;
+  background: #64FCEA;
+  /* width: 30px; */
+}
+
+.colorSolicitud, .solicitudOculto{
+    background-color: #FF7F50;
+}
+
+.colorActa, .actaOculto{
+    background-color: #00CED1;
+}
+
+.colorComprobante, .domicilioOculto{
+    background-color: #90EE90;
+}
+
+.colorSeguro, .seguroOculto{
+    background-color: #FFA500;
+}
+
+.colorCurp, .curpOculto{
+    background-color: #DDA0DD;
+}
+
+.colorRfc, .rfcOculto{
+    background-color: #FF6347;
+}
+
+.colorInfonavit, .infonavitOculto{
+    background-color: #F5DEB3;
+}
