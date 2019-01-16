@@ -17,16 +17,10 @@
   }
 
   $base = conexion_local();
-  $consulta = "INSERT INTO APA1(ID_APA, DESCRIPCION, PRECIO, LINEA, SUBLINEA, ID_VAZLO)
-                      VALUES(?,?,?,?,?,?)";
+  $consulta = "INSERT INTO PRODUCTOS1(ID_APA, DESCRIPCION, PRECIO, LINEA, SUBLINEA, ID_VAZLO, PRECIO_VAZLO)
+                      VALUES(?,?,?,?,?,?,?)";
   $resultado = $base->prepare($consulta);
-  $resultado->execute(array($idApa, $descripcion, $precio, $linea, $sublinea, $idVazlo));
-  $resultado->closeCursor();
-
-  $consulta = "INSERT INTO VAZLO1(ID_VAZLO, PRECIO)
-                      VALUES(?,?)";
-  $resultado = $base->prepare($consulta);
-  $resultado->execute(array($idVazlo, $precioVazlo));
+  $resultado->execute(array($idApa, $descripcion, $precio, $linea, $sublinea, $idVazlo, $precioVazlo));
   $resultado->closeCursor();
 
   header("location:analisis.php");

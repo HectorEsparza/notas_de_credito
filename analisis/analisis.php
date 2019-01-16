@@ -69,6 +69,7 @@
 						 <!-- <button type="submit" class="btn btn-primary" id="limpiaFiltro">Limpiar Campos</button> -->
 						 	<input type="button" class="btn btn-primary" onclick="visualizar()" value='Tabla Completa' />
 							<input type="button" class="btn btn-primary" onclick="exportar()" value="Exportar a Excel" />
+							<input type="button" class="btn btn-primary" onclick="reporte()" value="Reporte de Precios" />
 
 				<input type=hidden id="folio" value="<?= $folio?>"/>
 		</div>
@@ -163,9 +164,13 @@
 				alert("Exportación en proceso");
 				setTimeout("location.href='exportar.php'",500);
 			}
-      // function editar(folio){
-			// 		setTimeout("location.href='editarAnalisis.php?folio="+folio+"'");
-			// }
+			function exportar(){
+				alert("Exportación en proceso");
+				setTimeout("location.href='exportar.php'",500);
+			}
+			function reporte(){
+				setTimeout("location.href='reporte.php'",500);
+			}
 
 
 </script>
