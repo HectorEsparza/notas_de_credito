@@ -76,6 +76,7 @@ function get_data_callback(){
 		}
 		// genera el cuerpo de la tabla
 		$.each(lista, function(ind, elem){
+      console.log("hola");
       // var departamento = $("#departamento").val();
       //var click = "saludo(document.querySelector('.folio"+contador+"').value)";
       var click = "ver(document.getElementById('folio"+contador+"').innerText)";

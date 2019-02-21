@@ -6,7 +6,6 @@
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
-	<link rel="stylesheet" type="text/css" href="css/estiloSAE.css" />
   <script type="text/javascript" src="ajax/js/jquery-ui.js"></script>
 	<script type="text/javascript" src="ajax/js/filtro.js"></script>
 	<!-- <script type="text/javascript" src="ajax/js/limpia.js"></script> -->
@@ -16,6 +15,7 @@
 	<?php session_start();
 	$usuario = $_SESSION['user'];
 	require_once("../funciones.php");
+	$nombres = ["Héctor", "Daniel", "Esparza", "Méndez"];
 
 	try
 	{
@@ -41,6 +41,7 @@
 		// $folio = $_POST['folio'];
 	?>
 	<header class="row">
+		<input type="hidden" id="arreglo" value="<?= json_encode($nombres)?>" />
 		<div class="container col-md-8">
 			<h1 align='center'>
 				Visualización Análisis

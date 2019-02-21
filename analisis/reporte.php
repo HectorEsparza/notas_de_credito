@@ -5,14 +5,32 @@
     <title>Reporte Precios</title>
     <title>Nuevo Producto</title>
     <link rel="shortcut icon" href="imagenes/favicon.ico" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="css/estiloReporte.css" /> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="ajax/eventos/lineas.js"></script>
     <script type="text/javascript" src="ajax/eventos/consultas.js"></script>
+    <script type="text/javascript" src="ajax/eventos/nivelImportancia.js"></script>
+    <style media="screen">
+      #caros, .Caro{
+        background: #FC6C6C;
+      }
+      #iguales, .Igual{
+        background: #FCE26C;
+      }
+      #baratos, .Barato{
+        background: #6CFC72;
+      }
+      #totales{
+        background: #6CE7FC;
+      }
+    </style>
+
   </head>
   <body>
-    <div class="row">
-      <div class="container col-md-4" style="margin-left: 500px">
+    <div class="row" id="header">
+      <div class="container col-md-8" style="margin-left: 0px; text-align: center">
         <h1>Reporte de Precios</h1>
       </div>
       <div class="container col-md-2">
@@ -25,7 +43,10 @@
       </div>
     </div>
     <div class="row">
-      <div class="container col-md-3" style="margin-left: 400px; margin-top:100px">
+      <div class="container col-md-3">
+
+      </div>
+      <div class="container col-md-3" style="margin-left: 0px; margin-top:100px;">
         <p>
           <label for="Linea">Línea</label>
           <select  name="linea" style="margin-left: 22px;" id="linea">
@@ -61,64 +82,128 @@
           <label for="descuentoVazlo">Descuento Vazlo</label>
           <select class="" name="descuentoVazlo" id="descuentoVazlo">
             <option value=""></option>
-            <option value="19">19%</option>
-            <option value="20">20%</option>
-            <option value="28">28%</option>
+            <option value="10">10</option>
+            <option value="14.5">10-5</option>
+            <option value="19">10-10</option>
+            <option value="20">20</option>
+            <option value="24">24</option>
+            <option value="28">28</option>
+            <option value="32">32</option>
           </select>
         </p>
       </div>
-    </div>
-    <div class="row" style="margin-left: 400px; margin-top:50px; ">
-      <div class="container col-md-8">
-        <p>
-          <h4 style="font-weight: bold;">Promedio de Variaciones Competencia vs APA</h4>
-        </p>
-        <table border="1" width='100px'>
-          <tr>
-            <th>Productos n</th>
-            <th>Variación %</th>
-            <th>Variación $</th>
-          </tr>
-          <tr>
-            <td id="productos">&nbsp;</td>
-            <td id="porcentaje">&nbsp;</td>
-            <td id="cantidad">&nbsp;</td>
-          </tr>
-        </table>
+      <div class="container col-md-3">
+
       </div>
     </div>
     <div class="row" style="margin-left: 400px; margin-top:50px; ">
-      <div class="container col-md-8">
+      <div class="container col-md-12">
+        <p>
+          <h4 style="font-weight: bold;">Promedio de Variaciones Competencia vs APA</h4>
+        </p>
+
+          <table class="table table-bordered" style="width: 400px">
+            <tr>
+              <th>Productos n</th>
+              <th>Variación %</th>
+              <th>Variación $</th>
+            </tr>
+            <tr>
+              <td id="productos">&nbsp;</td>
+              <td id="porcentaje">&nbsp;</td>
+              <td id="cantidad">&nbsp;</td>
+            </tr>
+          </table>
+
+      </div>
+    </div>
+    <div class="row" style="margin-left: 400px; margin-top:50px; ">
+      <div class="container col-md-12">
         <p>
           <h4 style="font-weight: bold;">Resultados de la consulta</h4>
         </p>
-        <table border="1" width='100px'>
+        <table class="table table-bordered" style="width: 750px">
           <tr>
             <td>&nbsp;</td>
             <td style="font-weight: bold;">Porcentaje</td>
             <td style="font-weight: bold;">Productos n</td>
+            <td style="font-weight: bold;" colspan="2">Productos A</td>
+            <td style="font-weight: bold;" colspan="2">Productos B</td>
+            <td style="font-weight: bold;" colspan="2">Productos C</td>
+            <td style="font-weight: bold;">Info</td>
           </tr>
-          <tr>
+          <tr id="caros">
             <td style="font-weight: bold;">Estamos Caros</td>
             <td id="porcentajeCaro">&nbsp;</td>
             <td id="cantidadCaro">&nbsp;</td>
+            <td id="porcentajeCaroA">&nbsp;</td>
+            <td id="cantidadCaroA">&nbsp;</td>
+            <td id="porcentajeCaroB">&nbsp;</td>
+            <td id="cantidadCaroB">&nbsp;</td>
+            <td id="porcentajeCaroC">&nbsp;</td>
+            <td id="cantidadCaroC">&nbsp;</td>
+            <td><input type="button" class="btn btn-warning" value="Caro" id="caro"/></td>
           </tr>
-          <tr>
+          <tr id="iguales">
             <td style="font-weight: bold;">Iguales</td>
             <td id="porcentajeIgual">&nbsp;</td>
             <td id="cantidadIgual">&nbsp;</td>
+            <td id="porcentajeIgualA">&nbsp;</td>
+            <td id="cantidadIgualA">&nbsp;</td>
+            <td id="porcentajeIgualB">&nbsp;</td>
+            <td id="cantidadIgualB">&nbsp;</td>
+            <td id="porcentajeIgualC">&nbsp;</td>
+            <td id="cantidadIgualC">&nbsp;</td>
+            <td><input type="button" class="btn btn-warning" value="Igual" id="igual" /></td>
           </tr>
-          <tr>
+          <tr id="baratos">
             <td style="font-weight: bold;">Estamos Baratos</td>
             <td id="porcentajeBarato">&nbsp;</td>
             <td id="cantidadBarato">&nbsp;</td>
+            <td id="porcentajeBaratoA">&nbsp;</td>
+            <td id="cantidadBaratoA">&nbsp;</td>
+            <td id="porcentajeBaratoB">&nbsp;</td>
+            <td id="cantidadBaratoB">&nbsp;</td>
+            <td id="porcentajeBaratoC">&nbsp;</td>
+            <td id="cantidadBaratoC">&nbsp;</td>
+            <td><input type="button" class="btn btn-warning" value="Barato" id="barato"/></td>
           </tr>
-          <tr>
+          <tr id="totales">
             <td style="font-weight: bold;">TOTAL REAL</td>
             <td id="totalPorcentaje">&nbsp;</td>
             <td id="totalCantidad">&nbsp;</td>
+            <td id="totalPorcentajeA">&nbsp;</td>
+            <td id="totalCantidadA">&nbsp;</td>
+            <td id="totalPorcentajeB">&nbsp;</td>
+            <td id="totalCantidadB">&nbsp;</td>
+            <td id="totalPorcentajeC">&nbsp;</td>
+            <td id="totalCantidadC">&nbsp;</td>
+            <td><input type="button" class="btn btn-warning" value="Todo" id="todo"/></td>
           </tr>
         </table>
+      </div>
+    </div>
+    <div class="row" style="margin-left: 400px; margin-top:50px;" hidden id="nivel">
+      <div class="container col-md-12">
+        <p>
+          <h4 style="font-weight: bold;" id="tituloImportancia">Productos</h4>
+        </p>
+        <p id="Prueba"></p>
+        <table border="1">
+          <thead>
+            <tr>
+              <th>Nivel</th>
+              <th>ID APA</th>
+              <th>Precio</th>
+              <th>ID Vazlo</th>
+              <th>Precio</th>
+
+            </tr>
+          </thead>
+          <tbody id="tablaNivel">
+          </tbody>
+        </table>
+
       </div>
     </div>
     <script>
