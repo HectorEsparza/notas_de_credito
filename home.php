@@ -28,7 +28,7 @@
         width: 150px;
       }
       #nomina{
-        background: #63FCF5;
+        background: #FF69B4;
         color: #000000;
         width: 150px;
       }
@@ -38,7 +38,17 @@
         width: 150px;
       }
       #remision{
-        background: #CE63FC
+        background: #FF7F50;
+        color: #000000;
+        width: 150px;
+      }
+      #altas{
+        background: #CE63FC;
+        color: #000000;
+        width: 150px;
+      }
+      #analisis{
+        background: #637EFC;
         color: #000000;
         width: 150px;
       }
@@ -49,6 +59,7 @@
       #ciere{
         float: right;
       }
+
     </style>
   </head>
   <body>
@@ -60,13 +71,15 @@
        require_once("funciones.php");
 
        $base = conexion_local();
-       $consulta = "SELECT DEPARTAMENTO FROM USUARIOS WHERE USUARIO=?";
+       $consulta = "SELECT DEPARTAMENTO, PERMISO FROM USUARIOS WHERE USUARIO=?";
        $resultado = $base->prepare($consulta);
        $resultado->execute(array($usuario));
        $registro = $resultado->fetch(PDO::FETCH_NUM);
        $departamento = $registro[0];
+       $permiso = $registro[1];
     ?>
     <input type="hidden" id="departamento" value="<?= $departamento?>" />
+    <input type="hidden" id="permiso" value="<?= $permiso?>" />
     <header style="margin-top: 0px;">
       <div class="container-fluid">
       <div class="container col-md-8">
@@ -107,36 +120,100 @@
               <input type="button" id="nomina" value="Pre-Nominas" class="btn btn-primary" />
             </div>
           </div>
+          <br />
+          <div class="container row">
+            <div class="container col-md-4">
+              <input type="button" id="altas" value="Altas" class="btn btn-primary" />
+            </div>
+            <div class="container col-md-4">
+              <input type="button" id="analisis" value="Listas de Precios" class="btn btn-primary" />
+            </div>
+          </div>
      </div>
     </section>
     <script>
       $(document).ready(function(){
 
         var departamento = $("#departamento").val();
+        var permiso = $("#permiso").val();
 
-        if(departamento=="VENTAS"){
+        if(permiso==0){
           $("#nota").show();
           $("#carta").show();
           $("#pedido").show();
-          $("#remision").hide();
-          $("#sae").hide();
-          $("#nomina").hide();
-        }
-        else if(departamento=="CREDITO Y COBRANZA"){
-          $("#nota").hide();
-          $("#carta").hide();
-          $("#pedido").hide();
           $("#sae").show();
-          $("#nomina").hide();
-          $("#remision").hide();
-        }
-        else if(departamento=="RECURSOS HUMANOS"){
-          $("#nota").hide();
-          $("#carta").hide();
-          $("#pedido").hide();
-          $("#sae").hide();
           $("#nomina").show();
-          $("#remision").hide();
+          $("#remision").show();
+          $("#altas").show();
+          $("#analisis").show();
+        }
+        else if(permiso==1){
+          $("#altas").show();
+          $("#analisis").hide();
+          if(departamento=="VENTAS"){
+            $("#nota").show();
+            $("#carta").show();
+            $("#pedido").show();
+            $("#remision").hide();
+            $("#sae").hide();
+            $("#nomina").hide();
+          }
+          else if(departamento=="CREDITO_Y_COBRANZA"){
+            $("#nota").hide();
+            $("#carta").hide();
+            $("#pedido").hide();
+            $("#sae").show();
+            $("#nomina").hide();
+            $("#remision").hide();
+
+          }
+          else if(departamento=="RECURSOS_HUMANOS"||departamento=="CONTABILIDAD"||departamento=="ADMINISTRADOR"){
+            $("#nota").hide();
+            $("#carta").hide();
+            $("#pedido").hide();
+            $("#sae").hide();
+            $("#nomina").show();
+            $("#remision").hide();
+          }
+
+          else if(departamento=="PRODUCCION_SOPORTE"||departamento=="PRODUCCION_MANGUERA"||departamento=="ALMACEN"){
+            $("#nota").hide();
+            $("#carta").hide();
+            $("#pedido").hide();
+            $("#sae").hide();
+            $("#nomina").hide();
+            $("#remision").hide();
+          }
+        }
+        else {
+          $("#analisis").hide();
+          $("#altas").hide();
+          if(departamento=="VENTAS"){
+            $("#nota").show();
+            $("#carta").show();
+            $("#pedido").show();
+            $("#remision").hide();
+            $("#sae").hide();
+            $("#nomina").hide();
+          }
+          else if(departamento=="CREDITO_Y_COBRANZA"){
+            $("#nota").hide();
+            $("#carta").hide();
+            $("#pedido").hide();
+            $("#sae").show();
+            $("#nomina").hide();
+            $("#remision").hide();
+
+          }
+          else if(departamento=="RECURSOS_HUMANOS"){
+            $("#nota").hide();
+            $("#carta").hide();
+            $("#pedido").hide();
+            $("#sae").hide();
+            $("#nomina").show();
+            $("#remision").hide();
+            $("#altas").show();
+          }
         }
 
         $("#nota").click(function(){
@@ -161,6 +238,14 @@
 
         $("#cierre").click(function(){
           setTimeout("location.href='cierre.php'",500);
+        });
+
+        $("#altas").click(function(){
+          setTimeout("location.href='altaTrabajador/visualizacion.php'",500);
+        });
+
+        $("#analisis").click(function(){
+          setTimeout("location.href='analisis/analisis.php'",500);
         });
         // $("body").hide().fadeIn(2000);
 

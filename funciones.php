@@ -1,4 +1,97 @@
 <?php
+//Funcion para realizar los calculos del reporte de precios
+function reportePrecios($precioApa = array(), $precioVazlo = array(), $descuentoApa, $descuentoVazlo, $importancia = array(), $idApa = array(), $idVazlo = array()){
+  $variacion = 0;
+  $variacionPesos = 0;
+  $caros = 0;
+  $iguales = 0;
+  $baratos = 0;
+  $porcentajeCaro = 0;
+  $porcentajeIgual = 0;
+  $porcentajeBarato = 0;
+  $contador = count($precioApa);
+  $importanciaCaros = [0,0,0];
+  $importanciaIguales = [0,0,0];
+  $importanciaBaratos = [0,0,0];
+  $indicador = array();
+
+  for ($i=0; $i < $contador; $i++){
+    //Tomamos los precios y le sacamos el descuento que le corresponde
+    $precioApa[$i] = round((sub($descuentoApa, $precioApa[$i]))*100)/100;
+    $precioVazlo[$i] = round((sub($descuentoVazlo, $precioVazlo[$i]))*100)/100;
+    //Sacamos la variación por porcentaje
+    $variacion = $variacion+(($precioVazlo[$i]/$precioApa[$i]-1)*100);
+    //Sacamos la variación por dinero
+    $variacionPesos = $variacionPesos+($precioVazlo[$i]-$precioApa[$i]);
+    if($precioApa[$i]>$precioVazlo[$i]){
+      $caros++;
+      if($importancia[$i]=="A"){
+        $importanciaCaros[0] += 1;
+      }
+      else if($importancia[$i]=="B"){
+        $importanciaCaros[1] += 1;
+      }
+      else if($importancia[$i]=="C"){
+        $importanciaCaros[2] += 1;
+      }
+      $indicador[$i] = "Caro";
+    }
+    elseif ($precioApa[$i]<$precioVazlo[$i]){
+      $baratos++;
+      if($importancia[$i]=="A"){
+        $importanciaBaratos[0] += 1;
+      }
+      else if($importancia[$i]=="B"){
+        $importanciaBaratos[1] += 1;
+      }
+      else if($importancia[$i]=="C"){
+        $importanciaBaratos[2] += 1;
+      }
+      $indicador[$i] = "Barato";
+    }
+    else{
+      $iguales++;
+      if($importancia[$i]=="A"){
+        $importanciaIguales[0] += 1;
+      }
+      else if($importancia[$i]=="B"){
+        $importanciaIguales[1] += 1;
+      }
+      else if($importancia[$i]=="C"){
+        $importanciaIguales[2] += 1;
+      }
+      $indicador[$i] = "Igual";
+    }
+
+  }
+  //Si se encontraron al menos 1 producto en la consulta
+  if($contador>0){
+    //Sacando el promedio de la variacion y redondeando
+    $variacion = $variacion/$contador;
+    $variacion = round($variacion * 100)/100;
+    //Dandole formato a la variacion por dinero
+    $variacionPesos = round($variacionPesos * 100)/100;
+    $variacionPesos = number_format($variacionPesos, 2, '.', ',');
+    //Sacando el porcentaje de Caros
+    $porcentajeCaro = ($caros*100)/$contador;
+    $porcentajeCaro = round($porcentajeCaro * 100)/100;
+    //Sacando el porcentaje de Baratos
+    $porcentajeBarato = ($baratos*100)/$contador;
+    $porcentajeBarato =  round($porcentajeBarato * 100)/100;
+    //Sacando el porcentaje de Iguales
+    $porcentajeIgual = ($iguales*100)/$contador;
+    $porcentajeIgual =  round($porcentajeIgual * 100)/100;
+  }
+
+  $arregloPrueba = ["Hola", "APA"];
+  $resultados = array($contador, $variacion, $variacionPesos, $porcentajeCaro, $caros, $porcentajeIgual, $iguales,
+                      $porcentajeBarato, $baratos, $importancia, $idApa, $precioApa, $idVazlo, $precioVazlo, $importanciaCaros,
+                      $importanciaIguales, $importanciaBaratos, $indicador);
+  // $resultados[9][0] = "Hola";
+  // $resultados[9][1] = "Amigos";
+
+  return $resultados;
+}
 //Consecutivo pedidos
 function folioRemision(){
 
@@ -185,8 +278,8 @@ function fechaConsulta($fecha){
 
 function conexion_local(){
 
-  $base = new PDO("mysql:host=localhost;dbname=aplicacion","root","");
-  //$base = new PDO("mysql:host=50.62.209.84;dbname=aplicacion","hesparza","b29194303");
+  //$base = new PDO("mysql:host=localhost;dbname=aplicacion","root","");
+  $base = new PDO("mysql:host=50.62.209.84;dbname=aplicacion","hesparza","b29194303");
   $base->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   $base->exec("SET CHARACTER SET utf8");
   return $base;
