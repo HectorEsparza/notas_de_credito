@@ -10,6 +10,7 @@ $linea = strtoupper($_POST['linea']);
 $sublinea = strtoupper($_POST['sublinea']);
 $idVazlo = $_POST['idVazlo'];
 $precioVazlo = $_POST['precioVazlo'];
+$importancia = $_POST['importancia'];
 
 if($idVazlo==""){
   $idVazlo ="NA";
@@ -20,14 +21,9 @@ if($precioVazlo==""){
 
 //echo $anteriorApa . " " . $anteriorVazlo;
 $base = conexion_local();
-$consulta = "UPDATE APA1 SET ID_APA=?, DESCRIPCION=?, PRECIO=?, LINEA=?, SUBLINEA=?, ID_VAZLO=? WHERE ID_APA=?";
+$consulta = "UPDATE PRODUCTOS1 SET ID_APA=?, DESCRIPCION=?, PRECIO=?, LINEA=?, SUBLINEA=?, ID_VAZLO=?, IMPORTANCIA=? WHERE ID_APA=?";
 $resultado = $base->prepare($consulta);
-$resultado->execute($idApa, $descripcion, $precio, $linea, $sublinea, $idVazlo, $anteriorApa);
-$resultado->closeCursor();
-
-$consulta = "UPDATE VAZLO1 SET ID_VAZLO=?, PRECIO=? WHERE ID_VAZLO=?";
-$resultado = $base->prepare($consulta);
-$resultado->execute($idVazlo, $precio, $anteriorVazlo);
+$resultado->execute($idApa, $descripcion, $precio, $linea, $sublinea, $idVazlo, $importancia, $anteriorApa);
 $resultado->closeCursor();
 
 header("location:analisis.php");

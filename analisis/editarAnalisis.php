@@ -32,6 +32,7 @@
       $sublinea = $registro[4];
       $idVazlo = $registro[5];
       $precioVazlo = $registro[6];
+      $importancia = $registro[7];
 
       $resultado->closeCursor();
 
@@ -133,6 +134,12 @@
                <div class="form-group">
                  <th><label for="precioVazlo">Precio Vazlo</label></th>
                  <td><input class="form-control" id="precioVazlo" type='text' value="<?= $precioVazlo?>" name='precioVazlo' readonly></td>
+               </div>
+             </tr>
+             <tr>
+               <div class="form-group">
+                 <th><label for="importancia">Importancia</label></th>
+                 <td><input class="form-control" id="importancia" type='text' value="<?= $importancia?>" name='importancia' readonly></td>
                </div>
              </tr>
              <input type="hidden" name="anteriorApa" value="<?= $idApa ?>" />

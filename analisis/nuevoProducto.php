@@ -102,6 +102,12 @@
                </div>
              </tr>
              <tr>
+               <div class="form-group">
+                 <th><label for="importancia">Importancia</label></th>
+                 <td><input class="form-control" id="importancia" type='text' name='importancia'></td>
+               </div>
+             </tr>
+             <tr>
                <td align='center' colspan=2><input type='submit' name='inicio' value='Guardar' id="envio" disabled class="btn btn-success"></td>
              </tr>
           </form>
