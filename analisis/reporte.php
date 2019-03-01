@@ -97,7 +97,7 @@
 
       </div>
     </div>
-    <div class="row" style="margin-left: 400px; margin-top:50px; ">
+    <!-- <div class="row" style="margin-left: 400px; margin-top:50px; ">
       <div class="container col-md-12">
         <p>
           <h4 style="font-weight: bold;">Promedio de Variaciones Competencia vs APA</h4>
@@ -111,23 +111,25 @@
             </tr>
             <tr>
               <td id="productos">&nbsp;</td>
-              <td id="porcentaje">&nbsp;</td>
-              <td id="cantidad">&nbsp;</td>
+              <td >&nbsp;</td>
+              <td >&nbsp;</td>
             </tr>
           </table>
 
       </div>
-    </div>
+    </div> -->
     <div class="row" style="margin-left: 400px; margin-top:50px; ">
       <div class="container col-md-12">
         <p>
           <h4 style="font-weight: bold;">Resultados de la consulta</h4>
         </p>
-        <table class="table table-bordered" style="width: 750px">
+        <table class="table table-bordered" style="width: 950px">
           <tr>
             <td>&nbsp;</td>
             <td style="font-weight: bold;">Porcentaje</td>
             <td style="font-weight: bold;">Productos n</td>
+            <td style="font-weight: bold;">Variación %</td>
+            <td style="font-weight: bold;">Variación $</td>
             <td style="font-weight: bold;" colspan="2">Productos A</td>
             <td style="font-weight: bold;" colspan="2">Productos B</td>
             <td style="font-weight: bold;" colspan="2">Productos C</td>
@@ -137,6 +139,8 @@
             <td style="font-weight: bold;">Estamos Caros</td>
             <td id="porcentajeCaro">&nbsp;</td>
             <td id="cantidadCaro">&nbsp;</td>
+            <td id="variacionPorcentajeCaro">&nbsp;</td>
+            <td id="variacionPesosCaro">&nbsp;</td>
             <td id="porcentajeCaroA">&nbsp;</td>
             <td id="cantidadCaroA">&nbsp;</td>
             <td id="porcentajeCaroB">&nbsp;</td>
@@ -145,10 +149,12 @@
             <td id="cantidadCaroC">&nbsp;</td>
             <td><input type="button" class="btn btn-warning" value="Caro" id="caro"/></td>
           </tr>
-          <tr id="iguales">
+          <!-- <tr id="iguales">
             <td style="font-weight: bold;">Iguales</td>
             <td id="porcentajeIgual">&nbsp;</td>
             <td id="cantidadIgual">&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
             <td id="porcentajeIgualA">&nbsp;</td>
             <td id="cantidadIgualA">&nbsp;</td>
             <td id="porcentajeIgualB">&nbsp;</td>
@@ -156,11 +162,13 @@
             <td id="porcentajeIgualC">&nbsp;</td>
             <td id="cantidadIgualC">&nbsp;</td>
             <td><input type="button" class="btn btn-warning" value="Igual" id="igual" /></td>
-          </tr>
+          </tr> -->
           <tr id="baratos">
             <td style="font-weight: bold;">Estamos Baratos</td>
             <td id="porcentajeBarato">&nbsp;</td>
             <td id="cantidadBarato">&nbsp;</td>
+            <td id="variacionPorcentajeBarato">&nbsp;</td>
+            <td id="variacionPesosBarato">&nbsp;</td>
             <td id="porcentajeBaratoA">&nbsp;</td>
             <td id="cantidadBaratoA">&nbsp;</td>
             <td id="porcentajeBaratoB">&nbsp;</td>
@@ -173,6 +181,8 @@
             <td style="font-weight: bold;">TOTAL REAL</td>
             <td id="totalPorcentaje">&nbsp;</td>
             <td id="totalCantidad">&nbsp;</td>
+            <td id="porcentaje">&nbsp;</td>
+            <td id="cantidad">&nbsp;</td>
             <td id="totalPorcentajeA">&nbsp;</td>
             <td id="totalCantidadA">&nbsp;</td>
             <td id="totalPorcentajeB">&nbsp;</td>
@@ -190,14 +200,14 @@
           <h4 style="font-weight: bold;" id="tituloImportancia">Productos</h4>
         </p>
         <p id="Prueba"></p>
-        <table border="1">
+        <table border="1" width="500px" style="text-align: center">
           <thead>
-            <tr>
-              <th>Nivel</th>
-              <th>ID APA</th>
-              <th>Precio</th>
-              <th>ID Vazlo</th>
-              <th>Precio</th>
+            <tr style="font-weight: bold;">
+              <td>Nivel</td>
+              <td>ID APA</td>
+              <td>Precio</td>
+              <td>ID Vazlo</td>
+              <td>Precio</td>
 
             </tr>
           </thead>

@@ -92,26 +92,40 @@ $(document).ready(function(){
         var porcentajeBaratoA = 0;
         var porcentajeBaratoB = 0;
         var porcentajeBaratoC = 0;
+        // //Porcentajes por tipo de Productos Caros
+        // if(datos[4]>0){
+        //   porcentajeCaroA = Math.round(((datos[14][0]*100)/datos[4])*100)/100;
+        //   porcentajeCaroB = Math.round(((datos[14][1]*100)/datos[4])*100)/100;
+        //   porcentajeCaroC = Math.round(((datos[14][2]*100)/datos[4])*100)/100;
+        // }
+        //
+        // //Porcentajes por tipo de Productos Iguales
+        // if(datos[6]>0){
+        //   porcentajeIgualA = Math.round(((datos[15][0]*100)/datos[6])*100)/100;
+        //   porcentajeIgualB = Math.round(((datos[15][1]*100)/datos[6])*100)/100;
+        //   porcentajeIgualC = Math.round(((datos[15][2]*100)/datos[6])*100)/100;
+        // }
+        //
+        // //Porcentajes por tipo de Productos Baratos
+        // if(datos[8]>0){
+        //   porcentajeBaratoA = Math.round(((datos[16][0]*100)/datos[8])*100)/100;
+        //   porcentajeBaratoB = Math.round(((datos[16][1]*100)/datos[8])*100)/100;
+        //   porcentajeBaratoC = Math.round(((datos[16][2]*100)/datos[8])*100)/100;
+        // }
+
         //Porcentajes por tipo de Productos Caros
         if(datos[4]>0){
-          porcentajeCaroA = Math.round(((datos[14][0]*100)/datos[4])*100)/100;
-          porcentajeCaroB = Math.round(((datos[14][1]*100)/datos[4])*100)/100;
-          porcentajeCaroC = Math.round(((datos[14][2]*100)/datos[4])*100)/100;
+          porcentajeCaroA = Math.round((datos[14][0]*100)/datos[4]);
+          porcentajeCaroB = Math.round((datos[14][1]*100)/datos[4]);
+          porcentajeCaroC = Math.round((datos[14][2]*100)/datos[4]);
         }
-
-        //Porcentajes por tipo de Productos Iguales
-        if(datos[6]>0){
-          porcentajeIgualA = Math.round(((datos[15][0]*100)/datos[6])*100)/100;
-          porcentajeIgualB = Math.round(((datos[15][1]*100)/datos[6])*100)/100;
-          porcentajeIgualC = Math.round(((datos[15][2]*100)/datos[6])*100)/100;
-        }
-
         //Porcentajes por tipo de Productos Baratos
         if(datos[8]>0){
-          porcentajeBaratoA = Math.round(((datos[16][0]*100)/datos[8])*100)/100;
-          porcentajeBaratoB = Math.round(((datos[16][1]*100)/datos[8])*100)/100;
-          porcentajeBaratoC = Math.round(((datos[16][2]*100)/datos[8])*100)/100;
+          porcentajeBaratoA = Math.round((datos[16][0]*100)/datos[8]);
+          porcentajeBaratoB = Math.round((datos[16][1]*100)/datos[8]);
+          porcentajeBaratoC = Math.round((datos[16][2]*100)/datos[8]);
         }
+
         $("#porcentajeCaroA").text(porcentajeCaroA+"%");
         $("#cantidadCaroA").text(datos[14][0]);
         $("#porcentajeCaroB").text(porcentajeCaroB+"%");
@@ -136,6 +150,10 @@ $(document).ready(function(){
         $("#totalCantidadB").text(datos[14][1]+datos[15][1]+datos[16][1]);
         $("#totalPorcentajeC").text("100%");
         $("#totalCantidadC").text(datos[14][2]+datos[15][2]+datos[16][2]);
+        $("#variacionPorcentajeCaro").text(datos[18]);
+        $("#variacionPorcentajeBarato").text(datos[19]);
+        $("#variacionPesosCaro").text(datos[20]);
+        $("#variacionPesosBarato").text(datos[21]);
 
         // alert((porcentajeCaroA+porcentajeCaroB+porcentajeCaroC));
         //alert(datos[9][0]+" "+datos[9][1]);
@@ -150,9 +168,9 @@ $(document).ready(function(){
             $('<tr class="Caro">'+
                 '<td>'+datos[9][i]+'</td>'+
                 '<td>'+datos[10][i]+'</td>'+
-                '<td>'+datos[11][i]+'</td>'+
+                '<td>'+"$"+datos[11][i]+'</td>'+
                 '<td>'+datos[12][i]+'</td>'+
-                '<td>'+datos[13][i]+'</td>'+
+                '<td>'+"$"+datos[13][i]+'</td>'+
               '</tr>').appendTo(cuerpoTabla);
               caro++;
           }
@@ -160,9 +178,9 @@ $(document).ready(function(){
             $('<tr class="Igual">'+
                 '<td>'+datos[9][i]+'</td>'+
                 '<td>'+datos[10][i]+'</td>'+
-                '<td>'+datos[11][i]+'</td>'+
+                '<td>'+"$"+datos[11][i]+'</td>'+
                 '<td>'+datos[12][i]+'</td>'+
-                '<td>'+datos[13][i]+'</td>'+
+                '<td>'+"$"+datos[13][i]+'</td>'+
               '</tr>').appendTo(cuerpoTabla);
               igual++;
           }
@@ -170,9 +188,9 @@ $(document).ready(function(){
             $('<tr class="Barato">'+
                 '<td>'+datos[9][i]+'</td>'+
                 '<td>'+datos[10][i]+'</td>'+
-                '<td>'+datos[11][i]+'</td>'+
+                '<td>'+"$"+datos[11][i]+'</td>'+
                 '<td>'+datos[12][i]+'</td>'+
-                '<td>'+datos[13][i]+'</td>'+
+                '<td>'+"$"+datos[13][i]+'</td>'+
               '</tr>').appendTo(cuerpoTabla);
               barato++;
           }

@@ -97,9 +97,9 @@ function get_data_callback(){
       }
       $('<tr>'+
         '<td id="folio'+contador+'">'+elem.id_apa+'</td>'+
-        '<td>'+elem.precio_apa+'</td>'+
+        '<td>'+"$"+elem.precio_apa+'</td>'+
         '<td>'+elem.id_vazlo+'</td>'+
-        '<td>'+elem.precio_vazlo+'</td>'+
+        '<td>'+"$"+elem.precio_vazlo+'</td>'+
         '<td><input type="button" class="btn btn-info" value="Ver" onclick='+click+' /></td>'+
         // '<td><input type="button" class="btn btn-warning" value="Editar" onclick='+click2+' /></td>'+
         // '<td><input type="button" class="btn btn-warning" value="Editar" onclick='+click+'/></td>'+

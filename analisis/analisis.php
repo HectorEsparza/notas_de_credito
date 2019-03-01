@@ -77,14 +77,14 @@
 		<br /><br /><br />
 	<div class="container" id="principal">
 	<!--<table class="table table-striped table-hover">-->
-	<table  border=1 align='center'>
+	<table  border=1 align='center' width="500px" style="text-align: center;">
 		<thead>
-			<tr>
-				<th>ID APA</th>
-				<th>Precio</th>
-				<th>ID Vazlo</th>
-				<th>Precio</th>
-        <th>Info</th>
+			<tr style="font-weight: bold;">
+				<td>ID APA</td>
+				<td>Precio</td>
+				<td>ID Vazlo</td>
+				<td>Precio</td>
+        <td>Info</td>
 			</tr>
 		</thead>
 		<tbody id="table">
