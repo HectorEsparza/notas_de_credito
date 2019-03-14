@@ -16,8 +16,9 @@
     $precioVazlo = 0.00;
   }
 
+  //echo $idApa . " " . $descripcion . " " . $precio . " " . $linea . " " . $sublinea . " " . $idVazlo . " " . $precioVazlo;
   $base = conexion_local();
-  $consulta = "INSERT INTO PRODUCTOS1(ID_APA, DESCRIPCION, PRECIO, LINEA, SUBLINEA, ID_VAZLO, PRECIO_VAZLO, IMPORTANCIA)
+  $consulta = "INSERT INTO PRODUCTOS1(CLAVEDEARTÍCULO, DESCRIPCIÓN, PRECIO, LINEA, SUBLINEA, ID_VAZLO, PRECIO_VAZLO, IMPORTANCIA)
                       VALUES(?,?,?,?,?,?,?,?)";
   $resultado = $base->prepare($consulta);
   $resultado->execute(array($idApa, $descripcion, $precio, $linea, $sublinea, $idVazlo, $precioVazlo, $importancia));

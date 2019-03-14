@@ -4,6 +4,7 @@
   $sublinea = $_POST['sublinea'];
   $descuentoApa = $_POST['descuentoApa'];
   $descuentoVazlo = $_POST['descuentoVazlo'];
+  $descuentoAdicional = $_POST['descuentoAdicional'];
   $idApa = array();
   $precioApa = array();
   $idVazlo = array();
@@ -11,6 +12,7 @@
   $importancia = array();
   $cont = 0;
   $base = conexion_local();
+  $respuesta = "";
 
   //Si se escogen todos los productos
   if($linea=="Total"){
@@ -36,7 +38,13 @@
       $idApa[$cont] = $registro[0];
       $precioApa[$cont] = $registro[1];
       $idVazlo[$cont] = $registro[2];
-      $precioVazlo[$cont] = $registro[3];
+      if($descuentoAdicional=="true"){
+        $precioVazlo[$cont] = subAdicional(5, $registro[3]);
+        $precioVazlo[$cont] = round($precioVazlo[$cont] * 100)/100;
+      }
+      else{
+        $precioVazlo[$cont] = $registro[3];
+      }
       $importancia[$cont] = $registro[4];
 
       $cont++;
@@ -46,5 +54,5 @@
   $resultado->closeCursor();
 
   echo json_encode(reportePrecios($precioApa, $precioVazlo, $descuentoApa, $descuentoVazlo, $importancia, $idApa, $idVazlo));
-
+  //echo json_encode($linea, $sublinea, $descuentoApa, $descuentoVazlo);
 ?>

@@ -12,6 +12,7 @@
     <script type="text/javascript" src="ajax/eventos/lineas.js"></script>
     <script type="text/javascript" src="ajax/eventos/consultas.js"></script>
     <script type="text/javascript" src="ajax/eventos/nivelImportancia.js"></script>
+    <script type="text/javascript" src="ajax/eventos/limpiaFiltro.js"></script>
     <style media="screen">
       #caros, .Caro{
         background: #FC6C6C;
@@ -93,8 +94,12 @@
           </select>
         </p>
       </div>
-      <div class="container col-md-3">
-
+      <div class="container col-md-3" style="margin-top:100px;">
+        <p>
+          <input type="button" class="btn btn-info" value="Limpiar Filtos" id="limpiaFiltro" />
+        </p>
+        <input type="checkbox" name="descuentoAdicional" id="descuentoAdicional"/>
+        <label for="descuentoAdicional">CEDIS 5%</label>
       </div>
     </div>
     <!-- <div class="row" style="margin-left: 400px; margin-top:50px; ">

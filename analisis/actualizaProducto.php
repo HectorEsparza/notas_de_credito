@@ -19,11 +19,13 @@ if($precioVazlo==""){
   $precioVazlo = 0.00;
 }
 
+  // echo $anteriorApa . " " . $anteriorVazlo . "<br />";
+  // echo $idApa . " " . $descripcion . " " . $precio . " " . $linea . " " . $sublinea . " " . $idVazlo . " " . $precioVazlo . " " . $importancia;
 //echo $anteriorApa . " " . $anteriorVazlo;
 $base = conexion_local();
-$consulta = "UPDATE PRODUCTOS1 SET ID_APA=?, DESCRIPCION=?, PRECIO=?, LINEA=?, SUBLINEA=?, ID_VAZLO=?, IMPORTANCIA=? WHERE ID_APA=?";
+$consulta = "UPDATE PRODUCTOS1 SET CLAVEDEARTÍCULO=?, DESCRIPCIÓN=?, PRECIO=?, LINEA=?, SUBLINEA=?, ID_VAZLO=?, PRECIO_VAZLO=?, IMPORTANCIA=? WHERE CLAVEDEARTÍCULO=?";
 $resultado = $base->prepare($consulta);
-$resultado->execute($idApa, $descripcion, $precio, $linea, $sublinea, $idVazlo, $importancia, $anteriorApa);
+$resultado->execute(array($idApa, $descripcion, $precio, $linea, $sublinea, $idVazlo, $precioVazlo, $importancia, $anteriorApa));
 $resultado->closeCursor();
 
 header("location:analisis.php");

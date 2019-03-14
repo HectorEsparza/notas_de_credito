@@ -6,7 +6,7 @@ $(document).ready(function(){
         precio = $("#precio"), linea = $("#linea"),
         sublinea = $("#sublinea"), idVazlo = $("#idVazlo"),
         idVazlo = $("#idVazlo"), precioVazlo = $("#precioVazlo"),
-        boton = $("#envio");
+        importancia = $("#importancia"), boton = $("#envio");
 
         idApa.prop("readonly", false);
         descripcion.prop("readonly", false);
@@ -15,6 +15,7 @@ $(document).ready(function(){
         sublinea.prop("disabled", false);
         idVazlo.prop("readonly", false);
         precioVazlo.prop("readonly", false);
+        importancia.prop("readonly", false);
         boton.prop("disabled", false);
 
   });

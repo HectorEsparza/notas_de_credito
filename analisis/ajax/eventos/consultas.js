@@ -1,29 +1,40 @@
 $(document).ready(function(){
 
-  var linea = $("#linea"), sublinea = $("#sublinea"), descuentoApa = $("#descuentoApa"), descuentoVazlo = $("#descuentoVazlo");
+  var linea = $("#linea"), sublinea = $("#sublinea"), descuentoApa = $("#descuentoApa"), descuentoVazlo = $("#descuentoVazlo"), descuentoAdicional = $("#descuentoAdicional");
 
   linea.change(function(){
-    if(linea.val()!=""&&sublinea.val()!=""&&descuentoApa.val()!=""&&descuentoVazlo.val()!=""){
+    if(linea.val()!=""&&sublinea.val()!=""&&descuentoApa.val()>0&&descuentoVazlo.val()>0){
       // alert("Activado AJAX");
       enviar();
+      //console.log(descuentoAdicional.prop("checked"));
     }
   });
   sublinea.change(function(){
-    if(linea.val()!=""&&sublinea.val()!=""&&descuentoApa.val()!=""&&descuentoVazlo.val()!=""){
+    if(linea.val()!=""&&sublinea.val()!=""&&descuentoApa.val()>0&&descuentoVazlo.val()>0){
       // alert("Activado AJAX");
       enviar();
+      //console.log(descuentoAdicional.prop("checked"));
     }
   });
   descuentoApa.change(function(){
-    if(linea.val()!=""&&sublinea.val()!=""&&descuentoApa.val()!=""&&descuentoVazlo.val()!=""){
+    if(linea.val()!=""&&sublinea.val()!=""&&descuentoApa.val()>0&&descuentoVazlo.val()>0){
       // alert("Activado AJAX");
       enviar();
+      //console.log(descuentoAdicional.prop("checked"));
     }
   });
   descuentoVazlo.change(function(){
-    if(linea.val()!=""&&sublinea.val()!=""&&descuentoApa.val()!=""&&descuentoVazlo.val()!=""){
+    if(linea.val()!=""&&sublinea.val()!=""&&descuentoApa.val()>0&&descuentoVazlo.val()>0){
       // alert("Activado AJAX");
       enviar();
+      //console.log(descuentoAdicional.prop("checked"));
+    }
+  });
+  descuentoAdicional.click(function(){
+    if(linea.val()!=""&&sublinea.val()!=""&&descuentoApa.val()>0&&descuentoVazlo.val()>0){
+      // alert("Activado AJAX");
+      enviar();
+      //console.log(descuentoAdicional.prop("checked"));
     }
   });
   function enviar(){
@@ -37,6 +48,7 @@ $(document).ready(function(){
       sublinea: sublinea.val(),
       descuentoApa: descuentoApa.val(),
       descuentoVazlo: descuentoVazlo.val(),
+      descuentoAdicional: descuentoAdicional.prop("checked"),
     }
     $.ajax({
         async: true, //Activar la transferencia asincronica
@@ -61,6 +73,9 @@ $(document).ready(function(){
   }
 
   function llegada(datos){
+      //Vaciamos la información de consultas anteriores
+      $("#tablaNivel").empty();
+      $("#nivel").hide();
       //Solamente si existen datos se desplegarán en las tablas
       if(datos[0]>0){
         if(datos[1]>0){
@@ -72,13 +87,13 @@ $(document).ready(function(){
           $("#cantidad").css("color", "red");
         }
         $("#productos").text(datos[0]);
-        $("#porcentaje").text(datos[1]+"%");
-        $("#cantidad").text(datos[2]);
-        $("#porcentajeCaro").text(datos[3]+"%");
+        $("#porcentaje").text(Math.round(datos[1])+"%");
+        $("#cantidad").text(Math.round(datos[2]));
+        $("#porcentajeCaro").text(Math.round(datos[3])+"%");
         $("#cantidadCaro").text(datos[4]);
-        $("#porcentajeIgual").text(datos[5]+"%");
+        $("#porcentajeIgual").text(Math.round(datos[5])+"%");
         $("#cantidadIgual").text(datos[6]);
-        $("#porcentajeBarato").text(datos[7]+"%");
+        $("#porcentajeBarato").text(Math.round(datos[7])+"%");
         $("#cantidadBarato").text(datos[8]);
         $("#totalPorcentaje").text("100%");
         $("#totalCantidad").text(datos[0]);
@@ -150,10 +165,10 @@ $(document).ready(function(){
         $("#totalCantidadB").text(datos[14][1]+datos[15][1]+datos[16][1]);
         $("#totalPorcentajeC").text("100%");
         $("#totalCantidadC").text(datos[14][2]+datos[15][2]+datos[16][2]);
-        $("#variacionPorcentajeCaro").text(datos[18]);
-        $("#variacionPorcentajeBarato").text(datos[19]);
-        $("#variacionPesosCaro").text(datos[20]);
-        $("#variacionPesosBarato").text(datos[21]);
+        $("#variacionPorcentajeCaro").text(Math.round(datos[18]));
+        $("#variacionPorcentajeBarato").text(Math.round(datos[19]));
+        $("#variacionPesosCaro").text(Math.round(datos[20]));
+        $("#variacionPesosBarato").text(Math.round(datos[21]));
 
         // alert((porcentajeCaroA+porcentajeCaroB+porcentajeCaroC));
         //alert(datos[9][0]+" "+datos[9][1]);
