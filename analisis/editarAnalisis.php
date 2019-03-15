@@ -10,8 +10,8 @@
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="ajax/js/jquery-ui.js"></script>
     <script type="text/javascript" src="ajax/eventos/activaEnvio.js"></script>
-    <script type="text/javascript" src="ajax/eventos/idRepetido.js"></script>
-    <script type="text/javascript" src="ajax/eventos/idRepetidoVazlo.js"></script>
+    <!-- <script type="text/javascript" src="ajax/eventos/idRepetido.js"></script>
+    <script type="text/javascript" src="ajax/eventos/idRepetidoVazlo.js"></script> -->
     <script type="text/javascript" src="ajax/eventos/activaCampos.js"></script>
   </head>
   <body>
@@ -65,7 +65,7 @@
     <div class="row">
       <div class="container col-md-8">
         <table style="margin-top: 25px; margin-left: 100px;"class="table table-bordered table-condensed table-responsive">
-          <form action='actualizaProducto.php' method='post'>
+          <!-- <form action='actualizaProducto.php' method='post'> -->
              <tr>
                <td colspan=2 align='center'><img src='imagenes/apa.jpg' class="img-responsive"></td>
              </tr>
@@ -133,7 +133,7 @@
              <tr>
                <div class="form-group">
                  <th><label for="precioVazlo">Precio Vazlo</label></th>
-                 <td><input class="form-control" id="precioVazlo" type='text' value="<?= $precioVazlo?>" name='precioVazlo' readonly></td>
+                 <td><input class="form-control" id="precioVazlo" type='number' step="any" value="<?= $precioVazlo?>" name='precioVazlo' readonly></td>
                </div>
              </tr>
              <tr>
@@ -142,12 +142,12 @@
                  <td><input class="form-control" id="importancia" type='text' value="<?= $importancia?>" name='importancia' readonly></td>
                </div>
              </tr>
-             <input type="hidden" name="anteriorApa" value="<?= $idApa ?>" />
+             <input type="hidden" name="anteriorApa" id="anteriorApa" value="<?= $idApa ?>" />
              <input type="hidden" name="anteriorVazlo" value="<?= $idVazlo ?>" />
              <tr>
-               <td align='center' colspan=2><input type='submit' name='inicio' value='Confirmar' id="envio" class="btn btn-success" disabled></td>
+               <td align='center' colspan=2><input type='button' name='inicio' value='Confirmar' id="envio" class="btn btn-success" disabled></td>
              </tr>
-          </form>
+          <!-- </form> -->
 
         </table>
       </div>
