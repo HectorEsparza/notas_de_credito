@@ -55,11 +55,8 @@ $(document).ready(function(){
         alert("La actualización del producto se realizó con éxito");
         setTimeout("location.href='analisis.php'",500);
       }
-      else if(datos=="repetido"){
-        alert("No se pudo realizar la actualización del producto, porque el ID APA ya existe");
-      }
       else if(datos=="vacio"){
-        alert("No se pudo realizar la actualización del producto, porque no introdujo un ID APA");
+        alert("No se pudo realizar la actualización del producto");
       }
 
   }

@@ -26,18 +26,6 @@
   // echo json_encode($arreglo);
 
   if($idApa!=""){
-    $base = conexion_local();
-    $consulta = "SELECT CLAVEDEARTÍCULO FROM PRODUCTOS1";
-    $resultado = $base->prepare($consulta);
-    $resultado->execute(array());
-    while($registro = $resultado->fetch(PDO::FETCH_NUM)){
-      if($idApa==$registro[0]){
-        $contador++;
-      }
-    }
-    $resultado->closeCursor();
-
-    if($contador==0){
       if($idVazlo==""){
         $idVazlo="NA";
       }
@@ -51,17 +39,12 @@
         $importancia="C";
       }
 
+      $base = conexion_local();
       $consulta = "UPDATE PRODUCTOS1 SET CLAVEDEARTÍCULO=?, DESCRIPCIÓN=?, PRECIO=?, LINEA=?, SUBLINEA=?, ID_VAZLO=?, PRECIO_VAZLO=?, IMPORTANCIA=? WHERE CLAVEDEARTÍCULO=?";
       $resultado = $base->prepare($consulta);
       $resultado->execute(array($idApa, $descripcion, $precio, $linea, $sublinea, $idVazlo, $precioVazlo, $importancia, $anteriorApa));
       $resultado->closeCursor();
       echo "exito";
-    }
-    else{
-      echo "repetido";
-    }
-
-
   }
   else{
     echo "vacio";

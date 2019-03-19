@@ -8,7 +8,7 @@ $(document).ready(function(){
         idVazlo = $("#idVazlo"), precioVazlo = $("#precioVazlo"),
         importancia = $("#importancia"), boton = $("#envio");
 
-        idApa.prop("readonly", false);
+        idApa.prop("readonly", true);
         descripcion.prop("readonly", false);
         precio.prop("readonly", false);
         linea.prop("disabled", false);
