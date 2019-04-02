@@ -135,6 +135,141 @@ $(document).ready(function(){
       enviar();
     });
 
+    $("#factura16").change(function(){
+      var mayuscula = $("#factura16").val();
+      mayuscula = mayuscula.toUpperCase();
+      $("#factura16").val(mayuscula);
+      $("#factura").val($("#factura16").val());
+      $("#indice").val("16");
+      enviar();
+    });
+
+    $("#factura17").change(function(){
+      var mayuscula = $("#factura17").val();
+      mayuscula = mayuscula.toUpperCase();
+      $("#factura17").val(mayuscula);
+      $("#factura").val($("#factura17").val());
+      $("#indice").val("17");
+      enviar();
+    });
+
+    $("#factura18").change(function(){
+      var mayuscula = $("#factura18").val();
+      mayuscula = mayuscula.toUpperCase();
+      $("#factura18").val(mayuscula);
+      $("#factura").val($("#factura18").val());
+      $("#indice").val("18");
+      enviar();
+    });
+
+    $("#factura19").change(function(){
+      var mayuscula = $("#factura19").val();
+      mayuscula = mayuscula.toUpperCase();
+      $("#factura19").val(mayuscula);
+      $("#factura").val($("#factura19").val());
+      $("#indice").val("19");
+      enviar();
+    });
+
+    $("#factura20").change(function(){
+      var mayuscula = $("#factura20").val();
+      mayuscula = mayuscula.toUpperCase();
+      $("#factura20").val(mayuscula);
+      $("#factura").val($("#factura20").val());
+      $("#indice").val("20");
+      enviar();
+    });
+
+    $("#factura21").change(function(){
+      var mayuscula = $("#factura21").val();
+      mayuscula = mayuscula.toUpperCase();
+      $("#factura21").val(mayuscula);
+      $("#factura").val($("#factura21").val());
+      $("#indice").val("21");
+      enviar();
+    });
+
+    $("#factura22").change(function(){
+      var mayuscula = $("#factura22").val();
+      mayuscula = mayuscula.toUpperCase();
+      $("#factura22").val(mayuscula);
+      $("#factura").val($("#factura22").val());
+      $("#indice").val("22");
+      enviar();
+    });
+
+    $("#factura23").change(function(){
+      var mayuscula = $("#factura23").val();
+      mayuscula = mayuscula.toUpperCase();
+      $("#factura23").val(mayuscula);
+      $("#factura").val($("#factura23").val());
+      $("#indice").val("23");
+      enviar();
+    });
+
+    $("#factura24").change(function(){
+      var mayuscula = $("#factura24").val();
+      mayuscula = mayuscula.toUpperCase();
+      $("#factura24").val(mayuscula);
+      $("#factura").val($("#factura24").val());
+      $("#indice").val("24");
+      enviar();
+    });
+
+    $("#factura25").change(function(){
+      var mayuscula = $("#factura25").val();
+      mayuscula = mayuscula.toUpperCase();
+      $("#factura25").val(mayuscula);
+      $("#factura").val($("#factura25").val());
+      $("#indice").val("25");
+      enviar();
+    });
+
+    $("#factura26").change(function(){
+      var mayuscula = $("#factura26").val();
+      mayuscula = mayuscula.toUpperCase();
+      $("#factura26").val(mayuscula);
+      $("#factura").val($("#factura26").val());
+      $("#indice").val("26");
+      enviar();
+    });
+
+    $("#factura27").change(function(){
+      var mayuscula = $("#factura27").val();
+      mayuscula = mayuscula.toUpperCase();
+      $("#factura27").val(mayuscula);
+      $("#factura").val($("#factura27").val());
+      $("#indice").val("27");
+      enviar();
+    });
+
+    $("#factura28").change(function(){
+      var mayuscula = $("#factura28").val();
+      mayuscula = mayuscula.toUpperCase();
+      $("#factura28").val(mayuscula);
+      $("#factura").val($("#factura28").val());
+      $("#indice").val("28");
+      enviar();
+    });
+
+    $("#factura29").change(function(){
+      var mayuscula = $("#factura29").val();
+      mayuscula = mayuscula.toUpperCase();
+      $("#factura29").val(mayuscula);
+      $("#factura").val($("#factura29").val());
+      $("#indice").val("29");
+      enviar();
+    });
+
+    $("#factura30").change(function(){
+      var mayuscula = $("#factura30").val();
+      mayuscula = mayuscula.toUpperCase();
+      $("#factura30").val(mayuscula);
+      $("#factura").val($("#factura30").val());
+      $("#indice").val("30");
+      enviar();
+    });
+
     function enviar(){
       // var total = $("#totalNota").val();
       // var penalizacion = $("#penalizacionNota").val();
@@ -168,15 +303,28 @@ $(document).ready(function(){
       var total = 0;
       var subtotal = 0;
       var auxiliar = [];
+      var siguienteFila = parseInt(datos[3], 10);
+      siguienteFila += 1;
+      //activamos el boton de guardar
+      if(datos[3]==1&&datos[2]>0){
+        $("#guardar").prop("disabled", false);
+      }
+      else if(datos[3]==1&&datos[2]==0){
+        $("#guardar").prop("disabled", true);
+      }
       $("#cliente"+datos[3]).text(datos[0]);
       $("#nombre"+datos[3]).text(datos[1]);
       if(datos[2]>0){
         $("#importe"+datos[3]).text("$"+datos[2]);
+        //desbloqueamos la siguiente fila para que introduzcan otra factura
+        $("#factura"+siguienteFila).prop("readonly", false);
+        $("#metodo"+siguienteFila).prop("disabled", false);
+        $("#observaciones"+siguienteFila).prop("readonly", false);
       }
       else{
         $("#importe"+datos[3]).text("");
       }
-      for (var j = 1; j<=15; j++){
+      for (var j = 1; j<=$("#filas").val(); j++){
         if(document.getElementById('importe'+j).innerText==""){
           auxiliar[j] = 0;
         }
@@ -189,8 +337,7 @@ $(document).ready(function(){
         subtotal = subtotal + auxiliar[j];
       }
       $("#total").text("$"+subtotal);
-
-
+      console.log(siguienteFila);
       //console.log("Se activo la factura "+datos[0]+", con folio "+datos[1]);
       //alert(datos);
     }

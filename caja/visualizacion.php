@@ -78,6 +78,7 @@
 			<tr style="font-weight: bold;">
 				<td>ID Cobranza</td>
 				<td>Fecha</td>
+				<td>Total</td>
 				<td>Usuario</td>
         <td>Info</td>
 			</tr>
@@ -112,7 +113,7 @@
 <!--<script src="ajax/js/jquery-2.min.js"></script>-->
 <script src="ajax/js/bootstrap.min.js"></script>
 <script src="ajax/js/paginator.min.js"></script>
-<!-- <script src="ajax/js/main.js"></script> -->
+<script src="ajax/js/main.js"></script>
 <!-- <script src="ajax/eventos/cierreInactividad.js"></script> -->
 
 

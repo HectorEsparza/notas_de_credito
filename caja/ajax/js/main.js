@@ -84,23 +84,12 @@ function get_data_callback(){
       //console.log("El departamento desde main es "+elem.departamento);
       //console.log("El status es: "+elem.status);
       // departamento = departamento.split("_");
-
-      // alert(elem.bancomer);
-      //alert(elem.empleado);
-
-
-      if(elem.id_vazlo==null){
-        elem.id_vazlo = "NA";
-      }
-      if(elem.precio_vazlo==null){
-        elem.precio_vazlo = "NA"
-      }
       $('<tr>'+
-        '<td id="folio'+contador+'">'+elem.id_apa+'</td>'+
-        '<td>'+"$"+elem.precio_apa+'</td>'+
-        '<td>'+elem.id_vazlo+'</td>'+
-        '<td>'+"$"+elem.precio_vazlo+'</td>'+
-        '<td><input type="button" class="btn btn-info" value="Ver" onclick='+click+' /></td>'+
+        '<td id="folio'+contador+'">'+elem.clave+'</td>'+
+        '<td>'+elem.fecha+'</td>'+
+        '<td>'+"$"+elem.total+'</td>'+
+        '<td>'+elem.usuario+'</td>'+
+        '<td><input type="button" class="btn btn-info btn-sm" value="Ver" onclick='+click+' /></td>'+
         // '<td><input type="button" class="btn btn-warning" value="Editar" onclick='+click2+' /></td>'+
         // '<td><input type="button" class="btn btn-warning" value="Editar" onclick='+click+'/></td>'+
       '</tr>').appendTo($("#table"));

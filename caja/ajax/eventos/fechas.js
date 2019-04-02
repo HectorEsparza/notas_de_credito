@@ -17,6 +17,17 @@ $(document).ready(function(){
     // console.log("Prueba");
     $("#fecha").val("");
     $("#fechaDeCargas").text("");
+    //Se bloquea la primera fila
+    $("#factura1").prop("readonly", true);
+    $("#metodo1").prop("disabled", true);
+    $("#observaciones1").prop("readonly", true);
+    //Borramos la fecha de carga
+    $("#fechaCaptura").val("");
+    //Borramos el folio de carga
+    $("#folio").val("");
+    //Bloqueamos el boton de Guardar
+    $("#guardar").prop("disabled", true);
+
 
   });
 
@@ -30,7 +41,7 @@ $(document).ready(function(){
     // console.log(total);
     var parametros =
     {
-
+      fecha: $("#fecha").val(),
     }
     $.ajax({
         async: true, //Activar la transferencia asincronica
@@ -53,23 +64,44 @@ $(document).ready(function(){
   }
 
   function llegada(datos){
+    //Combropamos si la fecha elegina en el reporte de cobranza esta disponible
+    if(datos[1]=="fechaNoDisponoble"){
+      $("#fecha").val("");
+      $("#fechaDeCargas").text("");
+      alert("La fecha elegida ya ha sido seleccionada en un reporte de cobranza anterior, elegir otra fecha por favor");
+    }
+    else{
+      var fecha = $("#fecha").val();
+      fecha = fecha.split("/");
+      function diaSemana(dia,mes,anio,mesEspanol){
+          var dias=["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+          let meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Augosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+          var dt = new Date(mes+' '+dia+', '+anio+' 12:00:00');
+          document.getElementById('fechaDeCargas').innerHTML = "Reporte de Cobranza "+dias[dt.getUTCDay()]+" "+dia+" de "+meses[mesEspanol]+" "+anio+" "+"PB"+datos[0];
+          //Guardamos la fecha de carga
+          $("#fechaCaptura").val($("#fecha").val());
+          //Guardamos el folio de carga
+          $("#folio").val("PB"+datos[0]);
+      };
+      let meses = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      var dia = fecha[0];
+      var mes = meses[parseInt(fecha[1])-1];
+      var anio= fecha[2];
+      var mesEspanol = parseInt(fecha[1])-1;
+      diaSemana(dia, mes,anio,mesEspanol);
 
-    var fecha = $("#fecha").val();
-    fecha = fecha.split("/");
-    function diaSemana(dia,mes,anio,mesEspanol){
-        var dias=["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
-        let meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Augosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-        var dt = new Date(mes+' '+dia+', '+anio+' 12:00:00');
-        document.getElementById('fechaDeCargas').innerHTML = dias[dt.getUTCDay()]+" "+dia+" de "+meses[mesEspanol]+" "+anio+" "+"PB"+datos;
-    };
-    let meses = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    var dia = fecha[0];
-    var mes = meses[parseInt(fecha[1])-1];
-    var anio= fecha[2];
-    var mesEspanol = parseInt(fecha[1])-1;
-    diaSemana(dia, mes,anio,mesEspanol);
+      console.log("Cambio la fecha " + mes);
+      //Activamos la primera fila, para poder introducir facturas
+      $("#factura1").prop("readonly", false);
+      $("#metodo1").prop("disabled", false);
+      $("#observaciones1").prop("readonly", false);
+      //Activamos el boton de Guardar, solo si la primera fila esta capturada
+      if($("#factura1").val()!=""&&$("#cliente1").text()!=""){
+        $("#guardar").prop("disabled", false);
+      }
 
-    console.log("Cambio la fecha " + mes);
+    }
+
 
   }
 

@@ -10,11 +10,15 @@
 	<script type="text/javascript" src="ajax/js/filtro.js"></script>
   <script type="text/javascript" src="ajax/eventos/fechas.js"></script>
 	<script type="text/javascript" src="ajax/eventos/llamarFacturas.js"></script>
-	<!-- <script type="text/javascript" src="ajax/eventos/importeTotal.js"></script> -->
-	<!-- <script type="text/javascript" src="ajax/js/limpia.js"></script> -->
+	<script type="text/javascript" src="ajax/eventos/agregaFila.js"></script>
+	<script type="text/javascript" src="ajax/eventos/guardar.js"></script>
 	<!-- <script type="text/javascript" src="ajax/js/limpiaFiltro.js"></script> -->
 </head>
 <body>
+	<?php
+		session_start();
+		$usuario = $_SESSION['user'];
+	?>
   <div class="row">
     <div class="container col-md-4" style="margin-left: 500px">
       <h1>Captura Nueva Cobranza</h1>
@@ -50,11 +54,12 @@
           <td><strong>Observaciones</strong></td>
         </tr>
 				<tbody id="cuerpo">
-					<?php for($i=1;$i<=15;$i++):?>
+					<?php for($i=1;$i<=30;$i++):?>
+						<?php if($i<=15): ?>
 						<tr>
-							<td><input type='text' id="factura<?= $i?>" style="width: 100px; height: 20px;"/></td>
+							<td><input type='text' id="factura<?= $i?>" style="width: 100px; height: 20px;" readonly/></td>
 							<td>
-								<select id="metodo<?= $i?>">
+								<select id="metodo<?= $i?>" disabled>
 									<option value=""></option>
 									<option value="Firma">Firma</option>
 									<option value="Contado">Contado</option>
@@ -65,8 +70,26 @@
 							<td id="cliente<?= $i?>"></td>
 							<td id="nombre<?= $i?>"></td>
 							<td id="importe<?= $i?>"></td>
-							<td><input type='text' id="observaciones<?= $i?>" style="width: 100px; height: 20px;" /></td>
+							<td><input type='text' id="observaciones<?= $i?>" style="width: 100px; height: 20px;" readonly/></td>
 						</tr>
+					<?php else: ?>
+						<tr id="fila<?= $i?>" hidden>
+							<td><input type='text' id="factura<?= $i?>" style="width: 100px; height: 20px;" readonly/></td>
+							<td>
+								<select id="metodo<?= $i?>" disabled>
+									<option value=""></option>
+									<option value="Firma">Firma</option>
+									<option value="Contado">Contado</option>
+									<option value="Transferencia">Transferencia</option>
+									<option value="Guía">Guía</option>
+								</select>
+							</td>
+							<td id="cliente<?= $i?>"></td>
+							<td id="nombre<?= $i?>"></td>
+							<td id="importe<?= $i?>"></td>
+							<td><input type='text' id="observaciones<?= $i?>" style="width: 100px; height: 20px;" readonly/></td>
+						</tr>
+					<?php endif ?>
 					<?php endfor ?>
 				</tbody>
 				<tfoot>
@@ -74,9 +97,13 @@
 						<td colspan="3"><input type="button" value="Agregar" id="agregar" class="btn btn-info btn-sm" /></<td>
 						<td><strong>Total</strong></td>
 						<td id="total">$0</td>
-						<td><input type="button" value="Guardar" id="guardar" class="btn btn-success btn-sm" /></td>
+						<td><input type="button" value="Guardar" id="guardar" class="btn btn-success btn-sm" disabled/></td>
 						<input type="hidden" id="indice" value="" />
 						<input type="hidden" id="factura" value="" />
+						<input type="hidden" id="filas" value="15" />
+						<input type="hidden" id="folio" value="" />
+						<input type="hidden" id="fechaCaptura" value="" />
+						<input type="hidden" id="usuario" value="<?= $usuario?>" />
 					</tr>
 				</tfoot>
       </table>
