@@ -84,6 +84,8 @@ function get_data_callback(){
       //console.log("El departamento desde main es "+elem.departamento);
       //console.log("El status es: "+elem.status);
       // departamento = departamento.split("_");
+
+    
       $('<tr>'+
         '<td id="folio'+contador+'">'+elem.clave+'</td>'+
         '<td>'+elem.fecha+'</td>'+

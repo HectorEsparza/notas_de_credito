@@ -141,8 +141,7 @@
 
 										setTimeout("location.href='../home.php'", 500);
 									});
-			});
-			$(document).ready(function(){
+
 
 				$('#fecha').datepicker();
 			});
@@ -155,7 +154,7 @@
           setTimeout("location.href='analisis.php'",500);
       }
 			function ver(folio){
-					setTimeout("location.href='editarAnalisis.php?folio="+folio+"'");
+					setTimeout("location.href='impresion.php?folio="+folio+"'");
 			}
 			function exportar(){
 				alert("Exportación en proceso");
