@@ -152,6 +152,7 @@
         </table>
       </div>
     </div>
+    <script src="ajax/eventos/cierreInactividad.js"></script>
     <script>
       function visualizar(){
           setTimeout("location.href='analisis.php'",500);

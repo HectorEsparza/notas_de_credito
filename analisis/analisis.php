@@ -118,7 +118,7 @@
 <script src="ajax/js/bootstrap.min.js"></script>
 <script src="ajax/js/paginator.min.js"></script>
 <script src="ajax/js/main.js"></script>
-<!-- <script src="ajax/eventos/cierreInactividad.js"></script> -->
+<script src="ajax/eventos/cierreInactividad.js"></script>
 
 
 <script type="text/javascript">
