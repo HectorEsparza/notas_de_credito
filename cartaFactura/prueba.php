@@ -53,11 +53,6 @@
       header("location:../index.html");
     }
 
-    elseif($departamento!="VENTAS")
-    {
-      header("location:../home.php");
-    }
-
     $pedido = $_GET['folio'];
     $cantidad = array();
     $clave = array();

@@ -53,20 +53,10 @@
     $user = $registro[2];
     $gerente = $registro[1];
 
-
-
-    if(!isset($usuario))
-    {
+    if(!isset($usuario)){
       header("location:../index.html");
     }
-
-    elseif($departamento!="VENTAS")
-    {
-      header("location:../home.php");
-    }
-
   ?>
-
 
       <input type="hidden" id='user' value=<?= $user?> />
       <input type="hidden" id='gerente' value=<?= $gerente?> />
@@ -310,7 +300,11 @@
     // var tipoDevolucion = document.getElementById('tipo');
     // // var valorDevolucion = document.getElementById('tipo').value;
     // tipoDevolucion.addEventListener('change', folio(document.getElementById('tipo').value));
-
+    // addEventListener(document, "touchstart", function(e) {
+    //   console.log(e.defaultPrevented);  // will be false
+    //   e.preventDefault();   // does nothing since the listener is passive
+    //   console.log(e.defaultPrevented);  // still false
+    // }, Modernizr.passiveeventlisteners ? {passive: true} : false);
     var lis = [];
     for (var i = 1; i <=25; i++)
     {

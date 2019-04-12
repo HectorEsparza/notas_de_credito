@@ -52,6 +52,11 @@
         color: #000000;
         width: 150px;
       }
+      #caja{
+        background: #9B63FC;
+        color: #000000;
+        width: 150px;
+      }
       #imagen{
         width: 150px;
         height: 75px;
@@ -128,9 +133,13 @@
             <div class="container col-md-4">
               <input type="button" id="analisis" value="Listas de Precios" class="btn btn-primary" />
             </div>
+            <div class="container col-md-4">
+              <input type="button" id="caja" value="Caja" class="btn btn-primary" />
+            </div>
           </div>
      </div>
     </section>
+    <script src="notaCredito/ajax/eventos/cierreInactividad.js"></script>
     <script>
       $(document).ready(function(){
 
@@ -139,80 +148,90 @@
 
         if(permiso==0){
           $("#nota").show();
-          $("#carta").show();
           $("#pedido").show();
+          $("#carta").show();
+          $("#remision").hide();
           $("#sae").show();
           $("#nomina").show();
-          $("#remision").show();
           $("#altas").show();
           $("#analisis").show();
+          $("#caja").show();
         }
         else if(permiso==1){
           $("#altas").show();
           $("#analisis").hide();
+          $("#caja").hide();
           if(departamento=="VENTAS"){
             $("#nota").show();
-            $("#carta").show();
             $("#pedido").show();
+            $("#carta").show();
             $("#remision").hide();
             $("#sae").hide();
             $("#nomina").hide();
           }
           else if(departamento=="CREDITO_Y_COBRANZA"){
             $("#nota").hide();
-            $("#carta").hide();
             $("#pedido").hide();
+            $("#carta").hide();
+            $("#remision").hide();
             $("#sae").show();
             $("#nomina").hide();
-            $("#remision").hide();
-
           }
           else if(departamento=="RECURSOS_HUMANOS"||departamento=="CONTABILIDAD"||departamento=="ADMINISTRADOR"){
             $("#nota").hide();
-            $("#carta").hide();
             $("#pedido").hide();
+            $("#carta").hide();
+            $("#remision").hide();
             $("#sae").hide();
             $("#nomina").show();
-            $("#remision").hide();
           }
 
           else if(departamento=="PRODUCCION_SOPORTE"||departamento=="PRODUCCION_MANGUERA"||departamento=="ALMACEN"){
             $("#nota").hide();
-            $("#carta").hide();
             $("#pedido").hide();
+            $("#carta").hide();
+            $("#remision").hide();
             $("#sae").hide();
             $("#nomina").hide();
-            $("#remision").hide();
           }
         }
         else {
           $("#analisis").hide();
           $("#altas").hide();
+          $("#caja").hide();
           if(departamento=="VENTAS"){
             $("#nota").show();
-            $("#carta").show();
             $("#pedido").show();
+            $("#carta").show();
             $("#remision").hide();
             $("#sae").hide();
             $("#nomina").hide();
           }
           else if(departamento=="CREDITO_Y_COBRANZA"){
             $("#nota").hide();
-            $("#carta").hide();
             $("#pedido").hide();
+            $("#carta").hide();
+            $("#remision").hide();
             $("#sae").show();
             $("#nomina").hide();
-            $("#remision").hide();
-
           }
           else if(departamento=="RECURSOS_HUMANOS"){
             $("#nota").hide();
-            $("#carta").hide();
             $("#pedido").hide();
+            $("#carta").hide();
+            $("#remision").hide();
             $("#sae").hide();
             $("#nomina").show();
-            $("#remision").hide();
             $("#altas").show();
+          }
+          else if(departamento=="COBRANZA"){
+            $("#nota").hide();
+            $("#pedido").hide();
+            $("#carta").hide();
+            $("#remision").hide();
+            $("#sae").hide();
+            $("#nomina").hide();
+            $("#caja").show();
           }
         }
 
@@ -246,6 +265,10 @@
 
         $("#analisis").click(function(){
           setTimeout("location.href='analisis/analisis.php'",500);
+        });
+
+        $("#caja").click(function(){
+          setTimeout("location.href='caja/visualizacion.php'",500);
         });
         // $("body").hide().fadeIn(2000);
 

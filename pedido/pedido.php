@@ -41,19 +41,11 @@
     $departamento = $registro[0];
     $user = $registro[2];
     $gerente = $registro[1];
-
-
-
-    if(!isset($usuario))
-    {
+    $resultado->closeCursor();
+    $base = null;
+    if(!isset($usuario)){
       header("location:../index.html");
     }
-
-    elseif($departamento!="VENTAS")
-    {
-      header("location:../home.php");
-    }
-
   ?>
 
 

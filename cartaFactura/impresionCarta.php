@@ -43,11 +43,6 @@
           header("location:../index.html");
         }
 
-        elseif($departamento!="VENTAS")
-        {
-          header("location:../home.php");
-        }
-
       $folio = $_GET['folio'];
 
       $cantidad = array();
@@ -215,7 +210,7 @@
                   <td colspan="2" align='center'><b>DOCUMENTADOR</b></td>
                 </tr>
                 <tr>
-                  <td colspan="2" rowspan="2" align='center'><?= usuario($usuario) ?></td>
+                  <td colspan="2" rowspan="2" align='center'><?= $user?></td>
                 </tr>
                 <tr>
                 </tr>

@@ -36,16 +36,8 @@
         $user = $registro[2];
         $gerente = $registro[1];
 
-
-
-        if(!isset($usuario))
-        {
+        if(!isset($usuario)){
           header("location:../index.html");
-        }
-
-        elseif($departamento!="VENTAS")
-        {
-          header("location:../home.php");
         }
 
       $folio = $_GET['folio'];
@@ -64,8 +56,6 @@
       $total = 0; //Suma del subtotal2 y el iva
       // $descuentodeCarta = 0;
 
-      try
-      {
         $base = conexion_local();
         //Para las CARTAS sin número SAE
         $consulta = "SELECT * FROM PEDIDOS WHERE FOLIOINTERNO=?";
@@ -188,7 +178,7 @@
                   <td colspan="2" align='center'><b>DOCUMENTADOR</b></td>
                 </tr>
                 <tr>
-                  <td colspan="2" rowspan="2" align='center'><?= usuario($usuario) ?></td>
+                  <td colspan="2" rowspan="2" align='center'><?= $user ?></td>
                 </tr>
                 <tr>
                 </tr>
@@ -229,28 +219,7 @@
               </table>
           </section>
           <?php
-
-
-
-          }
-          catch (Exception $e)
-          {
-            $mensaje = $e->GetMessage();
-            $linea = $e->getline();
-            echo "<h1>Error: " . $mensaje . "</h1><br />";
-            echo "<h1>Linea del Error: " . $linea . "</h1><br />";
-
-            // die($e->GetMessage());
-            // die($e->getline());
-            // die("<h1>ERROR: " . $e->GetMessage());
-            // echo "<br /><h3>" . $e->getline() . "</h3>";
-          }
-          finally
-          {
-          $base = null;
-          }
-
-
+            $base = null;
           ?>
 
           <script src="ajax/eventos/cierreInactividad.js"></script>

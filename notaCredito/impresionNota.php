@@ -9,17 +9,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <title>Impresión</title>
     <style>
-
-
       a{
             color: #FFFFFF;
       }
       td{
         height: 15px;
       }
-
-
-
     </style>
   </head>
   <body>
@@ -39,10 +34,6 @@
       if(!isset($usuario))
       {
         header("location:../index.html");
-      }
-      elseif($departamento!="VENTAS")
-      {
-        header("location:../home.php");
       }
       $folio = $_GET['folio'];
 
@@ -100,7 +91,7 @@
               $costo[$i] = $registro[0];
             }
             else{
-              //A la penalizacion no se le cobra descuento
+              //A la penalizacion no se le aplica descuento
               $flag = 1;
             }
 
@@ -108,7 +99,7 @@
 
           }
           $resultado->closeCursor();
-          $cont=count($cantidad);
+          $cont=count($costo);
           if($tipo=="4. Factor 3"||$tipo=="6. Entrada Caja Factor 3"){
             for ($i=1; $i <=$cont ; $i++)
             {
@@ -132,6 +123,7 @@
             $total = total($sub,$iva);
             $letra = num2letras($total, $fem = false, $dec = true);
           }
+          echo $flag;
           if($flag==1){
             $costo[$cont] = $monto;
             $importe[$cont] = $monto;
@@ -641,6 +633,7 @@
               <? endfor ?>
           <?endif ?>
           <?php
+
 
 
 

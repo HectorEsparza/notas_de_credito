@@ -19,14 +19,14 @@
 	session_start();
 	$usuario = $_SESSION['user'];
 
-	try
-	{
 		$base = conexion_local();
 		$consulta="SELECT DEPARTAMENTO FROM USUARIOS WHERE USUARIO=?";
 		$resultado = $base->prepare($consulta);
 		$resultado-> execute(array($usuario));
 		$registro = $resultado->fetch(PDO::FETCH_NUM);
 		$departamento = $registro[0];
+		$resultado->closeCursor();
+		$base = null;
 
 
 	if(!isset($usuario))
@@ -34,12 +34,6 @@
 		header("location:../index.html");
 	}
 
-	elseif($departamento!="VENTAS")
-	{
-		header("location:../home.php");
-	}
-	else
-	{
 		// $folio = $_POST['folio'];
 	?>
 	<header class="row">
@@ -101,23 +95,6 @@
 	</div>
 
 	</div>
-
-	<?php
-	}
-
-	$resultado->closeCursor();
-	}
-	catch (Exception $e)
-
-	{
-		die("<h1>ERROR: " . $e->GetMessage());
-	}
-
-	finally
-	{
-		$base = null;
-	}
-	?>
 
 <!--<script src="ajax/js/jquery-2.min.js"></script>-->
 <script src="ajax/js/bootstrap.min.js"></script>

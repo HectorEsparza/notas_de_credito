@@ -38,11 +38,6 @@
           header("location:../index.html");
         }
 
-        elseif($departamento!="VENTAS")
-        {
-          header("location:../home.php");
-        }
-
       $folio = $_GET['folio'];
 
 

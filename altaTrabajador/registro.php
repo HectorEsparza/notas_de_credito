@@ -73,7 +73,7 @@
     <input type="hidden" id='user' value=<?= $user?> />
     <input type="hidden" id='departamento' value=<?= $departamento?> />
     <form action="capturaRegistro.php" method="post" enctype="multipart/form-data">
-    <div id="documentos" style="float: left; margin-left: 150px">
+    <div id="documentos" style="float: left; margin-left: 100px">
       <h1 align='center'>DOCUMENTOS</h1>
       <table border="1" >
           <tr>
@@ -184,7 +184,7 @@
           </tr>
       </table>
     </div>
-    <div id="solicitud" style="float: right; margin-right: 450px; ">
+    <div id="solicitud" style="float: right; margin-right: 550px; ">
       <h1>SOLICITUD INGRESO</h1>
       <table border="1" >
           <tr class="solicitudOculto">
@@ -300,6 +300,7 @@
   <script type="text/javascript" src="ajax/eventos/puestos.js"></script>
   <script type="text/javascript" src="ajax/eventos/salarioDiario.js"></script>
   <script type="text/javascript" src="ajax/eventos/textoMayuscula.js"></script>
+  <script src="ajax/eventos/cierreInactividad.js"></script>
   <script type="text/javascript">
 
   			$(document).ready(function(){
@@ -316,7 +317,7 @@
                     });
 
                     $("#guardar").click(function(){
-                      
+
                       console.log("Entramos");
                       var solicitud = $("#solicitud"),
                           acta = $("#acta"),

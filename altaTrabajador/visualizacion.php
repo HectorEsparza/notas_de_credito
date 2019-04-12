@@ -114,7 +114,7 @@
 <script src="ajax/js/bootstrap.min.js"></script>
 <script src="ajax/js/paginator.min.js"></script>
 <script src="ajax/js/main.js"></script>
-<!-- <script src="ajax/eventos/cierreInactividad.js"></script> -->
+<script src="ajax/eventos/cierreInactividad.js"></script>
 
 
 <script type="text/javascript">
@@ -156,7 +156,7 @@
                     changeYear: true,
                     yearRange: '1940:2000'
                   });
-									if($("#departamento").val()=="RECURSOS_HUMANOS"||$("#departamento").val()=="CONTABILIDAD"){
+									if($("#departamento").val()=="RECURSOS_HUMANOS"||$("#departamento").val()=="ADMINISTRADOR"){
 										$('<th>ID</th>'+
 										'<th>NO Empleado</th>'+
 										'<th>Nombre</th>'+
