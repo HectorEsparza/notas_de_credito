@@ -97,7 +97,7 @@ function get_data_callback(){
       switch (elem.status) {
           case "Faltan Datos":
             console.log("Faltan Datos El status es: "+elem.status);
-            if(auxiliar=="RECURSOS HUMANOS"||auxiliar=="CONTABILIDAD"){
+            if(auxiliar=="RECURSOS HUMANOS"||auxiliar=="ADMINISTRADOR"){
               $('<tr class="faltanDatos">'+
                 '<td id="folio'+contador+'">'+elem.id+'</td>'+
                 '<td>'+elem.empleado+'</td>'+
@@ -141,7 +141,7 @@ function get_data_callback(){
           break;
           case "Revision":
             console.log("Revision El status es: "+elem.status);
-            if(auxiliar=="RECURSOS HUMANOS"||auxiliar=="CONTABILIDAD"){
+            if(auxiliar=="RECURSOS HUMANOS"||auxiliar=="ADMINISTRADOR"){
               $('<tr class="revision">'+
                 '<td id="folio'+contador+'">'+elem.id+'</td>'+
                 '<td>'+elem.empleado+'</td>'+
@@ -185,7 +185,7 @@ function get_data_callback(){
           break;
           case "Contratado":
             console.log("Contratado El status es: "+elem.status);
-            if(auxiliar=="RECURSOS HUMANOS"||auxiliar=="CONTABILIDAD"){
+            if(auxiliar=="RECURSOS HUMANOS"||auxiliar=="ADMINISTRADOR"){
               $('<tr class="contratado">'+
                    '<td id="folio'+contador+'">'+elem.id+'</td>'+
                    '<td>'+elem.empleado+'</td>'+
@@ -229,7 +229,7 @@ function get_data_callback(){
           break;
           case "Aceptado":
             console.log("Aceptado El status es: "+elem.status);
-            if(auxiliar=="RECURSOS HUMANOS"||auxiliar=="CONTABILIDAD"){
+            if(auxiliar=="RECURSOS HUMANOS"||auxiliar=="ADMINISTRADOR"){
               $('<tr class="aceptado">'+
               '<td id="folio'+contador+'">'+elem.id+'</td>'+
               '<td>'+elem.empleado+'</td>'+
@@ -273,7 +273,7 @@ function get_data_callback(){
           break;
           case "Rechazado":
             console.log("Rechazado El status es: "+elem.status);
-            if(auxiliar=="RECURSOS HUMANOS"||auxiliar=="CONTABILIDAD"){
+            if(auxiliar=="RECURSOS HUMANOS"||auxiliar=="ADMINISTRADOR"){
               $('<tr class="rechazado">'+
               '<td id="folio'+contador+'">'+elem.id+'</td>'+
               '<td>'+elem.empleado+'</td>'+
@@ -317,7 +317,7 @@ function get_data_callback(){
           break;
           case "Faltan Documentos":
             console.log("Faltan Documentos El status es: "+elem.status);
-            if(auxiliar=="RECURSOS HUMANOS"||auxiliar=="CONTABILIDAD"){
+            if(auxiliar=="RECURSOS HUMANOS"||auxiliar=="ADMINISTRADOR"){
               $('<tr class="faltanDocumentos">'+
               '<td id="folio'+contador+'">'+elem.id+'</td>'+
               '<td>'+elem.empleado+'</td>'+

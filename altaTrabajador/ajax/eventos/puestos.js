@@ -18,8 +18,10 @@ $(document).ready(function(){
         vistaDepartamento.val(auxiliar);
         console.log(auxiliar);
 
-        if(auxiliar=="RECURSOS HUMANOS"||auxiliar=="CONTABILIDAD"){
+        if(auxiliar=="RECURSOS HUMANOS"||auxiliar=="CONTABILIDAD"||auxiliar=="ADMINISTRADOR"){
             $('<option value="">Seleccionar de la Lista</option>'+
+            '<option value="Ejecutivo Recursos Humanos">Ejecutivo Recursos Humanos</option>'+
+            '<option value="Ejecutivo Contable">Ejecutivo Contable</option>'+
             '<option value="Vigilante">Vigilante</option>'+
             '<option value="Supervisor">Supervisor</option>'+
             '<option value="Prensista">Prensista</option>'+
@@ -47,7 +49,19 @@ $(document).ready(function(){
             '<option value="Pintor">Pintor</option>'+
             '<option value="Almacenista">Almacenista</option>'+
             '<option value="Supervisor">Supervisor</option>'+
-            '<option value="Supervisor en Capacitacion">Supervisor en Capacitacion</option>').appendTo(vistaPuesto);
+            '<option value="Supervisor en Capacitacion">Supervisor en Capacitacion</option>'+
+            '<option value="">Seleccionar de la Lista</option>'+
+            '<option value="Etiquetador">Etiquetador</option>'+
+            '<option value="Auxiliar de Autoclave">Auxiliar de Autoclave</option>'+
+            '<option value="Recortador">Recortador</option>'+
+            '<option value="Pesador">Pesador</option>'+
+            '<option value="Operador de Extrusora">Operador de Extrusora</option>'+
+            '<option value="Operador Molino">Operador Molino</option>'+
+            '<option value="Vigilante">Vigilante</option>'+
+            '<option value="Operador de Autoclave">Operador de Autoclave</option>'+
+            '<option value="Gerente">Gerente</option>'+
+            '<option value="Auxiliar Mantenimiento">Auxiliar Mantenimiento</option>'+
+            '<option value="Supervisor Mantenimiento">Supervisor Mantenimiento</option>').appendTo(vistaPuesto);
         }
         else if(auxiliar=="VENTAS"){
             console.log("Agregando el select "+auxiliar.length);
@@ -92,7 +106,19 @@ $(document).ready(function(){
         else if (auxiliar=="PRODUCCION MANGUERA"){
             console.log("Agregando el select "+auxiliar.length);
             $('<option value="">Seleccionar de la Lista</option>'+
-              '<option value="Ayudante General">Ayudante General</option>').appendTo(vistaPuesto);
+              '<option value="Etiquetador">Etiquetador</option>'+
+              '<option value="Auxiliar de Autoclave">Auxiliar de Autoclave</option>'+
+              '<option value="Recortador">Recortador</option>'+
+              '<option value="Pesador">Pesador</option>'+
+              '<option value="Operador de Extrusora">Operador de Extrusora</option>'+
+              '<option value="Operador Molino">Operador Molino</option>'+
+              '<option value="Supervisor en Capacitacion">Supervisor en Capacitacion</option>'+
+              '<option value="Vigilante">Vigilante</option>'+
+              '<option value="Operador de Autoclave">Operador de Autoclave</option>'+
+              '<option value="Supervisor">Supervisor</option>'+
+              '<option value="Gerente">Gerente</option>'+
+              '<option value="Auxiliar Mantenimiento">Auxiliar Mantenimiento</option>'+
+              '<option value="Supervisor Mantenimiento">Supervisor Mantenimiento</option>').appendTo(vistaPuesto);
         }
 
         else if(auxiliar=="CREDITO Y COBRANZA"){
@@ -100,6 +126,8 @@ $(document).ready(function(){
             $('<option value="">Seleccionar de la Lista</option>'+
               '<option value="Ayudante General">Ayudante General</option>').appendTo(vistaPuesto);
         }
+
+
 
 
 

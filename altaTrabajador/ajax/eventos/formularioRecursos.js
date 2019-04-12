@@ -25,12 +25,12 @@ $(document).ready(function(){
   else {
     $("#gerentes").show();
     $("#guardar").hide();
-    $("#new").hide();
+    // $("#new").hide();
     $("#usuarios").hide();
 
 
   }
-  if(auxiliar!="CONTABILIDAD"){
+  if(auxiliar!="ADMINISTRADOR"){
     $("#gerente").hide();
     $("#gerentes").hide();
     if(auxiliar=="RECURSOS HUMANOS"){
