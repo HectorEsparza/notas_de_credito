@@ -35,11 +35,6 @@
       {
         header("location:../index.html");
       }
-
-      elseif($departamento!="CREDITO Y COBRANZA")
-      {
-        header("location:../home.php");
-      }
       else
       {
         // $folio = $_POST['folio'];

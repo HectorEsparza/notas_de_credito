@@ -34,10 +34,6 @@
         header("location:../index.html");
       }
 
-      elseif($departamento!="CREDITO Y COBRANZA")
-      {
-        header("location:../home.php");
-      }
       $resultado->closeCursor();
       $folio = $_GET['folio'];
       $cantidad = array();
