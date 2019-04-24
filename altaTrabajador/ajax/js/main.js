@@ -99,6 +99,7 @@ function get_data_callback(){
             console.log("Faltan Datos El status es: "+elem.status);
             if(auxiliar=="RECURSOS HUMANOS"||auxiliar=="ADMINISTRADOR"){
               $('<tr class="faltanDatos">'+
+                '<td><input type="button" value="Ver" class="ver" id="botonPrueba'+contador+'" onclick='+click+'></td>'+
                 '<td id="folio'+contador+'">'+elem.id+'</td>'+
                 '<td>'+elem.empleado+'</td>'+
                 '<td>'+elem.nombre+'</td>'+
@@ -124,18 +125,17 @@ function get_data_callback(){
                 '<td>'+elem.edoCivil+'</td>'+
                 '<td>'+elem.sexo+'</td>'+
                 '<td>'+elem.status+'</td>'+
-                '<td><input type="button" value="Ver" class="ver" id="botonPrueba'+contador+'" onclick='+click+'></td>'+
               '</tr>').appendTo($("#table"));
             }
             else if(auxiliar==elem.departamento){
               $('<tr class="faltanDatos">'+
+                   '<td><input type="button" value="Ver" class="ver" id="botonPrueba'+contador+'" onclick='+click+'></td>'+
                    '<td id="folio'+contador+'">'+elem.id+'</td>'+
                    '<td>'+elem.fechaAlta+'</td>'+
                    '<td>'+elem.departamento+'</td>'+
                    '<td>'+elem.puesto+'</td>'+
                    '<td>'+elem.nombre+'</td>'+
                    '<td>'+elem.status+'</td>'+
-                   '<td><input type="button" value="Ver" class="ver" id="botonPrueba'+contador+'" onclick='+click+'></td>'+
                    '</tr>').appendTo($("#table"));
             }
           break;
@@ -143,6 +143,7 @@ function get_data_callback(){
             console.log("Revision El status es: "+elem.status);
             if(auxiliar=="RECURSOS HUMANOS"||auxiliar=="ADMINISTRADOR"){
               $('<tr class="revision">'+
+                '<td><input type="button" value="Ver" class="ver" id="botonPrueba'+contador+'" onclick='+click+'></td>'+
                 '<td id="folio'+contador+'">'+elem.id+'</td>'+
                 '<td>'+elem.empleado+'</td>'+
                 '<td>'+elem.nombre+'</td>'+
@@ -168,18 +169,17 @@ function get_data_callback(){
                 '<td>'+elem.edoCivil+'</td>'+
                 '<td>'+elem.sexo+'</td>'+
                 '<td>'+elem.status+'</td>'+
-                '<td><input type="button" value="Ver" class="ver" id="botonPrueba'+contador+'" onclick='+click+'></td>'+
               '</tr>').appendTo($("#table"));
             }
             else if(auxiliar==elem.departamento){
               $('<tr class="revision">'+
+                   '<td></td>'+
                    '<td id="folio'+contador+'">'+elem.id+'</td>'+
                    '<td>'+elem.fechaAlta+'</td>'+
                    '<td>'+elem.departamento+'</td>'+
                    '<td>'+elem.puesto+'</td>'+
                    '<td>'+elem.nombre+'</td>'+
                    '<td>'+elem.status+'</td>'+
-                   '<td></td>'+
                    '</tr>').appendTo($("#table"));
             }
           break;
@@ -187,6 +187,7 @@ function get_data_callback(){
             console.log("Contratado El status es: "+elem.status);
             if(auxiliar=="RECURSOS HUMANOS"||auxiliar=="ADMINISTRADOR"){
               $('<tr class="contratado">'+
+                   '<td><input type="button" value="Ver" class="ver" id="botonPrueba'+contador+'" onclick='+click+'></td>'+
                    '<td id="folio'+contador+'">'+elem.id+'</td>'+
                    '<td>'+elem.empleado+'</td>'+
                    '<td>'+elem.nombre+'</td>'+
@@ -212,18 +213,17 @@ function get_data_callback(){
                    '<td>'+elem.edoCivil+'</td>'+
                    '<td>'+elem.sexo+'</td>'+
                    '<td>'+elem.status+'</td>'+
-                   '<td><input type="button" value="Ver" class="ver" id="botonPrueba'+contador+'" onclick='+click+'></td>'+
                    '</tr>').appendTo($("#table"));
             }
             else if(auxiliar==elem.departamento){
               $('<tr class="contratado">'+
+                   '<td><input type="button" value="Ver" class="ver" id="botonPrueba'+contador+'" onclick='+click+'></td>'+
                    '<td id="folio'+contador+'">'+elem.id+'</td>'+
                    '<td>'+elem.fechaAlta+'</td>'+
                    '<td>'+elem.departamento+'</td>'+
                    '<td>'+elem.puesto+'</td>'+
                    '<td>'+elem.nombre+'</td>'+
                    '<td>'+elem.status+'</td>'+
-                   '<td><input type="button" value="Ver" class="ver" id="botonPrueba'+contador+'" onclick='+click+'></td>'+
                    '</tr>').appendTo($("#table"));
             }
           break;
@@ -231,6 +231,7 @@ function get_data_callback(){
             console.log("Aceptado El status es: "+elem.status);
             if(auxiliar=="RECURSOS HUMANOS"||auxiliar=="ADMINISTRADOR"){
               $('<tr class="aceptado">'+
+              '<td><input type="button" value="Ver" class="ver" id="botonPrueba'+contador+'" onclick='+click+'></td>'+
               '<td id="folio'+contador+'">'+elem.id+'</td>'+
               '<td>'+elem.empleado+'</td>'+
               '<td>'+elem.nombre+'</td>'+
@@ -256,18 +257,17 @@ function get_data_callback(){
               '<td>'+elem.edoCivil+'</td>'+
               '<td>'+elem.sexo+'</td>'+
               '<td>'+elem.status+'</td>'+
-              '<td><input type="button" value="Ver" class="ver" id="botonPrueba'+contador+'" onclick='+click+'></td>'+
               '</tr>').appendTo($("#table"));
             }
             else if(auxiliar==elem.departamento){
               $('<tr class="aceptado">'+
+                   '<td><input type="button" value="Ver" class="ver" id="botonPrueba'+contador+'" onclick='+click+'></td>'+
                    '<td id="folio'+contador+'">'+elem.id+'</td>'+
                    '<td>'+elem.fechaAlta+'</td>'+
                    '<td>'+elem.departamento+'</td>'+
                    '<td>'+elem.puesto+'</td>'+
                    '<td>'+elem.nombre+'</td>'+
                    '<td>'+elem.status+'</td>'+
-                   '<td><input type="button" value="Ver" class="ver" id="botonPrueba'+contador+'" onclick='+click+'></td>'+
                    '</tr>').appendTo($("#table"));
             }
           break;
@@ -275,6 +275,7 @@ function get_data_callback(){
             console.log("Rechazado El status es: "+elem.status);
             if(auxiliar=="RECURSOS HUMANOS"||auxiliar=="ADMINISTRADOR"){
               $('<tr class="rechazado">'+
+              '<td><input type="button" value="Ver" class="ver" id="botonPrueba'+contador+'" onclick='+click+'></td>'+
               '<td id="folio'+contador+'">'+elem.id+'</td>'+
               '<td>'+elem.empleado+'</td>'+
               '<td>'+elem.nombre+'</td>'+
@@ -300,18 +301,17 @@ function get_data_callback(){
               '<td>'+elem.edoCivil+'</td>'+
               '<td>'+elem.sexo+'</td>'+
               '<td>'+elem.status+'</td>'+
-              '<td><input type="button" value="Ver" class="ver" id="botonPrueba'+contador+'" onclick='+click+'></td>'+
               '</tr>').appendTo($("#table"));
             }
             else if(auxiliar==elem.departamento){
               $('<tr class="rechazado">'+
+                   '<td><input type="button" value="Ver" class="ver" id="botonPrueba'+contador+'" onclick='+click+'></td>'+
                    '<td id="folio'+contador+'">'+elem.id+'</td>'+
                    '<td>'+elem.fechaAlta+'</td>'+
                    '<td>'+elem.departamento+'</td>'+
                    '<td>'+elem.puesto+'</td>'+
                    '<td>'+elem.nombre+'</td>'+
                    '<td>'+elem.status+'</td>'+
-                   '<td><input type="button" value="Ver" class="ver" id="botonPrueba'+contador+'" onclick='+click+'></td>'+
                    '</tr>').appendTo($("#table"));
             }
           break;
@@ -319,6 +319,7 @@ function get_data_callback(){
             console.log("Faltan Documentos El status es: "+elem.status);
             if(auxiliar=="RECURSOS HUMANOS"||auxiliar=="ADMINISTRADOR"){
               $('<tr class="faltanDocumentos">'+
+              '<td><input type="button" value="Ver" class="ver" id="botonPrueba'+contador+'" onclick='+click+'></td>'+
               '<td id="folio'+contador+'">'+elem.id+'</td>'+
               '<td>'+elem.empleado+'</td>'+
               '<td>'+elem.nombre+'</td>'+
@@ -344,18 +345,17 @@ function get_data_callback(){
               '<td>'+elem.edoCivil+'</td>'+
               '<td>'+elem.sexo+'</td>'+
               '<td>'+elem.status+'</td>'+
-              '<td><input type="button" value="Ver" class="ver" id="botonPrueba'+contador+'" onclick='+click+'></td>'+
               '</tr>').appendTo($("#table"));
             }
             else if(auxiliar==elem.departamento){
               $('<tr class="faltanDocumentos">'+
+                   '<td><input type="button" value="Ver" class="ver" id="botonPrueba'+contador+'" onclick='+click+'></td>'+
                    '<td id="folio'+contador+'">'+elem.id+'</td>'+
                    '<td>'+elem.fechaAlta+'</td>'+
                    '<td>'+elem.departamento+'</td>'+
                    '<td>'+elem.puesto+'</td>'+
                    '<td>'+elem.nombre+'</td>'+
                    '<td>'+elem.status+'</td>'+
-                   '<td><input type="button" value="Ver" class="ver" id="botonPrueba'+contador+'" onclick='+click+'></td>'+
                    '</tr>').appendTo($("#table"));
             }
           break;

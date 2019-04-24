@@ -157,7 +157,8 @@
                     yearRange: '1940:2000'
                   });
 									if($("#departamento").val()=="RECURSOS_HUMANOS"||$("#departamento").val()=="ADMINISTRADOR"){
-										$('<th>ID</th>'+
+										$('<th>Info</th>'+
+										'<th>ID</th>'+
 										'<th>NO Empleado</th>'+
 										'<th>Nombre</th>'+
 										'<th>Curp</th>'+
@@ -181,17 +182,16 @@
 										'<th>Correo</th>'+
 										'<th>Estado Civil</th>'+
 										'<th>Sexo</th>'+
-										'<th>Status</th>'+
-										'<th>Info</th>').appendTo($("#nombreColumnas"));
+										'<th>Status</th>').appendTo($("#nombreColumnas"));
 									}
 									else{
-										$('<th>ID</th>'+
+										$('<th>Info</th>'+
+										'<th>ID</th>'+
 										'<th>Fecha Alta</th>'+
 										'<th>Departamento</th>'+
 										'<th>Puesto</th>'+
 										'<th>Nombre</th>'+
-										'<th>Status</th>'+
-										'<th>Info</th>').appendTo($("#nombreColumnas"));
+										'<th>Status</th>').appendTo($("#nombreColumnas"));
 									}
 
 			});
