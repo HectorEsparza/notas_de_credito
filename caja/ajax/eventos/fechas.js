@@ -81,7 +81,10 @@ $(document).ready(function(){
           //Guardamos la fecha de carga
           $("#fechaCaptura").val($("#fecha").val());
           //Guardamos el folio de carga
+          console.log(datos[0]);
           $("#folio").val("PB"+datos[0]);
+
+
       };
       let meses = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
       var dia = fecha[0];

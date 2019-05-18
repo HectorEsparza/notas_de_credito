@@ -7,10 +7,9 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
   <script type="text/javascript" src="ajax/js/jquery-ui.js"></script>
-	<script type="text/javascript" src="ajax/eventos/filtroCobranza.js"></script>
+	<script type="text/javascript" src="ajax/eventos/filtro.js"></script>
 	<script type="text/javascript" src="ajax/eventos/facturas.js"></script>
-	<!-- <script type="text/javascript" src="ajax/js/limpia.js"></script> -->
-	<!-- <script type="text/javascript" src="ajax/js/limpiaFiltro.js"></script> -->
+
 </head>
 <body>
 	<?php session_start();
@@ -33,16 +32,16 @@
 	{
 		header("location:../index.html");
 	}
+
 	else
 	{
 		// $folio = $_POST['folio'];
 	?>
 	<header class="row">
 		<input type="hidden" id="arreglo" value="<?= json_encode($nombres)?>" />
-		<input type="hidden" id="departamento" value="<?= $departamento?>">
 		<div class="container col-md-6">
 			<h1 align='center'>
-				Visualización Entradas a Caja
+				Visualización Facturas
 			</h1>
 			<input type='button' id="home" class="btn btn-primary" style='background:url("imagenes/home3.jpg"); float: left; width: 50px; height: 50px;' />
 			<div align="center"><img src="imagenes/apa.jpg" /></div>
@@ -51,7 +50,7 @@
 			<form action='../cierre.php'>
 				<input style="float: right;" class="btn btn-danger" type='submit' value='Cierra Sesión' />
 			</form>
-      <input type="button" style="float: right;" class="btn btn-success" id="nuevaCobranza" onclick=" nuevo()"value='Nueva Cobranza' />
+      <input type="button" style="float: right;" class="btn btn-success" id="nuevaCobranza" onclick=" visualizar()"value='Regresar' />
 		</div>
 	</header>
 	<section>
@@ -60,49 +59,31 @@
 						 <br />
 
 						 <input type="hidden" id="gerente" value="<?= $usuario?>" />
-						 <input type="text" id="idCobranza" class="idCobranza" placeholder="ID Cobranza"/>
-						 <input type="text" id="fecha" class="fecha" placeholder="Fecha"/>
+						 <input type="text" id="factura" class="factura" placeholder="Factura" />
+						 <input type="text" id="cliente" class="cliente" placeholder="NO. Cliente" />
+						 <input type="text" id="fecha" class="fecha" placeholder="Fecha" />
+						 <input type="hidden" id="tipo" value="conEntrada"/>
 						 <br /><br />
 						 <input type="button" class="btn btn-primary" id="buscar" value="Buscar" />
-						 <!-- <button type="submit" class="btn btn-primary" id="limpiaFiltro">Limpiar Campos</button> -->
-						 <input type="button" class="btn btn-primary" onclick="visualizar()" value='Tabla Completa' />
-						 <input type="button" class="btn btn-primary" onclick="facturas()"   id="factura" value="Facturas" />
-						 <input type="button" class="btn btn-primary" onclick="facturasSinEntrada()"   id="sinEntrada" value="Facturas sin Entrada" />
+						 <input type="button" class="btn btn-primary" onclick="facturas()" value='Tabla Completa' />
 
 
 				<input type=hidden id="folio" value="<?= $folio?>"/>
 		</div>
 		<br /><br />
-		<div class="container" align='center' id="cargarFacturas">
-			<table border="1">
-				<form action="cargarFacturas.php" method="post" enctype="multipart/form-data">
-				<tr style="font-weight: bold; text-align: center;">
-					<td colspan="2">Carga Facturas</td>
-				</tr>
-				<tr>
-						<td colspan="2">
-								<input type="file" name="archivo"  style="float: right;" id="archivo" />
-						</td>
-				</tr>
-				<tr style="font-weight: bold; text-align: center;">
-					<td colspan="2">
-						<input type="submit" value="cargar" class="btn btn-primary btn-sm" id="cargar" disabled/>
-					</td>
-				</tr>
-				</form>
-			</table>
-		</div>
-		<br /><br />
 	<div class="container" id="principal">
 	<!--<table class="table table-striped table-hover">-->
-	<table  border=1 align='center' width="500px" style="text-align: center;">
+	<table  border=1 align='center' width="850px" style="text-align: center;">
 		<thead>
 			<tr style="font-weight: bold;">
-				<td>ID Cobranza</td>
-				<td>Fecha</td>
-				<td>Total</td>
-				<td>Usuario</td>
-        <td>Info</td>
+				<td>Clave</td>
+				<td>Cliente</td>
+				<td>Nombre</td>
+				<td>Estatus</td>
+				<td>Fecha de elaboracion</td>
+				<td>Importe total</td>
+				<td>Nombre del vendedor</td>
+				<td>Porcentaje de descuento</td>
 			</tr>
 		</thead>
 		<tbody id="table">
@@ -135,7 +116,7 @@
 <!--<script src="ajax/js/jquery-2.min.js"></script>-->
 <script src="ajax/js/bootstrap.min.js"></script>
 <script src="ajax/js/paginator.min.js"></script>
-<script src="ajax/js/main.js"></script>
+<script src="ajax/js/mainFacturas.js"></script>
 <!-- <script src="ajax/eventos/cierreInactividad.js"></script> -->
 
 
@@ -166,39 +147,15 @@
 
 
 				$('#fecha').datepicker();
-				$("#cargar").click(function(){
-					setTimeout("location.href='cargarFacturas.php'", 500);
-				});
 
-				var departamento = $("#departamento").val();
-				if(departamento=="COBRANZA"){
-					$("#factura").hide();
-					$("#sinEntrada").hide();
-					$("#cargarFacturas").hide();
-				}
-				else if(departamento=="CREDITO_Y_COBRANZA"){
-					$("#nuevaCobranza").hide();
-				}
 			});
 
-
-      function nuevo(){
-          setTimeout("location.href='nuevaCobranza.php'",500);
-      }
 			function visualizar(){
-          setTimeout("location.href='analisis.php'",500);
+          setTimeout("location.href='visualizacion.php'",500);
       }
-			function ver(folio){
-					setTimeout("location.href='impresion.php?folio="+folio+"'");
-			}
-			function facturas(){
-				setTimeout("location.href='facturas.php'",500);
-			}
-			function facturasSinEntrada(){
-				setTimeout("location.href='facturasSinEntrada.php'",500);
-			}
-
-
+      function facturas(){
+        setTimeout("location.href='facturas.php'",500);
+      }
 </script>
 </body>
 </html>

@@ -16,7 +16,7 @@ $(document).ready(function(){
     var total = $("#total").text();
     var usuario = $("#usuario").val();
     arreglo = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
-    for (var i = 1; i <= 30; i++){
+    for (var i = 1; i <= 80; i++){
       if($("#factura"+i).val()!=""&&$("#cliente"+i).text()!=""){
         facturas[contador] = $("#factura"+i).val();
         metodos[contador] = $("#metodo"+i).val();

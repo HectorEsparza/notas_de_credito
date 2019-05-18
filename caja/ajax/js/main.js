@@ -76,7 +76,7 @@ function get_data_callback(){
 		}
 		// genera el cuerpo de la tabla
 		$.each(lista, function(ind, elem){
-      console.log("hola");
+      //console.log("hola");
       // var departamento = $("#departamento").val();
       //var click = "saludo(document.querySelector('.folio"+contador+"').value)";
       var click = "ver(document.getElementById('folio"+contador+"').innerText)";
@@ -85,18 +85,20 @@ function get_data_callback(){
       //console.log("El status es: "+elem.status);
       // departamento = departamento.split("_");
 
-    
-      $('<tr>'+
-        '<td id="folio'+contador+'">'+elem.clave+'</td>'+
-        '<td>'+elem.fecha+'</td>'+
-        '<td>'+"$"+elem.total+'</td>'+
-        '<td>'+elem.usuario+'</td>'+
-        '<td><input type="button" class="btn btn-info btn-sm" value="Ver" onclick='+click+' /></td>'+
-        // '<td><input type="button" class="btn btn-warning" value="Editar" onclick='+click2+' /></td>'+
-        // '<td><input type="button" class="btn btn-warning" value="Editar" onclick='+click+'/></td>'+
-      '</tr>').appendTo($("#table"));
+      if(elem.id>0){
+        $('<tr>'+
+          '<td id="folio'+contador+'">'+elem.clave+'</td>'+
+          '<td>'+elem.fecha+'</td>'+
+          '<td>'+"$"+formatNumber.new(elem.total)+'</td>'+
+          '<td>'+elem.usuario+'</td>'+
+          '<td><input type="button" class="btn btn-info btn-sm" value="Ver" onclick='+click+' /></td>'+
+          // '<td><input type="button" class="btn btn-warning" value="Editar" onclick='+click2+' /></td>'+
+          // '<td><input type="button" class="btn btn-warning" value="Editar" onclick='+click+'/></td>'+
+        '</tr>').appendTo($("#table"));
 
-      contador++;
+        contador++;
+      }
+
 
 		});
 

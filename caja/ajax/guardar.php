@@ -59,9 +59,9 @@
   if($flag==0){
     //Consulta para actualizar la entrada de las facturas
     for($i=1; $i <= $contador ; $i++){
-      $consulta = "UPDATE CARGAS SET METODO=?, OBSERVACIONES=?, ENTRADA=?, FECHA_ENTRADA=? WHERE CLAVE=?";
+      $consulta = "UPDATE CARGAS SET METODO=?, OBSERVACIONES=?, ENTRADA=?, FECHA_ENTRADA=?, NUMERO_ENTRADA=? WHERE CLAVE=?";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($metodos[$i], $observaciones[$i], $folio, $fecha, $facturas[$i]));
+      $resultado->execute(array($metodos[$i], $observaciones[$i], $folio, $fecha, $i, $facturas[$i]));
     }
     $resultado->closeCursor();
     //Consulta para obtener el usuario

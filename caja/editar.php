@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Nueva Cobranza</title>
+	<title>Editar Cobranza</title>
 	<link rel="shortcut icon" href="imagenes/favicon.ico" type="image/x-icon" />
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -12,16 +12,45 @@
 	<script type="text/javascript" src="ajax/eventos/llamarFacturas.js"></script>
 	<script type="text/javascript" src="ajax/eventos/agregaFila.js"></script>
 	<script type="text/javascript" src="ajax/eventos/guardar.js"></script>
+  <script type="text/javascript" src="ajax/eventos/eliminarFactura.js"></script>
 	<!-- <script type="text/javascript" src="ajax/js/limpiaFiltro.js"></script> -->
 </head>
 <body>
 	<?php
 		session_start();
+    require_once("../funciones.php");
 		$usuario = $_SESSION['user'];
+    $folio = $_GET['folio'];
+    $factura = array();
+    $metodo = array();
+    $cliente = array();
+    $nombre = array();
+    $importe = array();
+    $observacion = array();
+    $eliminados = array();
+    $eliminados[0] = "Hola";
+    $eliminados[1] = "Amigos";
+    $contador = 1;
+    $total = 0;
+    $base = conexion_local();
+    $consulta = "SELECT CLAVE, CLIENTE, NOMBRE, DESCUENTO, IMPORTE, METODO, OBSERVACIONES FROM CARGAS WHERE ENTRADA=?";
+    $resultado = $base->prepare($consulta);
+    $resultado->execute(array($folio));
+    while($registro = $resultado->fetch(PDO::FETCH_NUM)){
+      $factura[$contador] = $registro[0];
+      $cliente[$contador] = $registro[1];
+      $nombre[$contador] = $registro[2];
+      $importe[$contador] = round((sub($registro[3], $registro[4]))*100)/100;
+      $total += $importe[$contador];
+      $metodo[$contador] = $registro[5];
+      $observacion[$contador] = $registro[6];
+      $contador++;
+    }
+
 	?>
   <div class="row">
     <div class="container col-md-4" style="margin-left: 500px">
-      <h1>Captura Nueva Cobranza</h1>
+      <h1>Editar Cobranza <?= $folio?></h1>
     </div>
     <div class="container col-md-2">
       <input style="margin-top: 25px" type="button" class="btn btn-primary" value="Cobranza Anterior" onclick="visualizar()" />
@@ -30,14 +59,6 @@
       <form action='../cierre.php'>
         <input style="margin-top: 25px" class="btn btn-danger" type='submit' value='Cierra Sesión' />
       </form>
-    </div>
-  </div>
-  <br /><br />
-  <div class="row">
-    <div class="container col-md-12" style="margin-left: 500px">
-      <h4>Selecciona una Fecha</h4>
-      <input type="text" id="fecha" style="float: left"/>
-      <input style="margin-left: 25px" class="btn btn-warning" type="button" value="Borrar" id="borraFecha"/>
     </div>
   </div>
   <br /><br />
@@ -52,48 +73,37 @@
           <td><strong>Nombre</strong></td>
           <td><strong>Importe</strong></td>
           <td><strong>Observaciones</strong></td>
+          <td><strong>Info</strong></td>
         </tr>
 				<tbody id="cuerpo">
-					<?php for($i=1;$i<=80;$i++):?>
-						<?php if($i<=15): ?>
-						<tr>
-							<td><input type='text' id="factura<?= $i?>" style="width: 100px; height: 20px;" readonly/></td>
-							<td>
-								<select id="metodo<?= $i?>" disabled>
-									<option value=""></option>
-									<option value="Firma">Firma</option>
-									<option value="Ficha Deposito">Ficha Deposito</option>
-									<option value="Transferencia">Transferencia</option>
-									<option value="Guía">Guía</option>
-									<option value="Contra Recibo">Contra Recibo</option>
-									<option value="Cheque">Cheque</option>
-									<option value="Sello y Firma">Sello y Firma</option>
-								</select>
-							</td>
-							<td id="cliente<?= $i?>"></td>
-							<td id="nombre<?= $i?>"></td>
-							<td id="importe<?= $i?>"></td>
-							<td><input type='text' id="observaciones<?= $i?>" style="width: 100px; height: 20px;" readonly/></td>
+					<?php for($i=1;$i<=30;$i++):?>
+						<?php if($i<$contador): ?>
+						<tr id="fila<?= $i?>">
+							<td id="factura<?= $i?>"><?= $factura[$i] ?></td>
+							<td><?= $metodo[$i] ?></td>
+							<td><?= $cliente[$i]?></td>
+							<td><?= $nombre[$i]?></td>
+							<td id="importe<?= $i?>"><?= "$" . $importe[$i]?></td>
+							<td><?= $observacion[$i]?></td>
+              <td><input type="button" class="btn btn-warning btn-sm" value="Eliminar" id="eliminar<?= $i?>" /></td>
 						</tr>
 					<?php else: ?>
 						<tr id="fila<?= $i?>" hidden>
-							<td><input type='text' id="factura<?= $i?>" style="width: 100px; height: 20px;" readonly/></td>
+							<td><input type='text' id="factura<?= $i?>" style="width: 100px; height: 20px;" /></td>
 							<td>
-								<select id="metodo<?= $i?>" disabled>
+								<select id="metodo<?= $i?>" >
 									<option value=""></option>
 									<option value="Firma">Firma</option>
 									<option value="Contado">Contado</option>
 									<option value="Transferencia">Transferencia</option>
 									<option value="Guía">Guía</option>
-									<option value="Contra Recibo">Contra Recibo</option>
-									<option value="Cheque">Cheque</option>
-									<option value="Sello y Firma">Sello y Firma</option>
 								</select>
 							</td>
 							<td id="cliente<?= $i?>"></td>
 							<td id="nombre<?= $i?>"></td>
 							<td id="importe<?= $i?>"></td>
-							<td><input type='text' id="observaciones<?= $i?>" style="width: 100px; height: 20px;" readonly/></td>
+							<td><input type='text' id="observaciones<?= $i?>" style="width: 100px; height: 20px;" /></td>
+              <td><input type="button" class="btn btn-warning btn-sm" value="Eliminar" id="eliminar<?= $i?>" /></td>
 						</tr>
 					<?php endif ?>
 					<?php endfor ?>
@@ -102,14 +112,15 @@
 					<tr>
 						<td colspan="3"><input type="button" value="Agregar" id="agregarFila" class="btn btn-info btn-sm" /></<td>
 						<td><strong>Total</strong></td>
-						<td id="total">$0</td>
-						<td><input type="button" value="Guardar" id="guardar" class="btn btn-success btn-sm" disabled/></td>
+						<td id="total">$<?= $total?></td>
+						<td colspan="2"><input type="button" value="Guardar" id="guardar" class="btn btn-success btn-sm" disabled/></td>
 						<input type="hidden" id="indice" value="" />
 						<input type="hidden" id="factura" value="" />
 						<input type="hidden" id="filas" value="15" />
 						<input type="hidden" id="folio" value="" />
 						<input type="hidden" id="fechaCaptura" value="" />
 						<input type="hidden" id="usuario" value="<?= $usuario?>" />
+            <input type="hidden" id="eliminados" value="<? $eliminados?>" />
 					</tr>
 				</tfoot>
       </table>

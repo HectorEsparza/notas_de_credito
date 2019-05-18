@@ -14,9 +14,9 @@
     require_once("../funciones.php");
     $archivo = $_FILES['archivo']['name'];
     $ruta = $_FILES['archivo']['tmp_name'];
-    $destino = "cargas\\" . $archivo;
+    $destino = $archivo;
     move_uploaded_file($ruta, $destino);
-    $archivo = "cargas/".$archivo;
+    //$archivo = "cargas\\".$archivo;
     $factura = array();
     $cliente = array();
     $nombre = array();
@@ -26,6 +26,8 @@
     $importe = array();
     $vendedor = array();
     $contador = 0;
+		$archivo = "G:\PleskVhosts\apawebdesarrollo.com\httpdocs\caja\\" .$archivo;
+		echo __FILE__;
     require_once 'PHPExcel/Classes/PHPExcel.php';
     $inputFileType = PHPExcel_IOFactory::identify($archivo);
     $objReader = PHPExcel_IOFactory::createReader($inputFileType);
@@ -40,9 +42,9 @@
         $nombre[$contador] = $sheet->getCell("C".$row)->getValue();
         $estatus[$contador] = $sheet->getCell("D".$row)->getValue();
         $fecha[$contador] = $sheet->getCell("E".$row)->getValue();
-        $descuento[$contador] = $sheet->getCell("F".$row)->getValue();
-        $importe[$contador] = str_replace(',','',($sheet->getCell("G".$row)->getValue()));
-        $vendedor[$contador] = $sheet->getCell("H".$row)->getValue();
+        $importe[$contador] = str_replace(',','',($sheet->getCell("F".$row)->getValue()));
+        $vendedor[$contador] = $sheet->getCell("G".$row)->getValue();
+        $descuento[$contador] = $sheet->getCell("H".$row)->getValue();
         $contador++;
     		// echo $sheet->getCell("A".$row)->getValue()." - ";
     		// echo $sheet->getCell("B".$row)->getValue()." - ";
@@ -54,7 +56,7 @@
         // echo $sheet->getCell("H".$row)->getValue();
     		// echo "<br>";
     }
-
+		//echo $descuento[0];
     //echo $factura[0]." ".$cliente[0]." ".$nombre[0]." ".$estatus[0]." ".$fecha[0]." ".$descuento[0]." ".$importe[0]." ".$vendedor[0];
     //echo $archivo;
   ?>
@@ -74,21 +76,21 @@
   <br /><br />
   <div class="row">
     <div class="container col-md-12" style="margin-left: 400px">
-      <table border="1" width="900px">
+      <table border="1" width="950px">
         <thead>
           <tr style="font-weight: bold; text-align: center">
             <td>Clave</td>
             <td>Cliente</td>
             <td>Nombre</td>
             <td>Estatus</td>
-            <td>Fecha</td>
-            <td>Descuento</td>
-            <td>Importe</td>
-            <td>Vendedor</td>
+            <td>Fecha de elaboracion</td>
+            <td>Importe total</td>
+            <td>Nombre del vendedor</td>
+            <td>Porcentaje de descuento</td>
           </tr>
         </thead>
         <tbody>
-          <? if($factura[0]=="Clave"&&$cliente[0]=="Cliente"&&$nombre[0]=="Nombre"&&$estatus[0]=="Estatus"&&$fecha[0]=="Fecha"&&$descuento[0]=="Descuento"&&$importe[0]=="Importe"&&$vendedor[0]=="Vendedor") :?>
+          <? if($factura[0]=="Clave "&&$cliente[0]=="Cliente "&&$nombre[0]=="Nombre "&&$estatus[0]=="Estatus "&&$fecha[0]=="Fecha de elaboracion "&&$descuento[0]=="Porcentaje de descuento "&&$importe[0]=="Importe total "&&$vendedor[0]=="Nombre del vendedor ") :?>
             <? for($i=1;$i<$contador;$i++): ?>
               <tr style="text-align: center;">
                 <td id="factura<?= $i?>"><?= $factura[$i]?></td>
@@ -96,9 +98,9 @@
                 <td id="nombre<?= $i?>"><?= $nombre[$i]?></td>
                 <td id="estatus<?= $i?>"><?= $estatus[$i]?></td>
                 <td id="fecha<?= $i?>"><?= $fecha[$i]?></td>
+								<td id="importe<?= $i?>"><?= $importe[$i]?></td>
+								<td id="vendedor<?= $i?>"><?= $vendedor[$i]?></td>
                 <td id="descuento<?= $i?>"><?= $descuento[$i]?></td>
-                <td id="importe<?= $i?>"><?= $importe[$i]?></td>
-                <td id="vendedor<?= $i?>"><?= $vendedor[$i]?></td>
               </tr>
             <? endfor ?>
           <? else: ?>

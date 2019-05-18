@@ -8,16 +8,13 @@
   $resultado = $base->prepare($consulta);
   $resultado->execute(array());
   $arreglo = array();
-
+  $arreglo[0] = 1;
+  $arreglo[1] = $opcion;
   while($registro = $resultado->fetch(PDO::FETCH_NUM)){
     if($registro[1]==$fecha){
       $opcion = "fechaNoDisponoble";
     }
-    if($registro[0]==""){
-      $arreglo[0] = 1;
-      $arreglo[1] = $opcion;
-    }
-    else{
+    if($registro[0]!=""){
       $arreglo[0] = $registro[0]+1;
       $arreglo[1] = $opcion;
     }

@@ -19,28 +19,32 @@ $data = array();
 
 //El limite empieza con 10 y el Offset con 0
 
-$query = $con->prepare("SELECT ID, CLAVE, FECHA, USUARIO, TOTAL FROM CAJA ORDER BY ID DESC LIMIT ? OFFSET ?");
+$query = $con->prepare("SELECT CLAVE, CLIENTE, NOMBRE, ESTATUS, FECHA, DESCUENTO, IMPORTE, VENDEDOR, ENTRADA FROM CARGAS LIMIT ? OFFSET ?");
 $query->bind_param("ii",$limit,$offset);
 $query->execute();
 
 // vincular variables a la sentencia preparada
 //$query->bind_result($id_usuario, $nombres,$apellidos);
-$query->bind_result($id, $clave, $fecha, $usuario, $total);
+$query->bind_result($clave, $cliente, $nombre, $estatus, $fecha, $descuento, $importe, $vendedor, $entrada);
 
 // obtener valores
 while ($query->fetch()) {
 	$data_json = array();
 
-	$data_json["id"] = $id;
 	$data_json["clave"] = $clave;
+  $data_json["cliente"] = $cliente;
+  $data_json["nombre"] = $nombre;
+  $data_json["estatus"] = $estatus;
 	$data_json["fecha"] = $fecha;
-	$data_json["usuario"] = $usuario;
-	$data_json["total"] = $total;
+  $data_json["descuento"] = $descuento;
+  $data_json["importe"] = $importe;
+  $data_json["vendedor"] = $vendedor;
+	$data_json["entrada"] = $entrada;
 	$data[]=$data_json;
 }
 
 // obtiene la cantidad de registros
-$cantidad_consulta = $con->query("select count(*) as total from CAJA");
+$cantidad_consulta = $con->query("select count(*) as total from CARGAS");
 $row = $cantidad_consulta->fetch_assoc();
 $cantidad['cantidad']=$row['total'];
 
