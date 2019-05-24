@@ -1,4 +1,18 @@
 <?php
+//Función para obtener el día de la semana dada una fecha
+function saber_dia($nombredia){
+  $nombredia = explode("/", $nombredia);
+  $dia = $nombredia[0];
+  $mes = $nombredia[1];
+  $mes = intval($mes);
+  $anio = $nombredia[2];
+  $nombredia = $nombredia[2]."-".$nombredia[1]."-".$nombredia[0];
+  $dias = array('Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado');
+  $meses = array('','Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
+  $fecha = $dias[date('N', strtotime($nombredia))];
+  echo "Reporte de Cobranza ".$fecha." ".$dia." de ".$meses[$mes]." del ".$anio;
+  //echo $nombredia;
+}
 //Funcion para realizar los calculos del reporte de precios
 function reportePrecios($precioApa = array(), $precioVazlo = array(), $descuentoApa, $descuentoVazlo, $importancia = array(), $idApa = array(), $idVazlo = array()){
   $variacion = 0;
@@ -308,8 +322,11 @@ function fechaConsulta($fecha){
 
 function conexion_local(){
 
-  //$base = new PDO("mysql:host=localhost;dbname=aplicacion","root","");
-  $base = new PDO("mysql:host=50.62.209.84;dbname=aplicacion","hesparza","b29194303");
+
+
+
+  $base = new PDO("mysql:host=localhost;dbname=aplicacion","root","");
+  //$base = new PDO("mysql:host=50.62.209.84;dbname=aplicacion","hesparza","b29194303");
   //$base->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   $base->exec("SET CHARACTER SET utf8");
   return $base;
@@ -373,6 +390,23 @@ function sub($desc, $imp)
  $y = $imp * $x;
  $w = round($y * 100) / 100;
  $z = $imp-$w;
+ return $z;
+ }
+
+ else
+ {
+   return $imp;
+ }
+}
+//añade un porcentaje
+function subAdicional($desc, $imp)
+{
+ if($desc!=0)
+ {
+ $x = $desc / 100;
+ $y = $imp * $x;
+ $w = round($y * 100) / 100;
+ $z = $imp+$w;
  return $z;
  }
 
@@ -734,104 +768,58 @@ function usuarioApellido($user)
   {
 
 
+    $consecutivo = "";
     $aux = 0;
   	$base = conexion_local();
   	$consulta = "SELECT FOLIOINTERNO FROM NOTAS WHERE TIPO=? ORDER BY TIPO";
   	$resultado = $base->prepare($consulta);
   	$resultado->execute(array($tipo_dev));
   	while ($registro = $resultado->fetch(PDO::FETCH_NUM)){
+        if($consecutivo!=$registro[0]){
+          $aux++;
+        }
   			$consecutivo = $registro[0];
+
   			// echo $consecutivo . "<br />";
   	}
+    $aux++;
 
-  	// echo $consecutivo;
-  	$aux = explode('.', $tipo_dev);
-  	if($consecutivo=="")
-  	{
-  		if($aux[0]==1)
-  		{
-  			$folio = 'DP-1';
-  		}
-  		elseif ($aux[0]==2)
-  		{
-  			$folio = 'FC-1';
-  		}
-
-  		elseif ($aux[0]==3)
-  		{
-  			$folio = 'EC-1';
-  		}
-
-  		elseif ($aux[0]==4)
-  		{
-  			$folio = 'F3-1';
-  		}
-  		elseif($aux[0]==5)
-  		{
-  			$folio = 'CF-1';
-  		}
-      elseif($aux[0]==6)
-  		{
-  			$folio = 'ECF3-1';
-  		}
-      else{
-        $folio = 'M-1';
-      }
-  		return $folio;
-  	}
-  	else
-  	{
-  		switch ($aux[0])
-  		{
-  			case '1':
-  			$x = explode('-', $consecutivo);
-  			$con = $x[1]+1;
-  			$folio = 'DP-' . $con;
+  	switch ($tipo_dev){
+  			case 'Devolución Parcial':
+  			$folio = 'DP-' . $aux;
   			return $folio;
   				break;
-  			case '2':
-  			$x = explode('-', $consecutivo);
-  			$con = $x[1]+1;
-  			$folio = 'FC-' . $con;
+  			case 'Factura Completa':
+  			$folio = 'FC-' . $aux;
   			return $folio;
   				break;
-  			case '3':
-  			$x = explode('-', $consecutivo);
-  			$con = $x[1]+1;
-  			$folio = 'EC-' . $con;
+  			case 'Entrada Caja':
+  			$folio = 'EC-' . $aux;
   			return $folio;
   				break;
-  			case '4':
-  			$x = explode('-',$consecutivo);
-  			$con = $x[1]+1;
-  			$folio = 'F3-' . $con;
+  			case 'Factor 3':
+  			$folio = 'F3-' . $aux;
   			return $folio;
   				break;
-  			case '5':
-  			$x = explode('-', $consecutivo);
-  			$con = $x[1]+1;
-  			$folio = 'CF-' . $con;
+  			case 'Cambio Físico':
+  			$folio = 'CF-' . $aux;
   			return $folio;
   				break;
-        case '6':
-    		$x = explode('-', $consecutivo);
-    		$con = $x[1]+1;
-    		$folio = 'ECF3-' . $con;
+        case 'Entrada Caja Factor 3':
+    		$folio = 'ECF3-' . $aux;
     		return $folio;
     				break;
-        case '7':
-        		$x = explode('-', $consecutivo);
-        		$con = $x[1]+1;
-        		$folio = 'M-' . $con;
+        case 'Muestra':
+        		$folio = 'M-' . $aux;
         		return $folio;
         				break;
   			default:
 
   				break;
   		}
-  	}
 
-    }
+    return $folio;
+  }
 
 
 
