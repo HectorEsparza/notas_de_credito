@@ -40,7 +40,7 @@ $(document).ready(function(){
   }
     // alert("Estoy en el document");
     $("#clienteValor").blur(function(){
-
+      // alert("Aqui puede estar el problema");
       var contador = $("#contadorSubtotal").val();
       var tipo = $("#tipo").val();
       var valor = document.getElementById('descuento').innerText;
@@ -48,12 +48,14 @@ $(document).ready(function(){
       $("#descuentoConsulta").val(separador[0]);
 
       if(valor!=""){
+        alert("entramos!!!");
         $("#cantidad1").prop("readonly", false);
         $("#clave1").prop("readonly", false);
         $("#devolucion1").prop("disabled", false);
 
       }
       else{
+        alert("no entramos");
         $("#cantidad1").prop("readonly", true);
         $("#clave1").prop("readonly", true);
         $("#devolucion1").prop("disabled", true);
@@ -77,21 +79,25 @@ $(document).ready(function(){
       var subtotal = [];
 
       for(var i=1;i<=contador;i++){
-
-        if(document.getElementById('importeNota'+i).innerText!=""){
-
+        // console.log("Iteracion "+i);
+        if(document.getElementById('importeNota'+i).innerText!="   "){
+          console.log("Entro al if "+i);
           var importeTexto = document.getElementById('importeNota'+i).innerText;
           var importeCadena = importeTexto.replace(',', "");
           var importeCadena2 = importeCadena.split("$");
           importe[i] = parseFloat(importeCadena2[1]);
-          var descuentoTexto = document.getElementById('descuento').innerText
+          var descuentoTexto = document.getElementById('descuento').innerText;
           var descuentoCadena = descuentoTexto.split("%");
           var descuentoNumero = parseFloat(descuentoCadena[0]);
           $("#subtotal"+i).text("$"+formatNumber.new(totalSub(importe[i], descuentoNumero)));
-          // console.log(totalSub(importe[i], descuentoNumero));
-          // console.log(importe[i]+1);
-          // console.log(descuentoNumero);
-        }
+        //   if(!Number.isNan(formatNumber.new(totalSub(importe[i], descuentoNumero)))){
+        //   //   $("#subtotal"+i).text("$"+formatNumber.new(totalSub(importe[i], descuentoNumero)));
+        //   //   // console.log(totalSub(importe[i], descuentoNumero));
+        //   //   // console.log(importe[i]+1);
+        //   //   // console.log(descuentoNumero);
+        //   // }
+        //
+        // }
       }
 
       var subtotal = 0;
@@ -122,7 +128,8 @@ $(document).ready(function(){
         $("#iva").val(formatNumber.new(iva(subtotal), "$"));
         $("#totalNota").val(formatNumber.new(total(iva(subtotal), subtotal), "$"));
       }
-    });
+    }
+   });
     //Cada que se cambia la clave
    //  $("#clave1").blur(function(){
    //    var subtotal = 0;

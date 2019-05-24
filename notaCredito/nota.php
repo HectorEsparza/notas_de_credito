@@ -97,13 +97,13 @@
                   <td align='center' style="width:50px">
                     <select id='tipo' name='tipo' required>
                       <option value=''></option>
-                      <option value='1. Devolución Parcial'>1.Devolución Parcial</option>
-                      <option value='2. Factura Completa'>2.Factura Completa</option>
-                      <option value='3. Entrada Caja'>3.Entrada Caja</option>
-                      <option value='4. Factor 3'>4.Factor 3</option>
-                      <option value='5. Cambio Físico'>5.Cambio Físico</option>
-                      <option value='6. Entrada Caja Factor 3'>6.Entrada Caja Factor 3</option>
-                      <option value='7. Muestra'>7.Muestra</option>
+                      <option value='Devolución Parcial'>1.Devolución Parcial</option>
+                      <option value='Factura Completa'>2.Factura Completa</option>
+                      <option value='Entrada Caja'>3.Entrada Caja</option>
+                      <option value='Factor 3'>4.Factor 3</option>
+                      <option value='Cambio Físico'>5.Cambio Físico</option>
+                      <option value='Entrada Caja Factor 3'>6.Entrada Caja Factor 3</option>
+                      <option value='Muestra'>7.Muestra</option>
                     </select>
                   </td>
                   <th style="width:25px">FOLIO</th>

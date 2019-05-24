@@ -96,7 +96,12 @@
               $clave[$x] = $registro[5];
               $cantidad[$x] = $registro[6];
               $factura = $registro[7];
-              $monto = $registro[8];
+              if($tipo=="Muestra"){
+                $costo[$x] = 0;
+              }
+              else{
+                $costo[$x] = $registro[8];
+              }
               $motivo = $registro[9];
               $lista[$x] = $registro[11];
               $user = $registro[12];
@@ -107,30 +112,16 @@
 
           }
           $resultado->closeCursor();
-
-
-          for($i=1;$i<=count($lista);$i++){
-            $separador = explode("G", $clave[$i]);
-            if($separador[0]!="CAR"){
-              $consulta = 'SELECT PRECIO FROM ' . $lista[$i] . ' WHERE CLAVEDEARTÍCULO=?';
-              $resultado = $base->prepare($consulta);
-              $resultado->execute(array($clave[$i]));
-              $registro = $resultado->fetch(PDO::FETCH_NUM);
-              $costo[$i] = $registro[0];
-            }
-            else{
-              //A la penalizacion no se le cobra descuento
-              $flag = 1;
-            }
-          }
-          $resultado->closeCursor();
           $cont=count($cantidad);
 
           if($tipo=="4. Factor 3"||$tipo=="6. Entrada Caja Factor 3"){
             for ($i=1; $i <=$cont ; $i++)
             {
-              $importe[$i] = imp($cantidad[$i], $costo[$i]);
-              $subtotales[$i] = sub($descuento, $importe[$i]);
+              $separador = explode("G", $clave[$i]);
+              if($separador[0]!="CAR"){
+                $importe[$i] = imp($cantidad[$i], $costo[$i]);
+                $subtotales[$i] = sub($descuento, $importe[$i]);
+              }
             }
 
             $iva = 0;
@@ -141,19 +132,26 @@
           else{
             for ($i=1; $i <=$cont ; $i++)
             {
-              $importe[$i] = imp($cantidad[$i], $costo[$i]);
-              $subtotales[$i] = sub($descuento, $importe[$i]);
+              $separador = explode("G", $clave[$i]);
+              if($separador[0]!="CAR"){
+                $importe[$i] = imp($cantidad[$i], $costo[$i]);
+                $subtotales[$i] = sub($descuento, $importe[$i]);
+              }
             }
             $sub = subtotal($subtotales);
             $iva = iva($sub);
             $total = total($sub,$iva);
-            $letra = num2letras($total, $fem = false, $dec = true);
+            if($tipo=="Muestra"){
+              $letra = "CERO";
+            }
+            else{
+              $letra = num2letras($total, $fem = false, $dec = true);
+            }
           }
-          if($flag==1){
-            $costo[$cont] = $monto;
-            $importe[$cont] = $monto;
-            $subtotales[$cont] = $monto;
-            $total = $total+$monto;
+          if($separador[0]=="CAR"){
+            $importe[$cont] = $costo[$cont];
+            $subtotales[$cont] = $costo[$cont];
+            $total = $total+$costo[$cont];
             $letra = num2letras($total, $fem = false, $dec = true);
           }
 

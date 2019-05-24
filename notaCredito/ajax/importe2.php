@@ -22,6 +22,7 @@ require_once("../../funciones.php");
    else if($registro[0]!=""&&$cantidad==""){
      echo "$" . number_format($registro[0], 2, ".", ",");
    }
+   // echo $registro[0];
 
 
  }

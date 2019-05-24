@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
     $("#tipo").blur(function(){
-        var folio = document.getElementById('folio').innerText
+        var folio = document.getElementById('folio').innerText;
         console.log(folio);
         var separador = folio.split('-');
         $("#consecutivo").val(folio);

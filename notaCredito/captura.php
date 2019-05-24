@@ -36,10 +36,6 @@ if(!isset($usuario))
   header("location:../index.html");
 }
 
-elseif($departamento!="VENTAS")
-{
-  header("location:../home.php");
-}
 //echo "<h1>" . $usuario . "</h1>";
 date_default_timezone_set('America/Mexico_City');
 //require("funciones.php");
@@ -92,7 +88,7 @@ $resultado->execute(array($cliente));
 $registro = $resultado->fetch(PDO::FETCH_NUM);
 $nombre = $registro[0];
 
-if($tipo_dev=="4. Factor 3"||$tipo_dev=="6. Entrada Caja Factor 3"){
+if($tipo_dev=="Factor 3"||$tipo_dev=="Entrada Caja Factor 3"){
 for ($i=1; $i <=$cont ; $i++)
 {
   $importe[$i] = imp($cantidad[$i], $costo[$i]);
@@ -117,6 +113,18 @@ else{
 
 
 $resultado->closeCursor();
+}
+else if($tipo_dev=="Muestra"){
+  for ($i=1; $i <=$cont ; $i++)
+  {
+    $costo[$i] = 0;
+    $importe[$i] = 0;
+    $subtotales[$i] = 0;
+  }
+  $sub = 0;
+  $iva = 0;
+  $total = 0;
+  $letra = num2letras($total, $fem = false, $dec = true);
 }
 else{
 for ($i=1; $i <=$cont ; $i++)
@@ -161,11 +169,14 @@ $resultado->closeCursor();
 // echo "Subtotal es: " . $sub . "<br />";
 // echo "Iva es: " . $iva . "<br />";
 // echo "Total es: " . $total . "<br />";
-if($tipo_dev=="5. Cambio Físico"||$tipo_dev=="7. Muestra"){
-  if($tipo_dev=="5. Cambio Físico"){
+if($tipo_dev=="Factor 3"||$tipo_dev=="Cambio Físico"||$tipo_dev=="Muestra"){
+  if($tipo_dev=="Factor 3"){
+    $sae = "F3";
+  }
+  elseif($tipo_dev=="Cambio Físico"){
     $sae = "C. FISICO";
   }
-  elseif ($tipo_dev=="7. Muestra"){
+  elseif ($tipo_dev=="Muestra"){
     $sae= "MUESTRA";
   }
   for ($i=1; $i <=$cont ; $i++)
