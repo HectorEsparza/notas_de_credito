@@ -12,15 +12,16 @@
 
 
     $base = conexion_local();
-    $consulta = "SELECT NOTASAE FROM NOTAS_VIS WHERE FOLIOINTERNO=?";
+    $consulta = "SELECT NOTASAE, TIPO FROM NOTAS WHERE FOLIOINTERNO=?";
     $resultado = $base->prepare($consulta);
     $resultado-> execute(array($folioNotas));
     $registro = $resultado->fetch(PDO::FETCH_NUM);
     $sae = $registro[0];
+    $tipo = $registro[1];
     $resultado->closeCursor();
 
 
-    if($sae==""){
+    if($sae==""||$tipo=="Cambio Físico"||$tipo=="Muestra"){
       $base = conexion_local();
       $consulta = "UPDATE NOTAS SET NOTASAE=?, STATUS=? WHERE FOLIOINTERNO=?";
       $resultado = $base->prepare($consulta);
@@ -36,13 +37,19 @@
   ?>
   <input type="hidden" id="consecutivo" value="<?= $folioNotas?>" />
   <input type="hidden" id="sae" value="<?= $sae?>" />
+  <input type="hidden" id="tipo" value="<?= $tipo?>" />
   <script>
       $(document).ready(function(){
 
           var folioNota = $("#consecutivo").val();
           var folioVis = $("#sae").val();
+          var tipo = $("#tipo").val();
 
-          if(folioVis!=""){
+          if(tipo=="Muestra"||tipo=="Cambio Físico"){
+            alert("Se cancelo la nota de credito con folio consecutivo "+folioNota);
+            setTimeout("location.href='visualizacion.php'",500);
+          }
+          else if(folioVis!=""){
             alert("No se pudo cancelar la nota de credito porque el folio consecutivo "+folioNota+" tiene un numero SAE asociado. Por favor verificarlo con credito y cobranza");
             setTimeout("location.href='visualizacion.php'",500);
           }
