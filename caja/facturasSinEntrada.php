@@ -57,7 +57,7 @@
     <div class="container" align="center">
 				<h3>Actualizar Estatus</h3>
         <table border="1">
-  				<form action="cambiarEstatus.php" method="post" enctype="multipart/form-data">
+  				<form action="otroTipoDeCambiarEstatus.php" method="post" enctype="multipart/form-data">
   				<tr style="font-weight: bold; text-align: center;">
   					<td colspan="2">Carga Facturas</td>
   				</tr>

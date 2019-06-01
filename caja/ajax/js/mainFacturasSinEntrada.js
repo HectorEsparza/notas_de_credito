@@ -52,7 +52,8 @@ function get_data_callback(){
 		}
 		// genera el cuerpo de la tabla
 		$.each(lista, function(ind, elem){
-      if(elem.entrada==""&&elem.estatus!="Cancelada"){
+      console.log("Hola "+elem.entrada);
+      if(elem.entrada==null&&elem.estatus!="Cancelada"){
         $('<tr>'+
           '<td>'+elem.clave+'</td>'+
           '<td>'+elem.cliente+'</td>'+

@@ -11,12 +11,14 @@
 </head>
 <body>
   <?php
+    include 'simplexlsx.class.php';
     require_once("../funciones.php");
     $archivo = $_FILES['archivo']['name'];
     $ruta = $_FILES['archivo']['tmp_name'];
     $destino = "cargas\\".$archivo;
     move_uploaded_file($ruta, $destino);
     $archivo = "cargas\\".$archivo;
+    $xlsx = new SimpleXLSX( '' . $archivo . '' );
     $factura = array();
     $cliente = array();
     $nombre = array();
@@ -26,40 +28,27 @@
     $importe = array();
     $vendedor = array();
     $contador = 0;
-		//$archivo = "G:\PleskVhosts\apawebdesarrollo.com\httpdocs\caja\\" .$archivo;
-		//echo __FILE__;
-    require_once 'PHPExcel/Classes/PHPExcel.php';
-    $inputFileType = PHPExcel_IOFactory::identify($archivo);
-    $objReader = PHPExcel_IOFactory::createReader($inputFileType);
-    $objPHPExcel = $objReader->load($archivo);
-    $sheet = $objPHPExcel->getSheet(0);
-    $highestRow = $sheet->getHighestRow();
-    $highestColumn = $sheet->getHighestColumn();
 
-    for ($row = 1; $row <= $highestRow; $row++){
-        $factura[$contador] = $sheet->getCell("A".$row)->getValue();
-        $cliente[$contador] = $sheet->getCell("B".$row)->getValue();
-        $nombre[$contador] = $sheet->getCell("C".$row)->getValue();
-        $estatus[$contador] = $sheet->getCell("D".$row)->getValue();
-        $fecha[$contador] = $sheet->getCell("E".$row)->getValue();
-        $importe[$contador] = str_replace(',','',($sheet->getCell("F".$row)->getValue()));
-        $vendedor[$contador] = $sheet->getCell("G".$row)->getValue();
-        $descuento[$contador] = $sheet->getCell("H".$row)->getValue();
-        $contador++;
-    		// echo $sheet->getCell("A".$row)->getValue()." - ";
-    		// echo $sheet->getCell("B".$row)->getValue()." - ";
-    		// echo $sheet->getCell("C".$row)->getValue()." - ";
-        // echo $sheet->getCell("D".$row)->getValue()." - ";
-        // echo $sheet->getCell("E".$row)->getValue()." - ";
-        // echo $sheet->getCell("F".$row)->getValue()." - ";
-        // echo $sheet->getCell("G".$row)->getValue()." - ";
-        // echo $sheet->getCell("H".$row)->getValue();
-    		// echo "<br>";
-    }
-		//echo $descuento[0];
-    //echo $factura[0]." ".$cliente[0]." ".$nombre[0]." ".$estatus[0]." ".$fecha[0]." ".$descuento[0]." ".$importe[0]." ".$vendedor[0];
     //echo $archivo;
-		echo $nombre[13];
+    foreach ($xlsx->rows() as $fields){
+  	   $factura[$contador] = $fields[0];
+  	   $cliente[$contador] = $fields[1];
+  	   $nombre[$contador] = $fields[2];
+  	   $estatus[$contador] = $fields[3];
+       $fecha[$contador] = $fields[4];
+       $importe[$contador] = $fields[5];
+       $vendedor[$contador] = $fields[6];
+       $descuento[$contador] = $fields[7];
+       $contador++;
+       // echo $fields[0] . " ";
+  	   // echo $fields[1] . " ";
+  	   // echo $fields[2] . " ";
+  	   // echo $fields[3] . " ";
+       // echo $fields[4] . " ";
+       // echo $fields[5] . " ";
+       // echo $fields[6] . " ";
+       // echo $fields[7] . " " . "<br />";
+	  }
   ?>
   <div class="row">
     <div class="container col-md-4" style="margin-left: 500px">

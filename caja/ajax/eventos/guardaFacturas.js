@@ -48,7 +48,7 @@ $(document).ready(function(){
         beforeSend: inicioEnvio,
          //Es la función que se ejecuta antes de empezar la transacción
         success: llegada, //Función que se ejecuta en caso de tener exito
-        timeout: 4000,
+        timeout: 6000,
         error: problemas //Función que se ejecuta si se tiene problemas al superar el timeout
     });
     return false;
@@ -63,6 +63,7 @@ $(document).ready(function(){
   }
 
   function problemas(){
+    alert("Problemas en el servidor...");
     console.log("Problemas en el servidor...");
   }
 });

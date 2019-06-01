@@ -75,7 +75,7 @@
 		<br /><br />
 		<div class="container" align='center' id="cargarFacturas">
 			<table border="1">
-				<form action="cargarFacturas.php" method="post" enctype="multipart/form-data">
+				<form action="otroTipoDeCargarFacturas.php" method="post" enctype="multipart/form-data">
 				<tr style="font-weight: bold; text-align: center;">
 					<td colspan="2">Carga Facturas</td>
 				</tr>
