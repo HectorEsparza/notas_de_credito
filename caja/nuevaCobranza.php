@@ -54,7 +54,7 @@
           <td><strong>Observaciones</strong></td>
         </tr>
 				<tbody id="cuerpo">
-					<?php for($i=1;$i<=80;$i++):?>
+					<?php for($i=1;$i<=100;$i++):?>
 						<?php if($i<=15): ?>
 						<tr>
 							<td><input type='text' id="factura<?= $i?>" style="width: 100px; height: 20px;" readonly/></td>

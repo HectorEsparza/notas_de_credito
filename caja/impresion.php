@@ -47,7 +47,6 @@
       }
 
     ?>
-    <? if($contador<=40) :?>
         <div class="col-md-8">
           <p style="font-weight: bold;"><img src="imagenes/apa.jpg" />
             <?php echo saber_dia($fecha)." ".$folio?>
@@ -57,6 +56,18 @@
             <!-- <input type="button" class="btn btn-success btn-sm" value="Editar" id="editar" style="margin-left: 30px;"/> -->
       			<input class="btn btn-danger btn-sm" type='button' value='Cierra Sesión' id="cierra" style="margin-left: 30px;"/>
           </p>
+          <p style="font-weight: bold;">
+            HAGO CONSTAR QUE RECIBO LAS FACTURAS DESCRITAS EN ESTE DOCUMENTO, PARA SU COBRO, YA SEA EN
+            CHEQUE O EFECTIVO, PAGOS QUE DEPOSITARE EN LAS CUENTAS BANCARIAS DE JOSE LUIS GARCIA RESENDIZ
+          </p>
+          <br />
+          <div style="text-align: right;">
+            <p>_____________________________</p>
+            <p style="font-weight: bold;">
+              RECIBIÓ, INÉS ISLAS LECHUGA
+            </p>
+          </div>
+
           <table width='850px' border="1" style="text-align: center;">
             <tr>
               <td colspan="5" style="background-color: gray; font-weight:bold;">ABASTECEDORA DE PRODUCTOS AUTOMOTRICES</td>
@@ -68,24 +79,14 @@
               <td>PAGO</td>
               <td>OBSERVACIONES</td>
             </tr>
-            <?for($i=0;$i<40;$i++):?>
-              <? if($i<$contador): ?>
+            <?for($i=0;$i<$contador;$i++):?>
                 <tr>
-                  <td><?= $facturas[$i] ?></td>
+                  <td><?= $facturas[$i] ?> &nbsp;&nbsp;&nbsp;</td>
                   <td align="left"><?= $cliente[$i] . " " . $nombre[$i] ?></td>
                   <td><?= "$".number_format($importe[$i], 2, ".", ",") ?></td>
                   <td><?= $metodos[$i] ?></td>
                   <td><?= $observaciones[$i] ?></td>
                 </tr>
-              <? else: ?>
-                <tr>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                </tr>
-              <? endif ?>
             <?endfor?>
           </table>
           <br />
@@ -95,125 +96,8 @@
               <td><?= "$".number_format($total, 2, ".", ",") ?></td>
             </tr>
           </table>
-          <br /
-          <p style="font-weight: bold;">
-            HAGO CONSTAR QUE RECIBO LAS FACTURAS DESCRITAS EN ESTE DOCUMENTO, PARA SU COBRO, YA SEA EN
-            CHEQUE O EFECTIVO, PAGOS QUE DEPOSITARE EN LAS CUENTAS BANCARIAS DE JOSE LUIS GARCIA RESENDIZ
-          </p>
           <br />
-          <p style="font-weight: bold;">RECIBIÓ</p>
-          <p style="font-weight: bold;">INÉS ISLAS LECHUGA</p>
         </div>
-    <? else :?>
-        <div class="col-md-8">
-          <p style="font-weight: bold;"><img src="imagenes/apa.jpg" />
-            <?php echo saber_dia($fecha)." ".$folio?>
-            <input type="hidden" id="folio" value="<?= $folio?>" />
-            <input type="button" class="btn btn-primary btn-sm" value="Imprimir" id="impresion" style="margin-left: 30px;"/>
-            <input type="button" class="btn btn-info btn-sm" value="Regresar" id="regresar" style="margin-left: 30px;"/>
-            <!-- <input type="button" class="btn btn-success btn-sm" value="Editar" id="editar" style="margin-left: 30px;"/> -->
-      			<input class="btn btn-danger btn-sm" type='button' value='Cierra Sesión' id="cierra" style="margin-left: 30px;"/>
-          </p>
-          <table width='850px' border="1" style="text-align: center;">
-            <tr>
-              <td colspan="5" style="background-color: gray; font-weight:bold;">ABASTECEDORA DE PRODUCTOS AUTOMOTRICES</td>
-            </tr>
-            <tr style="font-weight: bold;">
-              <td>FACTURA</td>
-              <td>CLIENTE</td>
-              <td>MONTO</td>
-              <td>PAGO</td>
-              <td>OBSERVACIONES</td>
-            </tr>
-            <?for($i=0;$i<40;$i++):?>
-              <? if($i<40): ?>
-                <tr>
-                  <td><?= $facturas[$i] ?></td>
-                  <td align="left"><?= $cliente[$i] . " " . $nombre[$i] ?></td>
-                  <td><?= "$".number_format($importe[$i], 2, ".", ",") ?></td>
-                  <td><?= $metodos[$i] ?></td>
-                  <td><?= $observaciones[$i] ?></td>
-                </tr>
-              <? else: ?>
-                <tr>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                </tr>
-              <? endif ?>
-            <?endfor?>
-          </table>
-          <br />
-          <table width='550px' border="1" style="text-align: center;">
-            <tr>
-              <td colspan="2" style="font-weight: bold">TOTAL FACTURAS</td>
-              <td><?= "$".number_format($total, 2, ".", ",") ?></td>
-            </tr>
-          </table>
-          <br /
-          <p style="font-weight: bold;">
-            HAGO CONSTAR QUE RECIBO LAS FACTURAS DESCRITAS EN ESTE DOCUMENTO, PARA SU COBRO, YA SEA EN
-            CHEQUE O EFECTIVO, PAGOS QUE DEPOSITARE EN LAS CUENTAS BANCARIAS DE JOSE LUIS GARCIA RESENDIZ
-          </p>
-          <br />
-          <p style="font-weight: bold;">RECIBIÓ</p>
-          <p style="font-weight: bold;">INÉS ISLAS LECHUGA</p>
-        </div>
-        <br /><br /><br /><br /><br /><br /><br />
-        <div class="col-md-8">
-          <p style="font-weight: bold;"><img src="imagenes/apa.jpg" />
-            <?php echo saber_dia($fecha)." ".$folio?>
-          </p>
-          <table width='850px' border="1" style="text-align: center;">
-            <tr>
-              <td colspan="5" style="background-color: gray; font-weight:bold;">ABASTECEDORA DE PRODUCTOS AUTOMOTRICES</td>
-            </tr>
-            <tr style="font-weight: bold;">
-              <td>FACTURA</td>
-              <td>CLIENTE</td>
-              <td>MONTO</td>
-              <td>PAGO</td>
-              <td>OBSERVACIONES</td>
-            </tr>
-            <?for($i=40;$i<80;$i++):?>
-              <? if($i<$contador): ?>
-                <tr>
-                  <td><?= $facturas[$i] ?></td>
-                  <td align="left"><?= $cliente[$i] . " " . $nombre[$i] ?></td>
-                  <td><?= "$".number_format($importe[$i], 2, ".", ",") ?></td>
-                  <td><?= $metodos[$i] ?></td>
-                  <td><?= $observaciones[$i] ?></td>
-                </tr>
-              <? else: ?>
-                <tr>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                </tr>
-              <? endif ?>
-            <?endfor?>
-          </table>
-          <br />
-          <table width='550px' border="1" style="text-align: center;">
-            <tr>
-              <td colspan="2" style="font-weight: bold">TOTAL FACTURAS</td>
-              <td><?= "$".number_format($total, 2, ".", ",") ?></td>
-            </tr>
-          </table>
-          <br /
-          <p style="font-weight: bold;">
-            HAGO CONSTAR QUE RECIBO LAS FACTURAS DESCRITAS EN ESTE DOCUMENTO, PARA SU COBRO, YA SEA EN
-            CHEQUE O EFECTIVO, PAGOS QUE DEPOSITARE EN LAS CUENTAS BANCARIAS DE JOSE LUIS GARCIA RESENDIZ
-          </p>
-          <br />
-          <p style="font-weight: bold;">RECIBIÓ</p>
-          <p style="font-weight: bold;">INÉS ISLAS LECHUGA</p>
-        </div>
-    <? endif ?>
     <script type="text/javascript">
       $(document).ready(function(){
         $("#impresion").click(function(){

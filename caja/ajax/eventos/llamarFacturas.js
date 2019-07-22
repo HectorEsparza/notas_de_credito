@@ -720,6 +720,186 @@ $(document).ready(function(){
       enviar();
     });
 
+    $("#factura81").change(function(){
+      var mayuscula = $("#factura81").val();
+      mayuscula = mayuscula.toUpperCase();
+      $("#factura81").val(mayuscula);
+      $("#factura").val($("#factura81").val());
+      $("#indice").val("81");
+      enviar();
+    });
+
+    $("#factura82").change(function(){
+      var mayuscula = $("#factura82").val();
+      mayuscula = mayuscula.toUpperCase();
+      $("#factura82").val(mayuscula);
+      $("#factura").val($("#factura82").val());
+      $("#indice").val("82");
+      enviar();
+    });
+
+    $("#factura83").change(function(){
+      var mayuscula = $("#factura83").val();
+      mayuscula = mayuscula.toUpperCase();
+      $("#factura83").val(mayuscula);
+      $("#factura").val($("#factura83").val());
+      $("#indice").val("83");
+      enviar();
+    });
+
+    $("#factura84").change(function(){
+      var mayuscula = $("#factura84").val();
+      mayuscula = mayuscula.toUpperCase();
+      $("#factura84").val(mayuscula);
+      $("#factura").val($("#factura84").val());
+      $("#indice").val("84");
+      enviar();
+    });
+
+    $("#factura85").change(function(){
+      var mayuscula = $("#factura85").val();
+      mayuscula = mayuscula.toUpperCase();
+      $("#factura85").val(mayuscula);
+      $("#factura").val($("#factura85").val());
+      $("#indice").val("85");
+      enviar();
+    });
+
+    $("#factura86").change(function(){
+      var mayuscula = $("#factura86").val();
+      mayuscula = mayuscula.toUpperCase();
+      $("#factura86").val(mayuscula);
+      $("#factura").val($("#factura86").val());
+      $("#indice").val("86");
+      enviar();
+    });
+
+    $("#factura87").change(function(){
+      var mayuscula = $("#factura87").val();
+      mayuscula = mayuscula.toUpperCase();
+      $("#factura87").val(mayuscula);
+      $("#factura").val($("#factura87").val());
+      $("#indice").val("87");
+      enviar();
+    });
+
+    $("#factura88").change(function(){
+      var mayuscula = $("#factura88").val();
+      mayuscula = mayuscula.toUpperCase();
+      $("#factura88").val(mayuscula);
+      $("#factura").val($("#factura88").val());
+      $("#indice").val("88");
+      enviar();
+    });
+
+    $("#factura89").change(function(){
+      var mayuscula = $("#factura89").val();
+      mayuscula = mayuscula.toUpperCase();
+      $("#factura89").val(mayuscula);
+      $("#factura").val($("#factura89").val());
+      $("#indice").val("89");
+      enviar();
+    });
+
+    $("#factura90").change(function(){
+      var mayuscula = $("#factura90").val();
+      mayuscula = mayuscula.toUpperCase();
+      $("#factura90").val(mayuscula);
+      $("#factura").val($("#factura90").val());
+      $("#indice").val("90");
+      enviar();
+    });
+
+    $("#factura91").change(function(){
+      var mayuscula = $("#factura91").val();
+      mayuscula = mayuscula.toUpperCase();
+      $("#factura91").val(mayuscula);
+      $("#factura").val($("#factura91").val());
+      $("#indice").val("91");
+      enviar();
+    });
+
+    $("#factura92").change(function(){
+      var mayuscula = $("#factura92").val();
+      mayuscula = mayuscula.toUpperCase();
+      $("#factura92").val(mayuscula);
+      $("#factura").val($("#factura92").val());
+      $("#indice").val("92");
+      enviar();
+    });
+
+    $("#factura93").change(function(){
+      var mayuscula = $("#factura93").val();
+      mayuscula = mayuscula.toUpperCase();
+      $("#factura93").val(mayuscula);
+      $("#factura").val($("#factura93").val());
+      $("#indice").val("93");
+      enviar();
+    });
+
+    $("#factura94").change(function(){
+      var mayuscula = $("#factura94").val();
+      mayuscula = mayuscula.toUpperCase();
+      $("#factura94").val(mayuscula);
+      $("#factura").val($("#factura94").val());
+      $("#indice").val("94");
+      enviar();
+    });
+
+    $("#factura95").change(function(){
+      var mayuscula = $("#factura95").val();
+      mayuscula = mayuscula.toUpperCase();
+      $("#factura95").val(mayuscula);
+      $("#factura").val($("#factura95").val());
+      $("#indice").val("95");
+      enviar();
+    });
+
+    $("#factura96").change(function(){
+      var mayuscula = $("#factura96").val();
+      mayuscula = mayuscula.toUpperCase();
+      $("#factura96").val(mayuscula);
+      $("#factura").val($("#factura96").val());
+      $("#indice").val("96");
+      enviar();
+    });
+
+    $("#factura97").change(function(){
+      var mayuscula = $("#factura97").val();
+      mayuscula = mayuscula.toUpperCase();
+      $("#factura97").val(mayuscula);
+      $("#factura").val($("#factura97").val());
+      $("#indice").val("97");
+      enviar();
+    });
+
+    $("#factura98").change(function(){
+      var mayuscula = $("#factura98").val();
+      mayuscula = mayuscula.toUpperCase();
+      $("#factura98").val(mayuscula);
+      $("#factura").val($("#factura98").val());
+      $("#indice").val("98");
+      enviar();
+    });
+
+    $("#factura99").change(function(){
+      var mayuscula = $("#factura99").val();
+      mayuscula = mayuscula.toUpperCase();
+      $("#factura99").val(mayuscula);
+      $("#factura").val($("#factura99").val());
+      $("#indice").val("99");
+      enviar();
+    });
+
+    $("#factura100").change(function(){
+      var mayuscula = $("#factura100").val();
+      mayuscula = mayuscula.toUpperCase();
+      $("#factura100").val(mayuscula);
+      $("#factura").val($("#factura100").val());
+      $("#indice").val("100");
+      enviar();
+    });
+
 
 
     function enviar(){
@@ -758,6 +938,8 @@ $(document).ready(function(){
       var siguienteFila = parseInt(datos[3], 10);
       siguienteFila += 1;
       //activamos el boton de guardar
+      //En el servidor la condicion se cumple si datos[5]==""
+      //En el servidor local la condicion se cumple si datos[5]==null
       if(datos[5]==null){
         if(datos[3]==1&&datos[2]>0){
           $("#guardar").prop("disabled", false);

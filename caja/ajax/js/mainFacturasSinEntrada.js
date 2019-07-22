@@ -53,6 +53,8 @@ function get_data_callback(){
 		// genera el cuerpo de la tabla
 		$.each(lista, function(ind, elem){
       console.log("Hola "+elem.entrada);
+      //En el servidor la condicion se cumple si elem.entrada==""
+      //En el servidor local la condicion se cumple si elem.entrada==null
       if(elem.entrada==null&&elem.estatus!="Cancelada"){
         $('<tr>'+
           '<td>'+elem.clave+'</td>'+
