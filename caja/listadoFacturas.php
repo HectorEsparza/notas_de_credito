@@ -3,8 +3,8 @@
 $limit = isset($_POST["limit"]) && intval($_POST["limit"]) > 0 ? intval($_POST["limit"])	: 20;
 $offset = isset($_POST["offset"]) && intval($_POST["offset"])>=0	? intval($_POST["offset"])	: 0;
 // realiza la conexion
-//$con = new mysqli("50.62.209.84","hesparza","b29194303","aplicacion");
-$con = new mysqli("localhost","root","","aplicacion");
+$con = new mysqli("50.62.209.84","hesparza","b29194303","aplicacion");
+//$con = new mysqli("localhost","root","","aplicacion");
 $con->set_charset("utf8");
 //$base = new PDO('mysql:host=localhost; dbname=aplicacion', 'root', '');
 //$base = new PDO("mysql:host=50.62.209.117;dbname=aplicacion","hesparza","b29194303");
@@ -19,13 +19,13 @@ $data = array();
 
 //El limite empieza con 10 y el Offset con 0
 
-$query = $con->prepare("SELECT CLAVE, CLIENTE, NOMBRE, ESTATUS, FECHA, DESCUENTO, IMPORTE, VENDEDOR, ENTRADA FROM CARGAS LIMIT ? OFFSET ?");
+$query = $con->prepare("SELECT CLAVE, CLIENTE, NOMBRE, ESTATUS, FECHA, DESCUENTO, IMPORTE, VENDEDOR, METODO, ENTRADA, FECHA_ENTRADA FROM CARGAS LIMIT ? OFFSET ?");
 $query->bind_param("ii",$limit,$offset);
 $query->execute();
 
 // vincular variables a la sentencia preparada
 //$query->bind_result($id_usuario, $nombres,$apellidos);
-$query->bind_result($clave, $cliente, $nombre, $estatus, $fecha, $descuento, $importe, $vendedor, $entrada);
+$query->bind_result($clave, $cliente, $nombre, $estatus, $fecha, $descuento, $importe, $vendedor, $metodo, $entrada, $fechaCorte);
 
 // obtener valores
 while ($query->fetch()) {
@@ -39,7 +39,9 @@ while ($query->fetch()) {
   $data_json["descuento"] = $descuento;
   $data_json["importe"] = $importe;
   $data_json["vendedor"] = $vendedor;
+	$data_json["metodo"] = $metodo;
 	$data_json["entrada"] = $entrada;
+	$data_json["fechaCorte"] = $fechaCorte;
 	$data[]=$data_json;
 }
 

@@ -61,7 +61,10 @@
 						 <input type="hidden" id="gerente" value="<?= $usuario?>" />
 						 <input type="text" id="factura" class="factura" placeholder="Factura" />
 						 <input type="text" id="cliente" class="cliente" placeholder="NO. Cliente" />
-						 <input type="text" id="fecha" class="fecha" placeholder="Fecha" />
+						 <input type="text" id="fecha" class="fecha" placeholder="Fecha Elaboración" />
+						 <input type="text" id="fechaCorte" class="fechaCorte" placeholder="Fecha Corte" />
+						 <input type="text" id="pago" class="pago" placeholder="Método de Pago" />
+						 <input type="text" id="folio" class="folio" placeholder="Folio Cobranza" />
 						 <input type="hidden" id="tipo" value="conEntrada"/>
 						 <br /><br />
 						 <input type="button" class="btn btn-primary" id="buscar" value="Buscar" />
@@ -84,6 +87,9 @@
 				<td>Importe total</td>
 				<td>Nombre del vendedor</td>
 				<td>Porcentaje de descuento</td>
+				<td>Método de pago</td>
+				<td>Fecha de Corte</td>
+				<td>Folio de Cobranza</td>
 			</tr>
 		</thead>
 		<tbody id="table">
@@ -145,8 +151,6 @@
 										setTimeout("location.href='../home.php'", 500);
 									});
 
-
-				$('#fecha').datepicker();
 
 			});
 

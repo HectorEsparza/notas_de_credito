@@ -40,6 +40,7 @@
 	<header class="row">
 		<input type="hidden" id="arreglo" value="<?= json_encode($nombres)?>" />
 		<input type="hidden" id="departamento" value="<?= $departamento?>">
+		<input type="hidden" id="permiso" value="<?= $permiso?>">
 		<div class="container col-md-6">
 			<h1 align='center'>
 				Visualización Entradas a Caja
@@ -171,13 +172,21 @@
 				});
 
 				var departamento = $("#departamento").val();
+				var permiso = $("#permiso").val();
 				if(departamento=="COBRANZA"){
 					$("#factura").hide();
 					$("#sinEntrada").hide();
 					$("#cargarFacturas").hide();
 				}
 				else if(departamento=="CREDITO_Y_COBRANZA"){
-					$("#nuevaCobranza").hide();
+					if(permiso==1){
+						$("#nuevaCobranza").hide();
+					}
+				else if(permiso==2){
+						$("#nuevaCobranza").hide();
+						$("#cargarFacturas").hide();
+					}
+
 				}
 			});
 

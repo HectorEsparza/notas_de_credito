@@ -176,6 +176,8 @@
             $("#remision").hide();
             $("#sae").show();
             $("#nomina").hide();
+            $("#altas").hide();
+            $("#caja").show();
           }
           else if(departamento=="RECURSOS_HUMANOS"||departamento=="CONTABILIDAD"||departamento=="ADMINISTRADOR"){
             $("#nota").hide();
@@ -212,8 +214,9 @@
             $("#pedido").hide();
             $("#carta").hide();
             $("#remision").hide();
-            $("#sae").show();
+            $("#sae").hide();
             $("#nomina").hide();
+            $("#caja").show();
           }
           else if(departamento=="RECURSOS_HUMANOS"){
             $("#nota").hide();

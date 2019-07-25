@@ -61,6 +61,9 @@ function get_data_callback(){
         '<td>'+'$'+formatNumber.new(elem.importe)+'</td>'+
         '<td>'+elem.vendedor+'</td>'+
         '<td>'+elem.descuento+'%'+'</td>'+
+        '<td>'+elem.metodo+'</td>'+
+        '<td>'+elem.fechaCorte+'</td>'+
+        '<td>'+elem.entrada+'</td>'+
       '</tr>').appendTo($("#table"));
 		});
 

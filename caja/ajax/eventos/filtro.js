@@ -30,15 +30,34 @@ $(document).ready(function(){
     dayNamesMin: abrevia_dias,
     selectOtherMonths: true,
   });
+  $('#fechaCorte').datepicker({
+    //dateFormat:'yy-mm-dd'
+    //dateFormat: 'dd-mm-yy'
+    monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+    dateFormat: 'dd/mm/yy',
+    changeMonth: false,
+    changeYear: false,
+    dayNamesMin: abrevia_dias,
+    selectOtherMonths: true,
+  });
 
   $("#buscar").click(function(){
-    enviar();
+    if($("#factura").val()!=""||$("#cliente").val()!=""||$("#fecha").val()!=""||$("#fechaCorte").val()!=""||$("#pago").val()!=""||$("#folio").val()!=""){
+        enviar();
+    }
+    else{
+      alert("Al menos captura un campo");
+    }
+
   });
 
   function enviar(){
     var factura = $("#factura").val();
     var cliente = $("#cliente").val();
     var fecha = $("#fecha").val();
+    var fechaCorte = $("#fechaCorte").val();
+    var pago = $("#pago").val();
+    var folio = $("#folio").val();
     var tipo = $("#tipo").val();
     // var arreglo = [];
     // arreglo[0] = factura;
@@ -51,6 +70,9 @@ $(document).ready(function(){
       cliente: cliente,
       fecha: fecha,
       tipo: tipo,
+      fechaCorte : fechaCorte,
+      pago: pago,
+      folio: folio,
     }
     $.ajax({
         async: true, //Activar la transferencia asincronica
@@ -78,7 +100,7 @@ $(document).ready(function(){
       if(datos[0]==0){
         //alert("No se encontraron datos en la Consulta");
         $('<tr>'+
-            '<td colspan="8">No se encontraron datos en la consulta</td>'+
+            '<td colspan="11">No se encontraron datos en la consulta</td>'+
           '</tr>').appendTo($("#table"));
       }
       else{
@@ -92,6 +114,9 @@ $(document).ready(function(){
               '<td>$'+formatNumber.new(datos[6][i])+'</td>'+
               '<td>'+datos[7][i]+'</td>'+
               '<td>'+datos[8][i]+'%</td>'+
+              '<td>'+datos[11][i]+'</td>'+
+              '<td>'+datos[12][i]+'</td>'+
+              '<td>'+datos[9][i]+'</td>'+
             '</tr>').appendTo($("#table"));
         }
       }
@@ -100,7 +125,7 @@ $(document).ready(function(){
       if(datos[0]==0){
         //alert("No se encontraron datos en la Consulta");
         $('<tr>'+
-            '<td colspan="8">No se encontraron datos en la consulta</td>'+
+            '<td colspan="11">No se encontraron datos en la consulta</td>'+
           '</tr>').appendTo($("#table"));
       }
       else{
@@ -115,6 +140,9 @@ $(document).ready(function(){
                 '<td>$'+formatNumber.new(datos[6][i])+'</td>'+
                 '<td>'+datos[7][i]+'</td>'+
                 '<td>'+datos[8][i]+'%</td>'+
+                '<td>'+datos[11][i]+'</td>'+
+                '<td>'+datos[12][i]+'</td>'+
+                '<td>'+datos[9][i]+'</td>'+
               '</tr>').appendTo($("#table"));
           }
           else{
