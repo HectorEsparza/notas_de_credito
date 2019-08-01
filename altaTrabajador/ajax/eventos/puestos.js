@@ -22,6 +22,7 @@ $(document).ready(function(){
             $('<option value="">Seleccionar de la Lista</option>'+
             '<option value="Ejecutivo Recursos Humanos">Ejecutivo Recursos Humanos</option>'+
             '<option value="Ejecutivo Contable">Ejecutivo Contable</option>'+
+            '<option value="Auxiliar Vigilante">Auxiliar Vigilante</option>'+
             '<option value="Vigilante">Vigilante</option>'+
             '<option value="Supervisor">Supervisor</option>'+
             '<option value="Prensista">Prensista</option>'+
@@ -71,7 +72,8 @@ $(document).ready(function(){
               '<option value="Chofer">Chofer</option>'+
               '<option value="Supervisor en Capacitacion">Supervisor en Capacitacion</option>'+
               '<option value="Auxiliar de Reparto">Auxiliar de Reparto</option>'+
-              '<option value="Ejecutivo Atencion a Clientes">Ejecutivo Atencion a Clientes</option>').appendTo(vistaPuesto);
+              '<option value="Ejecutivo Atencion a Clientes">Ejecutivo Atencion a Clientes</option>'+
+              '<option value="Auxiliar Vigilante">Auxiliar Vigilante</option>').appendTo(vistaPuesto);
         }
         else if(auxiliar=="PRODUCCION SOPORTE"){
             console.log("Agregando el select "+auxiliar.length);
