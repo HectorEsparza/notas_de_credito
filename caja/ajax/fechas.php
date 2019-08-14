@@ -1,26 +1,52 @@
 <?php
   require_once("../../funciones.php");
-
-  $fecha = $_POST['fecha'];
-  $opcion = "fechaDisponible";
-  $base = conexion_local();
-  $consulta = "SELECT ID, FECHA FROM CAJA ORDER BY ID ASC";
-  $resultado = $base->prepare($consulta);
-  $resultado->execute(array());
   $arreglo = array();
-  $arreglo[0] = 1;
-  $arreglo[1] = $opcion;
+  $fecha = $_POST['fecha'];
+  $departamento = $_POST['departamento'];
+  $tipo = $_POST['tipo'];
+  $folio = "";
+  // $fecha = "29/07/2019";
+  // $departamento = "COBRANZA";
+  // $tipo = "remisiones";
+  $clave = "";
+  $opcion = "fechaDisponible";
+  $contador = 1;
+  $base = conexion_local();
+  if($tipo=="facturas"){
+    $consulta = "SELECT FECHA FROM CAJA WHERE DEPARTAMENTO=? AND CLAVE LIKE ? ORDER BY CLAVE ASC";
+    $clave = "F%";
+  }
+  elseif($tipo=="remisiones"){
+    $consulta = "SELECT FECHA FROM CAJA WHERE DEPARTAMENTO=? AND CLAVE LIKE ? ORDER BY CLAVE ASC";
+    $clave = "R%";
+  }
+  $resultado = $base->prepare($consulta);
+  $resultado->execute(array($departamento, $clave));
   while($registro = $resultado->fetch(PDO::FETCH_NUM)){
-    if($registro[1]==$fecha){
+    if($registro[0]==$fecha){
       $opcion = "fechaNoDisponoble";
     }
-    if($registro[0]!=""){
-      $arreglo[0] = $registro[0]+1;
-      $arreglo[1] = $opcion;
-    }
+    $contador++;
   }
   $resultado->closeCursor();
-
+  if($tipo=="facturas"){
+    if($departamento=="COBRANZA"){
+      $folio = "FPB" . $contador;
+    }
+    else if($departamento=="COBRANZA_TECAMAC"){
+      $folio = "FTC" . $contador;
+    }
+  }
+  else if($tipo=="remisiones"){
+    if($departamento=="COBRANZA"){
+      $folio = "RPB" . $contador;
+    }
+    else if($departamento=="COBRANZA_TECAMAC"){
+      $folio = "RTC" . $contador;
+    }
+  }
+  $arreglo[0] = $folio;
+  $arreglo[1] = $opcion;
   echo json_encode($arreglo);
 
 ?>

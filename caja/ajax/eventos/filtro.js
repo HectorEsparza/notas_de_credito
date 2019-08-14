@@ -96,6 +96,7 @@ $(document).ready(function(){
   function llegada(datos){
     $("#table").empty();
     $("#paginador").empty();
+    $("#exportaExcel").show();
     if(datos[10]=="conEntrada"){
       if(datos[0]==0){
         //alert("No se encontraron datos en la Consulta");
@@ -104,6 +105,7 @@ $(document).ready(function(){
           '</tr>').appendTo($("#table"));
       }
       else{
+        console.log(datos[4][0]+datos[4][1]+datos[4][2]);
         for(var i = 0; i < datos[0]; i++){
           $('<tr>'+
               '<td>'+datos[1][i]+'</td>'+
@@ -129,28 +131,22 @@ $(document).ready(function(){
           '</tr>').appendTo($("#table"));
       }
       else{
-        for(var i = 0; i < datos[0]; i++){
-          if(datos[4][i]=="Emitida"&&datos[9][i]==""){
-            $('<tr>'+
-                '<td>'+datos[1][i]+'</td>'+
-                '<td>'+datos[2][i]+'</td>'+
-                '<td>'+datos[3][i]+'</td>'+
-                '<td>'+datos[4][i]+'</td>'+
-                '<td>'+datos[5][i]+'</td>'+
-                '<td>$'+formatNumber.new(datos[6][i])+'</td>'+
-                '<td>'+datos[7][i]+'</td>'+
-                '<td>'+datos[8][i]+'%</td>'+
-                '<td>'+datos[11][i]+'</td>'+
-                '<td>'+datos[12][i]+'</td>'+
-                '<td>'+datos[9][i]+'</td>'+
-              '</tr>').appendTo($("#table"));
+          //alert("Entramos");
+          for(var i = 0; i < datos[0]; i++){
+            //console.log(datos[4][i].length);
+            if(datos[4][i]=="Emitida" && datos[9][i]==""){
+              $('<tr>'+
+                  '<td>'+datos[1][i]+'</td>'+
+                  '<td>'+datos[2][i]+'</td>'+
+                  '<td>'+datos[3][i]+'</td>'+
+                  '<td>'+datos[4][i]+'</td>'+
+                  '<td>'+datos[5][i]+'</td>'+
+                  '<td>$'+formatNumber.new(datos[6][i])+'</td>'+
+                  '<td>'+datos[7][i]+'</td>'+
+                  '<td>'+datos[8][i]+'%</td>'+
+                '</tr>').appendTo($("#table"));
+            }
           }
-          else{
-            $('<tr>'+
-                '<td colspan="8">No se encontraron datos en la consulta</td>'+
-              '</tr>').appendTo($("#table"));
-          }
-        }
       }
     }
   }

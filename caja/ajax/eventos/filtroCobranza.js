@@ -38,11 +38,13 @@ $(document).ready(function(){
   function enviar(){
     var idCobranza = $("#idCobranza").val();
     var fecha = $("#fecha").val();
+    var departamento = $("#departamento").val();
 
     var parametros =
     {
       idCobranza: idCobranza,
       fecha: fecha,
+      departamento: departamento,
     }
     $.ajax({
         async: true, //Activar la transferencia asincronica

@@ -57,7 +57,7 @@
     <div class="container" align="center">
 				<h3>Actualizar Estatus</h3>
         <table border="1">
-  				<form action="otroTipoDeCambiarEstatus.php" method="post" enctype="multipart/form-data">
+  				<form action="cambiarEstatusTXT.php" method="post" enctype="multipart/form-data">
   				<tr style="font-weight: bold; text-align: center;">
   					<td colspan="2">Carga Facturas</td>
   				</tr>
@@ -81,8 +81,11 @@
 						 <input type="hidden" id="gerente" value="<?= $usuario?>" />
 						 <input type="text" id="factura" class="factura" placeholder="Factura" />
 						 <input type="text" id="cliente" class="cliente" placeholder="NO. Cliente" />
-						 <input type="text" id="fecha" class="fecha" placeholder="Fecha" />
-             <input type="hidden" id="tipo" value="sinEntrada" />
+						 <input type="text" id="fecha" class="fecha" placeholder="Fecha Elaboración" />
+						 <input type="hidden" id="fechaCorte" class="fechaCorte" value="" />
+						 <input type="hidden" id="pago" class="pago" value="" />
+						 <input type="hidden" id="folio" class="folio" value="" />
+						 <input type="hidden" id="tipo" value="sinEntrada"/>
 						 <br /><br />
 						 <input type="button" class="btn btn-primary" id="buscar" value="Buscar" />
 						 <input type="button" class="btn btn-primary" onclick="facturas()" value='Tabla Completa' />
@@ -112,6 +115,7 @@
 	</table>
 	<div class="col-md-12 text-center">
 		<ul class="pagination" id="paginador"></ul>
+		<button  id="exportaExcel" class="btn btn-info">Exportar Excel</button>
 	</div>
 
 	</div>
@@ -169,12 +173,18 @@
 				$('#fecha').datepicker();
 
 			});
+			$("#exportaExcel").hide();
+
+			$("#exportaExcel").click(function(){
+				alert("Exportación en proceso");
+				setTimeout("location.href='exportar.php'",500);
+			});
 
 			function visualizar(){
           setTimeout("location.href='visualizacion.php'",500);
       }
       function facturas(){
-        setTimeout("location.href='facturas.php'",500);
+        setTimeout("location.href='facturasSinEntrada.php'",500);
       }
 </script>
 </body>

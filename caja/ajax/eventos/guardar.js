@@ -15,6 +15,7 @@ $(document).ready(function(){
     var fecha = $("#fechaCaptura").val();
     var total = $("#total").text();
     var usuario = $("#usuario").val();
+    var departamento = $("#departamento").val();
     arreglo = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
     for (var i = 1; i <= 80; i++){
       if($("#factura"+i).val()!=""&&$("#cliente"+i).text()!=""){
@@ -35,6 +36,7 @@ $(document).ready(function(){
       fecha: fecha,
       total: total,
       usuario: usuario,
+      departamento: departamento,
     }
     $.ajax({
         async: true, //Activar la transferencia asincronica

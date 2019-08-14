@@ -52,7 +52,8 @@
 			<form action='../cierre.php'>
 				<input style="float: right;" class="btn btn-danger" type='submit' value='Cierra Sesión' />
 			</form>
-      <input type="button" style="float: right;" class="btn btn-success" id="nuevaCobranza" onclick=" nuevo()"value='Nueva Cobranza' />
+			<input type="button" style="float: right;" class="btn btn-warning" id="nuevaCobranzaRemisiones" onclick=" nuevoRemisiones()" value='Nueva Cobranza Remisiones' />
+			<input type="button" style="float: right;" class="btn btn-success" id="nuevaCobranzaFacturas" onclick=" nuevoFacturas()" value='Nueva Cobranza Facturas' />
 		</div>
 	</header>
 	<section>
@@ -76,7 +77,7 @@
 		<br /><br />
 		<div class="container" align='center' id="cargarFacturas">
 			<table border="1">
-				<form action="otroTipoDeCargarFacturas.php" method="post" enctype="multipart/form-data">
+				<form action="cargarFacturasTXT.php" method="post" enctype="multipart/form-data">
 				<tr style="font-weight: bold; text-align: center;">
 					<td colspan="2">Carga Facturas</td>
 				</tr>
@@ -173,16 +174,18 @@
 
 				var departamento = $("#departamento").val();
 				var permiso = $("#permiso").val();
-				if(departamento=="COBRANZA"){
+				if(departamento=="COBRANZA" || departamento=="COBRANZA_TECAMAC"){
 					$("#factura").hide();
 					$("#sinEntrada").hide();
 					$("#cargarFacturas").hide();
 				}
 				else if(departamento=="CREDITO_Y_COBRANZA"){
+					$("#nuevaCobranzaFacturas").hide();
+					$("#nuevaCobranzaRemisiones").hide();
 					if(permiso==1){
 						$("#nuevaCobranza").hide();
 					}
-				else if(permiso==2){
+					else if(permiso==2){
 						$("#nuevaCobranza").hide();
 						$("#cargarFacturas").hide();
 					}
@@ -191,11 +194,14 @@
 			});
 
 
-      function nuevo(){
-          setTimeout("location.href='nuevaCobranza.php'",500);
+      function nuevoFacturas(){
+          setTimeout("location.href='nuevaCobranzaFacturas.php'",500);
+      }
+			function nuevoRemisiones(){
+          setTimeout("location.href='nuevaCobranzaRemisiones.php'",500);
       }
 			function visualizar(){
-          setTimeout("location.href='analisis.php'",500);
+          setTimeout("location.href='visualizacion.php'",500);
       }
 			function ver(folio){
 					setTimeout("location.href='impresion.php?folio="+folio+"'");

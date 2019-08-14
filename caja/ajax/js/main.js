@@ -84,19 +84,51 @@ function get_data_callback(){
       //console.log("El departamento desde main es "+elem.departamento);
       //console.log("El status es: "+elem.status);
       // departamento = departamento.split("_");
-
       if(elem.id>0){
-        $('<tr>'+
-          '<td id="folio'+contador+'">'+elem.clave+'</td>'+
-          '<td>'+elem.fecha+'</td>'+
-          '<td>'+"$"+formatNumber.new(elem.total)+'</td>'+
-          '<td>'+elem.usuario+'</td>'+
-          '<td><input type="button" class="btn btn-info btn-sm" value="Ver" onclick='+click+' /></td>'+
-          // '<td><input type="button" class="btn btn-warning" value="Editar" onclick='+click2+' /></td>'+
-          // '<td><input type="button" class="btn btn-warning" value="Editar" onclick='+click+'/></td>'+
-        '</tr>').appendTo($("#table"));
+        if($("#departamento").val()=="COBRANZA"){
+          if(elem.departamento=="COBRANZA"){
+            $('<tr>'+
+              '<td id="folio'+contador+'">'+elem.clave+'</td>'+
+              '<td>'+elem.fecha+'</td>'+
+              '<td>'+"$"+formatNumber.new(elem.total)+'</td>'+
+              '<td>'+elem.usuario+'</td>'+
+              '<td><input type="button" class="btn btn-info btn-sm" value="Ver" onclick='+click+' /></td>'+
+              // '<td><input type="button" class="btn btn-warning" value="Editar" onclick='+click2+' /></td>'+
+              // '<td><input type="button" class="btn btn-warning" value="Editar" onclick='+click+'/></td>'+
+            '</tr>').appendTo($("#table"));
 
-        contador++;
+            contador++;
+          }
+        }
+        else if ($("#departamento").val()=="COBRANZA_TECAMAC") {
+          if(elem.departamento=="COBRANZA_TECAMAC"){
+            $('<tr>'+
+              '<td id="folio'+contador+'">'+elem.clave+'</td>'+
+              '<td>'+elem.fecha+'</td>'+
+              '<td>'+"$"+formatNumber.new(elem.total)+'</td>'+
+              '<td>'+elem.usuario+'</td>'+
+              '<td><input type="button" class="btn btn-info btn-sm" value="Ver" onclick='+click+' /></td>'+
+              // '<td><input type="button" class="btn btn-warning" value="Editar" onclick='+click2+' /></td>'+
+              // '<td><input type="button" class="btn btn-warning" value="Editar" onclick='+click+'/></td>'+
+            '</tr>').appendTo($("#table"));
+
+            contador++;
+          }
+        }
+        else{
+          $('<tr>'+
+            '<td id="folio'+contador+'">'+elem.clave+'</td>'+
+            '<td>'+elem.fecha+'</td>'+
+            '<td>'+"$"+formatNumber.new(elem.total)+'</td>'+
+            '<td>'+elem.usuario+'</td>'+
+            '<td><input type="button" class="btn btn-info btn-sm" value="Ver" onclick='+click+' /></td>'+
+            // '<td><input type="button" class="btn btn-warning" value="Editar" onclick='+click2+' /></td>'+
+            // '<td><input type="button" class="btn btn-warning" value="Editar" onclick='+click+'/></td>'+
+          '</tr>').appendTo($("#table"));
+
+          contador++;
+        }
+
       }
 
 

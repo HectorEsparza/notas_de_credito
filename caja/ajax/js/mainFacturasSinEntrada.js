@@ -55,7 +55,7 @@ function get_data_callback(){
       console.log("Hola "+elem.entrada);
       //En el servidor la condicion se cumple si elem.entrada==""
       //En el servidor local la condicion se cumple si elem.entrada==null
-      if(elem.entrada==null&&elem.estatus!="Cancelada"){
+      if(elem.entrada==""&&elem.estatus!="Cancelada"){
         $('<tr>'+
           '<td>'+elem.clave+'</td>'+
           '<td>'+elem.cliente+'</td>'+

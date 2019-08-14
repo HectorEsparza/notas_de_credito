@@ -8,13 +8,13 @@
   $pago = $_POST['pago'];
   $folio = $_POST['folio'];
   $tipo = $_POST['tipo'];
-  // $factura = "FD60290";
-  // $cliente = "1767";
-  // $fecha = "02/05/2019";
-  // $fechaCorte = "01/06/2019";
+  // $factura = "";
+  // $cliente = "";
+  // $fecha = "06/08/2019";
+  // $fechaCorte = "";
   // $pago = "";
   // $folio = "";
-  // $tipo = "conEntrada";
+  // $tipo = "sinEntrada";
   $facturas = array();
   $clientes = array();
   $nombre = array();
@@ -356,7 +356,7 @@
       $resultado = $base->prepare($consulta);
       $resultado->execute(array($folio));
     }
-    
+
   while ($registro = $resultado->fetch(PDO::FETCH_NUM)){
     $facturas[$contador] = $registro[0];
     $clientes[$contador] = $registro[1];
@@ -372,6 +372,21 @@
 
     $contador++;
   }
+  $resultado->closeCursor();
+  //Vaciamos la tabla de exportacion excel
+  $consulta = "DELETE FROM EXPORTAR_FACTURAS";
+  $resultado = $base->prepare($consulta);
+  $resultado->execute(array());
+  $resultado->closeCursor();
+  //Llenamos la tabla de exportacion excel
+  for ($i=0; $i < $contador ; $i++) {
+    if($estatus[$i]=="Emitida" && $entrada[$i]==""){
+      $consulta = "INSERT INTO EXPORTAR_FACTURAS (CLAVE, CLIENTE, NOMBRE, ESTATUS, FECHA, DESCUENTO, IMPORTE, VENDEDOR) VALUES(?,?,?,?,?,?,?,?)";
+      $resultado = $base->prepare($consulta);
+      $resultado->execute(array($facturas[$i], $clientes[$i], $nombre[$i], $estatus[$i], $fechas[$i], $descuento[$i], $importe[$i], $vendedor[$i]));
+    }
+  }
+  $resultado->closeCursor();
   $arreglo[0] = $contador;
   $arreglo[1] = $facturas;
   $arreglo[2] = $clientes;

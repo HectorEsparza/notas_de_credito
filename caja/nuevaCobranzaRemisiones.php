@@ -18,8 +18,26 @@
 	<?php
 		session_start();
 		$usuario = $_SESSION['user'];
+		require_once("../funciones.php");
+		$nombres = ["Héctor", "Daniel", "Esparza", "Méndez"];
+
+			$base = conexion_local();
+			$consulta="SELECT DEPARTAMENTO, PERMISO FROM USUARIOS WHERE USUARIO=?";
+			$resultado = $base->prepare($consulta);
+			$resultado-> execute(array($usuario));
+			$registro = $resultado->fetch(PDO::FETCH_NUM);
+			$departamento = $registro[0];
+	    $permiso = $registro[1];
+
+
+		if(!isset($usuario))
+		{
+			header("location:../index.html");
+		}
 	?>
   <div class="row">
+		<input type="hidden" id="departamento" value="<?= $departamento?>">
+		<input type="hidden" id="tipo" value="remisiones" />
     <div class="container col-md-4" style="margin-left: 500px">
       <h1>Captura Nueva Cobranza</h1>
     </div>
@@ -43,10 +61,11 @@
   <br /><br />
   <div class="row">
     <div class="container col-md-12" style="margin-left: 400px">
+			<h3>Remisiones</h3>
       <p><strong id="fechaDeCargas"></strong></p>
       <table border="1" width="800px" style="text-align: center">
         <tr>
-          <td><strong>Factura</strong></td>
+          <td><strong>Remisión</strong></td>
           <td><strong>Método</strong></td>
           <td><strong>Cliente</strong></td>
           <td><strong>Nombre</strong></td>

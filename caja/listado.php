@@ -19,13 +19,13 @@ $data = array();
 
 //El limite empieza con 10 y el Offset con 0
 
-$query = $con->prepare("SELECT ID, CLAVE, FECHA, USUARIO, TOTAL FROM CAJA ORDER BY ID DESC LIMIT ? OFFSET ?");
+$query = $con->prepare("SELECT ID, CLAVE, FECHA, DEPARTAMENTO, USUARIO, TOTAL FROM CAJA ORDER BY ID DESC LIMIT ? OFFSET ?");
 $query->bind_param("ii",$limit,$offset);
 $query->execute();
 
 // vincular variables a la sentencia preparada
 //$query->bind_result($id_usuario, $nombres,$apellidos);
-$query->bind_result($id, $clave, $fecha, $usuario, $total);
+$query->bind_result($id, $clave, $fecha, $departamento, $usuario, $total);
 
 // obtener valores
 while ($query->fetch()) {
@@ -34,6 +34,7 @@ while ($query->fetch()) {
 	$data_json["id"] = $id;
 	$data_json["clave"] = $clave;
 	$data_json["fecha"] = $fecha;
+	$data_json["departamento"] = $departamento;
 	$data_json["usuario"] = $usuario;
 	$data_json["total"] = $total;
 	$data[]=$data_json;

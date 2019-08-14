@@ -42,6 +42,8 @@ $(document).ready(function(){
     var parametros =
     {
       fecha: $("#fecha").val(),
+      departamento: $("#departamento").val(),
+      tipo: $("#tipo").val(),
     }
     $.ajax({
         async: true, //Activar la transferencia asincronica
@@ -65,9 +67,14 @@ $(document).ready(function(){
 
   function llegada(datos){
     //Combropamos si la fecha elegina en el reporte de cobranza esta disponible
+    //alert(datos[0]+" "+datos[1]);
     if(datos[1]=="fechaNoDisponoble"){
       $("#fecha").val("");
       $("#fechaDeCargas").text("");
+      $("#folio").val("");
+      $("#factura1").prop("readonly", true);
+      $("#metodo1").prop("disabled", true);
+      $("#observaciones1").prop("readonly", true);
       alert("La fecha elegida ya ha sido seleccionada en un reporte de cobranza anterior, elegir otra fecha por favor");
     }
     else{
@@ -75,14 +82,14 @@ $(document).ready(function(){
       fecha = fecha.split("/");
       function diaSemana(dia,mes,anio,mesEspanol){
           var dias=["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
-          let meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Augosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+          let meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
           var dt = new Date(mes+' '+dia+', '+anio+' 12:00:00');
-          document.getElementById('fechaDeCargas').innerHTML = "Reporte de Cobranza "+dias[dt.getUTCDay()]+" "+dia+" de "+meses[mesEspanol]+" "+anio+" "+"PB"+datos[0];
+          document.getElementById('fechaDeCargas').innerHTML = "Reporte de Cobranza "+dias[dt.getUTCDay()]+" "+dia+" de "+meses[mesEspanol]+" "+anio+" "+datos[0];
           //Guardamos la fecha de carga
           $("#fechaCaptura").val($("#fecha").val());
           //Guardamos el folio de carga
           console.log(datos[0]);
-          $("#folio").val("PB"+datos[0]);
+          $("#folio").val(datos[0]);
 
 
       };

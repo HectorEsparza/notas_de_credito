@@ -940,30 +940,130 @@ $(document).ready(function(){
       //activamos el boton de guardar
       //En el servidor la condicion se cumple si datos[5]==""
       //En el servidor local la condicion se cumple si datos[5]==null
-      if(datos[5]==null){
-        if(datos[3]==1&&datos[2]>0){
-          $("#guardar").prop("disabled", false);
+      if(datos[5]==""){
+        var tipo = $("#tipo").val();
+        var departamento = $("#departamento").val();
+        var separador = $("#factura"+datos[3]).val();
+        separador = separador.substr(0,1);
+        console.log(separador);
+        if(tipo=="facturas" && separador=="F"){
+            separador = $("#factura"+datos[3]).val();
+            separador = separador.substr(1,1);
+            console.log(separador);
+            if(departamento=="COBRANZA" && separador=="D"){
+              if(datos[3]==1&&datos[2]>0){
+                $("#guardar").prop("disabled", false);
+              }
+              else if(datos[3]==1&&datos[2]==0){
+                $("#guardar").prop("disabled", true);
+              }
+              $("#cliente"+datos[3]).text(datos[0]);
+              $("#nombre"+datos[3]).text(datos[1]);
+              if(datos[2]>0){
+                $("#importe"+datos[3]).text("$"+datos[2]);
+                //desbloqueamos la siguiente fila para que introduzcan otra factura
+                $("#factura"+siguienteFila).prop("readonly", false);
+                $("#metodo"+siguienteFila).prop("disabled", false);
+                $("#observaciones"+siguienteFila).prop("readonly", false);
+              }
+              else{
+                $("#factura"+datos[3]).val("");
+                $("#importe"+datos[3]).text("");
+              }
+            }
+            else if(departamento=="COBRANZA_TECAMAC" && separador=="T"){
+              if(datos[3]==1&&datos[2]>0){
+                $("#guardar").prop("disabled", false);
+              }
+              else if(datos[3]==1&&datos[2]==0){
+                $("#guardar").prop("disabled", true);
+              }
+              $("#cliente"+datos[3]).text(datos[0]);
+              $("#nombre"+datos[3]).text(datos[1]);
+              if(datos[2]>0){
+                $("#importe"+datos[3]).text("$"+datos[2]);
+                //desbloqueamos la siguiente fila para que introduzcan otra factura
+                $("#factura"+siguienteFila).prop("readonly", false);
+                $("#metodo"+siguienteFila).prop("disabled", false);
+                $("#observaciones"+siguienteFila).prop("readonly", false);
+              }
+              else{
+                $("#factura"+datos[3]).val("");
+                $("#importe"+datos[3]).text("");
+              }
+            }
+            else{
+              alert("No tiene permiso de capturar esa factura");
+              $("#factura"+datos[3]).val("");
+            }
+
         }
-        else if(datos[3]==1&&datos[2]==0){
-          $("#guardar").prop("disabled", true);
-        }
-        $("#cliente"+datos[3]).text(datos[0]);
-        $("#nombre"+datos[3]).text(datos[1]);
-        if(datos[2]>0){
-          $("#importe"+datos[3]).text("$"+datos[2]);
-          //desbloqueamos la siguiente fila para que introduzcan otra factura
-          $("#factura"+siguienteFila).prop("readonly", false);
-          $("#metodo"+siguienteFila).prop("disabled", false);
-          $("#observaciones"+siguienteFila).prop("readonly", false);
+        else if (tipo=="remisiones" && separador=="R"){
+          separador = $("#factura"+datos[3]).val();
+          separador = separador.substr(1,1);
+          console.log(separador);
+          if(departamento=="COBRANZA" && separador=="R"){
+            if(datos[3]==1&&datos[2]>0){
+              $("#guardar").prop("disabled", false);
+            }
+            else if(datos[3]==1&&datos[2]==0){
+              $("#guardar").prop("disabled", true);
+            }
+            $("#cliente"+datos[3]).text(datos[0]);
+            $("#nombre"+datos[3]).text(datos[1]);
+            if(datos[2]>0){
+              $("#importe"+datos[3]).text("$"+datos[2]);
+              //desbloqueamos la siguiente fila para que introduzcan otra factura
+              $("#factura"+siguienteFila).prop("readonly", false);
+              $("#metodo"+siguienteFila).prop("disabled", false);
+              $("#observaciones"+siguienteFila).prop("readonly", false);
+            }
+            else{
+              $("#factura"+datos[3]).val("");
+              $("#importe"+datos[3]).text("");
+            }
+          }
+          else if(departamento=="COBRANZA_TECAMAC" && separador=="T"){
+            if(datos[3]==1&&datos[2]>0){
+              $("#guardar").prop("disabled", false);
+            }
+            else if(datos[3]==1&&datos[2]==0){
+              $("#guardar").prop("disabled", true);
+            }
+            $("#cliente"+datos[3]).text(datos[0]);
+            $("#nombre"+datos[3]).text(datos[1]);
+            if(datos[2]>0){
+              $("#importe"+datos[3]).text("$"+datos[2]);
+              //desbloqueamos la siguiente fila para que introduzcan otra factura
+              $("#factura"+siguienteFila).prop("readonly", false);
+              $("#metodo"+siguienteFila).prop("disabled", false);
+              $("#observaciones"+siguienteFila).prop("readonly", false);
+            }
+            else{
+              $("#factura"+datos[3]).val("");
+              $("#importe"+datos[3]).text("");
+            }
+          }
+          else{
+            alert("No tiene permiso de capturar esa remisión");
+            $("#factura"+datos[3]).val("");
+          }
+
         }
         else{
-          $("#importe"+datos[3]).text("");
+          alert("Solamente se puede capturar " + tipo);
+          $("#factura"+datos[3]).val("");
         }
 
       }
       else{
         alert("La factura "+datos[6]+" ya se encuentra capturada en la cobranza "+datos[5]);
         $("#factura"+datos[3]).val("");
+        $("#metodo"+datos[3]).val("");
+        $("#cliente"+datos[3]).text("");
+        $("#nombre"+datos[3]).text("");
+        $("#importe"+datos[3]).text("");
+        $("#observaciones"+datos[3]).val("");
       }
       for (var j = 1; j<=$("#filas").val(); j++){
         if(document.getElementById('importe'+j).innerText==""){

@@ -13,6 +13,7 @@
   $total = explode("$", $total);
   $total = $total[1];
   $usuario = $_POST['usuario'];
+  $departamento = $_POST['departamento'];
   $datos = array();
   $entrada = "";
   $fechaEntrada = "";
@@ -72,10 +73,10 @@
     $usuario = $registro[0] . " " . $registro[1];
     $resultado->closeCursor();
     //Consulta para guardar las entradas de cada Cobranza
-    $consulta = "INSERT INTO CAJA(CLAVE, FECHA, USUARIO, TOTAL)
-                               VALUES(?,?,?,?)";
+    $consulta = "INSERT INTO CAJA(CLAVE, FECHA, DEPARTAMENTO, USUARIO, TOTAL)
+                               VALUES(?,?,?,?,?)";
     $resultado = $base->prepare($consulta);
-    $resultado->execute(array($folio, $fecha, $usuario, $total));
+    $resultado->execute(array($folio, $fecha, $departamento, $usuario, $total));
     $resultado->closeCursor();
   }
   //Devolvemos el arreglo de $datos
