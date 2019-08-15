@@ -26,6 +26,9 @@
   <script type="text/javascript" src="ajax/js/cambioDescuento2.js"></script><!--Permite cambiar el descuento, para usuarios sin permisos-->
   <script type="text/javascript" src="ajax/js/cambioImporte.js"></script>
   <script type="text/javascript" src="ajax/js/descripcion.js"></script>
+  <script type="text/javascript" src="ajax/js/nvo_subtotal.js"></script>
+  <script type="text/javascript" src="ajax/js/cambioSubtotal.js"></script><!--Calcula el subtotal cuando se cambia la cantidad"-->
+  <script type="text/javascript" src="ajax/js/subtotal.js"></script><!--Para la nueva columna agregada en la nota, "SUBTOTAL"-->
 
 </head>
 <body>
@@ -80,83 +83,93 @@
             <?php for ($i=1; $i <=24 ; $i++):?>
               <?php if($i==1): ?>
                 <tr>
-                  <th colspan=8 align='center'>PEDIDO<input  type="button" class="boton" value=24 id="formatoPartidas"></th>
+                  <th colspan=10 align='center'>PEDIDO<input  type="button" class="boton" value=24 id="formatoPartidas"></th>
                 </tr>
                 <tr>
                   <th style="width:25px">FOLIO</th>
                   <td align='center' id='folio' style="width:20px"><?= folioPedidos(); ?></td>
                   <th style="width:25px" colspan="2" >CLIENTE</th>
-                  <td style="width:30px" align='center'><input type='number' min=1 max=4000 class='cliente' id="clienteValor" name='cliente' required
+                  <td style="width:30px" colspan="2" align='center'><input type='number' min=1 max=4000 class='cliente' id="clienteValor" name='cliente' required
                     oninput="cli(document.querySelector('.cliente').value);
                            desc(document.querySelector('.cliente').value)" />
                   </td>
                   <th style="width:50px" colspan="2" >DESCUENTO</th>
-                  <td align='center' id='descuento' style="width:100px;"></td>
+                  <td colspan="2" align='center' id='descuento' style="width:100px;"></td>
                 </tr>
                 <tr>
-                  <th colspan=8 id="cliente">NOMBRE: </th>
+                  <th colspan=10 id="cliente">NOMBRE: </th>
                 </tr>
                 <tr>
-                    <th colspan=8 align='center'>PRODUCTOS </th>
+                    <th colspan=10 align='center'>PRODUCTOS </th>
                 </tr>
                 <tr>
                   <th align='center'>CANTIDAD</th>
                   <th align='center'>CLAVE</th>
-                  <th colspan=4 align='center'>DESCRIPCION</th>
+                  <th colspan=5 align='center'>DESCRIPCION</th>
                   <th align='center'>COSTO</th>
                   <th align='center'>IMPORTE</th>
+                  <th align='center'>SUBTOTAL</th>
                 </tr>
                 <tr>
                       <td align='center'>
                         <input type='number'id="cantidad<?= $i?>" name="cantidad<?= $i?>" class="cantidad<?= $i?>" min=1
-                          oninput="cambioImporte(document.querySelector('.cantidad<?= $i?>').value, document.getElementById('costo<?= $i?>').innerText, <?= $i?>);"readonly />
+                        oninput="cambioImporte(document.querySelector('.cantidad<?= $i?>').value, document.getElementById('costo<?= $i?>').innerText, <?= $i?>);
+                        cambioSubtotal(document.querySelector('.cantidad<?= $i?>').value, document.getElementById('costo<?= $i?>').innerText, document.getElementById('descuento').innerText, <?= $i?>)"readonly />
                       </td>
                       <td align='center'>
                         <input type='text'  id="clave<?= $i?>"  name="clave<?= $i?>" class="clave<?= $i?>"
                         oninput="costo(<?= $i?>, document.querySelector('.clave<?= $i?>').value,  document.getElementById('user').value);importe(<?= $i?>, document.querySelector('.cantidad<?= $i?>').value, document.querySelector('.clave<?= $i?>').value);
-                        descripcion(<?= $i?>, document.querySelector('.cantidad<?= $i?>').value, document.querySelector('.clave<?= $i?>').value, document.getElementById('descuento').innerText);" readonly />
+                                subtotal(<?= $i?>, document.querySelector('.cantidad<?= $i?>').value, document.querySelector('.clave<?= $i?>').value, document.getElementById('descuento').innerText);
+                                descripcion(<?= $i?>, document.querySelector('.cantidad<?= $i?>').value, document.querySelector('.clave<?= $i?>').value, document.getElementById('descuento').innerText)" readonly />
                       </td>
-                      <td align='left' colspan=4 style="font-size: 12px;" id="descripcion<?= $i?>"></td>
+                      <td align='left' colspan=5 style="font-size: 12px;" id="descripcion<?= $i?>"></td>
                       <td align='center' id="costo<?= $i?>">
                         <input type='button' class="boton" value='?' onclick="listas(document.querySelector('.clave<?= $i?>').value,<?= $i?>, document.getElementById('user').value);" />
                       </td>
-                      <td align='center' id="importeNota<?= $i?>"></td>
+                      <td align='center' colspan="1" id="importeNota<?= $i?>"></td>
+                      <td align='center' id="subtotal<?= $i?>"></td>
                 </tr>
 
             <?php elseif($i>1 && $i<=10) :?>
               <tr>
                     <td align='center'>
                       <input type='number'id="cantidad<?= $i?>" name="cantidad<?= $i?>" class="cantidad<?= $i?>" min=1
-                        oninput="cambioImporte(document.querySelector('.cantidad<?= $i?>').value, document.getElementById('costo<?= $i?>').innerText, <?= $i?>)"readonly />
+                      oninput="cambioImporte(document.querySelector('.cantidad<?= $i?>').value, document.getElementById('costo<?= $i?>').innerText, <?= $i?>);
+                      cambioSubtotal(document.querySelector('.cantidad<?= $i?>').value, document.getElementById('costo<?= $i?>').innerText, document.getElementById('descuento').innerText, <?= $i?>)"readonly />
                     </td>
                     <td align='center'>
                       <input type='text'  id="clave<?= $i?>"  name="clave<?= $i?>" class="clave<?= $i?>"
-                      oninput="costo(<?= $i?>, document.querySelector('.clave<?= $i?>').value,  document.getElementById('user').value); importe(<?= $i?>, document.querySelector('.cantidad<?= $i?>').value, document.querySelector('.clave<?= $i?>').value);
-                      descripcion(<?= $i?>, document.querySelector('.cantidad<?= $i?>').value, document.querySelector('.clave<?= $i?>').value, document.getElementById('descuento').innerText);" readonly />
+                      oninput="costo(<?= $i?>, document.querySelector('.clave<?= $i?>').value,  document.getElementById('user').value);importe(<?= $i?>, document.querySelector('.cantidad<?= $i?>').value, document.querySelector('.clave<?= $i?>').value);
+                              subtotal(<?= $i?>, document.querySelector('.cantidad<?= $i?>').value, document.querySelector('.clave<?= $i?>').value, document.getElementById('descuento').innerText);
+                              descripcion(<?= $i?>, document.querySelector('.cantidad<?= $i?>').value, document.querySelector('.clave<?= $i?>').value, document.getElementById('descuento').innerText)" readonly />
                     </td>
-                    <td align='left' colspan=4 id="descripcion<?= $i?>" style="font-size: 12px;"></td>
+                    <td align='left' colspan=5 id="descripcion<?= $i?>" style="font-size: 12px;"></td>
                     <td align='center' id="costo<?= $i?>">
                       <input type='button' class="boton" value='?' onclick="listas(document.querySelector('.clave<?= $i?>').value,<?= $i?>, document.getElementById('user').value);" />
                     </td>
-                    <td align='center' id="importeNota<?= $i?>"></td>
+                    <td align='center' colspan="1" id="importeNota<?= $i?>"></td>
+                    <td align='center' id="subtotal<?= $i?>"></td>
               </tr>
             <?php else: ?>
 
               <tr id="muestraFilas<?= $i?>" hidden>
                       <td align='center'>
                         <input type='number'id="cantidad<?= $i?>" name="cantidad<?= $i?>" class="cantidad<?= $i?>" min=1
-                          oninput="cambioImporte(document.querySelector('.cantidad<?= $i?>').value, document.getElementById('costo<?= $i?>').innerText, <?= $i?>)"readonly />
+                        oninput="cambioImporte(document.querySelector('.cantidad<?= $i?>').value, document.getElementById('costo<?= $i?>').innerText, <?= $i?>);
+                        cambioSubtotal(document.querySelector('.cantidad<?= $i?>').value, document.getElementById('costo<?= $i?>').innerText, document.getElementById('descuento').innerText, <?= $i?>)"readonly />
                       </td>
                       <td align='center'>
                         <input type='text'  id="clave<?= $i?>"  name="clave<?= $i?>" class="clave<?= $i?>"
                         oninput="costo(<?= $i?>, document.querySelector('.clave<?= $i?>').value,  document.getElementById('user').value);importe(<?= $i?>, document.querySelector('.cantidad<?= $i?>').value, document.querySelector('.clave<?= $i?>').value);
-                        descripcion(<?= $i?>, document.querySelector('.cantidad<?= $i?>').value, document.querySelector('.clave<?= $i?>').value, document.getElementById('descuento').innerText);" readonly />
+                                subtotal(<?= $i?>, document.querySelector('.cantidad<?= $i?>').value, document.querySelector('.clave<?= $i?>').value, document.getElementById('descuento').innerText);
+                                descripcion(<?= $i?>, document.querySelector('.cantidad<?= $i?>').value, document.querySelector('.clave<?= $i?>').value, document.getElementById('descuento').innerText)" readonly />
                       </td>
-                      <td align='left' colspan=4 id="descripcion<?= $i?>" style="font-size: 12px;"></td>
+                      <td align='left' colspan=5 id="descripcion<?= $i?>" style="font-size: 12px;"></td>
                       <td align='center' id="costo<?= $i?>">
                         <input type='button' class="boton" value='?' onclick="listas(document.querySelector('.clave<?= $i?>').value,<?= $i?>, document.getElementById('user').value);" />
                       </td>
-                      <td align='center' id="importeNota<?= $i?>"></td>
+                      <td align='center' colspan="1" id="importeNota<?= $i?>"></td>
+                      <td align='center' id="subtotal<?= $i?>"></td>
                 </tr>
 
                 <?php endif ?>
@@ -183,13 +196,26 @@
               <td align='center'><input style="text-align:center" type="text" id="iva" readonly /></td>
             </tr> -->
             <tr>
+              <th colspan=6 rowspan=3 align='center' id=pen></th>
+              <th colspan=3>SUBTOTAL</th>
+              <td align='center'><input style="text-align:center" type="text" id="subtotalNota" readonly  value="$0"/></td>
+            </tr>
+            <tr>
+              <th colspan=3>IVA</th>
+              <td align='center'><input style="text-align:center" type="text" id="iva" readonly value="$0"/></td>
+            </tr>
+            <tr>
+              <th colspan=3>TOTAL</th>
+              <td align='center'><input style="text-align:center" type="text" id="totalNota" readonly value="$0"/></td>
+            </tr>
+            <!-- <tr>
               <th colspan=6 rowspan=5 align='center' id=pen></th>
               <th>TOTAL</th>
               <td align='center'><input style="text-align:center" type="text" id="totalNota" readonly /></td>
-            </tr>
+            </tr> -->
 
               <tr>
-                <td colspan=8 align='center'><input class="btn btn-primary" type='submit' id='captura' value='Capturar' /></td>
+                <td colspan=10 align='center'><input class="btn btn-primary" type='submit' id='captura' value='Capturar' /></td>
               </tr>
               <tr>
                 <input type="hidden" id="prueba" name="prueba"/>

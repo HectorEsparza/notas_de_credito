@@ -152,7 +152,7 @@ elseif ($fecha!=""&&$usuario!="") {
     $resultado = $base->prepare($consulta);
     $resultado->execute(array(fechaConsulta($fecha), $usuario));
 }
-elseif ($$usuario!=""&&$folio!="") {
+elseif ($usuario!=""&&$folio!="") {
     // echo "Consulta AND de los 2; folioUSUARIO y folio";
     $consulta = "SELECT * FROM PEDIDOS_VIS WHERE USUARIO=? AND FOLIOINTERNO=? ORDER BY REGISTRO DESC LIMIT 20";
     $resultado = $base->prepare($consulta);

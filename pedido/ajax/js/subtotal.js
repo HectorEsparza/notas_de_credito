@@ -1,4 +1,4 @@
-function cambioImporte(cantidad, importe, i)
+function subtotal(i, cant, cla, descuento)
     {
 
 
@@ -22,6 +22,6 @@ function cambioImporte(cantidad, importe, i)
         }
       }
 
-      conexion.open("GET", "ajax/cambioImporte.php?cantidad="+cantidad+"&importe="+importe, true);
+      conexion.open("GET", "ajax/subtotal2.php?cantidad="+cant+"&clave="+cla+"&descuento="+descuento, true);
       conexion.send();
     }

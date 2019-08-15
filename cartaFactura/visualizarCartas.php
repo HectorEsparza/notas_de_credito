@@ -127,7 +127,17 @@
 			});
 			$(document).ready(function(){
 
-				$('#fecha').datepicker();
+				var abrevia_dias = ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"];
+				$('#fecha').datepicker({
+					//dateFormat:'yy-mm-dd'
+					//dateFormat: 'dd-mm-yy'
+					monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+					dateFormat: 'dd/mm/yy',
+					changeMonth: false,
+					changeYear: false,
+					dayNamesMin: abrevia_dias,
+					selectOtherMonths: true,
+				});
 				$("#home").click(function(){
 
 					setTimeout("location.href='../home.php'", 500);
