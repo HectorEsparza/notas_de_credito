@@ -227,7 +227,7 @@
             $("#nomina").show();
             $("#altas").show();
           }
-          else if(departamento=="COBRANZA"){
+          else if(departamento=="COBRANZA" || departamento=="COBRANZA_TECAMAC"){
             $("#nota").hide();
             $("#pedido").hide();
             $("#carta").hide();
