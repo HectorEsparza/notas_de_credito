@@ -306,7 +306,7 @@ function fechaStandar($fecha){
 function fechaJquery($fecha){
            //echo $fecha;
            $nueva = explode("-", $fecha);
-           echo $nueva[1] . "/" . $nueva[2] . "/" . $nueva[0];
+           echo $nueva[2] . "/" . $nueva[1] . "/" . $nueva[0];
 
 }
 
@@ -314,7 +314,7 @@ function fechaJquery($fecha){
 function fechaConsulta($fecha){
 
   $particion = explode("/", $fecha);
-  $nueva = $particion[2] . "-" . $particion[0] . "-" . $particion[1];
+  $nueva = $particion[2] . "-" . $particion[1] . "-" . $particion[0];
   return $nueva;
 
 }
