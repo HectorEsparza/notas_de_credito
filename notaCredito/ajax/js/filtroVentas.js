@@ -1,4 +1,4 @@
-function filtro(nocliente, cliente, fecha, folio, recepcion)
+function filtro(nocliente, cliente, fecha, folio, recepcion, clave)
 {
 
         var conexion;
@@ -22,7 +22,7 @@ function filtro(nocliente, cliente, fecha, folio, recepcion)
                 }
               }
 
-              conexion.open("GET", "ajax/filtroVentas.php?nocliente="+nocliente+"&cliente="+cliente+"&fecha="+fecha+"&folio="+folio+"&recepcion="+recepcion, true);
+              conexion.open("GET", "ajax/filtroVentas.php?nocliente="+nocliente+"&cliente="+cliente+"&fecha="+fecha+"&folio="+folio+"&recepcion="+recepcion+"&clave="+clave, true);
               conexion.send();
 
  }

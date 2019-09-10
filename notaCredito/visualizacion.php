@@ -47,8 +47,9 @@
 								 <input type="text" id="fecha" class="fecha" placeholder="Fecha"/>
 								 <input type="text" id="folio" class="folio" placeholder="Folio Interno"/>
 								 <input type="text" id="recepcion" class="recepcion" placeholder="Folio Recepción"/>
+								 <input type="text" id="clave" class="clave" placeholder="Clave Producto"/>
 								 <br /><br />
-								 <button type="submit" class="btn btn-primary" onclick="filtro(document.querySelector('.nocliente').value, document.querySelector('.tag').value, document.querySelector('.fecha').value, document.querySelector('.folio').value, document.querySelector('.recepcion').value);">Buscar</button>
+								 <button type="submit" class="btn btn-primary" onclick="filtro(document.querySelector('.nocliente').value, document.querySelector('.tag').value, document.querySelector('.fecha').value, document.querySelector('.folio').value, document.querySelector('.recepcion').value, document.querySelector('.clave').value);">Buscar</button>
 								 <button type="submit" class="btn btn-primary" id="limpiaFiltro">Limpiar Campos</button>
 								 	<input type="button" class="btn btn-primary" onclick="visualizar()" value='Tabla Completa' />
 
@@ -117,7 +118,7 @@
 				var abrevia_dias = ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"];
 			  $('#fecha').datepicker({
 			    //dateFormat:'yy-mm-dd'
-			    //dateFormat: 'dd-mm-yy'
+			    dateFormat: 'dd/mm/yy',
 			    monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
 			    changeMonth: false,
 			    changeYear: false,
