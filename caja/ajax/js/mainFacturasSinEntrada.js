@@ -1,6 +1,6 @@
 // url para llamar la peticion por ajax
 //var url_listar_usuario = "php/listar.php";
-var url_listar_usuario = "listadoFacturas.php";
+var url_listar_usuario = "listadoFacturasSinEntrada.php";
 var contador = 1;
 
 $( document ).ready(function() {
@@ -55,7 +55,7 @@ function get_data_callback(){
       console.log("Hola "+elem.entrada);
       //En el servidor la condicion se cumple si elem.entrada==""
       //En el servidor local la condicion se cumple si elem.entrada==null
-      if(elem.entrada==""&&elem.estatus!="Cancelada"){
+      
         $('<tr>'+
           '<td>'+elem.clave+'</td>'+
           '<td>'+elem.cliente+'</td>'+
@@ -66,7 +66,7 @@ function get_data_callback(){
           '<td>'+elem.vendedor+'</td>'+
           '<td>'+elem.descuento+'%'+'</td>'+
         '</tr>').appendTo($("#table"));
-      }
+      
 		});
 
 	}).fail(function(jqXHR,textStatus,textError){

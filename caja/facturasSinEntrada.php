@@ -94,6 +94,10 @@
 				<input type=hidden id="folio" value="<?= $folio?>"/>
 		</div>
 		<br /><br />
+		<div class="col-md-12 text-center">
+			<ul class="pagination" id="paginador"></ul>
+			<button  id="exportaExcel" class="btn btn-info">Exportar Excel</button>
+		</div>
 	<div class="container" id="principal">
 	<!--<table class="table table-striped table-hover">-->
 	<table  border=1 align='center' width="850px" style="text-align: center;">
@@ -113,12 +117,8 @@
 
 		</tbody>
 	</table>
-	<div class="col-md-12 text-center">
-		<ul class="pagination" id="paginador"></ul>
-		<button  id="exportaExcel" class="btn btn-info">Exportar Excel</button>
 	</div>
-
-	</div>
+	<br /><br />
 </section>
 	<?php
 	}

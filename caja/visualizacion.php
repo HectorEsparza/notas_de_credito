@@ -95,6 +95,9 @@
 			</table>
 		</div>
 		<br /><br />
+	<div class="col-md-12 text-center">
+		<ul class="pagination" id="paginador"></ul>
+	</div>
 	<div class="container" id="principal">
 	<!--<table class="table table-striped table-hover">-->
 	<table  border=1 align='center' width="500px" style="text-align: center;">
@@ -111,10 +114,7 @@
 
 		</tbody>
 	</table>
-	<div class="col-md-12 text-center">
-		<ul class="pagination" id="paginador"></ul>
-	</div>
-
+	<br /><br />
 	</div>
 
 	<?php

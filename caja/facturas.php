@@ -73,10 +73,14 @@
 
 				<input type=hidden id="folio" value="<?= $folio?>"/>
 		</div>
+		<br />
+		<div class="col-md-12 text-center">
+		<ul class="pagination" id="paginador"></ul>
+		</div>
 		<br /><br />
 	<div class="container" id="principal">
 	<!--<table class="table table-striped table-hover">-->
-	<table  border=1 align='center' width="850px" style="text-align: center;">
+	<table  border=1 align='center' width="1300px" style="text-align: center;">
 		<thead>
 			<tr style="font-weight: bold;">
 				<td>Clave</td>
@@ -96,11 +100,8 @@
 
 		</tbody>
 	</table>
-	<div class="col-md-12 text-center">
-		<ul class="pagination" id="paginador"></ul>
 	</div>
-
-	</div>
+	<br /><br />
 
 	<?php
 	}
