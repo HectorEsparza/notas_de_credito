@@ -11,7 +11,7 @@
       //echo "Bienvenidos a la exportacion de excel!!!"
 
       $base = conexion_local();
-      $consulta = "SELECT * FROM CARGAS WHERE ESTATUS=? OR ESTATUS=? AND ENTRADA=?";
+      $consulta = "SELECT * FROM CARGAS WHERE (ESTATUS=? OR ESTATUS=?) AND ENTRADA=?";
       $resultado = $base->prepare($consulta);
       $resultado->execute(array('Emitida', 'Original', ''));
 
