@@ -5,10 +5,11 @@
 	<link rel="shortcut icon" href="imagenes/favicon.ico" type="image/x-icon" />
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
-  <script type="text/javascript" src="ajax/js/jquery-ui.js"></script>
+  	<link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+  	<script type="text/javascript" src="ajax/js/jquery-ui.js"></script>
 	<script type="text/javascript" src="ajax/eventos/filtro.js"></script>
 	<script type="text/javascript" src="ajax/eventos/facturas.js"></script>
+	<script type="text/javascript" src="ajax/eventos/exportarFacturas.js"></script>
 
 </head>
 <body>
@@ -69,6 +70,7 @@
 						 <br /><br />
 						 <input type="button" class="btn btn-primary" id="buscar" value="Buscar" />
 						 <input type="button" class="btn btn-primary" onclick="facturas()" value='Tabla Completa' />
+						 <input type="button" class="btn btn-primary" id="exportarFacturas" value='Exportar' />
 
 
 				<input type=hidden id="folio" value="<?= $folio?>"/>
