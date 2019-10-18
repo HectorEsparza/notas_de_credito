@@ -380,7 +380,7 @@
   $resultado->closeCursor();
   //Llenamos la tabla de exportacion excel
   for ($i=0; $i < $contador ; $i++) {
-    if($estatus[$i]=="Emitida" && $entrada[$i]==""){
+    if(($estatus[$i]=="Emitida" || $estatus[$i]=="Original")&& $entrada[$i]==""){
       $consulta = "INSERT INTO EXPORTAR_FACTURAS (CLAVE, CLIENTE, NOMBRE, ESTATUS, FECHA, DESCUENTO, IMPORTE, VENDEDOR) VALUES(?,?,?,?,?,?,?,?)";
       $resultado = $base->prepare($consulta);
       $resultado->execute(array($facturas[$i], $clientes[$i], $nombre[$i], $estatus[$i], $fechas[$i], $descuento[$i], $importe[$i], $vendedor[$i]));
