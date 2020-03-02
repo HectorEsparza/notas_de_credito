@@ -15,6 +15,9 @@
       td{
         height: 15px;
       }
+      textarea{
+        resize: none;
+      }
     </style>
   </head>
   <body>
@@ -58,36 +61,37 @@
         $resultado -> execute(array($folio));
 
 
-          while ($registro = $resultado->fetch(PDO::FETCH_NUM))
+          while ($registro = $resultado->fetch(PDO::FETCH_ASSOC))
           {
 
-              $tipo = $registro[0];
-              $fecha = $registro[1];
-              $folio = $registro[2];
-              $cliente = $registro[3];
-              $nombre = $registro[4];
-              $clave[$x] = $registro[5];
-              $cantidad[$x] = $registro[6];
-              $factura = $registro[7];
+              $tipo = $registro["TIPO"];
+              $fecha = $registro["FECHA"];
+              $folio = $registro["FOLIOINTERNO"];
+              $cliente = $registro["NOCLIENTE"];
+              $nombre = $registro["NOMBRE"];
+              $clave[$x] = $registro["SKU"];
+              $cantidad[$x] = $registro["UNIDADESxSKU"];
+              $factura = $registro["FACTURA"];
               if($tipo=="Muestra"){
                 $costo[$x] = 0;
               }
               else{
-                $costo[$x] = $registro[8];
+                $costo[$x] = $registro["MONTO"];
               }
-              $motivo = $registro[9];
-              $lista[$x] = $registro[11];
-              $user = $registro[12];
-              $folioRecepcion = $registro[16];
-              $devolucion[$x] = $registro[17];
-              $descuento = $registro[18];
+              $motivo = $registro["MOTIVO"];
+              $observaciones = $registro["OBSERVACIONES"];
+              $lista[$x] = $registro["LISTAPRECIOS"];
+              $user = $registro["USUARIO"];
+              $folioRecepcion = $registro["RECEPCION"];
+              $devolucion[$x] = $registro["DEVOLUCION"];
+              $descuento = $registro["DESCUENTO"];
               $x++;
 
           }
 
           $resultado->closeCursor();
           $cont=count($cantidad);
-          if($tipo=="4. Factor 3"||$tipo=="6. Entrada Caja Factor 3"){
+          if($tipo=="Factor 3"||$tipo=="Entrada Caja Factor 3"){
             for ($i=1; $i <=$cont ; $i++)
             {
               $separador = explode("G", $clave[$i]);
@@ -152,7 +156,7 @@
               </tr>
             </table>
               <? for($j=1; $j<=2; $j++) :?>
-                  <? if($tipo=="4. Factor 3"||$tipo=="6. Entrada Caja Factor 3") :?>
+                  <? if($tipo=="Factor 3"||$tipo=="Entrada Caja Factor 3") :?>
                   <table width='20%' align='center' border=1>
                       <tr>
                       <th colspan=6 align='center'> <img src='imagenes/apa.jpg'></th>
@@ -198,7 +202,7 @@
                                  <td align='center'><?= $devolucion[$i]?></td>
                                  <td align='center'><?= $factura?></td>
                                  <td rowspan=<?=tamanoTabla($cantidad)?> colspan=2 align='center'>
-                                 <textarea id="motivo" name='motivo' rows=8 cols=40 style='font-size:20px; font-type:Arial' readonly><?= $motivo?></textarea></td>
+                                 <textarea id="motivo" name='motivo' rows=8 cols=40 style='font-size:20px; font-type:Arial' readonly><?= $motivo . " \n\nObservaciones:\n" . strtolower($observaciones)?></textarea></td>
                                  <td align='center'><?= "$" . number_format($costo[$i], 2, ".", ",")?></td>
                                  <td align='center'><?= "$" . number_format($importe[$i], 2, ".", ",")?></td>
                                  <td align='center'><?= $descuento . "%"?></td>
@@ -303,7 +307,7 @@
                                      <td align='center'><?= $devolucion[$i]?></td>
                                      <td align='center'><?= $factura?></td>
                                      <td rowspan=<?=tamanoTabla($cantidad)?> colspan=2 align='center'>
-                                     <textarea id="motivo" name='motivo' rows=8 cols=40 style='font-size:20px; font-type:Arial' readonly><?= $motivo?></textarea></td>
+                                     <textarea id="motivo" name='motivo' rows=8 cols=40 style='font-size:20px; font-type:Arial' readonly><?= $motivo . " \n\nObservaciones:\n" . strtolower($observaciones)?></textarea></td>
                                      <td align='center'><?= "$" . number_format($costo[$i], 2, ".", ",")?></td>
                                      <td align='center'><?= "$" . number_format($importe[$i], 2, ".", ",")?></td>
                                      <td align='center'><?= $descuento . "%"?></td>
@@ -400,7 +404,7 @@
 
               </table>
               <? for($j=1; $j<=2; $j++) :?>
-                  <? if($tipo=="4. Factor 3"||$tipo=="6. Entrada Caja Factor 3") :?>
+                  <? if($tipo=="Factor 3"||$tipo=="Entrada Caja Factor 3") :?>
                       <table width='20%' align='center' border=1>
 
                           <tr>
@@ -447,7 +451,7 @@
                                      <td align='center'><?= $devolucion[$i]?></td>
                                      <td align='center'><?= $factura?></td>
                                      <td rowspan=<?=tamanoTabla($cantidad)?> colspan=2 align='center'>
-                                     <textarea id="motivo" name='motivo' rows=8 cols=40 style='font-size:20px; font-type:Arial' readonly><?= $motivo?></textarea></td>
+                                     <textarea id="motivo" name='motivo' rows=8 cols=40 style='font-size:20px; font-type:Arial' readonly><?= $motivo . " \n\nObservaciones:\n" . strtolower($observaciones)?></textarea></td>
                                      <td align='center'><?= "$" . number_format($costo[$i], 2, ".", ",")?></td>
                                      <td align='center'><?= "$" . number_format($importe[$i], 2, ".", ",")?></td>
                                      <td align='center'><?= $descuento . "%"?></td>
@@ -553,7 +557,7 @@
                               <td align='center'><?= $devolucion[$i]?></td>
                               <td align='center'><?= $factura?></td>
                               <td rowspan=<?=tamanoTabla($cantidad)?> colspan=2 align='center'>
-                              <textarea id="motivo" name='motivo' rows=8 cols=40 style='font-size:20px; font-type:Arial' readonly><?= $motivo?></textarea></td>
+                              <textarea id="motivo" name='motivo' rows=8 cols=40 style='font-size:20px; font-type:Arial' readonly><?= $motivo . " \n\nObservaciones:\n" . strtolower($observaciones)?></textarea></td>
                               <td align='center'><?= "$" . number_format($costo[$i], 2, ".", ",")?></td>
                               <td align='center'><?= "$" . number_format($importe[$i], 2, ".", ",")?></td>
                               <td align='center'><?= $descuento . "%"?></td>
@@ -656,7 +660,6 @@
 
           <script src="ajax/eventos/cierreInactividad.js"></script>
           <script>
-
             function saludo(){
               alert("Hola Buenos Días!!!");
             }

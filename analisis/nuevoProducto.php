@@ -98,7 +98,7 @@
              <tr>
                <div class="form-group">
                  <th><label for="precioVazlo">Precio Vazlo</label></th>
-                 <td><input class="form-control" id="precioVazlo" type='text' name='precioVazlo' readonly></td>
+                 <td><input class="form-control" id="precioVazlo" type='text' name='precioVazlo' /></td>
                </div>
              </tr>
              <tr>

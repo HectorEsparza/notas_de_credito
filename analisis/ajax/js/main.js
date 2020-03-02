@@ -89,11 +89,11 @@ function get_data_callback(){
       //alert(elem.empleado);
 
 
-      if(elem.id_vazlo==null){
+      if(elem.id_vazlo==""){
         elem.id_vazlo = "NA";
       }
-      if(elem.precio_vazlo==null){
-        elem.precio_vazlo = "NA"
+      if(elem.precio_vazlo==""){
+        elem.precio_vazlo = "0.00"
       }
       $('<tr>'+
         '<td id="folio'+contador+'">'+elem.id_apa+'</td>'+

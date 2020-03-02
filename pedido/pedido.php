@@ -83,7 +83,7 @@
             <?php for ($i=1; $i <=24 ; $i++):?>
               <?php if($i==1): ?>
                 <tr>
-                  <th colspan=10 align='center'>PEDIDO<input  type="button" class="boton" value=24 id="formatoPartidas"></th>
+                  <th colspan=10 align='center'>PEDIDO<input  type="button" class="boton" value=24 id="formatoPartidas" hidden></th>
                 </tr>
                 <tr>
                   <th style="width:25px">FOLIO</th>

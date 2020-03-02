@@ -35,7 +35,7 @@
   <script type="text/javascript" src="ajax/js/informacionPenalizacion.js"></script><!--Despliega la información de la penalización en forma de tabla-->
   <script type="text/javascript" src="ajax/js/cancelaPenalizacion.js"></script><!--Cancela la penalización que ya se haya aplicado-->
   <script type="text/javascript" src="ajax/js/penalizacion2.js"></script><!--Pasa por una verificación para los usuarios que no tienen permisos-->
-  <script type="text/javascript" src="ajax/js/folioRecepcion.js"></script><!--Verifica si el folio de recepcion no esta repetido-->
+  <!-- <script type="text/javascript" src="ajax/js/folioRecepcion.js"></script><Verifica si el folio de recepcion no esta repetido-->
   <script type="text/javascript" src="ajax/js/subtotalesListas.js"></script><!--Verifica si el folio de recepcion no esta repetido-->
 
 </head>
@@ -120,6 +120,26 @@
                 </tr>
                 <tr>
                   <th colspan=12 id="cliente">NOMBRE: </th>
+                </tr>
+                <tr>
+                  <th colspan=12 id="motivoPrincipal">
+                    <label>MOTIVO: </label>
+                    <select name="motivo" required>
+                      <option value=""></option>
+                      <option value="ERROR AL SOLICITAR">ERROR AL SOLICITAR</option>
+                      <option value="CAMBIO FÍSICO">CAMBIO FÍSICO</option>
+                      <option value="ERROR DE VENTAS">ERROR DE VENTAS</option>
+                      <option value="DEFECTO DE FÁBRICA">DEFECTO DE FÁBRICA</option>
+                      <option value="MUESTRAS">MUESTRAS</option>
+                      <option value="RECUPERACIÓN DE MERCANCÍA">RECUPERACIÓN DE MERCANCÍA</option>
+                      <option value="REFACTURACIÓN">REFACTURACIÓN</option>
+                      <option value="POR FALTA DE CANCELACIÓN EN EL MES">POR FALTA DE CANCELACIÓN EN EL MES</option>
+                      <option value="PRECIO MÁS CARO">PRECIO MÁS CARO</option>
+                      <option value="CAMBIO RAZÓN SOCIAL">CAMBIO RAZÓN SOCIAL</option>
+                      <option value="PRECIO ESPECIAL">PRECIO ESPECIAL</option>
+                      <option value="NO CORRESPONDE LA ESPECIFICACIÓN">NO CORRESPONDE LA ESPECIFICACIÓN</option>
+                    </select>
+                  </th>
                 </tr>
                 <tr>
                     <th colspan=12 align='center'>PRODUCTOS </th>
@@ -232,22 +252,22 @@
             <tr>
               <th colspan=8 rowspan=3 align='center' id=pen></th>
               <th colspan=2>SUBTOTAL</th>
-              <td colspan=2 align='center'><input style="text-align:center" type="text" id="subtotalNota" readonly /></td>
+              <td colspan=2 align='center'><input style="text-align:center" type="text" id="subtotalNota" readonly  value="$0"/></td>
             </tr>
             <tr>
               <th colspan=2>IVA</th>
-              <td colspan=2 align='center'><input style="text-align:center" type="text" id="iva" readonly /></td>
+              <td colspan=2 align='center'><input style="text-align:center" type="text" id="iva" readonly value="$0"/></td>
             </tr>
             <tr>
               <th colspan=2>TOTAL</th>
-              <td colspan=2 align='center'><input style="text-align:center" type="text" id="totalNota" readonly /></td>
+              <td colspan=2 align='center'><input style="text-align:center" type="text" id="totalNota" readonly value="$0"/></td>
             </tr>
 
               <tr>
-                <th colspan=12 align='center'>MOTIVO</th>
+                <th colspan=12 align='center'>OBSERVACIONES</th>
               </tr>
               <tr>
-                <td colspan=9 align='center'><textarea name='motivo' rows=2 cols=50 style='font-size:20px; font-type:Arial' placeholder="El motivo de la devolución es..." ></textarea></td>
+                <td colspan=9 align='center'><textarea name='observaciones' rows=2 cols=50 style='font-size:20px; font-type:Arial' placeholder="Breve descripción..." ></textarea></td>
                 <td colspan=3 align='center'><input class="btn btn-primary" type='submit' id='captura' value='Capturar' /></td>
                 <!-- <td align='center'><input type='button' class="btn btn-primary" id='penalizacion' value='10% Penalización' /></td> -->
               </tr>

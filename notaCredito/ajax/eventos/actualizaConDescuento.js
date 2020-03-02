@@ -48,7 +48,7 @@ $(document).ready(function(){
       $("#descuentoConsulta").val(separador[0]);
 
       if(valor!=""){
-        alert("entramos!!!");
+        //alert("entramos!!!");
         $("#cantidad1").prop("readonly", false);
         $("#clave1").prop("readonly", false);
         $("#devolucion1").prop("disabled", false);
@@ -118,7 +118,7 @@ $(document).ready(function(){
       for (var i = 1; i <=contador; i++) {
          subtotal = subtotal + auxiliar[i];
       }
-      if(tipo=="4. Factor 3"||tipo=="6. Entrada Caja Factor 3"){
+      if(tipo=="Factor 3"||tipo=="Entrada Caja Factor 3"){
         $("#subtotalNota").val(formatNumber.new(Math.round(subtotal*100)/100, "$"));
         $("#iva").val("$0");
         $("#totalNota").val(formatNumber.new(Math.round(subtotal*100)/100, "$"));

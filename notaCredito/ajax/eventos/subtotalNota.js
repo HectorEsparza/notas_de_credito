@@ -58,7 +58,7 @@ for (var i = 1; i <= 25; i++) {
     for (var i = 1; i <=contador; i++) {
        subtotal = subtotal + auxiliar[i];
     }
-    if(tipo=="4. Factor 3"||tipo=="6. Entrada Caja Factor 3"){
+    if(tipo=="Factor 3"||tipo=="Entrada Caja Factor 3"){
       $("#subtotalNota").val(formatNumber.new(Math.round(subtotal*100)/100, "$"));
       $("#iva").val("$0");
       $("#totalNota").val(formatNumber.new(Math.round(subtotal*100)/100, "$"));
@@ -96,7 +96,7 @@ for (var i = 1; i <= 25; i++) {
       subtotal = subtotal + auxiliar[i];
     }
 
-    if(tipo=="4. Factor 3"||tipo=="6. Entrada Caja Factor 3"){
+    if(tipo=="Factor 3"||tipo=="Entrada Caja Factor 3"){
       $("#subtotalNota").val(formatNumber.new(Math.round(subtotal*100)/100, "$"));
       $("#iva").val("$0");
       $("#totalNota").val(formatNumber.new(Math.round(subtotal*100)/100, "$"));
