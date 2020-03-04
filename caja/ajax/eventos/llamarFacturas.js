@@ -1003,7 +1003,7 @@ $(document).ready(function(){
           separador = separador.substr(1,1);
           console.log(separador);
           if(departamento=="COBRANZA" && separador=="R"){
-            if(datos[3]==1&&datos[2]>0){
+            if(datos[3]==1&&datos[2]>=0){
               $("#guardar").prop("disabled", false);
             }
             else if(datos[3]==1&&datos[2]==0){
@@ -1011,7 +1011,7 @@ $(document).ready(function(){
             }
             $("#cliente"+datos[3]).text(datos[0]);
             $("#nombre"+datos[3]).text(datos[1]);
-            if(datos[2]>0){
+            if(datos[2]>=0){
               $("#importe"+datos[3]).text("$"+datos[2]);
               //desbloqueamos la siguiente fila para que introduzcan otra factura
               $("#factura"+siguienteFila).prop("readonly", false);
