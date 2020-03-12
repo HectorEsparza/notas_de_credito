@@ -77,44 +77,45 @@
         $consulta4 = "SELECT * FROM NOTAS WHERE FOLIOINTERNO=?";
         $resultado4 = $base->prepare($consulta4);
         $resultado4 -> execute(array($folio));
-        $registro4 = $resultado4->fetch(PDO::FETCH_NUM);
+        $registro4 = $resultado4->fetch(PDO::FETCH_ASSOC);
 
-        if($registro4[2]==""){
+        if($registro4["FOLIOINTERNO"]==""){
             header("location:sae.php");
         }
 
 
 
-          while ($registro = $resultado->fetch(PDO::FETCH_NUM))
-          {
+        while ($registro = $resultado->fetch(PDO::FETCH_ASSOC))
+        {
 
-              $tipo = $registro[0];
-              $fecha = $registro[1];
-              $folio = $registro[2];
-              $cliente = $registro[3];
-              $nombre = $registro[4];
-              $clave[$x] = $registro[5];
-              $cantidad[$x] = $registro[6];
-              $factura = $registro[7];
-              if($tipo=="Muestra"){
-                $costo[$x] = 0;
-              }
-              else{
-                $costo[$x] = $registro[8];
-              }
-              $motivo = $registro[9];
-              $lista[$x] = $registro[11];
-              $user = $registro[12];
-              $folioRecepcion = $registro[16];
-              $devolucion[$x] = $registro[17];
-              $descuento = $registro[18];
-              $x++;
+            $tipo = $registro["TIPO"];
+            $fecha = $registro["FECHA"];
+            $folio = $registro["FOLIOINTERNO"];
+            $cliente = $registro["NOCLIENTE"];
+            $nombre = $registro["NOMBRE"];
+            $clave[$x] = $registro["SKU"];
+            $cantidad[$x] = $registro["UNIDADESxSKU"];
+            $factura = $registro["FACTURA"];
+            if($tipo=="Muestra"){
+              $costo[$x] = 0;
+            }
+            else{
+              $costo[$x] = $registro["MONTO"];
+            }
+            $motivo = $registro["MOTIVO"];
+            $observaciones = $registro["OBSERVACIONES"];
+            $lista[$x] = $registro["LISTAPRECIOS"];
+            $user = $registro["USUARIO"];
+            $folioRecepcion = $registro["RECEPCION"];
+            $devolucion[$x] = $registro["DEVOLUCION"];
+            $descuento = $registro["DESCUENTO"];
+            $x++;
 
-          }
+        }
           $resultado->closeCursor();
           $cont=count($cantidad);
 
-          if($tipo=="4. Factor 3"||$tipo=="6. Entrada Caja Factor 3"){
+          if($tipo=="Factor 3"||$tipo=="Entrada Caja Factor 3"){
             for ($i=1; $i <=$cont ; $i++)
             {
               $separador = explode("G", $clave[$i]);
@@ -174,7 +175,7 @@
           </div>
         </header>
         <div class="container">
-          <? if($tipo=="4. Factor 3"||$tipo=="6. Entrada Caja Factor 3") :?>
+          <? if($tipo=="Factor 3"||$tipo=="Entrada Caja Factor 3") :?>
           <table class="table table-bordered table-condensed">
           <!--<table witd='50%' align='center' border=1>-->
             <tr>

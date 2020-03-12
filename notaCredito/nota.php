@@ -127,7 +127,7 @@
                     <select name="motivo" required>
                       <option value=""></option>
                       <option value="ERROR AL SOLICITAR">ERROR AL SOLICITAR</option>
-                      <option value="CAMBIO FÍSICO">CAMBIO FÍSICO</option>
+                      <!-- <option value="CAMBIO FÍSICO">CAMBIO FÍSICO</option> -->
                       <option value="ERROR DE VENTAS">ERROR DE VENTAS</option>
                       <option value="DEFECTO DE FÁBRICA">DEFECTO DE FÁBRICA</option>
                       <option value="MUESTRAS">MUESTRAS</option>
@@ -138,6 +138,7 @@
                       <option value="CAMBIO RAZÓN SOCIAL">CAMBIO RAZÓN SOCIAL</option>
                       <option value="PRECIO ESPECIAL">PRECIO ESPECIAL</option>
                       <option value="NO CORRESPONDE LA ESPECIFICACIÓN">NO CORRESPONDE LA ESPECIFICACIÓN</option>
+                      <option value="ERROR DE ALMACÉN">ERROR DE ALMACÉN</option>
                     </select>
                   </th>
                 </tr>
