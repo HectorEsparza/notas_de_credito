@@ -11,6 +11,7 @@ $(document).ready(function(){
       fotos = $("#fotos"),
       estudios = $("#estudios"),
       infonavit = $("#infonavit"),
+      adeudo = $("#adeudo");
       pdf = $("#pdf"),
       solicitudOculto = $(".solicitudOculto"),
       actaOculto = $(".actaOculto"),
@@ -115,6 +116,10 @@ $(document).ready(function(){
       }
       else{
         infonavitOculto.hide();
+      }
+
+      if(adeudo.val()=="SI"){
+        adeudo.attr("disabled", true);
       }
 
       pdf.change(function(){

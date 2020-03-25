@@ -12,6 +12,7 @@
   // $fotos = $_POST['fotos'];
   // $estudios = $_POST['estudios'];
   $infonavit = $_POST['infonavit'];
+  $adeudo = $_POST['adeudo'];
 
 
   //Solicitud
@@ -43,10 +44,10 @@
 
 
   $base = conexion_local();
-  $consulta = "INSERT INTO DOCUMENTOS(SOLICITUD, ACTA, IFE, DOMICILIO, SEGURO, CURP, RFC, INFONAVIT)
-                      VALUES(?,?,?,?,?,?,?,?)";
+  $consulta = "INSERT INTO DOCUMENTOS(SOLICITUD, ACTA, IFE, DOMICILIO, SEGURO, CURP, RFC, INFONAVIT, ADEUDO)
+                      VALUES(?,?,?,?,?,?,?,?,?)";
   $resultado = $base->prepare($consulta);
-  $resultado->execute(array($solicitud, $acta, $ife, $domicilio, $seguro, $curp, $rfc, $infonavit));
+  $resultado->execute(array($solicitud, $acta, $ife, $domicilio, $seguro, $curp, $rfc, $infonavit, $adeudo));
   $resultado->closeCursor();
 
   $consulta = "INSERT INTO SOLICITUD(FECHA_ALTA, DEPARTAMENTO, PUESTO, SALARIO, NOMBRE, NACIMIENTO, TELEFONO, SEGURO, RFC, CURP, CALLE,

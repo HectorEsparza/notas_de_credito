@@ -247,6 +247,15 @@
               </select>
             </td>
           </tr>
+          <tr class="colorInfonavit">
+            <td>Adeudo Bancomer</td>
+            <td align='center'>
+              <select id="adeudo" name="adeudo">
+                <option value="NO">NO</option>
+                <option value="SI">SI</option>
+              </select>
+            </td>
+          </tr>
           <tr id="botones">
             <td colspan="2" align='center' id="botonGuardar"><input type='submit' id="guardar" value='Guardar' class="btn btn-primary"/></td>
           </tr>
@@ -487,7 +496,8 @@
                           penales = $("#penales"),
                           fotos = $("#fotos"),
                           estudios = $("#estudios"),
-                          infonavit = $("#infonavit");
+                          infonavit = $("#infonavit"),
+                          adeudo = $("#adeudo");
                       var fechaAlta = $("#fechaAlta"),
                           departamento = $("#vistaDepartamento"),
                           puesto = $("#vistaPuesto"),
@@ -528,6 +538,7 @@
                           fotos.attr("disabled", false);
                           estudios.attr("disabled", false);
                           infonavit.attr("disabled", false);
+                          adeudo.attr("disabled", false);
                           puesto.attr("disabled", false);
                           sexo.attr("disabled", false);
                           edoCivil.attr("disabled", false);
@@ -581,8 +592,32 @@
           $("#gerente").hide();
           $("#recursosHumanos").hide();
           print();
-          $("#gerente").show();
-          $("#recursosHumanos").show();
+          var departamento = $("#departamento").val(),
+
+          departamento = departamento.split("_");
+          for (var i = 0; i < departamento.length; i++) {
+            if(i==0){
+              auxiliar = departamento[i];
+            }
+            else{
+              auxiliar = auxiliar+" "+departamento[i];
+            }
+          }
+          console.log(auxiliar);
+          // alert(auxiliar);
+          switch (auxiliar){
+            case "ADMINISTRADOR":
+              $("#gerente").show();
+              $("#recursosHumanos").show();
+              break;
+            case "RECURSOS HUMANOS":
+              $("#gerente").hide();
+              $("#recursosHumanos").show();
+            default:
+              break;
+
+          }
+
         }
 
 

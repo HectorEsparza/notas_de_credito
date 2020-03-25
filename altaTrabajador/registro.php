@@ -66,7 +66,7 @@
   			<form action='../cierre.php'>
   				<input style="float: right;" class="btn btn-primary" type='submit' value='Cierra Sesión' />
   			</form>
-        <input type="button" style="float: right;" class="btn btn-primary" onclick="visualizacion()" value="Cargar Registro" />
+        <input type="button" style="float: right;" class="btn btn-primary" onclick="visualizacion()" value="Visualizar Registros" />
 
   		</div>
   	</header>
@@ -174,6 +174,15 @@
             <td>Crédito Infonavit</td>
             <td align='center'>
               <select id="infonavit" name="infonavit">
+                <option value="NO">NO</option>
+                <option value="SI">SI</option>
+              </select>
+            </td>
+          </tr>
+          <tr class="colorInfonavit">
+            <td>Adeudo Bancomer</td>
+            <td align='center'>
+              <select id="adeudo" name="adeudo">
                 <option value="NO">NO</option>
                 <option value="SI">SI</option>
               </select>
