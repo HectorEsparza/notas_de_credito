@@ -30,7 +30,7 @@
           <!-- infoPenalizacion(this.value, document.getElementById('totalNota').value); -->
           <td><input type="button" class='btn btn-primary' id='hola' value='Ok' onclick="limpiar();
             calculoPenalizacion(document.getElementById('cantidadPenalizacion').value, document.getElementById('totalNota').value);
-            informacionPenalizacion(document.getElementById('cantidadPenalizacion').value, document.getElementById('totalNota').value);
+            informacionPenalizacion(document.getElementById('cantidadPenalizacion').value, document.getElementById('penalizacionNota').value);
             "/></td>
           <td><button class="btn btn-primary" id="cancelaciondePen" onclick="limpiar(); ">Cancelar</button></td>
         </tr>

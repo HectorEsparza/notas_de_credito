@@ -3,6 +3,7 @@
 <body>
 <?php
 
+  $penalizacion = $_GET['penalizacion'];
   $porcentaje = $_GET['porcentaje'];
   $porciento = $porcentaje;
   $total = explode("$", $_GET['total']);
@@ -18,14 +19,12 @@
     <tr>
       <td>Cantidad</td>
       <td>Clave</td>
-      <td>Total Nota</td>
-      <td style="color: red;">Cargo</td>
+      <td style="color: red;">Cargo Total</td>
     </tr>
     <tr>
       <td>1</td>
       <td><?= "CARG " . $porciento?></td>
-      <td><?= "$" . number_format($total[1], 2, ".", ",") ?></td>
-      <td style="color: red;"id="costoPenalizacion"><?= "-$" . number_format($descuento, 2, ".", ",")?></td>
+      <td style="color: red;"id="costoPenalizacion"><?= "-$" . number_format($penalizacion, 2, ".", ",")?></td>
     </tr>
   </table>
 </body>

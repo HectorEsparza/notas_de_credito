@@ -105,7 +105,7 @@ if($porcentaje!=0){
   $importe [] = $penalizacion*-1;
   $subtotales [] = $penalizacion*-1;
   $cont++;
-  $total = $total-$penalizacion;
+  //$total = $total-$penalizacion;
   $letra = num2letras($total, $fem = false, $dec = true);
 }
 else{
@@ -144,7 +144,7 @@ if($porcentaje!=0){
   $importe [] = $penalizacion*-1;
   $subtotales [] = $penalizacion*-1;
   $cont++;
-  $total = $total-$penalizacion;
+  //$total = $total-$penalizacion;
   $letra = num2letras($total, $fem = false, $dec = true);
 }
 else{
@@ -202,7 +202,7 @@ else{
   {
   $consulta = "INSERT INTO NOTAS(TIPO, FECHA, FOLIOINTERNO, NOCLIENTE, NOMBRE, SKU, UNIDADESxSKU, FACTURA, MONTO,
                                  MOTIVO, OBSERVACIONES, LISTAPRECIOS, USUARIO, STATUS, RECEPCION, DEVOLUCION, DESCUENTO)
-               VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+               VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
   $resultado = $base->prepare($consulta);
   $resultado->execute(array($tipo_dev, $fecha, $folio, $cliente, $nombre, $clave[$i], $cantidad[$i], $factura,
                             $costo[$i], $motivo, $observaciones, $lista[$i], usuario($usuario), "ACTIVA", $folioRecepcion, $devolucion[$i], $descuento));

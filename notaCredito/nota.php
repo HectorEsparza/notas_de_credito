@@ -179,7 +179,7 @@
                       </td>
                       <td align='center' colspan=2 id="subtotal<?= $i?>">
                       </td>
-
+                      <input type="hidden"  name="subtotalPenalizacion<?= $i?>" id='subtotalPenalizacion<?= $i?>' value=""/>
 
                 </tr>
 
@@ -209,7 +209,7 @@
                     </td>
                     <td align='center' colspan=2 id="subtotal<?= $i?>">
                     </td>
-
+                    <input type="hidden"  name="subtotalPenalizacion<?= $i?>" id='subtotalPenalizacion<?= $i?>' value=""/>
 
 
               </tr>
@@ -240,7 +240,7 @@
                     </td>
                     <td align='center' colspan=2 id="subtotal<?= $i?>">
                     </td>
-
+                    <input type="hidden"  name="subtotalPenalizacion<?= $i?>" id='subtotalPenalizacion<?= $i?>' value=""/>
 
 
               </tr>

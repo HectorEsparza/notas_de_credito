@@ -147,8 +147,8 @@
           if($separador[0]=="CAR"){
             $importe[$cont] = $costo[$cont];
             $subtotales[$cont] = $costo[$cont];
-            $total = $total+$costo[$cont];
-            $letra = num2letras($total, $fem = false, $dec = true);
+            //$total = $total+$costo[$cont];
+            //$letra = num2letras($total, $fem = false, $dec = true);
           }
           //$tipo2 sirve para ver si la nota de crédito es de tipo Muestra o Cambio Físico
           $tipo2 = explode("-", $folio);

@@ -2,7 +2,8 @@ function informacionPenalizacion(porcentaje, total)
 {
 
        var conexion;
-
+       var penalizacion = $("#penalizacionNota").val();
+       console.log(penalizacion);
 
              if (window.XMLHttpRequest)
              {
@@ -23,7 +24,7 @@ function informacionPenalizacion(porcentaje, total)
                }
              }
 
-             conexion.open("GET", "ajax/informacionPenalizacion.php?porcentaje="+porcentaje+"&total="+total, true);
+             conexion.open("GET", "ajax/informacionPenalizacion.php?porcentaje="+porcentaje+"&total="+total+"&penalizacion="+penalizacion, true);
              conexion.send();
 
 }
