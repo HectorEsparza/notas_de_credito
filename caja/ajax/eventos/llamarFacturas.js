@@ -1053,6 +1053,11 @@ $(document).ready(function(){
         else{
           alert("Solamente se puede capturar " + tipo);
           $("#factura"+datos[3]).val("");
+          $("#metodo"+datos[3]).val("");
+          $("#cliente"+datos[3]).text("");
+          $("#nombre"+datos[3]).text("");
+          $("#importe"+datos[3]).text("");
+          $("#observaciones"+datos[3]).val("");
         }
 
       }

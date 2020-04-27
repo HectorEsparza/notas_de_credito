@@ -12,6 +12,8 @@
   </head>
   <body>
     <?php
+      session_start();
+      $usuario = $_SESSION['user'];
       require_once("../funciones.php");
       $folio = $_GET['folio'];
       $facturas = array();
@@ -45,12 +47,21 @@
         $observaciones[$contador] = $registro[6];
         $contador++;
       }
+      $resultado->closeCursor();
 
+      $consulta = "SELECT DEPARTAMENTO FROM USUARIOS WHERE USUARIO=?";
+      $resultado = $base->prepare($consulta);
+      $resultado->execute(array($usuario));
+      $departamento = $resultado->fetch(PDO::FETCH_NUM);
+      $departamento = $departamento[0];
+      $resultado->closeCursor();
+      $base = null;
     ?>
         <div class="col-md-8">
           <p style="font-weight: bold;"><img src="imagenes/apa.jpg" />
             <?php echo saber_dia($fecha)." ".$folio?>
             <input type="hidden" id="folio" value="<?= $folio?>" />
+            <input type="hidden" id="departamento" value="<?= $departamento?>" />
             <input type="button" class="btn btn-primary btn-sm" value="Imprimir" id="impresion" style="margin-left: 30px;"/>
             <input type="button" class="btn btn-info btn-sm" value="Regresar" id="regresar" style="margin-left: 30px;"/>
             <!-- <input type="button" class="btn btn-success btn-sm" value="Editar" id="editar" style="margin-left: 30px;"/> -->
@@ -68,6 +79,7 @@
             </p>
           </div>
 
+          <input type="button" class="btn btn-success btn-sm" value="Agregar Factura/Remisión" id="agregarFactura" style="margin-bottom: 30px;"/>
           <table width='850px' border="1" style="text-align: center;">
             <tr>
               <td colspan="5" style="background-color: gray; font-weight:bold;">ABASTECEDORA DE PRODUCTOS AUTOMOTRICES</td>
@@ -100,17 +112,32 @@
         </div>
     <script type="text/javascript">
       $(document).ready(function(){
+
+        $("#agregarFactura").hide();
+        var departamento = $("#departamento").val();
+
+        if(departamento=="COBRANZA"){
+          $("#agregarFactura").show();
+        }
+
+        $("#agregarFactura").click(function(){
+          setTimeout("location.href='agregarFacturaRemision.php?folio="+$('#folio').val()+"'",500);
+        });
         $("#impresion").click(function(){
 
           $("#impresion").hide();
           $("#regresar").hide();
           $("#cierra").hide();
           $("#editar").hide();
+          $("#agregarFactura").hide();
           print();
           $("#impresion").show();
           $("#regresar").show();
           $("#cierra").show();
           $("#editar").show();
+          if(departamento=="COBRANZA"){
+            $("#agregarFactura").show();
+          }
         });
         $("#regresar").click(function(){
           setTimeout("location.href='visualizacion.php'",500);

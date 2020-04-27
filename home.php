@@ -37,7 +37,7 @@
         color: #000000;
         width: 150px;
       }
-      #remision{
+      #compras{
         background: #FF7F50;
         color: #000000;
         width: 150px;
@@ -116,7 +116,7 @@
           <br />
           <div class="container row">
             <div class="container col-md-4">
-              <input type="button" id="remision" value="Remision" class="btn btn-primary" />
+              <input type="button" id="compras" value="Compras" class="btn btn-primary" />
             </div>
             <div class="container col-md-4">
               <input type="button" id="sae" value="Captura SAE" class="btn btn-primary" />
@@ -150,7 +150,7 @@
           $("#nota").show();
           $("#pedido").show();
           $("#carta").show();
-          $("#remision").hide();
+          $("#compras").show();
           $("#sae").show();
           $("#nomina").show();
           $("#altas").show();
@@ -165,7 +165,8 @@
             $("#nota").show();
             $("#pedido").show();
             $("#carta").show();
-            $("#remision").hide();
+            $("#caja").show();
+            $("#compras").hide();
             $("#sae").hide();
             $("#nomina").hide();
           }
@@ -173,7 +174,7 @@
             $("#nota").hide();
             $("#pedido").hide();
             $("#carta").hide();
-            $("#remision").hide();
+            $("#compras").hide();
             $("#sae").show();
             $("#nomina").hide();
             $("#altas").hide();
@@ -183,7 +184,7 @@
             $("#nota").hide();
             $("#pedido").hide();
             $("#carta").hide();
-            $("#remision").hide();
+            $("#compras").hide();
             $("#sae").hide();
             $("#nomina").show();
           }
@@ -192,7 +193,7 @@
             $("#nota").hide();
             $("#pedido").hide();
             $("#carta").hide();
-            $("#remision").hide();
+            $("#compras").hide();
             $("#sae").hide();
             $("#nomina").hide();
           }
@@ -205,7 +206,7 @@
             $("#nota").show();
             $("#pedido").show();
             $("#carta").show();
-            $("#remision").hide();
+            $("#compras").hide();
             $("#sae").hide();
             $("#nomina").hide();
           }
@@ -213,7 +214,7 @@
             $("#nota").hide();
             $("#pedido").hide();
             $("#carta").hide();
-            $("#remision").hide();
+            $("#compras").hide();
             $("#sae").hide();
             $("#nomina").hide();
             $("#caja").show();
@@ -222,7 +223,7 @@
             $("#nota").hide();
             $("#pedido").hide();
             $("#carta").hide();
-            $("#remision").hide();
+            $("#compras").hide();
             $("#sae").hide();
             $("#nomina").show();
             $("#altas").show();
@@ -231,7 +232,7 @@
             $("#nota").hide();
             $("#pedido").hide();
             $("#carta").hide();
-            $("#remision").hide();
+            $("#compras").hide();
             $("#sae").hide();
             $("#nomina").hide();
             $("#caja").show();
@@ -254,8 +255,8 @@
         $("#pedido").click(function(){
           setTimeout("location.href='pedido/visualizarPedidos.php'",500);
         });
-        $("#remision").click(function(){
-          setTimeout("location.href='remision/visualizarPedidos.php'",500);
+        $("#compras").click(function(){
+          setTimeout("location.href='compras/visualizacion.php'",500);
         });
 
         $("#cierre").click(function(){
