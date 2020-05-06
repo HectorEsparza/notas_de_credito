@@ -23,7 +23,7 @@
   $resultado = $base->prepare($consulta);
   $resultado->execute(array($departamento, $clave));
   while($registro = $resultado->fetch(PDO::FETCH_NUM)){
-    if($registro[0]==$fecha){
+    if($registro[0]==fechaConsulta($fecha)){
       $opcion = "fechaNoDisponoble";
     }
     $contador++;
