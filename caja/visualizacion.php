@@ -63,7 +63,8 @@
 
 						 <input type="hidden" id="gerente" value="<?= $usuario?>" />
 						 <input type="text" id="idCobranza" class="idCobranza" placeholder="ID Cobranza"/>
-						 <input type="text" id="fecha" class="fecha" placeholder="Fecha"/>
+						 <input type="text" id="fecha" class="fecha" placeholder="Fecha Inicio"/>
+						 <input type="text" id="fechaFin" class="fechaFin" placeholder="Fecha Fin"/>
 						 <br /><br />
 						 <input type="button" class="btn btn-primary" id="buscar" value="Buscar" />
 						 <!-- <button type="submit" class="btn btn-primary" id="limpiaFiltro">Limpiar Campos</button> -->
@@ -145,29 +146,11 @@
 
 			$(document).ready(function(){
 
-									$('#tag').autocomplete({
-											source: function(request, response){
-													$.ajax({
-															url:"colores.php",
-															dataType:"json",
-															data:{q:request.term},
-															success: function(data){
-																	response(data);
-															}
-													});
-											},
-											minLength:3,
-											select: function(event, ui){
-													//alert("Selecciono: "+ui.item.label);
-											}
-									});
 									$("#home").click(function(){
 
 										setTimeout("location.href='../home.php'", 500);
 									});
 
-
-				$('#fecha').datepicker();
 				$("#cargar").click(function(){
 					setTimeout("location.href='cargarFacturas.php'", 500);
 				});

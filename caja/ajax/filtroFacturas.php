@@ -34,64 +34,64 @@
     if($factura!=""&&$cliente!=""&&$fecha!=""&&$fechaCorte!=""&&$pago!=""&&$folio!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLAVE=? AND CLIENTE=? AND FECHA=? AND FECHA_ENTRADA=? AND METODO=? AND ENTRADA=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($factura, $cliente, $fecha, $fechaCorte, $pago, $folio));
+      $resultado->execute(array($factura, $cliente, fechaConsulta($fecha), fechaConsulta($fechaCorte), $pago, $folio));
     }
     //Grupos de 5
     elseif($factura!=""&&$cliente!=""&&$fecha!=""&&$fechaCorte!=""&&$pago!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLAVE=? AND CLIENTE=? AND FECHA=? AND FECHA_ENTRADA=? AND METODO=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($factura, $cliente, $fecha, $fechaCorte, $pago));
+      $resultado->execute(array($factura, $cliente, fechaConsulta($fecha), fechaConsulta($fechaCorte), $pago));
     }
     elseif($factura!=""&&$cliente!=""&&$fecha!=""&&$fechaCorte!=""&&$folio!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLAVE=? AND CLIENTE=? AND FECHA=? AND FECHA_ENTRADA=? AND ENTRADA=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($factura, $cliente, $fecha, $fechaCorte, $folio));
+      $resultado->execute(array($factura, $cliente, fechaConsulta($fecha), fechaConsulta($fechaCorte), $folio));
     }
     elseif($factura!=""&&$cliente!=""&&$fecha!=""&&$pago!=""&&$folio!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLAVE=? AND CLIENTE=? AND FECHA=? AND METODO=? AND ENTRADA=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($factura, $cliente, $fecha, $pago, $folio));
+      $resultado->execute(array($factura, $cliente, fechaConsulta($fecha), $pago, $folio));
     }
     elseif($factura!=""&&$cliente!=""&&$fechaCorte!=""&&$pago!=""&&$folio!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLAVE=? AND CLIENTE=? AND FECHA_ENTRADA=? AND METODO=? AND ENTRADA=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($factura, $cliente, $fechaCorte, $pago, $folio));
+      $resultado->execute(array($factura, $cliente, fechaConsulta($fechaCorte), $pago, $folio));
     }
     elseif($factura!=""&&$fecha!=""&&$fechaCorte!=""&&$pago!=""&&$folio!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLAVE=? AND FECHA=? AND FECHA_ENTRADA=? AND METODO=? AND ENTRADA=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($factura, $fecha, $fechaCorte, $pago, $folio));
+      $resultado->execute(array($factura, fechaConsulta($fecha), fechaConsulta($fechaCorte), $pago, $folio));
     }
     elseif($cliente!=""&&$fecha!=""&&$fechaCorte!=""&&$pago!=""&&$folio!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLIENTE=? AND FECHA=? AND FECHA_ENTRADA=? AND METODO=? AND ENTRADA=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($cliente, $fecha, $fechaCorte, $pago, $folio));
+      $resultado->execute(array($cliente, fechaConsulta($fecha), fechaConsulta($fechaCorte), $pago, $folio));
     }
     //Grupos 4
     elseif($factura!=""&&$cliente!=""&&$fecha!=""&&$fechaCorte!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLAVE=? AND CLIENTE=? AND FECHA=? AND FECHA_ENTRADA=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($factura, $cliente, $fecha, $fechaCorte));
+      $resultado->execute(array($factura, $cliente, fechaConsulta($fecha), fechaConsulta($fechaCorte)));
     }
     elseif($factura!=""&&$cliente!=""&&$fecha!=""&&$pago!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLAVE=? AND CLIENTE=? AND FECHA=? AND METODO=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($factura, $cliente, $fecha, $pago));
+      $resultado->execute(array($factura, $cliente, fechaConsulta($fecha), $pago));
     }
     elseif($factura!=""&&$cliente!=""&&$fecha!=""&&$folio!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLAVE=? AND CLIENTE=? AND FECHA=? AND ENTRADA=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($factura, $cliente, $fecha, $folio));
+      $resultado->execute(array($factura, $cliente, fechaConsulta($fecha), $folio));
     }
     elseif($factura!=""&&$cliente!=""&&$fechaCorte!=""&&$pago!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLAVE=? AND CLIENTE=? AND FECHA_ENTRADA=? AND METODO=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($factura, $cliente, $fechaCorte, $pago));
+      $resultado->execute(array($factura, $cliente, fechaConsulta($fechaCorte), $pago));
     }
     elseif($factura!=""&&$cliente!=""&&$fechaCorte!=""&&$folio!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLAVE=? AND CLIENTE=? AND FECHA_ENTRADA=? AND ENTRADA=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($factura, $cliente, $fechaCorte, $folio));
+      $resultado->execute(array($factura, $cliente, fechaConsulta($fechaCorte), $folio));
     }
     elseif($factura!=""&&$cliente!=""&&$pago!=""&&$folio!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLAVE=? AND CLIENTE=? AND METODO=? AND ENTRADA=? ORDER BY CLAVE";
@@ -101,58 +101,58 @@
     elseif($factura!=""&&$fecha!=""&&$fechaCorte!=""&&$pago!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLAVE=? AND FECHA=? AND FECHA_ENTRADA=? AND METODO=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($factura, $fecha, $fechaCorte, $pago));
+      $resultado->execute(array($factura, fechaConsulta($fecha), fechaConsulta($fechaCorte), $pago));
     }
     elseif($factura!=""&&$fecha!=""&&$fechaCorte!=""&&$folio!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLAVE=? AND FECHA=? AND FECHA_ENTRADA=? AND ENTRADA=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($factura, $fecha, $fechaCorte, $folio));
+      $resultado->execute(array($factura, fechaConsulta($fecha), fechaConsulta($fechaCorte), $folio));
     }
     elseif($factura!=""&&$fecha!=""&&$pago!=""&&$folio!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLAVE=? AND FECHA=? AND METODO=? AND ENTRADA=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($factura, $fecha, $pago, $folio));
+      $resultado->execute(array($factura, fechaConsulta($fecha), $pago, $folio));
     }
     elseif($factura!=""&&$fechaCorte!=""&&$pago!=""&&$folio!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLAVE=? AND FECHA_ENTRADA=? AND METODO=? AND ENTRADA=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($factura, $fechaCorte, $pago, $folio));
+      $resultado->execute(array($factura, fechaConsulta($fechaCorte), $pago, $folio));
     }
     elseif($cliente!=""&&$fecha!=""&&$fechaCorte!=""&&$pago!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLIENTE=? AND FECHA=? AND FECHA_ENTRADA=? AND METODO=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($cliente, $fecha, $fechaCorte, $pago));
+      $resultado->execute(array($cliente, fechaConsulta($fecha), fechaConsulta($fechaCorte), $pago));
     }
     elseif($cliente!=""&&$fecha!=""&&$fechaCorte!=""&&$folio!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLIENTE=? AND FECHA=? AND FECHA_ENTRADA=? AND ENTRADA=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($cliente, $fecha, $fechaCorte, $folio));
+      $resultado->execute(array($cliente, fechaConsulta($fecha), fechaConsulta($fechaCorte), $folio));
     }
     elseif($cliente!=""&&$fecha!=""&&$pago!=""&&$folio!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLIENTE=? AND FECHA=? AND METODO=? AND ENTRADA=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($cliente, $fecha, $pago, $folio));
+      $resultado->execute(array($cliente, fechaConsulta($fecha), $pago, $folio));
     }
     elseif($cliente!=""&&$fechaCorte!=""&&$pago!=""&&$folio!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLIENTE=? AND FECHA_ENTRADA=? AND METODO=? AND ENTRADA=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($cliente, $fechaCorte, $pago, $folio));
+      $resultado->execute(array($cliente, fechaConsulta($fechaCorte), $pago, $folio));
     }
     elseif($fecha!=""&&$fechaCorte!=""&&$pago!=""&&$folio!=""){
       $consulta = "SELECT * FROM CARGAS WHERE FECHA=? AND FECHA_ENTRADA=? AND METODO=? AND ENTRADA=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($fecha, $fechaCorte, $pago, $folio));
+      $resultado->execute(array(fechaConsulta($fecha), fechaConsulta($fechaCorte), $pago, $folio));
     }
     //Grupos de 3
     elseif($factura!=""&&$cliente!=""&&$fecha!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLAVE=? AND CLIENTE=? AND FECHA=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($factura, $cliente, $fecha));
+      $resultado->execute(array($factura, $cliente, fechaConsulta($fecha)));
     }
     elseif($factura!=""&&$cliente!=""&&$fechaCorte!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLAVE=? AND CLIENTE=? AND FECHA_ENTRADA=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($factura, $cliente, $fechaCorte));
+      $resultado->execute(array($factura, $cliente, fechaConsulta($fechaCorte)));
     }
     elseif($factura!=""&&$cliente!=""&&$pago!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLAVE=? AND CLIENTE=? AND METODO=? ORDER BY CLAVE";
@@ -167,27 +167,27 @@
     elseif($factura!=""&&$fecha!=""&&$fechaCorte!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLAVE=? AND FECHA=? AND FECHA_ENTRADA=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($factura, $fecha, $fechaCorte));
+      $resultado->execute(array($factura, fechaConsulta($fecha), fechaConsulta($fechaCorte)));
     }
     elseif($factura!=""&&$fecha!=""&&$pago!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLAVE=? AND FECHA=? AND METODO=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($factura, $fecha, $pago));
+      $resultado->execute(array($factura, fechaConsulta($fecha), $pago));
     }
     elseif($factura!=""&&$fecha!=""&&$folio!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLAVE=? AND FECHA=? AND ENTRADA=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($factura, $fecha, $folio));
+      $resultado->execute(array($factura, fechaConsulta($fecha), $folio));
     }
     elseif($factura!=""&&$fechaCorte!=""&&$pago!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLAVE=? AND FECHA_ENTRADA=? AND METODO=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($factura, $fechaCorte, $pago));
+      $resultado->execute(array($factura, fechaConsulta($fechaCorte), $pago));
     }
     elseif($factura!=""&&$fechaCorte!=""&&$folio!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLAVE=? AND FECHA_ENTRADA=? AND ENTRADA=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($factura, $fechaCorte, $folio));
+      $resultado->execute(array($factura, fechaConsulta($fechaCorte), $folio));
     }
     elseif($factura!=""&&$pago!=""&&$folio!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLAVE=? AND METODO=? AND ENTRADA=? ORDER BY CLAVE";
@@ -197,27 +197,27 @@
     elseif($cliente!=""&&$fecha!=""&&$fechaCorte!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLIENTE=? AND FECHA=? AND FECHA_ENTRADA=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($cliente, $fecha, $fechaCorte));
+      $resultado->execute(array($cliente, fechaConsulta($fecha), fechaConsulta($fechaCorte)));
     }
     elseif($cliente!=""&&$fecha!=""&&$pago!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLIENTE=? AND FECHA=? AND METODO=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($cliente, $fecha, $pago));
+      $resultado->execute(array($cliente, fechaConsulta($fecha), $pago));
     }
     elseif($cliente!=""&&$fecha!=""&&$folio!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLIENTE=? AND FECHA=? AND ENTRADA=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($cliente, $fecha, $folio));
+      $resultado->execute(array($cliente, fechaConsulta($fecha), $folio));
     }
     elseif($cliente!=""&&$fechaCorte!=""&&$pago!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLIENTE=? AND FECHA_ENTRADA=? AND METODO=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($cliente, $fechaCorte, $pago));
+      $resultado->execute(array($cliente, fechaConsulta($fechaCorte), $pago));
     }
     elseif($cliente!=""&&$fechaCorte!=""&&$folio!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLIENTE=? AND FECHA_ENTRADA=? AND ENTRADA=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($cliente, $fechaCorte, $folio));
+      $resultado->execute(array($cliente, fechaConsulta($fechaCorte), $folio));
     }
     elseif($cliente!=""&&$pago!=""&&$folio!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLIENTE=? AND METODO=? AND ENTRADA=? ORDER BY CLAVE";
@@ -227,22 +227,22 @@
     elseif($fecha!=""&&$fechaCorte!=""&&$pago!=""){
       $consulta = "SELECT * FROM CARGAS WHERE FECHA=? AND FECHA_ENTRADA=? AND METODO=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($fecha, $fechaCorte, $pago));
+      $resultado->execute(array(fechaConsulta($fecha), fechaConsulta($fechaCorte), $pago));
     }
     elseif($fecha!=""&&$fechaCorte!=""&&$folio!=""){
       $consulta = "SELECT * FROM CARGAS WHERE FECHA=? AND FECHA_ENTRADA=? AND ENTRADA=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($fecha, $fechaCorte, $folio));
+      $resultado->execute(array(fechaConsulta($fecha), fechaConsulta($fechaCorte), $folio));
     }
     elseif($fecha!=""&&$pago!=""&&$folio!=""){
       $consulta = "SELECT * FROM CARGAS WHERE FECHA=? AND METODO=? AND ENTRADA=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($fecha, $pago, $folio));
+      $resultado->execute(array(fechaConsulta($fecha), $pago, $folio));
     }
     elseif($fechaCorte!=""&&$pago!=""&&$folio!=""){
       $consulta = "SELECT * FROM CARGAS WHERE FECHA_ENTRADA=? AND METODO=? AND ENTRADA=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($fechaCorte, $pago, $folio));
+      $resultado->execute(array(fechaConsulta($fechaCorte), $pago, $folio));
     }
     //Grupos 2
     elseif($factura!=""&&$cliente!=""){
@@ -253,12 +253,12 @@
     elseif($factura!=""&&$fecha!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLAVE=? AND FECHA=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($factura, $fecha));
+      $resultado->execute(array($factura, fechaConsulta($fecha)));
     }
     elseif($factura!=""&&$fechaCorte!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLAVE=? AND FECHA_ENTRADA=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($factura, $fechaCorte));
+      $resultado->execute(array($factura, fechaConsulta($fechaCorte)));
     }
     elseif($factura!=""&&$pago!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLAVE=? AND METODO=? ORDER BY CLAVE";
@@ -273,12 +273,12 @@
     elseif($cliente!=""&&$fecha!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLIENTE=? AND FECHA=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($cliente, $fecha));
+      $resultado->execute(array($cliente, fechaConsulta($fecha)));
     }
     elseif($cliente!=""&&$fechaCorte!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLIENTE=? AND FECHA_ENTRADA=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($cliente, $fechaCorte));
+      $resultado->execute(array($cliente, fechaConsulta($fechaCorte)));
     }
     elseif($cliente!=""&&$pago!=""){
       $consulta = "SELECT * FROM CARGAS WHERE CLIENTE=? AND METODO=? ORDER BY CLAVE";
@@ -293,32 +293,32 @@
     elseif($fecha!=""&&$fechaCorte!=""){
       $consulta = "SELECT * FROM CARGAS WHERE FECHA=? AND FECHA_ENTRADA=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($fecha, $fechaCorte));
+      $resultado->execute(array(fechaConsulta($fecha), fechaConsulta($fechaCorte)));
     }
     elseif($fecha!=""&&$pago!=""){
       $consulta = "SELECT * FROM CARGAS WHERE FECHA=? AND METODO=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($fecha, $pago));
+      $resultado->execute(array(fechaConsulta($fecha), $pago));
     }
     elseif($fecha!=""&&$folio!=""){
       $consulta = "SELECT * FROM CARGAS WHERE FECHA=? AND ENTRADA=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($fecha, $folio));
+      $resultado->execute(array(fechaConsulta($fecha), $folio));
     }
     elseif($fechaCorte!=""&&$pago!=""){
       $consulta = "SELECT * FROM CARGAS WHERE FECHA_ENTRADA=? AND METODO=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($fechaCorte, $pago));
+      $resultado->execute(array(fechaConsulta($fechaCorte), $pago));
     }
     elseif($fechaCorte!=""&&$folio!=""){
       $consulta = "SELECT * FROM CARGAS WHERE FECHA_ENTRADA=? AND ENTRADA=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($fechaCorte, $folio));
+      $resultado->execute(array(fechaConsulta($fechaCorte), $folio));
     }
     elseif($fechaCorte!=""&&$folio!=""){
       $consulta = "SELECT * FROM CARGAS WHERE FECHA_ENTRADA=? AND ENTRADA=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($fechaCorte, $folio));
+      $resultado->execute(array(fechaConsulta($fechaCorte), $folio));
     }
     elseif($pago!=""&&$folio!=""){
       $consulta = "SELECT * FROM CARGAS WHERE METODO=? AND ENTRADA=? ORDER BY CLAVE";
@@ -339,12 +339,12 @@
     elseif ($fecha!=""){
       $consulta = "SELECT * FROM CARGAS WHERE FECHA=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($fecha));
+      $resultado->execute(array(fechaConsulta($fecha)));
     }
     elseif ($fechaCorte!=""){
       $consulta = "SELECT * FROM CARGAS WHERE FECHA_ENTRADA=? ORDER BY CLAVE";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($fechaCorte));
+      $resultado->execute(array(fechaConsulta($fechaCorte)));
     }
     elseif ($pago!=""){
       $consulta = "SELECT * FROM CARGAS WHERE METODO=? ORDER BY CLAVE";
@@ -362,13 +362,19 @@
     $clientes[$contador] = $registro[1];
     $nombre[$contador] = $registro[2];
     $estatus[$contador] = $registro[3];
-    $fechas[$contador] = $registro[4];
+    $fechas[$contador] = fechaStandar($registro[4]);
     $descuento[$contador] = $registro[5];
     $importe[$contador] = $registro[6];
     $vendedor[$contador] = $registro[7];
     $metodos[$contador] = $registro[8];
     $entrada[$contador] = $registro[10];
-    $fechasCorte[$contador] = $registro[11];
+    if($registro[11]!=""){
+      $fechasCorte[$contador] = fechaStandar($registro[11]);
+    }
+    else{
+      $fechasCorte[$contador] = $registro[11];
+    }
+
 
     $contador++;
   }

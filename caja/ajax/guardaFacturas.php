@@ -16,7 +16,7 @@
     $consulta = "INSERT INTO CARGAS(CLAVE, CLIENTE, NOMBRE, ESTATUS, FECHA, DESCUENTO, IMPORTE, VENDEDOR)
                         VALUES(?,?,?,?,?,?,?,?)";
     $resultado = $base->prepare($consulta);
-    $resultado->execute(array($factura[$i], $cliente[$i], $nombre[$i], $estatus[$i], $fecha[$i], $descuento[$i], $importe[$i], $vendedor[$i]));
+    $resultado->execute(array($factura[$i], $cliente[$i], $nombre[$i], $estatus[$i], fechaConsulta($fecha[$i]), $descuento[$i], $importe[$i], $vendedor[$i]));
   }
   $resultado->closeCursor();
   echo json_encode($arreglo);

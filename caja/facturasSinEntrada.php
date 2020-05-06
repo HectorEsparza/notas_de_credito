@@ -7,7 +7,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   	<link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
   	<script type="text/javascript" src="ajax/js/jquery-ui.js"></script>
-	<script type="text/javascript" src="ajax/eventos/filtro.js"></script>
+	<script type="text/javascript" src="ajax/eventos/filtroFacturasSinEntrada.js"></script>
 	<script type="text/javascript" src="ajax/eventos/facturas.js"></script>
 	<script type="text/javascript" src="ajax/eventos/exportarFacturasSinEntrada.js"></script>
 
@@ -82,11 +82,8 @@
 						 <input type="hidden" id="gerente" value="<?= $usuario?>" />
 						 <input type="text" id="factura" class="factura" placeholder="Factura" />
 						 <input type="text" id="cliente" class="cliente" placeholder="NO. Cliente" />
-						 <input type="text" id="fecha" class="fecha" placeholder="Fecha Elaboración" />
-						 <input type="hidden" id="fechaCorte" class="fechaCorte" value="" />
-						 <input type="hidden" id="pago" class="pago" value="" />
-						 <input type="hidden" id="folio" class="folio" value="" />
-						 <input type="hidden" id="tipo" value="sinEntrada"/>
+						 <input type="text" id="fecha" class="fecha" placeholder="Fecha Elaboración Inicio" />
+						 <input type="text" id="fechaFin" class="fechaFin" placeholder="Fecha Elaboración Fin" />
 						 <br /><br />
 						 <input type="button" class="btn btn-primary" id="buscar" value="Buscar" />
 						 <input type="button" class="btn btn-primary" onclick="facturas()" value='Tabla Completa' />

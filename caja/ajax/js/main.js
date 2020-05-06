@@ -89,7 +89,7 @@ function get_data_callback(){
           if(elem.departamento=="COBRANZA"){
             $('<tr>'+
               '<td id="folio'+contador+'">'+elem.clave+'</td>'+
-              '<td>'+elem.fecha+'</td>'+
+              '<td>'+fechaStandar(elem.fecha)+'</td>'+
               '<td>'+"$"+formatNumber.new(elem.total)+'</td>'+
               '<td>'+elem.usuario+'</td>'+
               '<td><input type="button" class="btn btn-info btn-sm" value="Ver" onclick='+click+' /></td>'+
@@ -104,7 +104,7 @@ function get_data_callback(){
           if(elem.departamento=="COBRANZA_TECAMAC"){
             $('<tr>'+
               '<td id="folio'+contador+'">'+elem.clave+'</td>'+
-              '<td>'+elem.fecha+'</td>'+
+              '<td>'+fechaStandar(elem.fecha)+'</td>'+
               '<td>'+"$"+formatNumber.new(elem.total)+'</td>'+
               '<td>'+elem.usuario+'</td>'+
               '<td><input type="button" class="btn btn-info btn-sm" value="Ver" onclick='+click+' /></td>'+
@@ -118,7 +118,7 @@ function get_data_callback(){
         else{
           $('<tr>'+
             '<td id="folio'+contador+'">'+elem.clave+'</td>'+
-            '<td>'+elem.fecha+'</td>'+
+            '<td>'+fechaStandar(elem.fecha)+'</td>'+
             '<td>'+"$"+formatNumber.new(elem.total)+'</td>'+
             '<td>'+elem.usuario+'</td>'+
             '<td><input type="button" class="btn btn-info btn-sm" value="Ver" onclick='+click+' /></td>'+

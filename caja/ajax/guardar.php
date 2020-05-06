@@ -62,7 +62,7 @@
     for($i=1; $i <= $contador ; $i++){
       $consulta = "UPDATE CARGAS SET METODO=?, OBSERVACIONES=?, ENTRADA=?, FECHA_ENTRADA=?, NUMERO_ENTRADA=? WHERE CLAVE=?";
       $resultado = $base->prepare($consulta);
-      $resultado->execute(array($metodos[$i], $observaciones[$i], $folio, $fecha, $i, $facturas[$i]));
+      $resultado->execute(array($metodos[$i], $observaciones[$i], $folio, fechaConsulta($fecha), $i, $facturas[$i]));
     }
     $resultado->closeCursor();
     //Consulta para obtener el usuario
@@ -76,7 +76,7 @@
     $consulta = "INSERT INTO CAJA(CLAVE, FECHA, DEPARTAMENTO, USUARIO, TOTAL)
                                VALUES(?,?,?,?,?)";
     $resultado = $base->prepare($consulta);
-    $resultado->execute(array($folio, $fecha, $departamento, $usuario, $total));
+    $resultado->execute(array($folio, fechaConsulta($fecha), $departamento, $usuario, $total));
     $resultado->closeCursor();
   }
   //Devolvemos el arreglo de $datos

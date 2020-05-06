@@ -33,6 +33,13 @@ var formatNumber = {
    return this.formatear(num);
    }
 }
+function fechaStandar(fecha){
+
+  var fecha = fecha;
+  var convierte = fecha.split("-");
+  var nueva = convierte[2]+"/"+convierte[1]+"/"+convierte[0];
+  return nueva;
+}
 function get_data_callback(){
 	$.ajax({
 		data:{
@@ -52,19 +59,37 @@ function get_data_callback(){
 		}
 		// genera el cuerpo de la tabla
 		$.each(lista, function(ind, elem){
-      $('<tr>'+
-        '<td>'+elem.clave+'</td>'+
-        '<td>'+elem.cliente+'</td>'+
-        '<td>'+elem.nombre+'</td>'+
-        '<td>'+elem.estatus+'</td>'+
-        '<td>'+elem.fecha+'</td>'+
-        '<td>'+'$'+formatNumber.new(elem.importe)+'</td>'+
-        '<td>'+elem.vendedor+'</td>'+
-        '<td>'+elem.descuento+'%'+'</td>'+
-        '<td>'+elem.metodo+'</td>'+
-        '<td>'+elem.fechaCorte+'</td>'+
-        '<td>'+elem.entrada+'</td>'+
-      '</tr>').appendTo($("#table"));
+      if(elem.fechaCorte!=null){
+        $('<tr>'+
+          '<td>'+elem.clave+'</td>'+
+          '<td>'+elem.cliente+'</td>'+
+          '<td>'+elem.nombre+'</td>'+
+          '<td>'+elem.estatus+'</td>'+
+          '<td>'+fechaStandar(elem.fecha)+'</td>'+
+          '<td>'+'$'+formatNumber.new(elem.importe)+'</td>'+
+          '<td>'+elem.vendedor+'</td>'+
+          '<td>'+elem.descuento+'%'+'</td>'+
+          '<td>'+elem.metodo+'</td>'+
+          '<td>'+fechaStandar(elem.fechaCorte)+'</td>'+
+          '<td>'+elem.entrada+'</td>'+
+        '</tr>').appendTo($("#table"));
+      }
+      else{
+        $('<tr>'+
+          '<td>'+elem.clave+'</td>'+
+          '<td>'+elem.cliente+'</td>'+
+          '<td>'+elem.nombre+'</td>'+
+          '<td>'+elem.estatus+'</td>'+
+          '<td>'+fechaStandar(elem.fecha)+'</td>'+
+          '<td>'+'$'+formatNumber.new(elem.importe)+'</td>'+
+          '<td>'+elem.vendedor+'</td>'+
+          '<td>'+elem.descuento+'%'+'</td>'+
+          '<td>'+elem.metodo+'</td>'+
+          '<td></td>'+
+          '<td>'+elem.entrada+'</td>'+
+        '</tr>').appendTo($("#table"));
+      }
+
 		});
 
 	}).fail(function(jqXHR,textStatus,textError){

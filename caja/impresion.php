@@ -30,7 +30,7 @@
       $resultado = $base->prepare($consulta);
       $resultado->execute(array($folio));
       $registro = $resultado->fetch(PDO::FETCH_NUM);
-      $fecha = $registro[0];
+      $fecha = fechaStandar($registro[0]);
       $resultado->closeCursor();
       $consulta = "SELECT CLAVE, CLIENTE, NOMBRE, DESCUENTO, IMPORTE, METODO, OBSERVACIONES FROM CARGAS WHERE ENTRADA=? ORDER BY NUMERO_ENTRADA ASC";
       $resultado = $base->prepare($consulta);

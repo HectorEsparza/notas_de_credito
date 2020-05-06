@@ -19,7 +19,9 @@ $data = array();
 
 //El limite empieza con 10 y el Offset con 0
 
-$query = $con->prepare("SELECT CLAVE, CLIENTE, LEFT(NOMBRE, 15), ESTATUS, FECHA, DESCUENTO, IMPORTE, VENDEDOR, METODO, ENTRADA, FECHA_ENTRADA FROM CARGAS WHERE (ESTATUS='Emitida' or ESTATUS='Original') and ENTRADA='' LIMIT ? OFFSET ?");
+$query = $con->prepare("SELECT CLAVE, CLIENTE, LEFT(NOMBRE, 15), ESTATUS, FECHA, DESCUENTO, IMPORTE, VENDEDOR, METODO, ENTRADA, FECHA_ENTRADA FROM CARGAS
+												WHERE (ESTATUS='Emitida' or ESTATUS='Original') and ENTRADA='' AND FECHA BETWEEN '2020-01-01' AND CURDATE()
+												ORDER BY FECHA DESC LIMIT ? OFFSET ?");
 $query->bind_param("ii",$limit,$offset);
 $query->execute();
 
@@ -46,7 +48,7 @@ while ($query->fetch()) {
 }
 
 // obtiene la cantidad de registros
-$cantidad_consulta = $con->query("select count(*) as total from CARGAS WHERE ESTATUS='Emitida' and ENTRADA=''");
+$cantidad_consulta = $con->query("select count(*) as total from CARGAS WHERE ESTATUS='Emitida' and ENTRADA='' AND FECHA BETWEEN '2020-01-01' AND CURDATE()");
 $row = $cantidad_consulta->fetch_assoc();
 $cantidad['cantidad']=$row['total'];
 

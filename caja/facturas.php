@@ -7,7 +7,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   	<link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
   	<script type="text/javascript" src="ajax/js/jquery-ui.js"></script>
-	<script type="text/javascript" src="ajax/eventos/filtro.js"></script>
+	<script type="text/javascript" src="ajax/eventos/filtroFacturas.js"></script>
 	<script type="text/javascript" src="ajax/eventos/facturas.js"></script>
 	<script type="text/javascript" src="ajax/eventos/exportarFacturas.js"></script>
 

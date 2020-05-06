@@ -299,8 +299,8 @@ function convertidorNumeros($texto){
 function fechaStandar($fecha){
            //echo $fecha;
            $nueva = explode("-", $fecha);
-           echo $nueva[2] . "/" . $nueva[1] . "/" . $nueva[0];
-
+           $nueva =  $nueva[2] . "/" . $nueva[1] . "/" . $nueva[0];
+           return $nueva;
 }
 //Cambia fecha a formato fechaJquery
 function fechaJquery($fecha){

@@ -79,7 +79,7 @@ $(document).ready(function(){
         type: "POST", //El tipo de transaccion para los datos
         dataType: "json", //Especificaremos que datos vamos a enviar
         contentType: "application/x-www-form-urlencoded", //Especificaremos el tipo de contenido
-        url: "ajax/filtro.php", //Sera el archivo que va a procesar la petición AJAX
+        url: "ajax/filtroFacturas.php", //Sera el archivo que va a procesar la petición AJAX
         data: parametros, //Datos que le vamos a enviar
         // data: "total="+total+"&penalizacion="+penalizacion,
         beforeSend: inicioEnvio, //Es la función que se ejecuta antes de empezar la transacción
@@ -107,19 +107,37 @@ $(document).ready(function(){
       else{
         console.log(datos[4][0]+datos[4][1]+datos[4][2]);
         for(var i = 0; i < datos[0]; i++){
-          $('<tr>'+
-              '<td>'+datos[1][i]+'</td>'+
-              '<td>'+datos[2][i]+'</td>'+
-              '<td>'+datos[3][i]+'</td>'+
-              '<td>'+datos[4][i]+'</td>'+
-              '<td>'+datos[5][i]+'</td>'+
-              '<td>$'+formatNumber.new(datos[6][i])+'</td>'+
-              '<td>'+datos[7][i]+'</td>'+
-              '<td>'+datos[8][i]+'%</td>'+
-              '<td>'+datos[11][i]+'</td>'+
-              '<td>'+datos[12][i]+'</td>'+
-              '<td>'+datos[9][i]+'</td>'+
-            '</tr>').appendTo($("#table"));
+          if(datos[12][i]!=null){
+            $('<tr>'+
+                '<td>'+datos[1][i]+'</td>'+
+                '<td>'+datos[2][i]+'</td>'+
+                '<td>'+datos[3][i]+'</td>'+
+                '<td>'+datos[4][i]+'</td>'+
+                '<td>'+datos[5][i]+'</td>'+
+                '<td>$'+formatNumber.new(datos[6][i])+'</td>'+
+                '<td>'+datos[7][i]+'</td>'+
+                '<td>'+datos[8][i]+'%</td>'+
+                '<td>'+datos[11][i]+'</td>'+
+                '<td>'+datos[12][i]+'</td>'+
+                '<td>'+datos[9][i]+'</td>'+
+              '</tr>').appendTo($("#table"));
+          }
+          else{
+            $('<tr>'+
+                '<td>'+datos[1][i]+'</td>'+
+                '<td>'+datos[2][i]+'</td>'+
+                '<td>'+datos[3][i]+'</td>'+
+                '<td>'+datos[4][i]+'</td>'+
+                '<td>'+datos[5][i]+'</td>'+
+                '<td>$'+formatNumber.new(datos[6][i])+'</td>'+
+                '<td>'+datos[7][i]+'</td>'+
+                '<td>'+datos[8][i]+'%</td>'+
+                '<td>'+datos[11][i]+'</td>'+
+                '<td></td>'+
+                '<td>'+datos[9][i]+'</td>'+
+              '</tr>').appendTo($("#table"));
+          }
+
         }
       }
     }
@@ -151,7 +169,9 @@ $(document).ready(function(){
     }
   }
 
-  function problemas(){
-      console.log("Problemas en el Servidor...");
+  function problemas(textError, textStatus) {
+        //var error = JSON.parse(textError);
+        alert("Problemas en el Servlet: " + JSON.stringify(textError));
+        alert("Problemas en el servlet: " + JSON.stringify(textStatus));
   }
 });

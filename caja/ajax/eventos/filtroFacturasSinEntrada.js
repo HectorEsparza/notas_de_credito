@@ -44,7 +44,7 @@ $(document).ready(function(){
   });
 
   $("#buscar").click(function(){
-    if($("#idCobranza").val()!="" || $("#fecha").val()!="" || $("#fechaFin").val()!=""){
+    if($("#factura").val()!="" || $("#cliente").val()!="" || $("#fecha").val()!="" || $("#fechaFin").val()!=""){
       enviar();
     }
     else{
@@ -54,24 +54,24 @@ $(document).ready(function(){
   });
 
   function enviar(){
-    var idCobranza = $("#idCobranza").val();
+    var factura = $("#factura").val();
+    var cliente = $("#cliente").val();
     var fecha = $("#fecha").val();
     var fechaFin = $("#fechaFin").val();
-    var departamento = $("#departamento").val();
 
     var parametros =
     {
-      idCobranza: idCobranza,
+      factura: factura,
+      cliente: cliente,
       fecha: fecha,
       fechaFin: fechaFin,
-      departamento: departamento,
     }
     $.ajax({
         async: true, //Activar la transferencia asincronica
         type: "POST", //El tipo de transaccion para los datos
         dataType: "json", //Especificaremos que datos vamos a enviar
         contentType: "application/x-www-form-urlencoded", //Especificaremos el tipo de contenido
-        url: "ajax/filtroCobranza.php", //Sera el archivo que va a procesar la petición AJAX
+        url: "ajax/filtroFacturasSinEntrada.php", //Sera el archivo que va a procesar la petición AJAX
         data: parametros, //Datos que le vamos a enviar
         // data: "total="+total+"&penalizacion="+penalizacion,
         beforeSend: inicioEnvio, //Es la función que se ejecuta antes de empezar la transacción
@@ -95,20 +95,22 @@ $(document).ready(function(){
     if(datos[0].clave==""){
       //alert("No se encontraron datos en la Consulta");
       $('<tr>'+
-          '<td colspan="5">No se encontraron datos en la consulta</td>'+
+          '<td colspan="8">No se encontraron datos en la consulta</td>'+
         '</tr>').appendTo($("#table"));
     }
     else{
+      $("#exportaExcel").show();
       for (var i = 0; i < datos.length; i++) {
-          var click = "ver(document.getElementById('folio"+contador+"').innerText)";
-          $('<tr>'+
-            '<td id="folio'+contador+'">'+datos[i].clave+'</td>'+
+        $('<tr>'+
+            '<td>'+datos[i].clave+'</td>'+
+            '<td>'+datos[i].cliente+'</td>'+
+            '<td>'+datos[i].nombre+'</td>'+
+            '<td>'+datos[i].estatus+'</td>'+
             '<td>'+datos[i].fecha+'</td>'+
-            '<td>$'+formatNumber.new(datos[i].total)+'</td>'+
-            '<td>'+datos[i].usuario+'</td>'+
-            '<td><input type="button" class="btn btn-info btn-sm" value="Ver" onclick='+click+' /></td>'+
+            '<td>$'+formatNumber.new(datos[i].importe)+'</td>'+
+            '<td>'+datos[i].vendedor+'</td>'+
+            '<td>'+datos[i].descuento+'%</td>'+
           '</tr>').appendTo($("#table"));
-          contador++;
       }
     }
   }
