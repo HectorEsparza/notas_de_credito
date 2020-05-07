@@ -1,5 +1,19 @@
 <?php
 //Función para obtener el día de la semana dada una fecha
+function saber_dia_contado($nombredia){
+  $nombredia = explode("/", $nombredia);
+  $dia = $nombredia[0];
+  $mes = $nombredia[1];
+  $mes = intval($mes);
+  $anio = $nombredia[2];
+  $nombredia = $nombredia[2]."-".$nombredia[1]."-".$nombredia[0];
+  $dias = array('Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado');
+  $meses = array('','Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
+  $fecha = $dias[date('N', strtotime($nombredia))];
+  echo "Reporte de Contados ".$fecha." ".$dia." de ".$meses[$mes]." del ".$anio;
+  //echo $nombredia;
+}
+//Función para obtener el día de la semana dada una fecha
 function saber_dia($nombredia){
   $nombredia = explode("/", $nombredia);
   $dia = $nombredia[0];

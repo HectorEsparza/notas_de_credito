@@ -57,6 +57,11 @@
         color: #000000;
         width: 150px;
       }
+      #contado{
+        background: #FCB063;
+        color: #000000;
+        width: 150px;
+      }
       #imagen{
         width: 150px;
         height: 75px;
@@ -137,6 +142,12 @@
               <input type="button" id="caja" value="Caja" class="btn btn-primary" />
             </div>
           </div>
+          <br />
+          <div class="container row">
+            <div class="container col-md-4">
+              <input type="button" id="contado" value="Contados" class="btn btn-primary" />
+            </div>
+          </div>
      </div>
     </section>
     <script src="notaCredito/ajax/eventos/cierreInactividad.js"></script>
@@ -156,11 +167,13 @@
           $("#altas").show();
           $("#analisis").show();
           $("#caja").show();
+          $("#contado").show();
         }
         else if(permiso==1){
           $("#altas").show();
           $("#analisis").hide();
           $("#caja").hide();
+          $("#contado").hide();
           if(departamento=="VENTAS"){
             $("#nota").show();
             $("#pedido").show();
@@ -179,6 +192,7 @@
             $("#nomina").hide();
             $("#altas").hide();
             $("#caja").show();
+            $("#contado").hide();
           }
           else if(departamento=="RECURSOS_HUMANOS"||departamento=="CONTABILIDAD"||departamento=="ADMINISTRADOR"){
             $("#nota").hide();
@@ -187,6 +201,7 @@
             $("#compras").hide();
             $("#sae").hide();
             $("#nomina").show();
+            $("#contado").hide();
           }
 
           else if(departamento=="PRODUCCION_SOPORTE"||departamento=="PRODUCCION_MANGUERA"||departamento=="ALMACEN"){
@@ -196,12 +211,14 @@
             $("#compras").hide();
             $("#sae").hide();
             $("#nomina").hide();
+            $("#contado").hide();
           }
         }
         else {
           $("#analisis").hide();
           $("#altas").hide();
           $("#caja").hide();
+          $("#contado").hide();
           if(departamento=="VENTAS"){
             $("#nota").show();
             $("#pedido").show();
@@ -209,6 +226,7 @@
             $("#compras").hide();
             $("#sae").hide();
             $("#nomina").hide();
+            $("#contado").hide();
           }
           else if(departamento=="CREDITO_Y_COBRANZA"){
             $("#nota").hide();
@@ -218,6 +236,7 @@
             $("#sae").hide();
             $("#nomina").hide();
             $("#caja").show();
+            $("#contado").hide();
           }
           else if(departamento=="RECURSOS_HUMANOS"){
             $("#nota").hide();
@@ -227,6 +246,7 @@
             $("#sae").hide();
             $("#nomina").show();
             $("#altas").show();
+            $("#contado").hide();
           }
           else if(departamento=="COBRANZA" || departamento=="COBRANZA_TECAMAC"){
             $("#nota").hide();
@@ -236,6 +256,18 @@
             $("#sae").hide();
             $("#nomina").hide();
             $("#caja").show();
+            $("#contado").hide();
+          }
+
+          else if(departamento=="CONTADOS"){
+            $("#nota").hide();
+            $("#pedido").hide();
+            $("#carta").hide();
+            $("#compras").hide();
+            $("#sae").hide();
+            $("#nomina").hide();
+            $("#caja").hide();
+            $("#contado").show();
           }
         }
 
@@ -273,6 +305,10 @@
 
         $("#caja").click(function(){
           setTimeout("location.href='caja/visualizacion.php'",500);
+        });
+
+        $("#contado").click(function(){
+          setTimeout("location.href='contados/visualizacion.php'",500);
         });
         // $("body").hide().fadeIn(2000);
 
