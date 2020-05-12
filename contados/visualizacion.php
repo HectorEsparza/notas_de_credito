@@ -26,7 +26,8 @@
 			<form action='../cierre.php'>
 				<input style="float: right;" class="btn btn-danger" type='submit' value='Cierra Sesión' />
 			</form>
-			<input type="button" style="float: right;" class="btn btn-success" id="nuevoContado" onclick=" nuevoContado()" value='Nuevo Contado' />
+			<input type="button" style="float: right;" class="btn btn-warning" id="nuevaCobranzaRemisiones" onclick=" nuevoRemisiones()" value='Nuevo Contado Remisiones' />
+			<input type="button" style="float: right;" class="btn btn-success" id="nuevaCobranzaFacturas" onclick=" nuevoFacturas()" value='Nuevo Contado Facturas' />
 		</div>
 	</header>
 	<section>
@@ -89,21 +90,24 @@
 			});
 
 
-      function nuevoContado(){
-          setTimeout("location.href='nuevoContado.php'",500);
+      function nuevoFacturas(){
+          setTimeout("location.href='nuevoContadoFacturas.php'",500);
       }
-			function visualizar(){
+	  function nuevoRemisiones(){
+          setTimeout("location.href='nuevoContadoRemisiones.php'",500);
+      }
+	  function visualizar(){
           setTimeout("location.href='visualizacion.php'",500);
       }
-			function ver(folio){
-					setTimeout("location.href='impresion.php?folio="+folio+"'");
-			}
-			function facturas(){
-				setTimeout("location.href='facturas.php'",500);
-			}
-			function facturasSinContado(){
-				setTimeout("location.href='facturasSinContado.php'",500);
-			}
+	  function ver(folio){
+		  setTimeout("location.href='impresion.php?folio="+folio+"'");
+	  }
+	  function facturas(){
+		  setTimeout("location.href='facturas.php'",500);
+	  }
+	  function facturasSinContado(){
+		  setTimeout("location.href='facturasSinContado.php'",500);
+	  }
 
 
 </script>

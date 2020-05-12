@@ -943,10 +943,12 @@ $(document).ready(function(){
       //En el servidor local la condicion se cumple si datos[5]==null
       console.log(datos.folio+" "+datos.cliente);
       if(datos.folio==null && datos.cliente!=null){
-            separador = datos.factura;
+            var separador = datos.factura;
             separador = separador.substr(1,1);
             console.log(separador);
-            if(datos.departamento=="CONTADOS" && (separador=="D" || separador=="R")){
+            if(datos.departamento=="CONTADOS" && 
+              ((separador=="D" && $("#tipo").val()=="facturas") || 
+              (separador=="R" && $("#tipo").val()=="remisiones"))){
               if(datos.indice==1&&datos.importe>0){
                 $("#guardar").prop("disabled", false);
               }
@@ -970,7 +972,9 @@ $(document).ready(function(){
                 $("#observaciones"+datos.indice).val("");
               }
             }
-            else if(datos.departamento=="CONTADOS_TECAMAC" && (separador=="T" || separador=="R")){
+            else if(datos.departamento=="CONTADOS_TECAMAC" && 
+                   ((separador=="T" &&  $("#tipo").val()=="facturas") || 
+                   (separador=="R" && $("#tipo").val()=="remisiones"))){
               if(datos.indice==1&&datos.importe>0){
                 $("#guardar").prop("disabled", false);
               }

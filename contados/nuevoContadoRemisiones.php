@@ -16,6 +16,7 @@
 </head>
 <body>
   <div class="row">
+    <input type="hidden" id="tipo" value="remisiones" />
     <div class="container col-md-4" style="margin-left: 500px">
       <h1>Captura Nuevo Contado</h1>
     </div>
@@ -39,11 +40,11 @@
   <br /><br />
   <div class="row">
     <div class="container col-md-12" style="margin-left: 400px">
-			<h3>Facturas</h3>
+			<h3>Remisiones</h3>
       <p><strong id="fechaDeCargas"></strong></p>
       <table border="1" width="800px" style="text-align: center">
         <tr>
-          <td><strong>Factura</strong></td>
+          <td><strong>Remisión</strong></td>
           <td><strong>Cliente</strong></td>
           <td><strong>Nombre</strong></td>
           <td><strong>Importe</strong></td>

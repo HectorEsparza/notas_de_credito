@@ -19,7 +19,7 @@
   $resultado->closeCursor();
   //Obtenemos la información de la factura o remisión
   $consulta = "SELECT CLIENTE, NOMBRE, DESCUENTO, IMPORTE, Contado.Folio FROM
-               CARGAS INNER JOIN CONTADO ON CARGAS.idContado=CONTADO.idContado
+               CARGAS LEFT JOIN CONTADO ON CARGAS.idContado=CONTADO.idContado
                WHERE CLAVE=?";
   $resultado = $base->prepare($consulta);
   $resultado->execute(array($factura));
