@@ -42,7 +42,7 @@
       $resultado->execute(array($cliente, $fecha,fechaConsulta($fechaFin), "", "Cancelada"));
     }
     elseif($fecha!=""&&$fechaFin!=""){
-      $consulta = "SELECT CLAVE, CLIENTE, NOMBRE, ESTATUS, FECHA, IMPORTE, VENDEDOR, DESCUENTO, FOLIO  FROM CARGAS WHERE CARGAS.FECHA BETWEEN ? AND ? AND ENTRADA=? AND ESTATUS!=? ORDER BY CARGAS.FECHA DESC";
+      $consulta = "SELECT CLAVE, CLIENTE, NOMBRE, ESTATUS, CARGAS.FECHA, IMPORTE, VENDEDOR, DESCUENTO, FOLIO  FROM CARGAS LEFT JOIN CONTADO ON CARGAS.IDCONTADO=CONTADO.IDCONTADO  WHERE CARGAS.FECHA BETWEEN ? AND ? AND ENTRADA=? AND ESTATUS!=? ORDER BY CARGAS.FECHA DESC";
       $resultado = $base->prepare($consulta);
       $resultado->execute(array(fechaConsulta($fecha),fechaConsulta($fechaFin),"", "Cancelada"));
     }
