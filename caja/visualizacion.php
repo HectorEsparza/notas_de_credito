@@ -9,6 +9,9 @@
   <script type="text/javascript" src="ajax/js/jquery-ui.js"></script>
 	<script type="text/javascript" src="ajax/eventos/filtroCobranza.js"></script>
 	<script type="text/javascript" src="ajax/eventos/facturas.js"></script>
+	<script type="text/javascript" src="../js/verificarSesion.js"></script>
+	<script type="text/javascript" src="../js/cierreSesion.js"></script>
+	<script type="text/javascript" src="../js/cierreInactividad.js"></script>
 	<!-- <script type="text/javascript" src="ajax/js/limpia.js"></script> -->
 	<!-- <script type="text/javascript" src="ajax/js/limpiaFiltro.js"></script> -->
 </head>

@@ -95,13 +95,14 @@ $(document).ready(function(){
     if(datos[0].clave==""){
       //alert("No se encontraron datos en la Consulta");
       $('<tr>'+
-          '<td colspan="8">No se encontraron datos en la consulta</td>'+
+          '<td colspan="9">No se encontraron datos en la consulta</td>'+
         '</tr>').appendTo($("#table"));
     }
     else{
       $("#exportaExcel").show();
       for (var i = 0; i < datos.length; i++) {
-        $('<tr>'+
+        if(datos[i].folioContado!=null){
+          $('<tr>'+
             '<td>'+datos[i].clave+'</td>'+
             '<td>'+datos[i].cliente+'</td>'+
             '<td>'+datos[i].nombre+'</td>'+
@@ -110,7 +111,22 @@ $(document).ready(function(){
             '<td>$'+formatNumber.new(datos[i].importe)+'</td>'+
             '<td>'+datos[i].vendedor+'</td>'+
             '<td>'+datos[i].descuento+'%</td>'+
+            '<td>'+datos[i].folioContado+'</td>'+
           '</tr>').appendTo($("#table"));
+        }
+        else{
+          $('<tr>'+
+            '<td>'+datos[i].clave+'</td>'+
+            '<td>'+datos[i].cliente+'</td>'+
+            '<td>'+datos[i].nombre+'</td>'+
+            '<td>'+datos[i].estatus+'</td>'+
+            '<td>'+datos[i].fecha+'</td>'+
+            '<td>$'+formatNumber.new(datos[i].importe)+'</td>'+
+            '<td>'+datos[i].vendedor+'</td>'+
+            '<td>'+datos[i].descuento+'%</td>'+
+            '<td></td>'+
+          '</tr>').appendTo($("#table"));
+        }
       }
     }
   }

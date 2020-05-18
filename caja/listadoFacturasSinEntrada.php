@@ -19,15 +19,15 @@ $data = array();
 
 //El limite empieza con 10 y el Offset con 0
 
-$query = $con->prepare("SELECT CLAVE, CLIENTE, LEFT(NOMBRE, 15), ESTATUS, FECHA, DESCUENTO, IMPORTE, VENDEDOR, METODO, ENTRADA, FECHA_ENTRADA FROM CARGAS
-												WHERE (ESTATUS='Emitida' or ESTATUS='Original') and ENTRADA='' AND FECHA BETWEEN '2020-01-01' AND CURDATE()
-												ORDER BY FECHA DESC LIMIT ? OFFSET ?");
+$query = $con->prepare("SELECT CLAVE, CLIENTE, LEFT(NOMBRE, 15), ESTATUS, CARGAS.FECHA, DESCUENTO, IMPORTE, VENDEDOR, METODO, ENTRADA, FECHA_ENTRADA, CONTADO.FOLIO 
+						FROM CARGAS LEFT JOIN CONTADO ON CARGAS.IDCONTADO=CONTADO.IDCONTADO WHERE (ESTATUS='Emitida' or ESTATUS='Original') 
+						and ENTRADA='' AND CARGAS.FECHA BETWEEN '2020-01-01' AND CURDATE() ORDER BY CARGAS.FECHA DESC LIMIT ? OFFSET ?");
 $query->bind_param("ii",$limit,$offset);
 $query->execute();
 
 // vincular variables a la sentencia preparada
 //$query->bind_result($id_usuario, $nombres,$apellidos);
-$query->bind_result($clave, $cliente, $nombre, $estatus, $fecha, $descuento, $importe, $vendedor, $metodo, $entrada, $fechaCorte);
+$query->bind_result($clave, $cliente, $nombre, $estatus, $fecha, $descuento, $importe, $vendedor, $metodo, $entrada, $fechaCorte, $folioContado);
 
 // obtener valores
 while ($query->fetch()) {
@@ -44,6 +44,7 @@ while ($query->fetch()) {
 	$data_json["metodo"] = $metodo;
 	$data_json["entrada"] = $entrada;
 	$data_json["fechaCorte"] = $fechaCorte;
+	$data_json["folioContado"] = $folioContado;
 	$data[]=$data_json;
 }
 

@@ -10,12 +10,12 @@
 
 
     if(($factura!=""&&($cliente==""||$fecha==""||$fechaFin=="")) || ($factura!=""&&($cliente!=""||$fecha!=""||$fechaFin!=""))){
-      $consulta = "SELECT CLAVE, CLIENTE, NOMBRE, ESTATUS, FECHA, IMPORTE, VENDEDOR, DESCUENTO FROM CARGAS WHERE CLAVE=? AND ENTRADA_CONTADO=? AND ESTATUS!=?";
+      $consulta = "SELECT CLAVE, CLIENTE, NOMBRE, ESTATUS, FECHA, IMPORTE, VENDEDOR, DESCUENTO, ENTRADA FROM CARGAS WHERE CLAVE=? AND ENTRADA_CONTADO=? AND ESTATUS!=?";
       $resultado = $base->prepare($consulta);
       $resultado->execute(array($factura,0, "Cancelada"));
     }
     elseif($cliente!=""&&$fecha!=""&&$fechaFin!=""){
-      $consulta = "SELECT CLAVE, CLIENTE, NOMBRE, ESTATUS, FECHA, IMPORTE, VENDEDOR, DESCUENTO FROM CARGAS WHERE CLIENTE=? FECHA BETWEEN ? AND ? AND ENTRADA_CONTADO=? AND ESTATUS!=? ORDER BY FECHA DESC ";
+      $consulta = "SELECT CLAVE, CLIENTE, NOMBRE, ESTATUS, FECHA, IMPORTE, VENDEDOR, DESCUENTO, ENTRADA FROM CARGAS WHERE CLIENTE=? FECHA BETWEEN ? AND ? AND ENTRADA_CONTADO=? AND ESTATUS!=? ORDER BY FECHA DESC ";
       $resultado = $base->prepare($consulta);
       $resultado->execute(array($cliente, fechaConsulta($fecha),fechaConsulta($fechaFin), 0, "Cancelada"));
     }
@@ -26,7 +26,7 @@
       $registro = $resultado->fetch(PDO::FETCH_ASSOC);
       $fechaFin = $registro["FECHA"];
       $resultado->closeCursor();
-      $consulta = "SELECT CLAVE, CLIENTE, NOMBRE, ESTATUS, FECHA, IMPORTE, VENDEDOR, DESCUENTO FROM CARGAS WHERE CLIENTE=? FECHA BETWEEN ? AND ? AND ENTRADA_CONTADO=? AND ESTATUS!=? ORDER BY FECHA DESC ";
+      $consulta = "SELECT CLAVE, CLIENTE, NOMBRE, ESTATUS, FECHA, IMPORTE, VENDEDOR, DESCUENTO, ENTRADA FROM CARGAS WHERE CLIENTE=? FECHA BETWEEN ? AND ? AND ENTRADA_CONTADO=? AND ESTATUS!=? ORDER BY FECHA DESC ";
       $resultado = $base->prepare($consulta);
       $resultado->execute(array($cliente, fechaConsulta($fecha),$fechaFin, 0, "Cancelada"));
     }
@@ -37,17 +37,17 @@
       $registro = $resultado->fetch(PDO::FETCH_ASSOC);
       $fecha = $registro["FECHA"];
       $resultado->closeCursor();
-      $consulta = "SELECT CLAVE, CLIENTE, NOMBRE, ESTATUS, FECHA, IMPORTE, VENDEDOR, DESCUENTO FROM CARGAS WHERE CLIENTE=? FECHA BETWEEN ? AND ? AND ENTRADA_CONTADO=? AND ESTATUS!=? ORDER BY FECHA DESC ";
+      $consulta = "SELECT CLAVE, CLIENTE, NOMBRE, ESTATUS, FECHA, IMPORTE, VENDEDOR, DESCUENTO, ENTRADA FROM CARGAS WHERE CLIENTE=? FECHA BETWEEN ? AND ? AND ENTRADA_CONTADO=? AND ESTATUS!=? ORDER BY FECHA DESC ";
       $resultado = $base->prepare($consulta);
       $resultado->execute(array($cliente, $fecha,fechaConsulta($fechaFin), 0, "Cancelada"));
     }
     elseif($fecha!=""&&$fechaFin!=""){
-      $consulta = "SELECT CLAVE, CLIENTE, NOMBRE, ESTATUS, FECHA, IMPORTE, VENDEDOR, DESCUENTO  FROM CARGAS WHERE FECHA BETWEEN ? AND ? AND ENTRADA_CONTADO=? AND ESTATUS!=? ORDER BY FECHA DESC";
+      $consulta = "SELECT CLAVE, CLIENTE, NOMBRE, ESTATUS, FECHA, IMPORTE, VENDEDOR, DESCUENTO, ENTRADA  FROM CARGAS WHERE FECHA BETWEEN ? AND ? AND ENTRADA_CONTADO=? AND ESTATUS!=? ORDER BY FECHA DESC";
       $resultado = $base->prepare($consulta);
       $resultado->execute(array(fechaConsulta($fecha),fechaConsulta($fechaFin),0, "Cancelada"));
     }
     elseif($cliente!=""){
-      $consulta = "SELECT CLAVE, CLIENTE, NOMBRE, ESTATUS, FECHA, IMPORTE, VENDEDOR, DESCUENTO FROM CARGAS WHERE CLIENTE=? AND ENTRADA_CONTADO=? AND ESTATUS!=?";
+      $consulta = "SELECT CLAVE, CLIENTE, NOMBRE, ESTATUS, FECHA, IMPORTE, VENDEDOR, DESCUENTO, ENTRADA FROM CARGAS WHERE CLIENTE=? AND ENTRADA_CONTADO=? AND ESTATUS!=?";
       $resultado = $base->prepare($consulta);
       $resultado->execute(array($cliente, 0, "Cancelada"));
     }
@@ -58,7 +58,7 @@
       $registro = $resultado->fetch(PDO::FETCH_ASSOC);
       $fechaFin = $registro["FECHA"];
       $resultado->closeCursor();
-      $consulta = "SELECT CLAVE, CLIENTE, NOMBRE, ESTATUS, FECHA, IMPORTE, VENDEDOR, DESCUENTO FROM CARGAS WHERE FECHA BETWEEN ? AND ? AND ENTRADA_CONTADO=? AND ESTATUS!=? ORDER BY FECHA DESC ";
+      $consulta = "SELECT CLAVE, CLIENTE, NOMBRE, ESTATUS, FECHA, IMPORTE, VENDEDOR, DESCUENTO, ENTRADA FROM CARGAS WHERE FECHA BETWEEN ? AND ? AND ENTRADA_CONTADO=? AND ESTATUS!=? ORDER BY FECHA DESC ";
       $resultado = $base->prepare($consulta);
       $resultado->execute(array(fechaConsulta($fecha),$fechaFin, 0, "Cancelada"));
     }
@@ -69,7 +69,7 @@
       $registro = $resultado->fetch(PDO::FETCH_ASSOC);
       $fecha = $registro["FECHA"];
       $resultado->closeCursor();
-      $consulta = "SELECT CLAVE, CLIENTE, NOMBRE, ESTATUS, FECHA, IMPORTE, VENDEDOR, DESCUENTO FROM CARGAS WHERE FECHA BETWEEN ? AND ? AND ENTRADA_CONTADO=? AND ESTATUS!=? ORDER BY FECHA DESC ";
+      $consulta = "SELECT CLAVE, CLIENTE, NOMBRE, ESTATUS, FECHA, IMPORTE, VENDEDOR, DESCUENTO, ENTRADA FROM CARGAS WHERE FECHA BETWEEN ? AND ? AND ENTRADA_CONTADO=? AND ESTATUS!=? ORDER BY FECHA DESC ";
       $resultado = $base->prepare($consulta);
       $resultado->execute(array($fecha,fechaConsulta($fechaFin), 0, "Cancelada"));
     }
@@ -94,6 +94,7 @@
     $arreglo[$contador]["importe"] = $registro["IMPORTE"];
     $arreglo[$contador]["vendedor"] = $registro["VENDEDOR"];
     $arreglo[$contador]["descuento"] = $registro["DESCUENTO"];
+    $arreglo[$contador]["folioCaja"] = $registro["ENTRADA"];
     $contador++;
   }
 
@@ -107,10 +108,11 @@
   //Llenamos la tabla de exportacion excel
   for ($i=0; $i < $contador ; $i++) {
     if(($arreglo[$i]["estatus"]=="Emitida" || $arreglo[$i]["estatus"]=="Original")){
-      $consulta = "INSERT INTO EXPORTAR_FACTURAS (CLAVE, CLIENTE, NOMBRE, ESTATUS, FECHA, DESCUENTO, IMPORTE, VENDEDOR) VALUES(?,?,?,?,?,?,?,?)";
+      $consulta = "INSERT INTO EXPORTAR_FACTURAS (CLAVE, CLIENTE, NOMBRE, ESTATUS, FECHA, DESCUENTO, IMPORTE, VENDEDOR, FOLIO_CAJA) VALUES(?,?,?,?,?,?,?,?,?)";
       $resultado = $base->prepare($consulta);
       $resultado->execute(array($arreglo[$i]["clave"], $arreglo[$i]["cliente"], $arreglo[$i]["nombre"], $arreglo[$i]["estatus"],
-                                $arreglo[$i]["fecha"],$arreglo[$i]["descuento"],$arreglo[$i]["importe"],$arreglo[$i]["vendedor"]));
+                                $arreglo[$i]["fecha"],$arreglo[$i]["descuento"],$arreglo[$i]["importe"],$arreglo[$i]["vendedor"],
+                                $arreglo[$i]["folioCaja"]));
     }
   }
   $base = null;

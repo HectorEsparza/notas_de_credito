@@ -50,6 +50,7 @@ function get_data_callback(){
 		type:"POST",
 		url:url_listar_usuario
 	}).done(function(data,textStatus,jqXHR){
+    console.log(data);
 		// obtiene la clave lista del json data
 		var lista = data.lista;
 		$("#table").html("");
@@ -63,8 +64,21 @@ function get_data_callback(){
       console.log("Hola "+elem.entrada);
       //En el servidor la condicion se cumple si elem.entrada==""
       //En el servidor local la condicion se cumple si elem.entrada==null
-
-        $('<tr>'+
+        if(elem.folioContado!=null){
+          $('<tr>'+
+            '<td>'+elem.clave+'</td>'+
+            '<td>'+elem.cliente+'</td>'+
+            '<td>'+elem.nombre+'</td>'+
+            '<td>'+elem.estatus+'</td>'+
+            '<td>'+fechaStandar(elem.fecha)+'</td>'+
+            '<td>'+'$'+formatNumber.new(elem.importe)+'</td>'+
+            '<td>'+elem.vendedor+'</td>'+
+            '<td>'+elem.descuento+'%'+'</td>'+
+            '<td>'+elem.folioContado+'</td>'+
+          '</tr>').appendTo($("#table"));
+        }
+        else{
+          $('<tr>'+
           '<td>'+elem.clave+'</td>'+
           '<td>'+elem.cliente+'</td>'+
           '<td>'+elem.nombre+'</td>'+
@@ -73,7 +87,10 @@ function get_data_callback(){
           '<td>'+'$'+formatNumber.new(elem.importe)+'</td>'+
           '<td>'+elem.vendedor+'</td>'+
           '<td>'+elem.descuento+'%'+'</td>'+
+          '<td></td>'+
         '</tr>').appendTo($("#table"));
+        }
+        
 
 		});
 

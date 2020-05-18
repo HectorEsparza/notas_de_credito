@@ -10,6 +10,9 @@
 	<script type="text/javascript" src="ajax/eventos/filtroFacturasSinEntrada.js"></script>
 	<script type="text/javascript" src="ajax/eventos/facturas.js"></script>
 	<script type="text/javascript" src="ajax/eventos/exportarFacturasSinEntrada.js"></script>
+	<script type="text/javascript" src="../js/verificarSesion.js"></script>
+	<script type="text/javascript" src="../js/cierreSesion.js"></script>
+	<script type="text/javascript" src="../js/cierreInactividad.js"></script>
 
 </head>
 <body>
@@ -87,7 +90,7 @@
 						 <br /><br />
 						 <input type="button" class="btn btn-primary" id="buscar" value="Buscar" />
 						 <input type="button" class="btn btn-primary" onclick="facturas()" value='Tabla Completa' />
-						 <input type="button" class="btn btn-primary" id="exportarFacturasSinEntrada" value='Exportar' />
+						 <!-- <input type="button" class="btn btn-primary" id="exportarFacturasSinEntrada" value='Exportar' /> -->
 
 
 				<input type=hidden id="folio" value="<?= $folio?>"/>
@@ -99,7 +102,7 @@
 		</div>
 	<div class="container" id="principal">
 	<!--<table class="table table-striped table-hover">-->
-	<table  border=1 align='center' width="850px" style="text-align: center;">
+	<table  border=1 align='center' width="100%" style="text-align: center;">
 		<thead>
 			<tr style="font-weight: bold;">
 				<td>Clave</td>
@@ -110,6 +113,7 @@
 				<td>Importe total</td>
 				<td>Nombre del vendedor</td>
 				<td>Porcentaje de descuento</td>
+				<td>Folio de Contado</td>
 			</tr>
 		</thead>
 		<tbody id="table">

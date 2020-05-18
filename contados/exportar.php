@@ -26,6 +26,8 @@
         <th>Importe Total</th>
         <th>Nombre del Vendedor</th>
         <th>Porcentaje de Descuento</th>
+        <th>Folio de Contado</th>
+        <th>Folio de Caja</th>
        </tr>
        <? while($registro = $resultado->fetch(PDO::FETCH_NUM)) :?>
 
@@ -38,6 +40,8 @@
                               <td><?= $registro[6]?></td>
                               <td><?= $registro[7]?></td>
                               <td><?= $registro[5]?></td>
+                              <td><?= $registro[8]?></td>
+                              <td><?= $registro[9]?></td>
                       </tr>
 
        <? endwhile?>

@@ -60,6 +60,7 @@ function get_data_callback(){
 		}
 		// genera el cuerpo de la tabla
 		$.each(lista, function(ind, elem){
+      if(elem.folioCaja!=null){
         $('<tr>'+
           '<td>'+elem.clave+'</td>'+
           '<td>'+elem.cliente+'</td>'+
@@ -69,7 +70,23 @@ function get_data_callback(){
           '<td>'+'$'+formatNumber.new(elem.importe)+'</td>'+
           '<td>'+elem.vendedor+'</td>'+
           '<td>'+elem.descuento+'%'+'</td>'+
+          '<td>'+elem.folioCaja+'</td>'+
         '</tr>').appendTo($("#table"));
+      }
+      else{
+        $('<tr>'+
+          '<td>'+elem.clave+'</td>'+
+          '<td>'+elem.cliente+'</td>'+
+          '<td>'+elem.nombre+'</td>'+
+          '<td>'+elem.estatus+'</td>'+
+          '<td>'+fechaStandar(elem.fecha)+'</td>'+
+          '<td>'+'$'+formatNumber.new(elem.importe)+'</td>'+
+          '<td>'+elem.vendedor+'</td>'+
+          '<td>'+elem.descuento+'%'+'</td>'+
+          '<td></td>'+
+        '</tr>').appendTo($("#table"));
+      }
+        
 
 		});
 
