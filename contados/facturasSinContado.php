@@ -6,11 +6,16 @@
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   	<link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
-  	<script type="text/javascript" src="ajax/js/jquery-ui.js"></script>
+	<script type="text/javascript" src="ajax/js/jquery-ui.js"></script>
+	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="ajax/eventos/filtroFacturasSinContado.js"></script>
 	<script type="text/javascript" src="ajax/eventos/facturas.js"></script>
 	<script type="text/javascript" src="ajax/eventos/exportarFacturasSinEntrada.js"></script>
 	<script type="text/javascript" src="../js/verificarSesion.js"></script>
+	<script type="text/javascript" src="../js/cierreSesion.js"></script>
+	<script type="text/javascript" src="../js/cierreInactividad.js"></script>
+	<script type="text/javascript" src="../js/paginator.min.js"></script>
+	<script type="text/javascript" src="ajax/js/main.js"></script> 
 
 </head>
 <body>
@@ -75,13 +80,6 @@
 	</div>
 	<br /><br />
 </section>
-
-<!--<script src="ajax/js/jquery-2.min.js"></script>-->
-<script src="ajax/js/bootstrap.min.js"></script>
-<script src="ajax/js/paginator.min.js"></script>
-<script src="ajax/js/mainFacturasSinContado.js"></script>
-<!-- <script src="ajax/eventos/cierreInactividad.js"></script> -->
-
 
 <script type="text/javascript">
 

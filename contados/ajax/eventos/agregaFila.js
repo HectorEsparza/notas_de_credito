@@ -1,23 +1,23 @@
 $(document).ready(function(){
 
-  // $("#agregar").click(function(){
-  //   var cuerpo = $("#cuerpo");
-  //   var fila = $("#filas").val();
-  //   fila = parseInt(fila, 10);
-  //   fila+=1;
-  //   console.log("Agregando la fila número "+fila);
-  //   $("#filas").val(fila);
-  //   $("#fila"+fila).show();
-  // });
-
   $("#agregarFila").click(function(){
-    var cuerpo = $("#cuerpo");
-    var fila = $("#filas").val();
-    fila = parseInt(fila, 10);
-    fila+=1;
-    console.log("Agregando la fila número "+fila);
-    $("#filas").val(fila);
-    $("#fila"+fila).show();
+    var indice = $("#filas").val();
+    // if($("#factura"+indice).val()!=""){
+    //   indice = parseInt(indice, 10);
+    //   indice +=1;
+    //   $("#fila"+indice).show();
+    //   console.log("Agregando la fila número "+indice);
+    //   $("#filas").val(indice);
+    // }
+    // else{
+    //   alert("Captura todas las filas, por favor");
+    // }
+    indice = parseInt(indice, 10);
+    indice +=1;
+    $("#fila"+indice).show();
+    console.log("Agregando la fila número "+indice);
+    $("#filas").val(indice);
+      
   });
 
 });

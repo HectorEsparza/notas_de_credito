@@ -6,6 +6,9 @@ $(document).ready(function(){
 
   function enviar(){
     var facturas = [];
+    var cajas = [];
+    var pesos = [];
+    var recibes = [];
     var observaciones = [];
     var contador = 1;
     var folio = $("#folio").val();
@@ -14,6 +17,9 @@ $(document).ready(function(){
     for (var i = 1; i <= 100; i++){
       if($("#factura"+i).val()!=""&&$("#cliente"+i).text()!=""){
         facturas[contador] = $("#factura"+i).val();
+        cajas[contador] = $("#cajas"+i).val();
+        pesos[contador] = $("#peso"+i).val();
+        recibes[contador] = $("#recibe"+i).val();
         observaciones[contador] = $("#observaciones"+i).val();
         contador++;
       }
@@ -21,6 +27,9 @@ $(document).ready(function(){
     var parametros =
     {
       facturas: facturas,
+      cajas: cajas,
+      pesos: pesos,
+      recibes: recibes,
       observaciones: observaciones,
       contador: contador,
       folio: folio,
@@ -61,13 +70,25 @@ $(document).ready(function(){
         alert("La factura "+datos[2]+" esta repetida en éste documento, favor de corregir");
       }
       else if(datos[1]==2){
-        alert("Captura el método de pago de la factura "+datos[2]);
+        alert("Captura el número de cajas/bolsas de la factura "+datos[2]);
+      }
+      else if(datos[1]==3){
+        alert("Captura el peso de la factura "+datos[2]);
+      }
+      else if(datos[1]==4){
+        alert("Captura el nombre de quién recibe de la factura "+datos[2]);
+      }
+      else if(datos[1]==5){
+        alert("Los valores para cajas/bolsas y peso deben de ser mayores a 0, además los números para cajas/bolsas deben"+
+        "de ser enteros, verifica los datos de la factura  "+datos[2]);
       }
     }
     //console.log("Hoy es "+datos[0]+ ", mañana será "+datos[1]+". Pero el mejor día de la semana es el "+datos[5]);
   }
 
-  function problemas(){
-    console.log("Problemas en el servidor...");
-  }
+  function problemas(textError, textStatus) {
+    //var error = JSON.parse(textError);
+    alert("Problemas en el Servlet: " + JSON.stringify(textError));
+    alert("Problemas en el servlet: " + JSON.stringify(textStatus));
+}
 });

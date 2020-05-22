@@ -2,7 +2,7 @@
 //var url_listar_usuario = "php/listar.php";
 var url_listar_usuario = "listado.php";
 var contador = 1;
-var folio = document.getElementById('folio').value;
+
 
 $( document ).ready(function() {
    // se genera el paginador

@@ -32,6 +32,7 @@ $(document).ready(function(){
   });
 
   $("#fecha").change(function(){
+    $(".fila").hide();
     enviar();
   });
 
@@ -72,7 +73,9 @@ $(document).ready(function(){
       $("#fechaDeCargas").text("");
       $("#folio").val("");
       $("#factura1").prop("readonly", true);
-      $("#metodo1").prop("disabled", true);
+      $("#cajas1").prop("readonly", true);
+      $("#peso1").prop("readonly", true);
+      $("#recibe1").prop("readonly", true);
       $("#observaciones1").prop("readonly", true);
       alert("La fecha elegida ya ha sido seleccionada en un reporte de contados anterior, elegir otra fecha por favor");
     }
@@ -102,7 +105,9 @@ $(document).ready(function(){
       console.log("Cambio la fecha " + mes);
       //Activamos la primera fila, para poder introducir facturas
       $("#factura1").prop("readonly", false);
-      $("#metodo1").prop("disabled", false);
+      $("#cajas1").prop("readonly", false);
+      $("#peso1").prop("readonly", false);
+      $("#recibe1").prop("readonly", false);
       $("#observaciones1").prop("readonly", false);
       //Activamos el boton de Guardar, solo si la primera fila esta capturada
       if($("#factura1").val()!=""&&$("#cliente1").text()!=""){
