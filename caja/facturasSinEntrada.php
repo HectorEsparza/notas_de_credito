@@ -140,6 +140,7 @@
 	}
 	?>
 
+<div id="scriptParaImpresion"></div>
 <!--<script src="ajax/js/jquery-2.min.js"></script>-->
 <script src="ajax/js/bootstrap.min.js"></script>
 <script src="ajax/js/paginator.min.js"></script>

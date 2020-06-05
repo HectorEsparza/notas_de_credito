@@ -15,7 +15,7 @@
 	<script type="text/javascript" src="../js/cierreSesion.js"></script>
 	<script type="text/javascript" src="../js/cierreInactividad.js"></script>
 	<script type="text/javascript" src="../js/paginator.min.js"></script>
-	<script type="text/javascript" src="ajax/js/main.js"></script> 
+	<script type="text/javascript" src="ajax/js/mainFacturasSinContado.js"></script> 
 
 </head>
 <body>
@@ -80,7 +80,7 @@
 	</div>
 	<br /><br />
 </section>
-
+<div id="scriptParaImpresion"></div>
 <script type="text/javascript">
 
 			$(document).ready(function(){

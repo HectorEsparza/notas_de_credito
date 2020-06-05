@@ -15,7 +15,7 @@
       $resultado->execute(array($factura,0, "Cancelada"));
     }
     elseif($cliente!=""&&$fecha!=""&&$fechaFin!=""){
-      $consulta = "SELECT CLAVE, CLIENTE, NOMBRE, ESTATUS, FECHA, IMPORTE, VENDEDOR, DESCUENTO, ENTRADA FROM CARGAS WHERE CLIENTE=? FECHA BETWEEN ? AND ? AND ENTRADA_CONTADO=? AND ESTATUS!=? ORDER BY FECHA DESC ";
+      $consulta = "SELECT CLAVE, CLIENTE, NOMBRE, ESTATUS, FECHA, IMPORTE, VENDEDOR, DESCUENTO, ENTRADA FROM CARGAS WHERE CLIENTE=? FECHA BETWEEN ? AND ? AND ENTRADA_CONTADO=? AND ESTATUS!=? ORDER BY CLAVE ASC ";
       $resultado = $base->prepare($consulta);
       $resultado->execute(array($cliente, fechaConsulta($fecha),fechaConsulta($fechaFin), 0, "Cancelada"));
     }
@@ -26,7 +26,7 @@
       $registro = $resultado->fetch(PDO::FETCH_ASSOC);
       $fechaFin = $registro["FECHA"];
       $resultado->closeCursor();
-      $consulta = "SELECT CLAVE, CLIENTE, NOMBRE, ESTATUS, FECHA, IMPORTE, VENDEDOR, DESCUENTO, ENTRADA FROM CARGAS WHERE CLIENTE=? FECHA BETWEEN ? AND ? AND ENTRADA_CONTADO=? AND ESTATUS!=? ORDER BY FECHA DESC ";
+      $consulta = "SELECT CLAVE, CLIENTE, NOMBRE, ESTATUS, FECHA, IMPORTE, VENDEDOR, DESCUENTO, ENTRADA FROM CARGAS WHERE CLIENTE=? FECHA BETWEEN ? AND ? AND ENTRADA_CONTADO=? AND ESTATUS!=? ORDER BY CLAVE ASC ";
       $resultado = $base->prepare($consulta);
       $resultado->execute(array($cliente, fechaConsulta($fecha),$fechaFin, 0, "Cancelada"));
     }
@@ -37,12 +37,12 @@
       $registro = $resultado->fetch(PDO::FETCH_ASSOC);
       $fecha = $registro["FECHA"];
       $resultado->closeCursor();
-      $consulta = "SELECT CLAVE, CLIENTE, NOMBRE, ESTATUS, FECHA, IMPORTE, VENDEDOR, DESCUENTO, ENTRADA FROM CARGAS WHERE CLIENTE=? FECHA BETWEEN ? AND ? AND ENTRADA_CONTADO=? AND ESTATUS!=? ORDER BY FECHA DESC ";
+      $consulta = "SELECT CLAVE, CLIENTE, NOMBRE, ESTATUS, FECHA, IMPORTE, VENDEDOR, DESCUENTO, ENTRADA FROM CARGAS WHERE CLIENTE=? FECHA BETWEEN ? AND ? AND ENTRADA_CONTADO=? AND ESTATUS!=? ORDER BY CLAVE ASC ";
       $resultado = $base->prepare($consulta);
       $resultado->execute(array($cliente, $fecha,fechaConsulta($fechaFin), 0, "Cancelada"));
     }
     elseif($fecha!=""&&$fechaFin!=""){
-      $consulta = "SELECT CLAVE, CLIENTE, NOMBRE, ESTATUS, FECHA, IMPORTE, VENDEDOR, DESCUENTO, ENTRADA  FROM CARGAS WHERE FECHA BETWEEN ? AND ? AND ENTRADA_CONTADO=? AND ESTATUS!=? ORDER BY FECHA DESC";
+      $consulta = "SELECT CLAVE, CLIENTE, NOMBRE, ESTATUS, FECHA, IMPORTE, VENDEDOR, DESCUENTO, ENTRADA  FROM CARGAS WHERE FECHA BETWEEN ? AND ? AND ENTRADA_CONTADO=? AND ESTATUS!=? ORDER BY CLAVE ASC";
       $resultado = $base->prepare($consulta);
       $resultado->execute(array(fechaConsulta($fecha),fechaConsulta($fechaFin),0, "Cancelada"));
     }
@@ -58,7 +58,7 @@
       $registro = $resultado->fetch(PDO::FETCH_ASSOC);
       $fechaFin = $registro["FECHA"];
       $resultado->closeCursor();
-      $consulta = "SELECT CLAVE, CLIENTE, NOMBRE, ESTATUS, FECHA, IMPORTE, VENDEDOR, DESCUENTO, ENTRADA FROM CARGAS WHERE FECHA BETWEEN ? AND ? AND ENTRADA_CONTADO=? AND ESTATUS!=? ORDER BY FECHA DESC ";
+      $consulta = "SELECT CLAVE, CLIENTE, NOMBRE, ESTATUS, FECHA, IMPORTE, VENDEDOR, DESCUENTO, ENTRADA FROM CARGAS WHERE FECHA BETWEEN ? AND ? AND ENTRADA_CONTADO=? AND ESTATUS!=? ORDER BY CLAVE ASC ";
       $resultado = $base->prepare($consulta);
       $resultado->execute(array(fechaConsulta($fecha),$fechaFin, 0, "Cancelada"));
     }
@@ -69,7 +69,7 @@
       $registro = $resultado->fetch(PDO::FETCH_ASSOC);
       $fecha = $registro["FECHA"];
       $resultado->closeCursor();
-      $consulta = "SELECT CLAVE, CLIENTE, NOMBRE, ESTATUS, FECHA, IMPORTE, VENDEDOR, DESCUENTO, ENTRADA FROM CARGAS WHERE FECHA BETWEEN ? AND ? AND ENTRADA_CONTADO=? AND ESTATUS!=? ORDER BY FECHA DESC ";
+      $consulta = "SELECT CLAVE, CLIENTE, NOMBRE, ESTATUS, FECHA, IMPORTE, VENDEDOR, DESCUENTO, ENTRADA FROM CARGAS WHERE FECHA BETWEEN ? AND ? AND ENTRADA_CONTADO=? AND ESTATUS!=? ORDER BY CLAVE ASC ";
       $resultado = $base->prepare($consulta);
       $resultado->execute(array($fecha,fechaConsulta($fechaFin), 0, "Cancelada"));
     }

@@ -74,8 +74,7 @@ function get_data_callback(){
             '<td>'+'$'+formatNumber.new(elem.importe)+'</td>'+
             '<td>'+elem.vendedor+'</td>'+
             '<td>'+elem.descuento+'%'+'</td>'+
-            '<td>'+elem.folioContado+
-            ' <input type="button" class="btn btn-sm btn-info verImpresion" id="contados-'+elem.folioContado+'" value="Ver" /></td>'+
+            '<td><input type="button" class="btn btn-sm btn-info verImpresion" id="contados-'+elem.folioContado+'" value="'+elem.folioContado+'" /></td>'+
           '</tr>').appendTo($("#table"));
         }
         else{
@@ -94,7 +93,7 @@ function get_data_callback(){
         
 
 		});
-    $("body").append('<script type="text/javascript" src="../js/verImpresion.js"></script>');
+    $("#scriptParaImpresion").append('<script type="text/javascript" src="../js/verImpresion.js"></script>');
 	}).fail(function(jqXHR,textStatus,textError){
 		alert("Error al realizar la peticion dame".textError);
 	});

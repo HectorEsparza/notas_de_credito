@@ -88,6 +88,7 @@ $(document).ready(function(){
   function llegada(datos){
     $("#table").empty();
     $("#paginador").empty();
+    $("#scriptParaImpresion").empty();
     console.log(datos.length);
     var datosLength = datos.length;
     var contador = 1;
@@ -111,7 +112,7 @@ $(document).ready(function(){
             '<td>$'+formatNumber.new(datos[i].importe)+'</td>'+
             '<td>'+datos[i].vendedor+'</td>'+
             '<td>'+datos[i].descuento+'%</td>'+
-            '<td>'+datos[i].folioContado+'</td>'+
+            '<td><input type="button" class="btn btn-sm btn-info verImpresion" id="contados-'+datos[i].folioContado+'" value="'+datos[i].folioContado+'" /></td>'+
           '</tr>').appendTo($("#table"));
         }
         else{
@@ -129,6 +130,7 @@ $(document).ready(function(){
         }
       }
     }
+    $("#scriptParaImpresion").append('<script type="text/javascript" src="../js/verImpresion.js"></script>');
   }
 
   function problemas(textError, textStatus) {
