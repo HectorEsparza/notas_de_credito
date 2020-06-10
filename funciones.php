@@ -780,57 +780,76 @@ function usuarioApellido($user)
 
   function folio($tipo_dev)
   {
+    $separador = explode(" ", $tipo_dev);
+    $contador = count($separador);
+    $abreviatura = "";
+    for ($i=0; $i < $contador; $i++){ 
+      $abreviatura .= $separador[$i][0];
+    }
 
-
-    $consecutivo = "";
-    $aux = 0;
-  	$base = conexion_local();
-  	$consulta = "SELECT FOLIOINTERNO FROM NOTAS WHERE TIPO=? ORDER BY TIPO";
+    $abreviatura .= "%";
+    $base = conexion_local();
+  	$consulta = "SELECT FOLIOINTERNO FROM NOTAS_VIS WHERE FOLIOINTERNO LIKE ? ORDER BY REGISTRO DESC LIMIT 1";
   	$resultado = $base->prepare($consulta);
-  	$resultado->execute(array($tipo_dev));
-  	while ($registro = $resultado->fetch(PDO::FETCH_NUM)){
-        if($consecutivo!=$registro[0]){
-          $aux++;
-        }
-  			$consecutivo = $registro[0];
+    $resultado->execute(array($abreviatura));
+    $registro = $resultado->fetch(PDO::FETCH_NUM);
+    
+    $auxiliar = $registro[0];
 
-  			// echo $consecutivo . "<br />";
-  	}
-    $aux++;
+    $resultado->closeCursor();
+    $base = null;
 
-  	switch ($tipo_dev){
-  			case 'Devolución Parcial':
-  			$folio = 'DP-' . $aux;
-  			return $folio;
-  				break;
-  			case 'Factura Completa':
-  			$folio = 'FC-' . $aux;
-  			return $folio;
-  				break;
-  			case 'Entrada Caja':
-  			$folio = 'EC-' . $aux;
-  			return $folio;
-  				break;
-  			case 'Factor 3':
-  			$folio = 'F3-' . $aux;
-  			return $folio;
-  				break;
-  			case 'Cambio Físico':
-  			$folio = 'CF-' . $aux;
-  			return $folio;
-  				break;
-        case 'Entrada Caja Factor 3':
-    		$folio = 'ECF3-' . $aux;
-    		return $folio;
-    				break;
-        case 'Muestra':
-        		$folio = 'M-' . $aux;
-        		return $folio;
-        				break;
-  			default:
+    $auxiliar = explode("-", $auxiliar);
+    $folio = $auxiliar[0]."-".($auxiliar[1]+1);
+    // $consecutivo = "";
+    // $aux = 0;
+  	// $base = conexion_local();
+  	// $consulta = "SELECT FOLIOINTERNO FROM NOTAS WHERE TIPO=? ORDER BY TIPO";
+  	// $resultado = $base->prepare($consulta);
+  	// $resultado->execute(array($tipo_dev));
+  	// while ($registro = $resultado->fetch(PDO::FETCH_NUM)){
+    //     if($consecutivo!=$registro[0]){
+    //       $aux++;
+    //     }
+  	// 		$consecutivo = $registro[0];
 
-  				break;
-  		}
+  	// 		// echo $consecutivo . "<br />";
+  	// }
+    // $aux++;
+
+  	// switch ($tipo_dev){
+  	// 		case 'Devolución Parcial':
+  	// 		$folio = 'DP-' . $aux;
+  	// 		return $folio;
+  	// 			break;
+  	// 		case 'Factura Completa':
+  	// 		$folio = 'FC-' . $aux;
+  	// 		return $folio;
+  	// 			break;
+  	// 		case 'Entrada Caja':
+  	// 		$folio = 'EC-' . $aux;
+  	// 		return $folio;
+  	// 			break;
+  	// 		case 'Factor 3':
+  	// 		$folio = 'F3-' . $aux;
+  	// 		return $folio;
+  	// 			break;
+  	// 		case 'Cambio Físico':
+  	// 		$folio = 'CF-' . $aux;
+  	// 		return $folio;
+  	// 			break;
+    //     case 'Entrada Caja Factor 3':
+    // 		$folio = 'ECF3-' . $aux;
+    // 		return $folio;
+    // 				break;
+    //     case 'Muestra':
+    //     		$folio = 'M-' . $aux;
+    //     		return $folio;
+    //     				break;
+  	// 		default:
+
+  	// 			break;
+  	// 	}
 
     return $folio;
   }
