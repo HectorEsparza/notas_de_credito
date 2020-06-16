@@ -146,8 +146,8 @@
         setTimeout("location.href='impresion.php?folio="+$('#folio').val()+"'",500);
     }
 
-    var fecha = $("#fecha").val();
-    fecha = fecha.split("/");
+	var fecha = $("#fecha").val();
+    fecha = fecha.split("-");
     function diaSemana(dia,mes,anio,mesEspanol){
         var dias=["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
         let meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
@@ -160,9 +160,9 @@
     };
 
     let meses = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    var dia = fecha[0];
+    var dia = fecha[2];
     var mes = meses[parseInt(fecha[1])-1];
-    var anio= fecha[2];
+    var anio= fecha[0];
     var mesEspanol = parseInt(fecha[1])-1;
     diaSemana(dia, mes,anio,mesEspanol);
 
