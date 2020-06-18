@@ -29,6 +29,7 @@ $(document).ready(function(){
     // $("#estudios").val(documentos[10]);
     $("#infonavit").val(documentos[11]);
     $("#adeudo").val(documentos[12]);
+    $("#pension").val(documentos[13]);
 
     //Insertamos datos de la tabla Solicitud
     if(solicitud[1]!=""){

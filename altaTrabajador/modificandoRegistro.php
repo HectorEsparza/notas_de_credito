@@ -15,6 +15,7 @@
   // $estudios = $_POST['estudios'];
   $infonavit = $_POST['infonavit'];
   $adeudo = $_POST['adeudo'];
+  $pension = $_POST['pension'];
 
 
   //Solicitud
@@ -46,9 +47,10 @@
 
   //echo $solicitud . " " . $id . " " . $nombre;
   $base = conexion_local();
-  $consulta = "UPDATE DOCUMENTOS SET SOLICITUD=?, ACTA=?, IFE=?, DOMICILIO=?, SEGURO=?, CURP=?, RFC=?, INFONAVIT=?, ADEUDO=? WHERE ID=?";
+  $consulta = "UPDATE DOCUMENTOS SET SOLICITUD=?, ACTA=?, IFE=?, DOMICILIO=?, 
+               SEGURO=?, CURP=?, RFC=?, INFONAVIT=?, ADEUDO=?, PENSION=? WHERE ID=?";
   $resultado = $base->prepare($consulta);
-  $resultado->execute(array($solicitud, $acta, $ife, $domicilio, $seguro, $curp, $rfc, $infonavit, $adeudo, $id));
+  $resultado->execute(array($solicitud, $acta, $ife, $domicilio, $seguro, $curp, $rfc, $infonavit, $adeudo, $pension, $id));
   $resultado->closeCursor();
 
   $consulta = "UPDATE SOLICITUD SET FECHA_ALTA=?, DEPARTAMENTO=?, PUESTO=?, SALARIO=?, NOMBRE=?, NACIMIENTO=?, TELEFONO=?, SEGURO=?, RFC=?, CURP=?, CALLE=?,

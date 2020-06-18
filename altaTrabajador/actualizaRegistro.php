@@ -14,6 +14,7 @@
     <script type="text/javascript" src="ajax/eventos/verificaDatos.js"></script>
     <script type="text/javascript" src="ajax/eventos/formularioRecursos.js"></script>
     <script type="text/javascript" src="ajax/eventos/textoMayuscula.js"></script>
+    <script type="text/javascript" src="../js/cierreInactividad.js"></script>
     <!-- <script type="text/javascript" src="ajax/eventos/activaSelectores.js"></script> -->
 
 
@@ -251,6 +252,16 @@
             <td>Adeudo Bancomer</td>
             <td align='center'>
               <select id="adeudo" name="adeudo">
+                <option value="NO">NO</option>
+                <option value="SI">SI</option>
+              </select>
+            </td>
+          </tr>
+          </tr>
+          <tr class="colorInfonavit">
+            <td>Pensión Alimenticia</td>
+            <td align='center'>
+              <select id="pension" name="pension">
                 <option value="NO">NO</option>
                 <option value="SI">SI</option>
               </select>
@@ -498,6 +509,7 @@
                           estudios = $("#estudios"),
                           infonavit = $("#infonavit"),
                           adeudo = $("#adeudo");
+                          pension = $("#pension");
                       var fechaAlta = $("#fechaAlta"),
                           departamento = $("#vistaDepartamento"),
                           puesto = $("#vistaPuesto"),
@@ -539,6 +551,7 @@
                           estudios.attr("disabled", false);
                           infonavit.attr("disabled", false);
                           adeudo.attr("disabled", false);
+                          pension.attr("disabled", false);
                           puesto.attr("disabled", false);
                           sexo.attr("disabled", false);
                           edoCivil.attr("disabled", false);

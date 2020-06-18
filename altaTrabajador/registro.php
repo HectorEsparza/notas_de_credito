@@ -8,6 +8,8 @@
     <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
   	<link rel="stylesheet" type="text/css" href="css/estiloSAE.css" />
     <link rel="stylesheet" type="text/css" href="css/estiloAltas.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/cierreInactividad.js"></script>
   </head>
 
   <body>
@@ -188,6 +190,15 @@
               </select>
             </td>
           </tr>
+          <tr class="colorInfonavit">
+            <td>Pensión Alimenticia</td>
+            <td align='center'>
+              <select id="pension" name="pension">
+                <option value="NO">NO</option>
+                <option value="SI">SI</option>
+              </select>
+            </td>
+          </tr>
           <tr>
             <td colspan="2" align='center'><input type='submit' id="guardar" value='Guardar' class="btn btn-primary"/></td>
           </tr>
@@ -303,13 +314,11 @@
     </div>
   </form>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script type="text/javascript" src="ajax/js/jquery-ui.js"></script>
   <script type="text/javascript" src="ajax/eventos/muestraFormulario.js"></script>
   <script type="text/javascript" src="ajax/eventos/puestos.js"></script>
   <script type="text/javascript" src="ajax/eventos/salarioDiario.js"></script>
   <script type="text/javascript" src="ajax/eventos/textoMayuscula.js"></script>
-  <script src="ajax/eventos/cierreInactividad.js"></script>
   <script type="text/javascript">
 
   			$(document).ready(function(){

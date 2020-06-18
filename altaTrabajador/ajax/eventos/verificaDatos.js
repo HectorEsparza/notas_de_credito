@@ -12,6 +12,7 @@ $(document).ready(function(){
       estudios = $("#estudios"),
       infonavit = $("#infonavit"),
       adeudo = $("#adeudo");
+      pension = $("#pension");
       pdf = $("#pdf"),
       solicitudOculto = $(".solicitudOculto"),
       actaOculto = $(".actaOculto"),
@@ -120,6 +121,10 @@ $(document).ready(function(){
 
       if(adeudo.val()=="SI"){
         adeudo.attr("disabled", true);
+      }
+
+      if(pension.val()=="SI"){
+        pension.attr("disabled", true);
       }
 
       pdf.change(function(){
