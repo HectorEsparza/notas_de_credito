@@ -9,7 +9,7 @@ try
   $base->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
   $base->exec("SET CHARACTER SET utf8");*/
   $base = conexion_local();
-  $consulta = "SELECT NOMBRE FROM CLIENTES WHERE CLAVE=?";
+  $consulta = "SELECT NOMBRE FROM CLIENTE WHERE IDCLIENTE=?";
   $resultado = $base->prepare($consulta);
   $resultado->execute(array($clave_cliente));
   $registro = $resultado->fetch(PDO::FETCH_NUM);

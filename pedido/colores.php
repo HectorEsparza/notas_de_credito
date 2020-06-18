@@ -4,7 +4,7 @@ $color = $_GET['q'];
 $datos = array();
 $contador = 0;
 $base = conexion_local();
-$consulta = "SELECT * FROM CLIENTES WHERE NOMBRE LIKE ?";
+$consulta = "SELECT * FROM CLIENTE WHERE NOMBRE LIKE ?";
 //$consulta = "SELECT FECHA FROM NOTAS_VIS WHERE FECHA LIKE ?";
 $resultado = $base->prepare($consulta);
 $resultado->execute(array('%' . $color . '%'));

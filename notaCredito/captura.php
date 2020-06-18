@@ -184,7 +184,7 @@ if($tipo_dev=="Factor 3"||$tipo_dev=="Cambio Físico"||$tipo_dev=="Muestra"){
   {
   $consulta = "INSERT INTO NOTAS(TIPO, FECHA, FOLIOINTERNO, NOCLIENTE, NOMBRE, SKU, UNIDADESxSKU, FACTURA, MONTO,
                                  MOTIVO, OBSERVACIONES, NOTASAE, LISTAPRECIOS, USUARIO, STATUS, RECEPCION, DEVOLUCION, DESCUENTO)
-               VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+               VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
   $resultado = $base->prepare($consulta);
   $resultado->execute(array($tipo_dev, $fecha, $folio, $cliente, $nombre, $clave[$i], $cantidad[$i], $factura,
                             $costo[$i], $motivo, $observaciones, $sae, $lista[$i], usuario($usuario), "ACTIVA", $folioRecepcion, $devolucion[$i], $descuento));

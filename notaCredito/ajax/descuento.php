@@ -7,7 +7,8 @@ try
 {
 
   $base = conexion_local();
-  $consulta = "SELECT DESCUENTO FROM CLIENTES WHERE CLAVE=?";
+  $consulta = "SELECT PORCENTAJE FROM CLIENTE INNER JOIN DESCUENTO 
+               ON CLIENTE.IDDESCUENTO=DESCUENTO.IDDESCUENTO WHERE IDCLIENTE=?";
   $resultado = $base->prepare($consulta);
   $resultado->execute(array($clave_cliente));
   $registro = $resultado->fetch(PDO::FETCH_NUM);
