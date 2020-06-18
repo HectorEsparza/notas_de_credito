@@ -58,6 +58,11 @@
         width: 150px;
       }
       #contado{
+        background: #A6FC63;
+        color: #000000;
+        width: 150px;
+      }
+      #cliente{
         background: #FCB063;
         color: #000000;
         width: 150px;
@@ -147,6 +152,9 @@
             <div class="container col-md-4">
               <input type="button" id="contado" value="Contados" class="btn btn-primary" />
             </div>
+            <div class="container col-md-4">
+              <input type="button" id="cliente" value="Clientes" class="btn btn-primary" />
+            </div>
           </div>
      </div>
     </section>
@@ -168,12 +176,14 @@
           $("#analisis").show();
           $("#caja").show();
           $("#contado").show();
+          $("#cliente").show();
         }
         else if(permiso==1){
           $("#altas").show();
           $("#analisis").hide();
           $("#caja").hide();
           $("#contado").hide();
+          $("#cliente").hide();
           if(departamento=="VENTAS"){
             $("#nota").show();
             $("#pedido").show();
@@ -182,6 +192,7 @@
             $("#compras").hide();
             $("#sae").hide();
             $("#nomina").hide();
+            $("#cliente").show();
           }
           else if(departamento=="CREDITO_Y_COBRANZA"){
             $("#nota").hide();
@@ -193,6 +204,7 @@
             $("#altas").hide();
             $("#caja").show();
             $("#contado").hide();
+            $("#cliente").hide();
           }
           else if(departamento=="RECURSOS_HUMANOS"||departamento=="CONTABILIDAD"||departamento=="ADMINISTRADOR"){
             $("#nota").hide();
@@ -202,6 +214,7 @@
             $("#sae").hide();
             $("#nomina").show();
             $("#contado").hide();
+            $("#cliente").hide();
           }
 
           else if(departamento=="PRODUCCION_SOPORTE"||departamento=="PRODUCCION_MANGUERA"||departamento=="ALMACEN"){
@@ -212,6 +225,7 @@
             $("#sae").hide();
             $("#nomina").hide();
             $("#contado").hide();
+            $("#cliente").hide();
           }
         }
         else {
@@ -219,6 +233,7 @@
           $("#altas").hide();
           $("#caja").hide();
           $("#contado").hide();
+          $("#cliente").hide();
           if(departamento=="VENTAS"){
             $("#nota").show();
             $("#pedido").show();
@@ -309,6 +324,10 @@
 
         $("#contado").click(function(){
           setTimeout("location.href='contados/visualizacion.php'",500);
+        });
+
+        $("#cliente").click(function(){
+          setTimeout("location.href='clientes/visualizacion.php'",500);
         });
         // $("body").hide().fadeIn(2000);
 
