@@ -1,19 +1,19 @@
 $(document).ready(function(){
 
-  var inicioConteo = setInterval(enviar, 600000);
+  var inicioConteo = setInterval(enviar, 1200000);
 
 
     $("body").mousemove(function(){
 
       clearInterval(inicioConteo);
-      inicioConteo = setInterval(enviar, 600000);
+      inicioConteo = setInterval(enviar, 1200000);
 
     });
 
     $("body").keypress(function(){
 
       clearInterval(inicioConteo);
-      inicioConteo = setInterval(enviar, 600000);
+      inicioConteo = setInterval(enviar, 1200000);
     });
 
    //Función ajax

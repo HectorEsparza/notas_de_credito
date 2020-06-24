@@ -5,21 +5,21 @@ $(document).ready(function(){
 
     var valor = $("#formatoPartidas").val();
 
-    if(valor==25){
-      // alert("Su valor es 25!!!");
-      for (var i = 11; i <= 25; i++) {
+    if(valor==40){
+      // alert("Su valor es 40!!!");
+      for (var i = 11; i <= 40; i++) {
         $("#muestraFilas"+i).show();
       }
 
       $("#formatoPartidas").val(10);
-      $("#contadorSubtotal").val(25);
+      $("#contadorSubtotal").val(40);
     }
     else if (valor==10){
       // alert("Su valor es de 10!!!");
-      for (var i = 11; i <= 25; i++) {
+      for (var i = 11; i <= 40; i++) {
         $("#muestraFilas"+i).hide();
       }
-      $("#formatoPartidas").val(25);
+      $("#formatoPartidas").val(40);
       $("#contadorSubtotal").val(10);
 
     }

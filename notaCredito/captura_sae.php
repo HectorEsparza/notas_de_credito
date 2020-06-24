@@ -219,7 +219,7 @@
                         <td align='center'><?= $devolucion[$i]?></td>
                         <td align='center'><?= $factura?></td>
                         <td rowspan=<?=tamanoTabla($cantidad)?> colspan=2 align='center'>
-                        <textarea id="motivo" name='motivo' rows=8 cols=40 style='font-size:20px; font-type:Arial' readonly><?= $motivo . " \n\nObservaciones:\n" . strtolower($observaciones)?></textarea></td>
+                        <textarea id="motivo" name='motivo' rows=8 cols=40 style='font-size:20px; font-family:Arial' readonly><?= $motivo . " \n\nObservaciones:\n" . strtolower($observaciones)?></textarea></td>
                         <td align='center'><?= "$" . number_format($costo[$i], 2, ".", ",")?></td>
                         <td align='center'><?= "$" . number_format($importe[$i], 2, ".", ",")?></td>
                         <td align='center'><?= $descuento . "%"?></td>
@@ -330,7 +330,7 @@
                       <td align='center'><?= $devolucion[$i]?></td>
                       <td align='center'><?= $factura?></td>
                       <td rowspan=<?=tamanoTabla($cantidad)?> colspan=2 align='center'>
-                      <textarea id="motivo" name='motivo' rows=8 cols=40 style='font-size:20px; font-type:Arial' readonly><?= $motivo . " \n\nObservaciones:\n" . strtolower($observaciones)?></textarea></td>
+                      <textarea id="motivo" name='motivo' rows=8 cols=40 style='font-size:20px; font-family:Arial' readonly><?= $motivo . " \n\nObservaciones:\n" . strtolower($observaciones)?></textarea></td>
                       <td align='center'><?= "$" . number_format($costo[$i], 2, ".", ",")?></td>
                       <td align='center'><?= "$" . number_format($importe[$i], 2, ".", ",")?></td>
                       <td align='center'><?= $descuento . "%"?></td>
@@ -464,7 +464,7 @@
                           <td align='center'><?= $devolucion[$i]?></td>
                           <td align='center'><?= $factura?></td>
                           <td rowspan=<?=tamanoTabla($cantidad)?> colspan=2 align='center'>
-                          <textarea id="motivo" name='motivo' rows=8 cols=40 style='font-size:20px; font-type:Arial' readonly><?= $motivo . " \n\nObservaciones:\n" . strtolower($observaciones)?></textarea></td>
+                          <textarea id="motivo" name='motivo' rows=8 cols=40 style='font-size:20px; font-family:Arial' readonly><?= $motivo . " \n\nObservaciones:\n" . strtolower($observaciones)?></textarea></td>
                           <td align='center'><?= "$" . number_format($costo[$i], 2, ".", ",")?></td>
                           <td align='center'><?= "$" . number_format($importe[$i], 2, ".", ",")?></td>
                           <td align='center'><?= $descuento . "%"?></td>
@@ -576,7 +576,7 @@
                           <td align='center'><?= $devolucion[$i]?></td>
                           <td align='center'><?= $factura?></td>
                           <td rowspan=<?=tamanoTabla($cantidad)?> colspan=2 align='center'>
-                          <textarea id="motivo" name='motivo' rows=8 cols=40 style='font-size:20px; font-type:Arial' readonly><?= $motivo . " \n\nObservaciones:\n" . strtolower($observaciones)?></textarea></td>
+                          <textarea id="motivo" name='motivo' rows=8 cols=40 style='font-size:20px; font-family:Arial' readonly><?= $motivo . " \n\nObservaciones:\n" . strtolower($observaciones)?></textarea></td>
                           <td align='center'><?= "$" . number_format($costo[$i], 2, ".", ",")?></td>
                           <td align='center'><?= "$" . number_format($importe[$i], 2, ".", ",")?></td>
                           <td align='center'><?= $descuento . "%"?></td>
@@ -701,7 +701,7 @@
 
 
       ?>
-      <script src="ajax/eventos/cierreInactividad.js"></script>
+      <script type="text/javascript" src="../js/cierreInactividad.js"></script>
       <script>
 
             $(document).ready(function(){

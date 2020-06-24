@@ -87,10 +87,10 @@
         <article >
           <table width='75%' border="1" align='left'>
 
-            <?php for ($i=1; $i <=25 ; $i++):?>
+            <?php for ($i=1; $i <=40 ; $i++):?>
               <?php if($i==1): ?>
                 <tr>
-                  <th colspan=12 align='center'>REPORTE DE ENTRADA DE MERCANCIA <input  type="button" class="boton" value=25 id="formatoPartidas"></th>
+                  <th colspan=12 align='center'>REPORTE DE ENTRADA DE MERCANCIA <input  type="button" class="boton" value=40 id="formatoPartidas"></th>
                 </tr>
                 <tr>
                   <th style="width:25px">TIPO</th>
@@ -268,7 +268,7 @@
                 <th colspan=12 align='center'>OBSERVACIONES</th>
               </tr>
               <tr>
-                <td colspan=9 align='center'><textarea name='observaciones' rows=2 cols=50 style='font-size:20px; font-type:Arial' placeholder="Breve descripción..." ></textarea></td>
+                <td colspan=9 align='center'><textarea name='observaciones' rows=2 cols=50 style='font-size:20px; font-family:Arial' placeholder="Breve descripción..." ></textarea></td>
                 <td colspan=3 align='center'><input class="btn btn-primary" type='submit' id='captura' value='Capturar' /></td>
                 <!-- <td align='center'><input type='button' class="btn btn-primary" id='penalizacion' value='10% Penalización' /></td> -->
               </tr>
@@ -309,7 +309,7 @@
   <script src="ajax/eventos/productoNoValido.js"></script>
   <script src="ajax/eventos/productoRepetido.js"></script>
   <script src="ajax/eventos/activaCasillas.js"></script>
-  <script src="ajax/eventos/cierreInactividad.js"></script>
+  <script type="text/javascript" src="../js/cierreInactividad.js"></script>
   <script src="ajax/eventos/clickDescuento.js"></script>
   <script src="ajax/eventos/muestraFilas.js"></script>
 
@@ -327,7 +327,7 @@
     //   console.log(e.defaultPrevented);  // still false
     // }, Modernizr.passiveeventlisteners ? {passive: true} : false);
     var lis = [];
-    for (var i = 1; i <=25; i++)
+    for (var i = 1; i <=40; i++)
     {
       lis[i] = "PRODUCTOS1";
       document.getElementById('lis'+i).value = lis[i];
@@ -451,6 +451,66 @@
           if(document.getElementById('costo25').innerText!="")
           {
             document.getElementById('cost25').value = convertir(document.getElementById('costo25').innerText);
+          }
+          if(document.getElementById('costo26').innerText!="")
+          {
+            document.getElementById('cost26').value = convertir(document.getElementById('costo26').innerText);
+          }
+          if(document.getElementById('costo27').innerText!="")
+          {
+            document.getElementById('cost27').value = convertir(document.getElementById('costo27').innerText);
+          }
+          if(document.getElementById('costo28').innerText!="")
+          {
+            document.getElementById('cost28').value = convertir(document.getElementById('costo28').innerText);
+          }
+          if(document.getElementById('costo29').innerText!="")
+          {
+            document.getElementById('cost29').value = convertir(document.getElementById('costo29').innerText);
+          }
+          if(document.getElementById('costo30').innerText!="")
+          {
+            document.getElementById('cost30').value = convertir(document.getElementById('costo30').innerText);
+          }
+          if(document.getElementById('costo31').innerText!="")
+          {
+            document.getElementById('cost31').value = convertir(document.getElementById('costo31').innerText);
+          }
+          if(document.getElementById('costo32').innerText!="")
+          {
+            document.getElementById('cost32').value = convertir(document.getElementById('costo32').innerText);
+          }
+          if(document.getElementById('costo33').innerText!="")
+          {
+            document.getElementById('cost33').value = convertir(document.getElementById('costo33').innerText);
+          }
+          if(document.getElementById('costo34').innerText!="")
+          {
+            document.getElementById('cost34').value = convertir(document.getElementById('costo34').innerText);
+          }
+          if(document.getElementById('costo35').innerText!="")
+          {
+            document.getElementById('cost35').value = convertir(document.getElementById('costo35').innerText);
+          }
+          if(document.getElementById('costo36').innerText!="")
+          {
+            document.getElementById('cost36').value = convertir(document.getElementById('costo36').innerText);
+          }
+          if(document.getElementById('costo37').innerText!="")
+          {
+            document.getElementById('cost37').value = convertir(document.getElementById('costo37').innerText);
+          }
+          if(document.getElementById('costo38').innerText!="")
+          {
+            document.getElementById('cost38').value = convertir(document.getElementById('costo38').innerText);
+          }
+          if(document.getElementById('costo39').innerText!="")
+          {
+            document.getElementById('cost39').value = convertir(document.getElementById('costo39').innerText);
+          }
+          if(document.getElementById('costo40').innerText!="")
+          {
+            document.getElementById('cost40').value = convertir(document.getElementById('costo40').innerText);
           }
         }
 

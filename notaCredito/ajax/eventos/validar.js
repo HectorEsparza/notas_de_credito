@@ -185,6 +185,81 @@ var formulario = document.getElementsByName('formulario')[0],
           alert("Faltan llenar campos de cantidad o clave");
           e.preventDefault();
         }
+        else if((elementos.cantidad26.value==0&&elementos.clave26.value!="")||(elementos.cantidad26.value!=0&&elementos.clave26.value==""))
+        {
+          alert("Faltan llenar campos de cantidad o clave");
+          e.preventDefault();
+        }
+        else if((elementos.cantidad27.value==0&&elementos.clave27.value!="")||(elementos.cantidad27.value!=0&&elementos.clave27.value==""))
+        {
+          alert("Faltan llenar campos de cantidad o clave");
+          e.preventDefault();
+        }
+        else if((elementos.cantidad28.value==0&&elementos.clave28.value!="")||(elementos.cantidad28.value!=0&&elementos.clave28.value==""))
+        {
+          alert("Faltan llenar campos de cantidad o clave");
+          e.preventDefault();
+        }
+        else if((elementos.cantidad29.value==0&&elementos.clave29.value!="")||(elementos.cantidad29.value!=0&&elementos.clave29.value==""))
+        {
+          alert("Faltan llenar campos de cantidad o clave");
+          e.preventDefault();
+        }
+        else if((elementos.cantidad30.value==0&&elementos.clave30.value!="")||(elementos.cantidad30.value!=0&&elementos.clave30.value==""))
+        {
+          alert("Faltan llenar campos de cantidad o clave");
+          e.preventDefault();
+        }
+        else if((elementos.cantidad31.value==0&&elementos.clave31.value!="")||(elementos.cantidad31.value!=0&&elementos.clave31.value==""))
+        {
+          alert("Faltan llenar campos de cantidad o clave");
+          e.preventDefault();
+        }
+        else if((elementos.cantidad32.value==0&&elementos.clave32.value!="")||(elementos.cantidad32.value!=0&&elementos.clave32.value==""))
+        {
+          alert("Faltan llenar campos de cantidad o clave");
+          e.preventDefault();
+        }
+        else if((elementos.cantidad33.value==0&&elementos.clave33.value!="")||(elementos.cantidad33.value!=0&&elementos.clave33.value==""))
+        {
+          alert("Faltan llenar campos de cantidad o clave");
+          e.preventDefault();
+        }
+        else if((elementos.cantidad34.value==0&&elementos.clave34.value!="")||(elementos.cantidad34.value!=0&&elementos.clave34.value==""))
+        {
+          alert("Faltan llenar campos de cantidad o clave");
+          e.preventDefault();
+        }
+        else if((elementos.cantidad35.value==0&&elementos.clave35.value!="")||(elementos.cantidad35.value!=0&&elementos.clave35.value==""))
+        {
+          alert("Faltan llenar campos de cantidad o clave");
+          e.preventDefault();
+        }
+        else if((elementos.cantidad36.value==0&&elementos.clave36.value!="")||(elementos.cantidad36.value!=0&&elementos.clave36.value==""))
+        {
+          alert("Faltan llenar campos de cantidad o clave");
+          e.preventDefault();
+        }
+        else if((elementos.cantidad37.value==0&&elementos.clave37.value!="")||(elementos.cantidad37.value!=0&&elementos.clave37.value==""))
+        {
+          alert("Faltan llenar campos de cantidad o clave");
+          e.preventDefault();
+        }
+        else if((elementos.cantidad38.value==0&&elementos.clave38.value!="")||(elementos.cantidad38.value!=0&&elementos.clave38.value==""))
+        {
+          alert("Faltan llenar campos de cantidad o clave");
+          e.preventDefault();
+        }
+        else if((elementos.cantidad39.value==0&&elementos.clave39.value!="")||(elementos.cantidad39.value!=0&&elementos.clave39.value==""))
+        {
+          alert("Faltan llenar campos de cantidad o clave");
+          e.preventDefault();
+        }
+        else if((elementos.cantidad40.value==0&&elementos.clave40.value!="")||(elementos.cantidad40.value!=0&&elementos.clave40.value==""))
+        {
+          alert("Faltan llenar campos de cantidad o clave");
+          e.preventDefault();
+        }
 
 
       }

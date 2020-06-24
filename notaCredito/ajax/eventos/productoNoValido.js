@@ -355,7 +355,216 @@ $(document).ready(function(){
             //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
           }
       });
+    $("#clave26").change(function(){
 
+      var clave = $("#clave26").val();
+      var costo = $("#importeNota26").text();
+
+      if(costo==""&&clave!=""){
+        alert("Error: La clave "+clave+" no existe en la base de datos");
+        $("#clave26").val("");
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+      else{
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+    });
+    $("#clave27").change(function(){
+
+      var clave = $("#clave27").val();
+      var costo = $("#importeNota27").text();
+
+      if(costo==""&&clave!=""){
+        alert("Error: La clave "+clave+" no existe en la base de datos");
+        $("#clave27").val("");
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+      else{
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+    });
+    $("#clave28").change(function(){
+
+      var clave = $("#clave28").val();
+      var costo = $("#importeNota28").text();
+
+      if(costo==""&&clave!=""){
+        alert("Error: La clave "+clave+" no existe en la base de datos");
+        $("#clave28").val("");
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+      else{
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+    });
+    $("#clave29").change(function(){
+
+      var clave = $("#clave29").val();
+      var costo = $("#importeNota29").text();
+
+      if(costo==""&&clave!=""){
+        alert("Error: La clave "+clave+" no existe en la base de datos");
+        $("#clave29").val("");
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+      else{
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+    });
+    $("#clave30").change(function(){
+
+      var clave = $("#clave30").val();
+      var costo = $("#importeNota30").text();
+
+      if(costo==""&&clave!=""){
+        alert("Error: La clave "+clave+" no existe en la base de datos");
+        $("#clave30").val("");
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+      else{
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+    });
+    $("#clave31").change(function(){
+
+      var clave = $("#clave31").val();
+      var costo = $("#importeNota31").text();
+
+      if(costo==""&&clave!=""){
+        alert("Error: La clave "+clave+" no existe en la base de datos");
+        $("#clave31").val("");
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+      else{
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+    });
+    $("#clave32").change(function(){
+
+      var clave = $("#clave32").val();
+      var costo = $("#importeNota32").text();
+
+      if(costo==""&&clave!=""){
+        alert("Error: La clave "+clave+" no existe en la base de datos");
+        $("#clave32").val("");
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+      else{
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+    });
+    $("#clave33").change(function(){
+
+      var clave = $("#clave33").val();
+      var costo = $("#importeNota33").text();
+
+      if(costo==""&&clave!=""){
+        alert("Error: La clave "+clave+" no existe en la base de datos");
+        $("#clave33").val("");
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+      else{
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+    });
+    $("#clave34").change(function(){
+
+      var clave = $("#clave34").val();
+      var costo = $("#importeNota34").text();
+
+      if(costo==""&&clave!=""){
+        alert("Error: La clave "+clave+" no existe en la base de datos");
+        $("#clave34").val("");
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+      else{
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+    });
+    $("#clave35").change(function(){
+
+      var clave = $("#clave35").val();
+      var costo = $("#importeNota35").text();
+
+      if(costo==""&&clave!=""){
+        alert("Error: La clave "+clave+" no existe en la base de datos");
+        $("#clave35").val("");
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+      else{
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+    });
+    $("#clave36").change(function(){
+
+      var clave = $("#clave36").val();
+      var costo = $("#importeNota36").text();
+
+      if(costo==""&&clave!=""){
+        alert("Error: La clave "+clave+" no existe en la base de datos");
+        $("#clave36").val("");
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+      else{
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+    });
+    $("#clave37").change(function(){
+
+      var clave = $("#clave37").val();
+      var costo = $("#importeNota37").text();
+
+      if(costo==""&&clave!=""){
+        alert("Error: La clave "+clave+" no existe en la base de datos");
+        $("#clave37").val("");
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+      else{
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+    });
+    $("#clave38").change(function(){
+
+      var clave = $("#clave38").val();
+      var costo = $("#importeNota38").text();
+
+      if(costo==""&&clave!=""){
+        alert("Error: La clave "+clave+" no existe en la base de datos");
+        $("#clave38").val("");
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+      else{
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+    });
+    $("#clave39").change(function(){
+
+      var clave = $("#clave39").val();
+      var costo = $("#importeNota39").text();
+
+      if(costo==""&&clave!=""){
+        alert("Error: La clave "+clave+" no existe en la base de datos");
+        $("#clave39").val("");
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+      else{
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+    });
+    $("#clave40").change(function(){
+
+      var clave = $("#clave40").val();
+      var costo = $("#importeNota40").text();
+
+      if(costo==""&&clave!=""){
+        alert("Error: La clave "+clave+" no existe en la base de datos");
+        $("#clave40").val("");
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+      else{
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+    });
 
 
 

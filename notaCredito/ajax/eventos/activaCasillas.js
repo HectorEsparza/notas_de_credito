@@ -425,15 +425,270 @@ $(document).ready(function(){
     });
 
     $("#clave25").change(function(){
-          if($("#clave25").val()!=""){
-            $("#devolucion25").prop("required", true);
-            //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
-          }
-          else{
-            $("#devolucion25").prop("required", false);
-            //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())-1);
-          }
+      if($("#clave25").val()!=""){
+        $("#clave26").prop("readonly", false);
+        $("#cantidad26").prop("readonly", false);
+        $("#devolucion26").prop("disabled", false);
+        $("#devolucion25").prop("required", true);
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+      else{
+        $("#clave26").prop("readonly", true);
+        $("#cantidad26").prop("readonly", true);
+        $("#devolucion26").prop("disabled", true);
+        $("#devolucion25").prop("required", false);
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())-1);
+      }
     });
 
+    $("#clave26").change(function(){
+      if($("#clave26").val()!=""){
+        $("#clave27").prop("readonly", false);
+        $("#cantidad27").prop("readonly", false);
+        $("#devolucion27").prop("disabled", false);
+        $("#devolucion26").prop("required", true);
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+      else{
+        $("#clave27").prop("readonly", true);
+        $("#cantidad27").prop("readonly", true);
+        $("#devolucion27").prop("disabled", true);
+        $("#devolucion26").prop("required", false);
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())-1);
+      }
+    });
 
+    $("#clave27").change(function(){
+      if($("#clave27").val()!=""){
+        $("#clave28").prop("readonly", false);
+        $("#cantidad28").prop("readonly", false);
+        $("#devolucion28").prop("disabled", false);
+        $("#devolucion27").prop("required", true);
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+      else{
+        $("#clave28").prop("readonly", true);
+        $("#cantidad28").prop("readonly", true);
+        $("#devolucion28").prop("disabled", true);
+        $("#devolucion27").prop("required", false);
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())-1);
+      }
+    });
+
+    $("#clave28").change(function(){
+      if($("#clave28").val()!=""){
+        $("#clave29").prop("readonly", false);
+        $("#cantidad29").prop("readonly", false);
+        $("#devolucion29").prop("disabled", false);
+        $("#devolucion28").prop("required", true);
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+      else{
+        $("#clave29").prop("readonly", true);
+        $("#cantidad29").prop("readonly", true);
+        $("#devolucion29").prop("disabled", true);
+        $("#devolucion28").prop("required", false);
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())-1);
+      }
+    });
+
+    $("#clave29").change(function(){
+      if($("#clave29").val()!=""){
+        $("#clave30").prop("readonly", false);
+        $("#cantidad30").prop("readonly", false);
+        $("#devolucion30").prop("disabled", false);
+        $("#devolucion29").prop("required", true);
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+      else{
+        $("#clave30").prop("readonly", true);
+        $("#cantidad30").prop("readonly", true);
+        $("#devolucion30").prop("disabled", true);
+        $("#devolucion29").prop("required", false);
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())-1);
+      }
+    });
+
+    $("#clave30").change(function(){
+      if($("#clave30").val()!=""){
+        $("#clave31").prop("readonly", false);
+        $("#cantidad31").prop("readonly", false);
+        $("#devolucion31").prop("disabled", false);
+        $("#devolucion30").prop("required", true);
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+      else{
+        $("#clave31").prop("readonly", true);
+        $("#cantidad31").prop("readonly", true);
+        $("#devolucion31").prop("disabled", true);
+        $("#devolucion30").prop("required", false);
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())-1);
+      }
+    });
+
+    $("#clave31").change(function(){
+      if($("#clave31").val()!=""){
+        $("#clave32").prop("readonly", false);
+        $("#cantidad32").prop("readonly", false);
+        $("#devolucion32").prop("disabled", false);
+        $("#devolucion31").prop("required", true);
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+      else{
+        $("#clave32").prop("readonly", true);
+        $("#cantidad32").prop("readonly", true);
+        $("#devolucion32").prop("disabled", true);
+        $("#devolucion31").prop("required", false);
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())-1);
+      }
+    });
+
+    $("#clave32").change(function(){
+      if($("#clave32").val()!=""){
+        $("#clave33").prop("readonly", false);
+        $("#cantidad33").prop("readonly", false);
+        $("#devolucion33").prop("disabled", false);
+        $("#devolucion32").prop("required", true);
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+      else{
+        $("#clave33").prop("readonly", true);
+        $("#cantidad33").prop("readonly", true);
+        $("#devolucion33").prop("disabled", true);
+        $("#devolucion32").prop("required", false);
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())-1);
+      }
+    });
+
+    $("#clave33").change(function(){
+      if($("#clave33").val()!=""){
+        $("#clave34").prop("readonly", false);
+        $("#cantidad34").prop("readonly", false);
+        $("#devolucion34").prop("disabled", false);
+        $("#devolucion33").prop("required", true);
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+      else{
+        $("#clave34").prop("readonly", true);
+        $("#cantidad34").prop("readonly", true);
+        $("#devolucion34").prop("disabled", true);
+        $("#devolucion33").prop("required", false);
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())-1);
+      }
+    });
+
+    $("#clave34").change(function(){
+      if($("#clave34").val()!=""){
+        $("#clave35").prop("readonly", false);
+        $("#cantidad35").prop("readonly", false);
+        $("#devolucion35").prop("disabled", false);
+        $("#devolucion34").prop("required", true);
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+      else{
+        $("#clave35").prop("readonly", true);
+        $("#cantidad35").prop("readonly", true);
+        $("#devolucion35").prop("disabled", true);
+        $("#devolucion34").prop("required", false);
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())-1);
+      }
+    });
+
+    $("#clave35").change(function(){
+      if($("#clave35").val()!=""){
+        $("#clave36").prop("readonly", false);
+        $("#cantidad36").prop("readonly", false);
+        $("#devolucion36").prop("disabled", false);
+        $("#devolucion35").prop("required", true);
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+      else{
+        $("#clave36").prop("readonly", true);
+        $("#cantidad36").prop("readonly", true);
+        $("#devolucion36").prop("disabled", true);
+        $("#devolucion35").prop("required", false);
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())-1);
+      }
+    });
+
+    $("#clave36").change(function(){
+      if($("#clave36").val()!=""){
+        $("#clave37").prop("readonly", false);
+        $("#cantidad37").prop("readonly", false);
+        $("#devolucion37").prop("disabled", false);
+        $("#devolucion36").prop("required", true);
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+      else{
+        $("#clave37").prop("readonly", true);
+        $("#cantidad37").prop("readonly", true);
+        $("#devolucion37").prop("disabled", true);
+        $("#devolucion36").prop("required", false);
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())-1);
+      }
+    });
+
+    $("#clave37").change(function(){
+      if($("#clave37").val()!=""){
+        $("#clave38").prop("readonly", false);
+        $("#cantidad38").prop("readonly", false);
+        $("#devolucion38").prop("disabled", false);
+        $("#devolucion37").prop("required", true);
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+      else{
+        $("#clave38").prop("readonly", true);
+        $("#cantidad38").prop("readonly", true);
+        $("#devolucion38").prop("disabled", true);
+        $("#devolucion37").prop("required", false);
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())-1);
+      }
+    });
+
+    $("#clave38").change(function(){
+      if($("#clave38").val()!=""){
+        $("#clave39").prop("readonly", false);
+        $("#cantidad39").prop("readonly", false);
+        $("#devolucion39").prop("disabled", false);
+        $("#devolucion38").prop("required", true);
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+      else{
+        $("#clave39").prop("readonly", true);
+        $("#cantidad39").prop("readonly", true);
+        $("#devolucion39").prop("disabled", true);
+        $("#devolucion38").prop("required", false);
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())-1);
+      }
+    });
+
+    $("#clave39").change(function(){
+      if($("#clave39").val()!=""){
+        $("#clave40").prop("readonly", false);
+        $("#cantidad40").prop("readonly", false);
+        $("#devolucion40").prop("disabled", false);
+        $("#devolucion39").prop("required", true);
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+      else{
+        $("#clave40").prop("readonly", true);
+        $("#cantidad40").prop("readonly", true);
+        $("#devolucion40").prop("disabled", true);
+        $("#devolucion39").prop("required", false);
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())-1);
+      }
+    });
+
+    
+
+    $("#clave40").change(function(){
+      if($("#clave40").val()!=""){
+        $("#devolucion40").prop("required", true);
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())+1);
+      }
+      else{
+        $("#devolucion40").prop("required", false);
+        //$("#contadorPenalizacion").val(parseInt($("#contadorPenalizacion").val())-1);
+      }
+    });
 });

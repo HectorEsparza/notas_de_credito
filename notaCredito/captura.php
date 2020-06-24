@@ -18,6 +18,7 @@
 </head>
 <body>
 <?php
+ini_set('max_execution_time', 1500);
 session_start();
 $usuario = $_SESSION['user'];
 

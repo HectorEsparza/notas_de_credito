@@ -88,7 +88,7 @@
 	</div>
 	</section>	
 	<div id="scriptParaCargas"></div>
-<!-- <script type="text/javascript">
+<script type="text/javascript">
 
 			$(document).ready(function(){
 
@@ -99,26 +99,26 @@
 			});
 
 
-      function nuevoFacturas(){
-          setTimeout("location.href='nuevoContadoFacturas.php'",500);
-      }
-	  function nuevoRemisiones(){
-          setTimeout("location.href='nuevoContadoRemisiones.php'",500);
-      }
-	  function visualizar(){
-          setTimeout("location.href='visualizacion.php'",500);
-      }
-	  function ver(folio){
-		  setTimeout("location.href='impresion.php?folio="+folio+"'");
-	  }
-	  function facturas(){
-		  setTimeout("location.href='facturas.php'",500);
-	  }
-	  function facturasSinContado(){
-		  setTimeout("location.href='facturasSinContado.php'",500);
-	  }
+    //   function nuevoFacturas(){
+    //       setTimeout("location.href='nuevoContadoFacturas.php'",500);
+    //   }
+	//   function nuevoRemisiones(){
+    //       setTimeout("location.href='nuevoContadoRemisiones.php'",500);
+    //   }
+	//   function visualizar(){
+    //       setTimeout("location.href='visualizacion.php'",500);
+    //   }
+	//   function ver(folio){
+	// 	  setTimeout("location.href='impresion.php?folio="+folio+"'");
+	//   }
+	//   function facturas(){
+	// 	  setTimeout("location.href='facturas.php'",500);
+	//   }
+	//   function facturasSinContado(){
+	// 	  setTimeout("location.href='facturasSinContado.php'",500);
+	//   }
 
 
-</script> -->
+</script>
 </body>
 </html>

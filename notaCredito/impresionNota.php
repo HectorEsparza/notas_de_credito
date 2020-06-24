@@ -7,6 +7,10 @@
     <link rel="shortcut icon" href="imagenes/favicon.ico" type="image/x-icon" />
     <link href="css/estiloNota.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/verificarSesion.js"></script>
+    <script type="text/javascript" src="../js/cierreSesion.js"></script>
+    <script type="text/javascript" src="../js/cierreInactividad.js"></script>
+    <script type="text/javascript" src="../js/visualizacion.js"></script>
     <title>Impresión</title>
     <style>
       a{
@@ -136,22 +140,20 @@
             <table witd='85%' align='center' border=0>
               <tr>
               <td>
-              <input class="btn btn-primary" type='submit' id='captura' value='Imprimir' onclick="print();"/>
+              <input class="btn btn-primary" type='button' id='imprimir' value='Imprimir' />
 
               </td>
               <td>
-              <button onclick="nota();" class="btn btn-primary">Nueva Nota</button>
+              <button onclick="nota();" class="btn btn-primary" id="nuevaNota">Nueva Nota</button>
               </td>
               <td>
-              <button onclick="visualizar();" class="btn btn-primary">Visualizar Notas</button>
+              <button class="btn btn-primary" id="visualizacion">Visualizar Notas</button>
               </td>
               <td>
               <button onclick="cancela();" class="btn btn-primary">Cancela Nota</button>
               </td>
               <td>
-              <form name="formulario2" action="cierre.php" method="post">
-              <input class="btn btn-primary" type="submit" value="Cerrar Sesion" />
-              </form>
+              <input class="btn btn-primary" type="button" id="cierreSesion" value="Cierra Sesión" />
               </td>
               </tr>
             </table>
@@ -201,8 +203,8 @@
                                  <td align='center'><?= $clave[$i]?></td>
                                  <td align='center'><?= $devolucion[$i]?></td>
                                  <td align='center'><?= $factura?></td>
-                                 <td rowspan=<?=tamanoTabla($cantidad)?> colspan=2 align='center'>
-                                 <textarea id="motivo" name='motivo' rows=8 cols=40 style='font-size:20px; font-type:Arial' readonly><?= $motivo . " \n\nObservaciones:\n" . strtolower($observaciones)?></textarea></td>
+                                 <td rowspan=<?=tamanoTabla($cantidad)-1?> colspan=2 align='center'>
+                                 <textarea id="motivo" name='motivo' rows=8 cols=40 style='font-size:20px; font-family:Arial' readonly><?= $motivo . " \n\nObservaciones:\n" . strtolower($observaciones)?></textarea></td>
                                  <td align='center'><?= "$" . number_format($costo[$i], 2, ".", ",")?></td>
                                  <td align='center'><?= "$" . number_format($importe[$i], 2, ".", ",")?></td>
                                  <td align='center'><?= $descuento . "%"?></td>
@@ -220,17 +222,6 @@
                                  <td align='center'><?= "$" . number_format($subtotales[$i], 2, ".", ",")?></td>
                            </tr>
                          <?php endif?>
-                      <?php else:?>
-                        <tr>
-                              <td>&nbsp;</td>
-                              <td>&nbsp;</td>
-                              <td>&nbsp;</td>
-                              <td>&nbsp;</td>
-                              <td>&nbsp;</td>
-                              <td>&nbsp;</td>
-                              <td>&nbsp;</td>
-                              <td>&nbsp;</td>
-                         </tr>
                        <?php endif?>
                       <?php endfor?>
 
@@ -306,8 +297,8 @@
                                      <td align='center'><?= $clave[$i]?></td>
                                      <td align='center'><?= $devolucion[$i]?></td>
                                      <td align='center'><?= $factura?></td>
-                                     <td rowspan=<?=tamanoTabla($cantidad)?> colspan=2 align='center'>
-                                     <textarea id="motivo" name='motivo' rows=8 cols=40 style='font-size:20px; font-type:Arial' readonly><?= $motivo . " \n\nObservaciones:\n" . strtolower($observaciones)?></textarea></td>
+                                     <td rowspan=<?=tamanoTabla($cantidad-1)?> colspan=2 align='center'>
+                                     <textarea id="motivo" name='motivo' rows=8 cols=40 style='font-size:20px; font-family:Arial' readonly><?= $motivo . " \n\nObservaciones:\n" . strtolower($observaciones)?></textarea></td>
                                      <td align='center'><?= "$" . number_format($costo[$i], 2, ".", ",")?></td>
                                      <td align='center'><?= "$" . number_format($importe[$i], 2, ".", ",")?></td>
                                      <td align='center'><?= $descuento . "%"?></td>
@@ -325,17 +316,6 @@
                                      <td align='center'><?= "$" . number_format($subtotales[$i], 2, ".", ",")?></td>
                                </tr>
                              <?php endif?>
-                          <?php else:?>
-                            <tr>
-                                  <td>&nbsp;</td>
-                                  <td>&nbsp;</td>
-                                  <td>&nbsp;</td>
-                                  <td>&nbsp;</td>
-                                  <td>&nbsp;</td>
-                                  <td>&nbsp;</td>
-                                  <td>&nbsp;</td>
-                                  <td>&nbsp;</td>
-                             </tr>
                            <?php endif?>
                           <?php endfor?>
 
@@ -371,38 +351,46 @@
 
                       </table>
                   <? endif?>
-                  <?if(tamanoTabla($cantidad)>15 && $j==1) :?>
-                    <br /><br /><br /><br /><br /><br /><br /><br />
-                    <br /><br /><br /><br /><br /><br /><br /><br />
-                    <br /><br /><br /><br /><br /><br /><br /><br />
-                    <br /><br /><br /><br /><br />
+                  <?if(tamanoTabla($cantidad)<=11 && $j==1) :?>
+    
+                  <?elseif(tamanoTabla($cantidad)>11 && tamanoTabla($cantidad)<=16 && $j==1) :?>
+                    <br /><br /><br /><br /><br /><br />
+                    <br /><br /><br /><br /><br /><br />
+                    <br /><br /><br /><br /><br /><br />
+                    <br /><br /><br /><br /><br /><br />
+                  
+                  <?elseif(tamanoTabla($cantidad)>16 && tamanoTabla($cantidad)<=30 && $j==1) :?>
+                    <br /><br /><br /><br /><br /><br />
+                    <br /><br /><br /><br /><br /><br />
+                    <br /><br /><br /><br /><br /><br />
+                    <br /><br /><br /><br /><br /><br />
+                    <br /><br /><br />
+                  <?elseif(tamanoTabla($cantidad)>31 && tamanoTabla($cantidad)<=40 && $j==1) :?>
+                    <br /><br /><br /><br /><br /><br />
+                    <br /><br /><br /><br /><br /><br />
                   <? else :?>
-                    <br />
+                    <br /><br /><br /><br /><br />
                   <? endif ?>
               <? endfor ?>
 
           <? else :?>
-              <table witd='85%' align='center' border=0>
-
+            <table witd='85%' align='center' border=0>
               <tr>
               <td>
-              <input class="btn btn-primary" type='submit' id='captura' value='Imprimir' onclick="imprime();"/>
+              <input class="btn btn-primary" type='button' id='imprimir' value='Imprimir' />
 
               </td>
               <td>
-              <button onclick="nota();" class="btn btn-primary">Nueva Nota</button>
+              <button onclick="nota();" class="btn btn-primary" id="nuevaNota">Nueva Nota</button>
               </td>
               <td>
-              <button onclick="visualizar();" class="btn btn-primary">Visualizar Notas</button>
+              <button class="btn btn-primary" id="visualizacion">Visualizar Notas</button>
               </td>
               <td>
-              <form name="formulario2" action="cierre.php" method="post">
-              <input class="btn btn-primary" type="submit" value="Cerrar Sesion" />
-              </form>
+              <input class="btn btn-primary" type="button" id="cierreSesion" value="Cierra Sesión" />
               </td>
               </tr>
-
-              </table>
+            </table>
               <? for($j=1; $j<=2; $j++) :?>
                   <? if($tipo=="Factor 3"||$tipo=="Entrada Caja Factor 3") :?>
                       <table width='20%' align='center' border=1>
@@ -450,8 +438,8 @@
                                      <td align='center'><?= $clave[$i]?></td>
                                      <td align='center'><?= $devolucion[$i]?></td>
                                      <td align='center'><?= $factura?></td>
-                                     <td rowspan=<?=tamanoTabla($cantidad)?> colspan=2 align='center'>
-                                     <textarea id="motivo" name='motivo' rows=8 cols=40 style='font-size:20px; font-type:Arial' readonly><?= $motivo . " \n\nObservaciones:\n" . strtolower($observaciones)?></textarea></td>
+                                     <td rowspan=<?=tamanoTabla($cantidad)-1?> colspan=2 align='center'>
+                                     <textarea id="motivo" name='motivo' rows=8 cols=40 style='font-size:20px; font-family:Arial' readonly><?= $motivo . " \n\nObservaciones:\n" . strtolower($observaciones)?></textarea></td>
                                      <td align='center'><?= "$" . number_format($costo[$i], 2, ".", ",")?></td>
                                      <td align='center'><?= "$" . number_format($importe[$i], 2, ".", ",")?></td>
                                      <td align='center'><?= $descuento . "%"?></td>
@@ -469,17 +457,6 @@
                                      <td align='center'><?= "$" . number_format($subtotales[$i], 2, ".", ",")?></td>
                                </tr>
                              <?php endif?>
-                          <?php else:?>
-                            <tr>
-                                  <td>&nbsp;</td>
-                                  <td>&nbsp;</td>
-                                  <td>&nbsp;</td>
-                                  <td>&nbsp;</td>
-                                  <td>&nbsp;</td>
-                                  <td>&nbsp;</td>
-                                  <td>&nbsp;</td>
-                                  <td>&nbsp;</td>
-                             </tr>
                            <?php endif?>
                           <?php endfor?>
 
@@ -557,7 +534,7 @@
                               <td align='center'><?= $devolucion[$i]?></td>
                               <td align='center'><?= $factura?></td>
                               <td rowspan=<?=tamanoTabla($cantidad)?> colspan=2 align='center'>
-                              <textarea id="motivo" name='motivo' rows=8 cols=40 style='font-size:20px; font-type:Arial' readonly><?= $motivo . " \n\nObservaciones:\n" . strtolower($observaciones)?></textarea></td>
+                              <textarea id="motivo" name='motivo' rows=8 cols=40 style='font-size:20px; font-family:Arial' readonly><?= $motivo . " \n\nObservaciones:\n" . strtolower($observaciones)?></textarea></td>
                               <td align='center'><?= "$" . number_format($costo[$i], 2, ".", ",")?></td>
                               <td align='center'><?= "$" . number_format($importe[$i], 2, ".", ",")?></td>
                               <td align='center'><?= $descuento . "%"?></td>
@@ -575,7 +552,7 @@
                               <td align='center'><?= "$" . number_format($subtotales[$i], 2, ".", ",")?></td>
                         </tr>
                       <?php endif?>
-                      <?php else:?>
+                      <?php else :?>
                       <tr>
                            <td>&nbsp;</td>
                            <td>&nbsp;</td>
@@ -621,23 +598,36 @@
 
                       </table>
                       <br /><br />
+  
                   <? endif ?>
-                  <?if(tamanoTabla($cantidad)>15 && $j==1) :?>
-                    <br /><br /><br /><br /><br /><br /><br /><br />
-                    <br /><br /><br /><br /><br /><br /><br /><br />
-                    <br /><br /><br /><br /><br /><br /><br /><br />
-                    <br /><br /><br /><br /><br />
+                  <?if(tamanoTabla($cantidad)<=11 && $j==1) :?>
+    
+                  <?elseif(tamanoTabla($cantidad)>11 && tamanoTabla($cantidad)<=16 && $j==1) :?>
+                    <br /><br /><br /><br /><br /><br />
+                    <br /><br /><br /><br /><br /><br />
+                    <br /><br /><br /><br /><br /><br />
+                    <br /><br /><br /><br /><br /><br />
+                  
+                  <?elseif(tamanoTabla($cantidad)>16 && tamanoTabla($cantidad)<=30 && $j==1) :?>
+                    <br /><br /><br /><br /><br /><br />
+                    <br /><br /><br /><br /><br /><br />
+                    <br /><br /><br /><br /><br /><br />
+                    <br /><br /><br /><br /><br /><br />
+                    <br /><br /><br />
+                  <?elseif(tamanoTabla($cantidad)>31 && tamanoTabla($cantidad)<=40 && $j==1) :?>
+                    <br /><br /><br /><br /><br /><br />
+                    <br /><br /><br /><br /><br /><br />
                   <? else :?>
-                    <br />
+                    <br /><br /><br /><br /><br />
                   <? endif ?>
               <? endfor ?>
-          <?endif ?>
+          <?php endif ?>
           <?php
 
 
 
 
-          }
+      }
           catch (Exception $e)
           {
             $mensaje = $e->GetMessage();
@@ -658,7 +648,7 @@
 
           ?>
 
-          <script src="ajax/eventos/cierreInactividad.js"></script>
+          <script type="text/javascript" src="../js/cierreInactividad.js"></script>
           <script>
             function saludo(){
               alert("Hola Buenos Días!!!");
@@ -688,6 +678,19 @@
               // alert(texto.value);
               print( texto.value );
             }
+            $(document).ready(function(){
+              $("#imprimir").click(function(){
+                $("#imprimir").hide();
+                $("#nuevaNota").hide();
+                $("#visualizacion").hide();
+                $("#cierreSesion").hide();
+                print();
+                $("#imprimir").show();
+                $("#nuevaNota").show();
+                $("#visualizacion").show();
+                $("#cierreSesion").show();
+              });
+            });
           </script>
           </body>
           </html>

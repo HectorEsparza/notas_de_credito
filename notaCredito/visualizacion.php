@@ -87,7 +87,7 @@
 <script src="ajax/js/bootstrap.min.js"></script>
 <script src="ajax/js/paginator.min.js"></script>
 <script src="ajax/js/mainNotas.js"></script>
-<script src="ajax/eventos/cierreInactividad.js"></script>
+<script type="text/javascript" src="../js/cierreInactividad.js"></script>
 
 
 <script type="text/javascript">

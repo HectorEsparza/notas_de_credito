@@ -538,4 +538,349 @@ $(document).ready(function(){
 
     });
 
+    $("#clave26").change(function(){
+
+      var flag=0;
+
+      var valor = document.getElementById('clave26').value;
+      for (var i = 1; i<=26; i++) {
+        if(i!=26){
+          if(valor==document.getElementById('clave'+i).value){
+            flag=1;
+          }
+        }
+      }
+
+      if(flag==1){
+        alert("La clave de este producto ya ha sido capturada, por favor verificalo");
+        $("#clave26").val("");
+        $("#costo26").text("");
+        $("#importeNota26").text("");
+        $("#subtotal26").text("");
+      }
+
+    });
+
+    $("#clave27").change(function(){
+
+      var flag=0;
+
+      var valor = document.getElementById('clave27').value;
+      for (var i = 1; i<=27; i++) {
+        if(i!=27){
+          if(valor==document.getElementById('clave'+i).value){
+            flag=1;
+          }
+        }
+      }
+
+      if(flag==1){
+        alert("La clave de este producto ya ha sido capturada, por favor verificalo");
+        $("#clave27").val("");
+        $("#costo27").text("");
+        $("#importeNota27").text("");
+        $("#subtotal27").text("");
+      }
+
+    });
+
+    $("#clave28").change(function(){
+
+      var flag=0;
+
+      var valor = document.getElementById('clave28').value;
+      for (var i = 1; i<=28; i++) {
+        if(i!=28){
+          if(valor==document.getElementById('clave'+i).value){
+            flag=1;
+          }
+        }
+      }
+
+      if(flag==1){
+        alert("La clave de este producto ya ha sido capturada, por favor verificalo");
+        $("#clave28").val("");
+        $("#costo28").text("");
+        $("#importeNota28").text("");
+        $("#subtotal28").text("");
+      }
+
+    });
+
+    $("#clave29").change(function(){
+
+      var flag=0;
+
+      var valor = document.getElementById('clave29').value;
+      for (var i = 1; i<=29; i++) {
+        if(i!=29){
+          if(valor==document.getElementById('clave'+i).value){
+            flag=1;
+          }
+        }
+      }
+
+      if(flag==1){
+        alert("La clave de este producto ya ha sido capturada, por favor verificalo");
+        $("#clave29").val("");
+        $("#costo29").text("");
+        $("#importeNota29").text("");
+        $("#subtotal29").text("");
+      }
+
+    });
+
+    $("#clave30").change(function(){
+
+      var flag=0;
+
+      var valor = document.getElementById('clave30').value;
+      for (var i = 1; i<=30; i++) {
+        if(i!=30){
+          if(valor==document.getElementById('clave'+i).value){
+            flag=1;
+          }
+        }
+      }
+
+      if(flag==1){
+        alert("La clave de este producto ya ha sido capturada, por favor verificalo");
+        $("#clave30").val("");
+        $("#costo30").text("");
+        $("#importeNota30").text("");
+        $("#subtotal30").text("");
+      }
+
+    });
+
+    $("#clave31").change(function(){
+
+      var flag=0;
+
+      var valor = document.getElementById('clave31').value;
+      for (var i = 1; i<=31; i++) {
+        if(i!=31){
+          if(valor==document.getElementById('clave'+i).value){
+            flag=1;
+          }
+        }
+      }
+
+      if(flag==1){
+        alert("La clave de este producto ya ha sido capturada, por favor verificalo");
+        $("#clave31").val("");
+        $("#costo31").text("");
+        $("#importeNota31").text("");
+        $("#subtotal31").text("");
+      }
+
+    });
+
+    $("#clave32").change(function(){
+
+      var flag=0;
+
+      var valor = document.getElementById('clave32').value;
+      for (var i = 1; i<=32; i++) {
+        if(i!=32){
+          if(valor==document.getElementById('clave'+i).value){
+            flag=1;
+          }
+        }
+      }
+
+      if(flag==1){
+        alert("La clave de este producto ya ha sido capturada, por favor verificalo");
+        $("#clave32").val("");
+        $("#costo32").text("");
+        $("#importeNota32").text("");
+        $("#subtotal32").text("");
+      }
+
+    });
+
+    $("#clave33").change(function(){
+
+      var flag=0;
+
+      var valor = document.getElementById('clave33').value;
+      for (var i = 1; i<=33; i++) {
+        if(i!=33){
+          if(valor==document.getElementById('clave'+i).value){
+            flag=1;
+          }
+        }
+      }
+
+      if(flag==1){
+        alert("La clave de este producto ya ha sido capturada, por favor verificalo");
+        $("#clave33").val("");
+        $("#costo33").text("");
+        $("#importeNota33").text("");
+        $("#subtotal33").text("");
+      }
+
+    });
+
+    $("#clave34").change(function(){
+
+      var flag=0;
+
+      var valor = document.getElementById('clave34').value;
+      for (var i = 1; i<=34; i++) {
+        if(i!=34){
+          if(valor==document.getElementById('clave'+i).value){
+            flag=1;
+          }
+        }
+      }
+
+      if(flag==1){
+        alert("La clave de este producto ya ha sido capturada, por favor verificalo");
+        $("#clave34").val("");
+        $("#costo34").text("");
+        $("#importeNota34").text("");
+        $("#subtotal34").text("");
+      }
+
+    });
+
+    $("#clave35").change(function(){
+
+      var flag=0;
+
+      var valor = document.getElementById('clave35').value;
+      for (var i = 1; i<=35; i++) {
+        if(i!=35){
+          if(valor==document.getElementById('clave'+i).value){
+            flag=1;
+          }
+        }
+      }
+
+      if(flag==1){
+        alert("La clave de este producto ya ha sido capturada, por favor verificalo");
+        $("#clave35").val("");
+        $("#costo35").text("");
+        $("#importeNota35").text("");
+        $("#subtotal35").text("");
+      }
+
+    });
+
+    $("#clave36").change(function(){
+
+      var flag=0;
+
+      var valor = document.getElementById('clave36').value;
+      for (var i = 1; i<=36; i++) {
+        if(i!=36){
+          if(valor==document.getElementById('clave'+i).value){
+            flag=1;
+          }
+        }
+      }
+
+      if(flag==1){
+        alert("La clave de este producto ya ha sido capturada, por favor verificalo");
+        $("#clave36").val("");
+        $("#costo36").text("");
+        $("#importeNota36").text("");
+        $("#subtotal36").text("");
+      }
+
+    });
+
+    $("#clave37").change(function(){
+
+      var flag=0;
+
+      var valor = document.getElementById('clave37').value;
+      for (var i = 1; i<=37; i++) {
+        if(i!=37){
+          if(valor==document.getElementById('clave'+i).value){
+            flag=1;
+          }
+        }
+      }
+
+      if(flag==1){
+        alert("La clave de este producto ya ha sido capturada, por favor verificalo");
+        $("#clave37").val("");
+        $("#costo37").text("");
+        $("#importeNota37").text("");
+        $("#subtotal37").text("");
+      }
+
+    });
+
+    $("#clave38").change(function(){
+
+      var flag=0;
+
+      var valor = document.getElementById('clave38').value;
+      for (var i = 1; i<=38; i++) {
+        if(i!=38){
+          if(valor==document.getElementById('clave'+i).value){
+            flag=1;
+          }
+        }
+      }
+
+      if(flag==1){
+        alert("La clave de este producto ya ha sido capturada, por favor verificalo");
+        $("#clave38").val("");
+        $("#costo38").text("");
+        $("#importeNota38").text("");
+        $("#subtotal38").text("");
+      }
+
+    });
+
+    $("#clave39").change(function(){
+
+      var flag=0;
+
+      var valor = document.getElementById('clave39').value;
+      for (var i = 1; i<=39; i++) {
+        if(i!=39){
+          if(valor==document.getElementById('clave'+i).value){
+            flag=1;
+          }
+        }
+      }
+
+      if(flag==1){
+        alert("La clave de este producto ya ha sido capturada, por favor verificalo");
+        $("#clave39").val("");
+        $("#costo39").text("");
+        $("#importeNota39").text("");
+        $("#subtotal39").text("");
+      }
+
+    });
+
+    $("#clave40").change(function(){
+
+      var flag=0;
+
+      var valor = document.getElementById('clave40').value;
+      for (var i = 1; i<=40; i++) {
+        if(i!=40){
+          if(valor==document.getElementById('clave'+i).value){
+            flag=1;
+          }
+        }
+      }
+
+      if(flag==1){
+        alert("La clave de este producto ya ha sido capturada, por favor verificalo");
+        $("#clave40").val("");
+        $("#costo40").text("");
+        $("#importeNota40").text("");
+        $("#subtotal40").text("");
+      }
+
+    });
+
 });
