@@ -21,7 +21,7 @@
     $resultado->closeCursor();
 
 
-    if($sae==""||$tipo=="Cambio Físico"||$tipo=="Muestra"){
+    if($sae==""||$tipo=="Cambio Físico"||$tipo=="Muestra"||$tipo=="Factor 3"||$tipo=="Entrada Caja Factor 3"){
       $base = conexion_local();
       $consulta = "UPDATE NOTAS SET NOTASAE=?, STATUS=? WHERE FOLIOINTERNO=?";
       $resultado = $base->prepare($consulta);

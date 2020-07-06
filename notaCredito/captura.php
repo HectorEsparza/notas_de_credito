@@ -84,7 +84,7 @@ for ($i=1; $i <=$cont ; $i++)
 try
 {
 $base = conexion_local();
-$consulta = "SELECT NOMBRE FROM CLIENTES WHERE CLAVE=?";
+$consulta = "SELECT NOMBRE FROM CLIENTE WHERE idCliente=?";
 $resultado = $base->prepare($consulta);
 $resultado->execute(array($cliente));
 $registro = $resultado->fetch(PDO::FETCH_NUM);
@@ -99,6 +99,7 @@ for ($i=1; $i <=$cont ; $i++)
 $sub = subtotal($subtotales);
 $iva = 0;
 $total = $sub;
+
 if($porcentaje!=0){
   $cantidad [] = 1;
   $clave [] = "CARG" . $porcentaje;
@@ -171,8 +172,8 @@ $resultado->closeCursor();
 // echo "Subtotal es: " . $sub . "<br />";
 // echo "Iva es: " . $iva . "<br />";
 // echo "Total es: " . $total . "<br />";
-if($tipo_dev=="Factor 3"||$tipo_dev=="Cambio Físico"||$tipo_dev=="Muestra"){
-  if($tipo_dev=="Factor 3"){
+if($tipo_dev=="Factor 3"||$tipo_dev=="Cambio Físico"||$tipo_dev=="Muestra"||$tipo_dev=="Entrada Caja Factor 3"){
+  if($tipo_dev=="Factor 3"||$tipo_dev=="Entrada Caja Factor 3"){
     $sae = "F3";
   }
   elseif($tipo_dev=="Cambio Físico"){
@@ -216,7 +217,6 @@ else{
   $resultado->execute(array($folio, $nombre, $total, $fecha, "ACTIVA", $cliente, $folioRecepcion, $registro));
   $resultado->closeCursor();
 }
-
 
 header("location:impresionNota.php?folio=". $folio);
 }

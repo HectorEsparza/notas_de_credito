@@ -14,6 +14,7 @@
   	<script type="text/javascript" src="ajax/js/filtro.js"></script>
   	<script type="text/javascript" src="ajax/js/limpia.js"></script>
     <script type="text/javascript" src="ajax/js/limpiaFiltro.js"></script>
+    <script type="text/javascript" src="ajax/eventos/buscarSinSae.js"></script>
   </head>
   <body>
 
@@ -66,7 +67,8 @@
                        <br /><br />
                        <button class="btn btn-primary" onclick="filtro(document.querySelector('.nocliente').value, document.querySelector('.tag').value, document.querySelector('.fecha').value, document.querySelector('.folio').value, document.querySelector('.sae').value);">Buscar</button>
                        <button type="submit" class="btn btn-primary" id="limpiaFiltro">Limpiar Campos</button>
-                       	<input type="button" class="btn btn-primary" onclick="visualizar()" value='Tabla Completa' />
+                       <input type="button" class="btn btn-primary" onclick="visualizar()" value='Tabla Completa' />
+                       <input type="button" class="btn btn-primary" id="buscarSinSae" value='Notas sin SAE' />
 
                   <input type=hidden id="folio" value="<?= $folio?>"/>
               </div>

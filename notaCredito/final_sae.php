@@ -13,7 +13,7 @@ require_once("../funciones.php");
 ?>
 
 <input type="hidden" id="folio" value="<?= $folio?>" />
-<? if($tipo[1]!="pdf"): ?>
+<? if(strtolower($tipo[1])!="pdf"): ?>
     <body onload="mensaje();">
 
       <?
@@ -45,13 +45,13 @@ require_once("../funciones.php");
         else{
           // echo "<h2>Venimos de cancela sae!!!";
           $base = conexion_local();
-          $consulta = "UPDATE NOTAS SET PDF_CANCELADA=?, STATUS=? WHERE FOLIOINTERNO=?";
+          $consulta = "UPDATE NOTAS SET NOTASAE=?, PDF_CANCELADA=?, STATUS=? WHERE FOLIOINTERNO=?";
           $resultado = $base->prepare($consulta);
-          $resultado -> execute(array($nombre, "CANCELADA", $folio));
+          $resultado -> execute(array("CANCELADA", $nombre, "CANCELADA", $folio));
           $resultado->closeCursor();
-          $consulta = "UPDATE NOTAS_VIS SET PDF_CANCELADA=?, STATUS=? WHERE FOLIOINTERNO=?";
+          $consulta = "UPDATE NOTAS_VIS SET NOTASAE=?, PDF_CANCELADA=?, STATUS=? WHERE FOLIOINTERNO=?";
           $resultado = $base->prepare($consulta);
-          $resultado -> execute(array($nombre, "CANCELADA", $folio));
+          $resultado -> execute(array("CANCELADA", $nombre, "CANCELADA", $folio));
           move_uploaded_file($ruta, $destino);
           header("location: sae.php");
         }
@@ -76,3 +76,4 @@ require_once("../funciones.php");
       setTimeout("location.href='sae.php'",500);
     }
 </script>
+

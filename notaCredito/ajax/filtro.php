@@ -259,6 +259,7 @@ function fechaJquery($fecha){
                                   <td class='nulo'><?= fechaJquery($registro[4])?></td>
                                   <td class='nulo'><?= $registro[7]?></td>
                                   <td><button class='modifica' onclick="saludo(document.querySelector('.folio<?= $contador?>').value)">!</button></td>
+                                  <td><button class='modifica' onclick="cancela(document.querySelector('.folio<?= $contador?>').value)">Cancelar</button></td>
                           </tr>
 
                     <? endif ?>
@@ -272,10 +273,9 @@ function fechaJquery($fecha){
                                   <td class='cancelada'><?= "$" . number_format($registro[3], 2, ".", ",")?></td>
                                   <td class='cancelada'><?= fechaJquery($registro[4])?></td>
                                   <td class='cancelada'><?= $registro[7]?></td>
-                                  <td><button class='modifica' onclick="saludo(document.querySelector('.folio<?= $contador?>').value)">!</button></td>
+                                  <td><button class='ver' onclick="vista(document.querySelector('.folio<?= $contador?>').value)">Ver</button></td>
                           </tr>
               <? endif ?>
-
 
               <? $contador++;?>
            <? endwhile?>
