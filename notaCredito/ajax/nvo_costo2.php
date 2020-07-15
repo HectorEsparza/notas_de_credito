@@ -45,6 +45,10 @@ try
       $resultado8 = $base->prepare($consulta8);
       $resultado8->execute(array($clave));
       $registro8 = $resultado8->fetch(PDO::FETCH_NUM);
+      $consulta9 = "SELECT PRECIO FROM PRODUCTOS9 WHERE CLAVEDEARTÍCULO=?";
+      $resultado9 = $base->prepare($consulta9);
+      $resultado9->execute(array($clave));
+      $registro9 = $resultado9->fetch(PDO::FETCH_NUM);
       if($registro1[0]==null)
       {
         $registro1[0]=0;
@@ -77,6 +81,10 @@ try
       {
         $registro8[0]=0;
       }
+      if ($registro9[0]==null)
+      {
+        $registro9[0]=0;
+      }
       $resultado1->closeCursor();
       $resultado2->closeCursor();
       $resultado3->closeCursor();
@@ -85,6 +93,7 @@ try
       $resultado6->closeCursor();
       $resultado7->closeCursor();
       $resultado8->closeCursor();
+      $resultado9->closeCursor();
 
       $base = null;
 
@@ -115,7 +124,7 @@ try
       </td>
     </tr>
     <tr>
-                 <td>Lista ante al 01/03/2020</td>
+                 <td>Lista ante al 13/07/2020</td>
                  <td id='2'><?= "$" . $registro2[0]?></td>
                  <td>
                    <button class='boton' onclick="nvo_costo(document.getElementById('2').innerText,
@@ -128,7 +137,7 @@ try
                  </td>
                </tr>
                <tr>
-                 <td>Lista ante al 01/11/19</td>
+                 <td>Lista ante al 01/03/2020</td>
                  <td id='3'><?= "$" . $registro3[0]?></td>
                  <td>
                    <button class='boton' onclick="nvo_costo(document.getElementById('3').innerText,
@@ -142,7 +151,7 @@ try
                </tr>
                <tr>
                <tr>
-                 <td>Lista ante al 01/04/19</td>
+                 <td>Lista ante al 01/11/19</td>
                  <td id='4'><?= "$" . $registro4[0]?></td>
                  <td>
                    <button class='boton' onclick="nvo_costo(document.getElementById('4').innerText,
@@ -155,7 +164,7 @@ try
                  </td>
                </tr>
                <tr>
-                 <td>Lista ante al 18/03/18</td>
+                 <td>Lista ante al 01/04/19</td>
                  <td id='5'><?= "$" . $registro5[0]?></td>
                  <td><button class='boton' onclick="nvo_costo(document.getElementById('5').innerText,
                  document.getElementById('indice').value, document.getElementById('lista5').value, document.getElementById('user').value);
@@ -167,7 +176,7 @@ try
                  </td>
                </tr>
                <tr>
-                 <td>Lista ante al 01/01/17</td>
+                 <td>Lista ante al 18/03/18</td>
                  <td id='6'><?= "$" . $registro6[0]?></td>
                  <td><button class='boton' onclick="nvo_costo(document.getElementById('6').innerText,
                  document.getElementById('indice').value, document.getElementById('lista6').value, document.getElementById('user').value);
@@ -179,7 +188,7 @@ try
                  </td>
                </tr>
                <tr>
-                 <td>Lista ante al 14/09/16</td>
+                 <td>Lista ante al 01/01/17</td>
                  <td id='7'><?= "$" . $registro7[0]?></td>
                  <td><button class='boton' onclick="nvo_costo(document.getElementById('7').innerText,
                  document.getElementById('indice').value, document.getElementById('lista7').value, document.getElementById('user').value);
@@ -191,7 +200,7 @@ try
                  </td>
                </tr>
                <tr>
-                 <td>Lista SYD</td>
+                 <td>Lista ante al 14/09/16</td>
                  <td id='8'><?= "$" . $registro8[0]?></td>
                  <td><button class='boton' onclick="nvo_costo(document.getElementById('8').innerText,
                  document.getElementById('indice').value, document.getElementById('lista8').value, document.getElementById('user').value);
@@ -200,6 +209,18 @@ try
                  limpiar();">OK</button>
                  <input id='indice' type="hidden"  value="<?= $i?>" />
                  <input id='lista8' type="hidden" value="PRODUCTOS8" />
+                 </td>
+               </tr>
+               <tr>
+                 <td>Lista SYD</td>
+                 <td id='9'><?= "$" . $registro9[0]?></td>
+                 <td><button class='boton' onclick="nvo_costo(document.getElementById('9').innerText,
+                 document.getElementById('indice').value, document.getElementById('lista9').value, document.getElementById('user').value);
+                 nvo_importe(document.getElementById('9').innerText, document.querySelector('.cantidad<?= $i?>').value, <?= $i?>);
+                 nvo_subtotal(document.getElementById('9').innerText, document.getElementById('descuento').innerText, document.querySelector('.cantidad<?= $i?>').value, <?= $i?>);
+                 limpiar();">OK</button>
+                 <input id='indice' type="hidden"  value="<?= $i?>" />
+                 <input id='lista9' type="hidden" value="PRODUCTOS9" />
                  </td>
                </tr>
   </table>
