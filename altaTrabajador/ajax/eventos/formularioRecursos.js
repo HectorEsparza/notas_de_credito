@@ -66,7 +66,7 @@ $(document).ready(function(){
     arreglo = arreglo[arreglo.length-1];
     //alert("Introduciste el archivo "+arreglo+" y el tamaño es de "+arreglo.length);
     arreglo = arreglo.split(".");
-    arreglo = arreglo[1]
+    arreglo = arreglo[1];
     if(arreglo!="pdf"){
       alert("Solamente se permiten archivos PDF");
 
