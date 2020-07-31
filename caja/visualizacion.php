@@ -12,6 +12,7 @@
 	<script type="text/javascript" src="../js/verificarSesion.js"></script>
 	<script type="text/javascript" src="../js/cierreSesion.js"></script>
 	<script type="text/javascript" src="../js/cierreInactividad.js"></script>
+	<script type="text/javascript" src="../js/home.js"></script>
 	<!-- <script type="text/javascript" src="ajax/js/limpia.js"></script> -->
 	<!-- <script type="text/javascript" src="ajax/js/limpiaFiltro.js"></script> -->
 </head>
@@ -149,10 +150,10 @@
 
 			$(document).ready(function(){
 
-									$("#home").click(function(){
+									// $("#home").click(function(){
 
-										setTimeout("location.href='../home.php'", 500);
-									});
+									// 	setTimeout("location.href='../home.php'", 500);
+									// });
 
 				$("#cargar").click(function(){
 					setTimeout("location.href='cargarFacturas.php'", 500);

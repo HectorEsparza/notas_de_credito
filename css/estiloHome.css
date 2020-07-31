@@ -1,0 +1,69 @@
+body{
+    background: #F0EEF0;
+  }
+  #nota{
+    background: #FC6363;
+    color: #000000;
+    width: 150px;
+  }
+  #carta{
+    background: #FCFA63;
+    color: #000000;
+    width: 150px;
+  }
+  #sae{
+    background: #8AFC63;
+    color: #000000;
+    width: 150px;
+  }
+  #nomina{
+    background: #FF69B4;
+    color: #000000;
+    width: 150px;
+  }
+  #pedido{
+    background: #63FCF5;
+    color: #000000;
+    width: 150px;
+  }
+  #compras{
+    background: #FF7F50;
+    color: #000000;
+    width: 150px;
+  }
+  #altas{
+    background: #CE63FC;
+    color: #000000;
+    width: 150px;
+  }
+  #analisis{
+    background: #637EFC;
+    color: #000000;
+    width: 150px;
+  }
+  #caja{
+    background: #9B63FC;
+    color: #000000;
+    width: 150px;
+  }
+  #contado{
+    background: #A6FC63;
+    color: #000000;
+    width: 150px;
+  }
+  #cliente{
+    background: #FCB063;
+    color: #000000;
+    width: 150px;
+  }
+  #imagen{
+    width: 150px;
+    height: 75px;
+  }
+  #ciere{
+    float: right;
+  }
+
+  .btn-primary{
+    margin-bottom: 25px;
+  }

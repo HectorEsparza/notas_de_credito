@@ -21,7 +21,7 @@ $(document).ready(function(){
         return false;
     }
     function inicioEnvio() {
-        console.log("Verificando si se inicio sesión...");
+        console.log("Cerrando sesión...");
     }
 
     function llegada(resultados) {

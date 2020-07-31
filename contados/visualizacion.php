@@ -14,6 +14,7 @@
 	<script type="text/javascript" src="../js/cierreSesion.js"></script>
 	<script type="text/javascript" src="../js/cierreInactividad.js"></script>
 	<script type="text/javascript" src="../js/paginator.min.js"></script>
+	<script type="text/javascript" src="../js/home.js"></script>
 	<script type="text/javascript" src="ajax/js/main.js"></script> 
 	
 </head>
@@ -76,13 +77,13 @@
 
 <script type="text/javascript">
 
-			$(document).ready(function(){
+			// $(document).ready(function(){
 
-									$("#home").click(function(){
+			// 						$("#home").click(function(){
 
-										setTimeout("location.href='../home.php'", 500);
-									});
-			});
+			// 							setTimeout("location.href='../home.php'", 500);
+			// 						});
+			// });
 
 
       function nuevoFacturas(){

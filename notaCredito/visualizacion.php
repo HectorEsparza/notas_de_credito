@@ -11,6 +11,7 @@
 	<script type="text/javascript" src="ajax/js/filtroVentas.js"></script>
 	<script type="text/javascript" src="ajax/js/limpia.js"></script>
 	<script type="text/javascript" src="ajax/js/limpiaFiltro.js"></script>
+	<script type="text/javascript" src="../js/home.js"></script>
 </head>
 <body>
 	<?php session_start();
@@ -110,10 +111,10 @@
 													//alert("Selecciono: "+ui.item.label);
 											}
 									});
-									$("#home").click(function(){
+									// $("#home").click(function(){
 
-										setTimeout("location.href='../home.php'", 500);
-									});
+									// 	setTimeout("location.href='../home.php'", 500);
+									// });
 
 				var abrevia_dias = ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"];
 			  $('#fecha').datepicker({

@@ -14,7 +14,7 @@
 
 
   $base = conexion_local();
-  $consulta = "SELECT * FROM USUARIOS WHERE USUARIO=?";
+  $consulta = "SELECT * FROM USUARIO WHERE USUARIO=?";
   $resultado = $base->prepare($consulta);
   $resultado->execute(array($usuario));
 
