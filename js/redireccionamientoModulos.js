@@ -30,4 +30,8 @@ $(document).ready(function () {
     $("#cliente").click(function () {
         setTimeout("location.href='../clientes/visualizacion.php'", 500);
     });
+
+    $("#factor3").click(function () {
+        setTimeout("location.href='../factor3/visualizacion.php'", 500);
+    });
 });
