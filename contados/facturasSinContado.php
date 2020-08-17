@@ -22,9 +22,9 @@
 	<header class="row">
 		<div class="container col-md-6">
 			<h1 align='center'>
-				Visualización Facturas sin Contado
+				<!-- Visualización Facturas sin Contado
 			</h1>
-			<input type='button' id="home" class="btn btn-primary" style='background:url("imagenes/home3.jpg"); float: left; width: 50px; height: 50px;' />
+			<input type='button' id="home" class="btn btn-primary" style='background:url("imagenes/home3.jpg"); float: left; width: 50px; height: 50px;' /> -->
 			<div align="center"><img src="imagenes/apa.jpg" /></div>
 		</div>
 		<div class="container col-md-6">
