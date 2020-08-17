@@ -1,23 +1,5 @@
 $(document).ready(function(){
-  var formatNumber = {
-     separador: ",", // separador para los miles
-     sepDecimal: '.', // separador para los decimales
-     formatear:function (num){
-     num +='';
-     var splitStr = num.split('.');
-     var splitLeft = splitStr[0];
-     var splitRight = splitStr.length > 1 ? this.sepDecimal + splitStr[1] : '';
-     var regx = /(\d+)(\d{3})/;
-     while (regx.test(splitLeft)) {
-     splitLeft = splitLeft.replace(regx, '$1' + this.separador + '$2');
-     }
-     return this.simbol + splitLeft +splitRight;
-     },
-     new:function(num, simbol){
-     this.simbol = simbol ||'';
-     return this.formatear(num);
-     }
-  }
+  
 
   var abrevia_dias = ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"];
   $('#fecha').datepicker({
@@ -46,7 +28,7 @@ $(document).ready(function(){
         enviar();
     }
     else{
-      alert("Al menos captura un campo");
+      alert("Captura al menos un campo, por favor");
     }
 
   });
@@ -58,18 +40,12 @@ $(document).ready(function(){
     var fechaCorte = $("#fechaCorte").val();
     var pago = $("#pago").val();
     var folio = $("#folio").val();
-    var tipo = $("#tipo").val();
-    // var arreglo = [];
-    // arreglo[0] = factura;
-    // arreglo[1] = cliente;
-    // arreglo[2] = fecha;
-    // alert(factura+" "+cliente+" "+fecha);
+   
     var parametros =
     {
       factura: factura,
       cliente: cliente,
       fecha: fecha,
-      tipo: tipo,
       fechaCorte : fechaCorte,
       pago: pago,
       folio: folio,
@@ -90,83 +66,57 @@ $(document).ready(function(){
     return false;
   }
   function inicioEnvio(){
-      console.log("Cargando...");
+      console.log("Cargando filtro facturas/remisiones...");
   }
 
   function llegada(datos){
+    var contador = Object.keys(datos.facturas).length;
     $("#table").empty();
     $("#paginador").empty();
     $("#exportaExcel").show();
-    if(datos[10]=="conEntrada"){
-      if(datos[0]==0){
+    
+      if(contador==0){
         //alert("No se encontraron datos en la Consulta");
         $('<tr>'+
             '<td colspan="11">No se encontraron datos en la consulta</td>'+
           '</tr>').appendTo($("#table"));
       }
       else{
-        console.log(datos[4][0]+datos[4][1]+datos[4][2]);
-        for(var i = 0; i < datos[0]; i++){
-          if(datos[12][i]!=null){
+        //console.log(datos[4][0]+datos[4][1]+datos[4][2]);
+        for(var i = 0; i < contador; i++){
+          if(datos.fechasCorte[i]!=null){
             $('<tr>'+
-                '<td>'+datos[1][i]+'</td>'+
-                '<td>'+datos[2][i]+'</td>'+
-                '<td>'+datos[3][i]+'</td>'+
-                '<td>'+datos[4][i]+'</td>'+
-                '<td>'+datos[5][i]+'</td>'+
-                '<td>$'+formatNumber.new(datos[6][i])+'</td>'+
-                '<td>'+datos[7][i]+'</td>'+
-                '<td>'+datos[8][i]+'%</td>'+
-                '<td>'+datos[11][i]+'</td>'+
-                '<td>'+datos[12][i]+'</td>'+
-                '<td>'+datos[9][i]+'</td>'+
+                '<td>'+datos.facturas[i]+'</td>'+
+                '<td>'+datos.clientes[i]+'</td>'+
+                '<td>'+datos.nombre[i]+'</td>'+
+                '<td>'+datos.estatus[i]+'</td>'+
+                '<td>'+datos.fechas[i]+'</td>'+
+                '<td>$'+formatNumber.new(datos.importe[i])+'</td>'+
+                '<td>'+datos.vendedor[i]+'</td>'+
+                '<td>'+datos.descuento[i]+'%</td>'+
+                '<td>'+datos.metodos[i]+'</td>'+
+                '<td>'+datos.fechasCorte[i]+'</td>'+
+                '<td>'+datos.entrada[i]+'</td>'+
               '</tr>').appendTo($("#table"));
           }
           else{
             $('<tr>'+
-                '<td>'+datos[1][i]+'</td>'+
-                '<td>'+datos[2][i]+'</td>'+
-                '<td>'+datos[3][i]+'</td>'+
-                '<td>'+datos[4][i]+'</td>'+
-                '<td>'+datos[5][i]+'</td>'+
-                '<td>$'+formatNumber.new(datos[6][i])+'</td>'+
-                '<td>'+datos[7][i]+'</td>'+
-                '<td>'+datos[8][i]+'%</td>'+
-                '<td>'+datos[11][i]+'</td>'+
+                '<td>'+datos.facturas[i]+'</td>'+
+                '<td>'+datos.clientes[i]+'</td>'+
+                '<td>'+datos.nombre[i]+'</td>'+
+                '<td>'+datos.estatus[i]+'</td>'+
+                '<td>'+datos.fechas[i]+'</td>'+
+                '<td>$'+formatNumber.new(datos.importe[i])+'</td>'+
+                '<td>'+datos.vendedor[i]+'</td>'+
+                '<td>'+datos.descuento[i]+'%</td>'+
+                '<td>'+datos.metodos[i]+'</td>'+
                 '<td></td>'+
-                '<td>'+datos[9][i]+'</td>'+
+                '<td>'+datos.entrada[i]+'</td>'+
               '</tr>').appendTo($("#table"));
           }
 
         }
       }
-    }
-    else if(datos[10]=="sinEntrada"){
-      if(datos[0]==0){
-        //alert("No se encontraron datos en la Consulta");
-        $('<tr>'+
-            '<td colspan="11">No se encontraron datos en la consulta</td>'+
-          '</tr>').appendTo($("#table"));
-      }
-      else{
-          //alert("Entramos");
-          for(var i = 0; i < datos[0]; i++){
-            //console.log(datos[4][i].length);
-            if(datos[4][i]=="Emitida" && datos[9][i]==""){
-              $('<tr>'+
-                  '<td>'+datos[1][i]+'</td>'+
-                  '<td>'+datos[2][i]+'</td>'+
-                  '<td>'+datos[3][i]+'</td>'+
-                  '<td>'+datos[4][i]+'</td>'+
-                  '<td>'+datos[5][i]+'</td>'+
-                  '<td>$'+formatNumber.new(datos[6][i])+'</td>'+
-                  '<td>'+datos[7][i]+'</td>'+
-                  '<td>'+datos[8][i]+'%</td>'+
-                '</tr>').appendTo($("#table"));
-            }
-          }
-      }
-    }
   }
 
   function problemas(textError, textStatus) {

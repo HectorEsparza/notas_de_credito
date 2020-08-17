@@ -10,6 +10,7 @@
 	<script type="text/javascript" src="ajax/eventos/filtroFacturas.js"></script>
 	<script type="text/javascript" src="ajax/eventos/facturas.js"></script>
 	<script type="text/javascript" src="ajax/eventos/exportarFacturas.js"></script>
+	<script type="text/javascript" src="../js/formatoNumero.js"></script>
 
 </head>
 <body>
