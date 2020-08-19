@@ -1,8 +1,7 @@
 $(document).ready(function(){
   
     $("#buscar").click(function(){
-      if($("#idCliente").val()!="" || $("#nombre").val()!="" || $("#estatus").val()!="" || 
-         $("#descuento").val()!="" || $("#vendedor").val()!=""){
+      if($("#idCliente").val()!="" || $("#nombre").val()!=""){
         enviar();
       }
       else{
@@ -17,9 +16,6 @@ $(document).ready(function(){
       {
         idCliente: $("#idCliente").val(),
         nombre: $("#nombre").val(),
-        estatus: $("#estatus").val(), 
-        descuento: $("#descuento").val(),
-        vendedor: $("#vendedor").val(),
       }
       $.ajax({
           async: true, //Activar la transferencia asincronica
@@ -41,28 +37,23 @@ $(document).ready(function(){
     }
   
     function llegada(datos){
-      //console.log(datos);
+      console.log(datos);
       $("#table").empty();
-      $("#paginador").empty();
-      var contador = Object.keys(datos.numeroCliente).length;
-      
-      if(contador==0){
+    
+      if(datos.idCliente!=""){
         $('<tr>'+
-          '<td colspan="6">No se encontraron datos en la consulta</td>'+
-        '</tr>').appendTo($("#table"));
+            '<td>'+datos.idCliente+'</td>'+
+            '<td>'+datos.nombreCliente+'</td>'+
+            '<td><input type="button" class="btn btn-info btn-sm remisiones" id="'+datos.idCliente+'" value="Remisiones" /></td>'+
+          '</tr>').appendTo($("#table"));
       }
       else{
-        for (var i = 0; i < contador; i++) {
-          $('<tr>'+
-            '<td>'+datos.numeroCliente[i]+'</td>'+
-            '<td>'+datos.nombreCliente[i]+'</td>'+
-            '<td>'+datos.descuentoCliente[i]+'%</td>'+
-            '<td>'+datos.rfcCliente[i]+'</td>'+
-            '<td>'+datos.estatusCliente[i]+'</td>'+
-            '<td>'+datos.vendedorCliente[i]+'</td>'+
+        $('<tr>'+
+            '<td colspan="3" align="center">No se encontraron datos en la consulta</td>'+
           '</tr>').appendTo($("#table"));
-        }
       }
+      $("#scriptParaCargas").empty();
+      $("#scriptParaCargas").append('<script type="text/javascript" src="ajax/js/vistaRemisiones.js"></script>');
       
     }
   

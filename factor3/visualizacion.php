@@ -14,6 +14,7 @@
 	<script type="text/javascript" src="../js/cierreInactividad.js"></script>
 	<script type="text/javascript" src="../js/paginator.min.js"></script>
 	<script type="text/javascript" src="../js/home.js"></script>
+	<script type="text/javascript" src="../js/visualizacion.js"></script>
 	<script type="text/javascript" src="ajax/js/main.js"></script>
 	<script type="text/javascript" src="ajax/eventos/filtroClientes.js"></script>
 	<script type="text/javascript" src="ajax/eventos/autocompletarNombreCliente.js"></script>
@@ -47,7 +48,7 @@
 					<input type='button' id="home" class="btn btn-primary" style='background:url("../imagenes/home3.jpg"); width: 50px; height: 50px;' />
 				</div>
 				<div class="col-sm-12 col-md-8">
-						<!-- <h3 class="text-left">Filtro de Búsqueda</h3> -->
+						<h3 class="text-left">Filtro de Búsqueda</h3>
 						<ul class="pagination" id="paginador"></ul>
 				</div>
 			</div>
@@ -55,7 +56,7 @@
 	</header>
 	<section>
 		<div class="container">
-				<!-- <div class="row form-group">
+				<div class="row form-group">
 					<div class="col-sm-12 col-md-6">
 						<input type="text" id="idCliente" class="idCliente form-control" placeholder="Número de Cliente"/>
 					</div>
@@ -70,12 +71,12 @@
 					</div>
 					<div class="col-sm-12 col-md-4" id="botonesBusqueda">
 						<input type="button" class="btn btn-primary" id="buscar" value="Buscar" />
-						<input type="button" class="btn btn-primary" onclick="visualizar()" value='Tabla Completa' />
+						<input type="button" class="btn btn-primary" id="visualizacion" value='Tabla Completa' />
 					</div>
 					<div class="col-sm-12 col-md-4">
 						
 					</div>
-				</div> -->
+				</div>
 				<br />
 				<!-- <div class="row">
 					<div class="col-sm-12 col-md-12 text-center">

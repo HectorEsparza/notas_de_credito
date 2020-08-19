@@ -4,10 +4,9 @@
     $datos = array();
     $contador = 0;
     $base = conexion_local();
-    $consulta = "SELECT NOMBRE FROM CLIENTE WHERE NOMBRE LIKE ?";
-    //$consulta = "SELECT FECHA FROM NOTAS_VIS WHERE FECHA LIKE ?";
+    $consulta = "SELECT NOMBRE FROM CLIENTE WHERE NOMBRE LIKE ? AND Remision=?";
     $resultado = $base->prepare($consulta);
-    $resultado->execute(array('%' . $color . '%'));
+    $resultado->execute(array('%' . $color . '%', 'Activo'));
 
     while ($registro = $resultado->fetch(PDO::FETCH_NUM)) {
         array_push($datos, $registro[0]);
