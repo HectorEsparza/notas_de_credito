@@ -5,7 +5,6 @@
 	<link rel="shortcut icon" href="../imagenes/favicon.ico" type="image/x-icon" />
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
@@ -14,7 +13,7 @@
 	<script type="text/javascript" src="../js/cierreInactividad.js"></script>
 	<script type="text/javascript" src="../js/paginator.min.js"></script>
 	<script type="text/javascript" src="../js/home.js"></script>
-	<script type="text/javascript" src="../js/visualizacion.js"></script>
+	<script type="text/javascript" src="../js/recargarPagina.js"></script>
 	<script type="text/javascript" src="ajax/js/main.js"></script>
 	<script type="text/javascript" src="ajax/eventos/filtroClientes.js"></script>
 	<script type="text/javascript" src="ajax/eventos/autocompletarNombreCliente.js"></script>
@@ -25,6 +24,11 @@
 		}
 		#botonesBusqueda{
 			margin-left: 6em;
+		}
+		.thead-dark{
+			color: #fff;
+			background-color: #343a40;
+			border-color: #454d55;
 		}
 	</style>
 </head>
@@ -71,7 +75,7 @@
 					</div>
 					<div class="col-sm-12 col-md-4" id="botonesBusqueda">
 						<input type="button" class="btn btn-primary" id="buscar" value="Buscar" />
-						<input type="button" class="btn btn-primary" id="visualizacion" value='Tabla Completa' />
+						<input type="button" class="btn btn-primary" id="recargar" value='Tabla Completa' />
 					</div>
 					<div class="col-sm-12 col-md-4">
 						
@@ -87,7 +91,7 @@
 					<div class="col-sm-12 col-md-12">
 						<div class="table-responsive">
 							<table class="table table-bordered table-striped">
-								<thead>
+								<thead class="thead-dark">
 									<th>Número Cliente</th>
 									<th>Nombre</th>
 									<th>Info</th>
