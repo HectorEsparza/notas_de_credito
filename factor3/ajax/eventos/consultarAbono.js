@@ -4,6 +4,20 @@ $(document).ready(function () {
         var id = $(this).attr("id");
         id = id.split("-");
         id = id[1];
+        $( "#contenidoHistorial" ).dialog({
+            height: 550,
+            width: 600,
+            dialogClass: "no-close",
+            buttons: [
+              {
+                class: "btn btn-danger",
+                text: "Cerrar",
+                click: function() {
+                  $( this ).dialog( "close" );
+                }
+              }
+            ]
+        });
         enviar(id);
     });
 
@@ -43,6 +57,7 @@ $(document).ready(function () {
                 '<th>#</th>' +
                 '<th>Importe</th>' +
                 '<th>Fecha</th>' +
+                '<th>Observaciones</th>' +
                 '<th>Aplicado por</th>' +
                 '</thead>' +
                 '<tbody>';
@@ -53,6 +68,7 @@ $(document).ready(function () {
                     '<td>' + (parseInt(i) + 1) + '</td>' +
                     '<td>' + formatNumber.new(datos.abono[i], "$") + '</td>' +
                     '<td>' + datos.fecha[i] + '</td>' +
+                    '<td>' + datos.observaciones[i] + '</td>' +
                     '<td>' + datos.usuario[i] + '</td>' +
                     '</tr>';
             }

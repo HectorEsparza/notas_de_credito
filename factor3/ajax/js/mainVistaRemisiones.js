@@ -42,16 +42,15 @@ function get_data_callback() {
         $.each(lista, function (ind, elem) {
 
             $('<tr>' +
-                '<td>' + elem.clave + '</td>' +
+                '<td id="remision-'+i+'">' + elem.clave + '</td>' +
                 '<td>' + elem.fecha + '</td>' +
-                '<td>' + formatNumber.new(elem.importe, "$") + '</td>' +
-                '<td>' + formatNumber.new(elem.saldo, "$")+ '</td>' +
+                '<td id="importe-'+i+'">' + formatNumber.new(elem.importe, "$") + '</td>' +
+                '<td id="saldo-'+i+'">' + formatNumber.new(elem.saldo, "$")+ '</td>' +
                 '<td>' +
-                    '<input type="button" class="btn btn-info btn-sm abonar" id="abonar-' + i + '" value="+"' +
-                    'data-toggle="modal" data-target="#miModal"/>' +
+                    '<input type="button" class="btn btn-info btn-sm abonar" id="abonar-' + i + '" value="+"/>' +
                     '&nbsp;&nbsp;' +
-                    '<input type="button" class="btn btn-warning btn-sm consultar" id="consultar-' + i + '" value="?"' +
-                    'data-toggle="modal" data-target="#historial" /></td>' +
+                    '<input type="button" class="btn btn-warning btn-sm consultar" id="consultar-' + i + '" value="?"/>'+
+                '</td>' +
                 '</tr>').appendTo($("#table"));
             i++;
             $("#infoCliente").text("Cliente "+elem.idCliente+" "+elem.nombreCliente);

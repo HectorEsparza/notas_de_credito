@@ -5,6 +5,7 @@
     $abono = $_POST["abono"];
     $cliente = $_POST["cliente"];
     $remision = $_POST["remision"];
+    $observaciones = $_POST["observaciones"];
     $datos = array();
     $datos["estatus"] = 0;
     $datos["abono"] = $abono;
@@ -29,9 +30,9 @@
     $usuario = $registroIdUsuario["idUsuario"];
     $resultadoIdUsuario->closeCursor();
     //Insertar el abono para general el historial
-    $consultaInsertarAbono = "INSERT INTO SALDO VALUES(?,?,?,?,?)";
+    $consultaInsertarAbono = "INSERT INTO SALDO VALUES(?,?,?,?,?,?)";
     $resultadoInsertarAbono = $base->prepare($consultaInsertarAbono);
-    $resultadoInsertarAbono->execute(array(NULL, $idFacturaRemision, $abono, $fecha, $usuario));
+    $resultadoInsertarAbono->execute(array(NULL, $idFacturaRemision, $abono, $fecha, $observaciones, $usuario));
     if($resultadoInsertarAbono->rowCount()==1){
         $datos["estatus"] = 1;
     }
