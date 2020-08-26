@@ -59,6 +59,7 @@ function get_data_callback() {
         //Agregando texto
         
         //Agregando scripts para cargar abono y mostrar historial
+        $("#scriptParaCargas").empty();
         $("#scriptParaCargas").append('<script type="text/javascript" src="ajax/js/vistaAbonar.js"></script>'+
                                           '<script type="text/javascript" src="ajax/eventos/consultarAbono.js"></script>');
 

@@ -6,7 +6,7 @@ $(document).ready(function () {
         id = id[1];
         $( "#contenidoHistorial" ).dialog({
             height: 550,
-            width: 600,
+            width: 1000,
             dialogClass: "no-close",
             buttons: [
               {
@@ -18,6 +18,14 @@ $(document).ready(function () {
               }
             ]
         });
+        //Guardando el folio de remision
+        $("#remisionAbono").val($("#remision-"+id).text());
+        //Guardando el total del importe de la remisión
+        var importe = $("#importe-"+id).text();
+        importe = importe.replace("$", "");
+        importe = parseFloat(importe.replace(",", ""));
+        $("#importeAbono").val(importe);
+    
         enviar(id);
     });
 
@@ -59,6 +67,7 @@ $(document).ready(function () {
                 '<th>Fecha</th>' +
                 '<th>Observaciones</th>' +
                 '<th>Aplicado por</th>' +
+                '<th colspan=2>Editar</th>' +
                 '</thead>' +
                 '<tbody>';
 
@@ -66,10 +75,16 @@ $(document).ready(function () {
 
                 contenido += '<tr>' +
                     '<td>' + (parseInt(i) + 1) + '</td>' +
-                    '<td>' + formatNumber.new(datos.abono[i], "$") + '</td>' +
-                    '<td>' + datos.fecha[i] + '</td>' +
+                    '<td id="importeAbono-'+i+'">' + formatNumber.new(datos.abono[i], "$") + '</td>' +
+                    '<td id="fechaAbono-'+i+'">' + datos.fecha[i] + '</td>' +
                     '<td>' + datos.observaciones[i] + '</td>' +
                     '<td>' + datos.usuario[i] + '</td>' +
+                    '<td>'+
+                        '<input type="number" step="any" class="form-control" id="editarAbono-'+i+'" placeholder="Captura un importe" />'+
+                    '</td>' +
+                    '<td>'+
+                        '<input type="button" class="btn btn-success btn-sm editar" id="editar-'+i+'" value="Confirmar" />'+
+                    '</td>' +
                     '</tr>';
             }
 
@@ -84,6 +99,8 @@ $(document).ready(function () {
             $("#contenidoHistorial").append("<p>No se encontraron historial de pagos</p>");  
         }
 
+        //$("#scriptParaCargas").empty();
+        $("#scriptParaCargas").append('<script type="text/javascript" src="ajax/eventos/editarAbono.js"></script>');
     }
 
     function problemas(textError, textStatus) {

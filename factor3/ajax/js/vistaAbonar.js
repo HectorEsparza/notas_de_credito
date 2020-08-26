@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $(".abonar").click(function(){
-
+       
         var id = $(this).attr("id");
         id = id.split("-");
         id = id[1];
