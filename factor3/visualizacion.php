@@ -14,6 +14,7 @@
 	<script type="text/javascript" src="../js/paginator.min.js"></script>
 	<script type="text/javascript" src="../js/home.js"></script>
 	<script type="text/javascript" src="../js/recargarPagina.js"></script>
+	<script type="text/javascript" src="../js/formatoNumero.js"></script>
 	<script type="text/javascript" src="ajax/js/main.js"></script>
 	<script type="text/javascript" src="ajax/eventos/filtroClientes.js"></script>
 	<script type="text/javascript" src="ajax/eventos/autocompletarNombreCliente.js"></script>
@@ -94,6 +95,7 @@
 								<thead class="thead-dark">
 									<th>Número Cliente</th>
 									<th>Nombre</th>
+									<th>Saldo</th>
 									<th>Info</th>
 								</thead>
 								<tbody id="table">

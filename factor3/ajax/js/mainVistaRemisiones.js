@@ -30,6 +30,10 @@ function get_data_callback() {
         url: url_listar_usuario
     }).done(function (data, textStatus, jqXHR) {
         console.log(data.lista);
+        if(data.lista.length==0){
+            alert("El cliente no cuenta con remisiones actualmente");
+            setTimeout("location.href='visualizacion.php'", 500);
+        }
         // obtiene la clave lista del json data
         var lista = data.lista;
         $("#table").html("");

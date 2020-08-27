@@ -35,10 +35,12 @@ function get_data_callback(){
 		}
 		// genera el cuerpo de la tabla
 		$.each(lista, function(ind, elem){
+			console.log("Importe de las remisiones "+elem.importe+" para el cliente "+elem.idCliente);
      
             $('<tr>'+
               '<td>'+elem.idCliente+'</td>'+
-              '<td>'+elem.nombreCliente+'</td>'+
+			  '<td>'+elem.nombreCliente+'</td>'+
+			  '<td>'+formatNumber.new(elem.saldoCliente, "$")+'</td>'+
               '<td><input type="button" class="btn btn-info btn-sm remisiones" id="'+elem.idCliente+'" value="Remisiones" /></td>'+
             '</tr>').appendTo($("#table"));
 

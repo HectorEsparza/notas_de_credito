@@ -1,7 +1,10 @@
 <?php
+require_once("../funciones.php");
 // obtiene los valores para realizar la paginacion
 $limit = isset($_POST["limit"]) && intval($_POST["limit"]) > 0 ? intval($_POST["limit"])	: 20;
 $offset = isset($_POST["offset"]) && intval($_POST["offset"])>=0	? intval($_POST["offset"])	: 0;
+
+$base = conexion_local();
 // realiza la conexion
 //$con = new mysqli("50.62.209.84","hesparza","b29194303","aplicacion");
 $con = new mysqli("localhost","root","","aplicacion");
@@ -33,8 +36,35 @@ while ($query->fetch()) {
 
 	$data_json["idCliente"] = $idCliente;
 	$data_json["nombreCliente"] = $nombreCliente;
+	//Obtener el importe total de las remisiones para cada cliente
+	$consultaImporteRemisiones = "SELECT SUM(IMPORTE) as importe FROM CARGAS WHERE CLIENTE=?  AND CLAVE LIKE ? AND ESTATUS=?  ORDER BY FECHA DESC";
+	$resultadoImporteRemisiones = $base->prepare($consultaImporteRemisiones);
+	$resultadoImporteRemisiones->execute(array($idCliente, 'RR%', 'Emitida'));
+	$registroImporteRemisiones = $resultadoImporteRemisiones->fetch(PDO::FETCH_ASSOC);
+	if($registroImporteRemisiones["importe"]!=null){
+		$importe = $registroImporteRemisiones["importe"];
+	}
+	else{
+		$importe = 0;
+	}
+	$resultadoImporteRemisiones->closeCursor();
+	//Obtener los abonos totales de la remisiones para cada cliente
+	$consultaAbonoRemisiones = "SELECT SUM(Abono) as abono FROM SALDO INNER JOIN CARGAS ON SALDO.idFacturaRemision=CARGAS.idFacturaRemision WHERE CLIENTE=?";
+	$resultadoAbonoRemisiones = $base->prepare($consultaAbonoRemisiones);
+	$resultadoAbonoRemisiones->execute(array($idCliente));
+	$registroAbonoRemisiones = $resultadoAbonoRemisiones->fetch(PDO::FETCH_ASSOC);
+	if($registroAbonoRemisiones["abono"]!=null){
+		$abono = $registroAbonoRemisiones["abono"];
+	}
+	else{
+		$abono = 0;
+	}
+	$resultadoAbonoRemisiones->closeCursor();
+	$data_json["saldoCliente"] = $importe-$abono;
 	$data[]=$data_json;
 }
+
+$base = null;
 
 // obtiene la cantidad de registros
 $cantidad_consulta = $con->query("select count(*) as total from CLIENTE where Remision='Activo'");
