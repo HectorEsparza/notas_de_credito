@@ -3,8 +3,8 @@ require_once("../../funciones.php");
 $opcionDeCarga = $_POST['opcionDeCarga'];
 $archivoDeCarga = $_POST['archivoDeCarga'];
 
-// $opcionDeCarga = "Nuevos Vendedores";
-// $archivoDeCarga = "Estructura Vendedor.csv";
+// $opcionDeCarga = "Nuevos Clientes";
+// $archivoDeCarga = "Estructura Clientes.csv";
 
 $datos = array();
 $datos["respuesta"] = 0;
@@ -98,11 +98,11 @@ if ($opcionDeCarga == "Nuevos Clientes" || $opcionDeCarga == "Actualizar Cliente
                     $registro = $resultadoObtenerIdDescuento->fetch(PDO::FETCH_ASSOC);
                     $idDescuento = $registro["idDescuento"];
                     //Consulta para insertar los nuevos clientes
-                    $insertarClientes = "INSERT INTO CLIENTE VALUES(?,?,?,?,?,?,?,?,?)";
+                    $insertarClientes = "INSERT INTO CLIENTE VALUES(?,?,?,?,?,?,?,?,?,?)";
                     $resultadoInsertarClientes = $base->prepare($insertarClientes);
                     $resultadoInsertarClientes->execute(
                         array($idCliente[$i], $nombreCliente[$i], $idDescuento, $rfcCliente[$i], $calleCliente[$i],
-                            $coloniaCliente[$i], $cpCliente[$i], $telefonoCliente[$i], $estatusCliente[$i]));
+                            $coloniaCliente[$i], $cpCliente[$i], $telefonoCliente[$i], $estatusCliente[$i], "Inactivo"));
                     //Antes de insertar la información en la tabla puente obtener el idVendedorCliente 
                     //mediante el auto_increment, si se deja como null lo contabiliza de 2 en 2
                     // $obtenerIdVendedorCliente = "SELECT AUTO_INCREMENT FROM  INFORMATION_SCHEMA.TABLES
