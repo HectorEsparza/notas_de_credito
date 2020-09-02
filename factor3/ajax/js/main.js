@@ -40,7 +40,7 @@ function get_data_callback(){
             $('<tr>'+
               '<td>'+elem.idCliente+'</td>'+
 			  '<td>'+elem.nombreCliente+'</td>'+
-			  '<td>'+formatNumber.new(elem.saldoCliente, "$")+'</td>'+
+			  '<td>'+formatNumber.new((Math.round(elem.saldoCliente*100)/100), "$")+'</td>'+
               '<td><input type="button" class="btn btn-info btn-sm remisiones" id="'+elem.idCliente+'" value="Remisiones" /></td>'+
             '</tr>').appendTo($("#table"));
 
