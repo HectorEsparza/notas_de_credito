@@ -80,7 +80,7 @@
           </div>
 
           <input type="button" class="btn btn-success btn-sm" value="Agregar Factura/Remisión" id="agregarFactura" style="margin-bottom: 30px;"/>
-          <table width='850px' border="1" style="text-align: center;">
+          <table width='1000px' border="1" style="text-align: center;">
             <tr>
               <td colspan="5" style="background-color: gray; font-weight:bold;">ABASTECEDORA DE PRODUCTOS AUTOMOTRICES</td>
             </tr>
