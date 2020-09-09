@@ -1,7 +1,7 @@
 <?php
 require_once("../funciones.php");
 // obtiene los valores para realizar la paginacion
-$limit = isset($_POST["limit"]) && intval($_POST["limit"]) > 0 ? intval($_POST["limit"])	: 20;
+$limit = isset($_POST["limit"]) && intval($_POST["limit"]) > 0 ? intval($_POST["limit"])	: 25;
 $offset = isset($_POST["offset"]) && intval($_POST["offset"])>=0	? intval($_POST["offset"])	: 0;
 
 $base = conexion_local();
