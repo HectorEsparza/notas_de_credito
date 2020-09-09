@@ -44,18 +44,34 @@ function get_data_callback() {
         }
         // genera el cuerpo de la tabla
         $.each(lista, function (ind, elem) {
-
-            $('<tr>' +
+            if(elem.folioCaja!=""){
+                $('<tr>' +
                 '<td id="remision-'+i+'">' + elem.clave + '</td>' +
                 '<td>' + elem.fecha + '</td>' +
                 '<td id="importe-'+i+'">' + formatNumber.new(elem.importe, "$") + '</td>' +
                 '<td id="saldo-'+i+'">' + formatNumber.new(elem.saldo, "$")+ '</td>' +
+                '<td><input type="button" class="btn btn-sm btn-info verImpresion" id="caja-'+elem.folioCaja+'" value="'+elem.folioCaja+'" /></td>'+
                 '<td>' +
                     '<input type="button" class="btn btn-info btn-sm abonar" id="abonar-' + i + '" value="+"/>' +
                     '&nbsp;&nbsp;' +
                     '<input type="button" class="btn btn-warning btn-sm consultar" id="consultar-' + i + '" value="?"/>'+
                 '</td>' +
                 '</tr>').appendTo($("#table"));
+            }
+            else{
+                $('<tr>' +
+                '<td id="remision-'+i+'">' + elem.clave + '</td>' +
+                '<td>' + elem.fecha + '</td>' +
+                '<td id="importe-'+i+'">' + formatNumber.new(elem.importe, "$") + '</td>' +
+                '<td id="saldo-'+i+'">' + formatNumber.new(elem.saldo, "$")+ '</td>' +
+                '<td></td>'+
+                '<td>' +
+                    '<input type="button" class="btn btn-info btn-sm abonar" id="abonar-' + i + '" value="+"/>' +
+                    '&nbsp;&nbsp;' +
+                    '<input type="button" class="btn btn-warning btn-sm consultar" id="consultar-' + i + '" value="?"/>'+
+                '</td>' +
+                '</tr>').appendTo($("#table"));
+            }
             i++;
             $("#infoCliente").text("Cliente "+elem.idCliente+" "+elem.nombreCliente);
             $("#cliente").val(elem.idCliente);
@@ -65,7 +81,8 @@ function get_data_callback() {
         //Agregando scripts para cargar abono y mostrar historial
         $("#scriptParaCargas").empty();
         $("#scriptParaCargas").append('<script type="text/javascript" src="ajax/js/vistaAbonar.js"></script>'+
-                                          '<script type="text/javascript" src="ajax/eventos/consultarAbono.js"></script>');
+                                          '<script type="text/javascript" src="ajax/eventos/consultarAbono.js"></script>'+
+                                          '<script type="text/javascript" src="../js/verImpresion.js"></script>');
 
     }).fail(function (jqXHR, textStatus, textError) {
         alert("Error al realizar la peticion dame".textError);

@@ -28,13 +28,13 @@ $data = array();
 //El limite empieza con 10 y el Offset con 0
 
 //$query = $con->prepare("SELECT idCliente, Nombre FROM CLIENTE WHERE Remision='Activo' LIMIT ? OFFSET ?");
-$query = $con->prepare("SELECT CLAVE, CLIENTE, NOMBRE, FECHA, IMPORTE FROM CARGAS WHERE CLIENTE=?  AND CLAVE LIKE ? AND ESTATUS=? ORDER BY FECHA DESC LIMIT ? OFFSET ?");
+$query = $con->prepare("SELECT CLAVE, CLIENTE, NOMBRE, FECHA, IMPORTE, ENTRADA FROM CARGAS WHERE CLIENTE=?  AND CLAVE LIKE ? AND ESTATUS=? ORDER BY FECHA DESC LIMIT ? OFFSET ?");
 $query->bind_param("issii",$cliente,$tipo,$estatus,$limit,$offset);
 $query->execute();
 
 // vincular variables a la sentencia preparada
 //$query->bind_result($id_usuario, $nombres,$apellidos);
-$query->bind_result($clave, $idCliente, $nombreCliente, $fecha, $importe);
+$query->bind_result($clave, $idCliente, $nombreCliente, $fecha, $importe, $folioCaja);
 
 // obtener valores
 while ($query->fetch()) {
@@ -44,6 +44,7 @@ while ($query->fetch()) {
     $data_json["nombreCliente"] = $nombreCliente;
     $data_json["fecha"] = fechaStandar($fecha);
     $data_json["importe"] = $importe;
+    $data_json["folioCaja"] = $folioCaja;
     //Obtener el saldo para cada remisión
     $consultaSaldo = "SELECT SUM(Abono) AS total FROM SALDO INNER JOIN CARGAS 
                           ON SALDO.idFacturaRemision=CARGAS.idFacturaRemision WHERE CARGAS.CLAVE=?";

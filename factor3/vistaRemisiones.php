@@ -112,6 +112,7 @@
 								<th>Fecha de Elaboración</th>
 								<th>Importe</th>
 								<th>Saldo</th>
+								<th>Folio de Caja</th>
 								<th>Info</th>
 							</thead>
 							<tbody id="table">
